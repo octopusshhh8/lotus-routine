@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <title>Неделя</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -54,6 +54,7 @@ button.lnk{background:none;border:0;color:var(--acc);padding:8px 0 2px;font-styl
 .cat{font-size:11.5px;color:var(--acc);margin:14px 0 4px;text-transform:uppercase;letter-spacing:.12em;display:flex;align-items:center}
 .goal{display:flex;align-items:center;gap:10px;padding:6px 0}
 .goal.off .gn{color:var(--hint)}
+.rec{font-size:12px;color:var(--ochre);font-style:italic;margin-top:2px}
 .gn{flex:1;min-width:0}
 .step{display:flex;align-items:center;gap:6px;flex:none}.step button{width:32px;height:32px;padding:0}.step b{min-width:20px;text-align:center}
 .bar{height:7px;background:#e3d1ae;border-radius:2px;overflow:hidden;margin-top:5px;box-shadow:inset 0 1px 1px rgba(80,40,10,.15)}.bar i{display:block;height:100%;background:linear-gradient(#6d9a67,#3f6d44)}
@@ -213,6 +214,13 @@ label{min-width:0}
 input[type=date]{-webkit-appearance:none;appearance:none;display:block;width:100%;min-width:0;max-width:100%;min-height:38px;text-align:left;line-height:1.2}
 input[type=date]::-webkit-date-and-time-value{text-align:left;margin:0}
 input[type=date]::-webkit-calendar-picker-indicator{opacity:.5}
+
+.tgl{width:51px;height:31px;padding:2px;border-radius:999px;background:rgba(120,90,60,.22);position:relative;flex:none;transition:background .2s}
+.tgl i{display:block;width:27px;height:27px;border-radius:50%;background:#fff;box-shadow:0 2px 4px rgba(0,0,0,.2);transition:transform .2s}
+.tgl.on{background:var(--ok)}.tgl.on i{transform:translateX(20px)}
+.tgl:active{transform:none}
+html,body{touch-action:manipulation;-webkit-text-size-adjust:100%}
+button,.chip,.pkrow,[data-a]{touch-action:manipulation;-webkit-user-select:none;user-select:none}
 </style>
 </head>
 <body>
@@ -229,8 +237,31 @@ input[type=date]::-webkit-calendar-picker-indicator{opacity:.5}
 <script>
 /* ===== Telegram + хранилище ===== */
 const tg = window.Telegram && window.Telegram.WebApp;
-const inTG = !!(tg && tg.initData);
+const QS = new URLSearchParams(location.search);
+const inVK = QS.has('vk_app_id') || QS.has('vk_platform');
+const inTG = !inVK && !!(tg && tg.initData);
 const cloudOK = inTG && tg.CloudStorage && (!tg.isVersionAtLeast || tg.isVersionAtLeast('6.9'));
+const PLATFORM = inVK ? 'vk' : cloudOK ? 'tg' : 'local';
+const vkb = () => window.vkBridge;
+function loadVK() {
+  if (!inVK) return Promise.resolve();
+  return new Promise((res, rej) => {
+    if (window.vkBridge) return res();
+    const el = document.createElement('script'); el.src = 'https://cdn.jsdelivr.net/npm/@vkontakte/vk-bridge@3.0.2/dist/browser.min.js';
+    el.onload = res; el.onerror = () => rej(new Error('не загрузился VK Bridge')); document.head.appendChild(el);
+  }).then(async () => {
+    try { await vkb().send('VKWebAppInit'); } catch (e) {}
+    try { vkb().send('VKWebAppSetViewSettings', { status_bar_style: 'light', action_bar_color: '#8f1a1e', navigation_bar_color: '#1a2e21' }); } catch (e) {}
+    vkb().subscribe(e => {
+      const d = e.detail || {};
+      if (d.type === 'VKWebAppUpdateConfig' && d.data && d.data.insets) {
+        const ins = d.data.insets;
+        if (ins.top) document.documentElement.style.setProperty('--top-inset', ins.top + 'px');
+        if (ins.bottom) document.documentElement.style.setProperty('--bot-inset', ins.bottom + 'px');
+      }
+    });
+  });
+}
 function applyInsets() {
   if (!tg) return;
   const sa = tg.safeAreaInset || {}, ca = tg.contentSafeAreaInset || {};
@@ -243,7 +274,12 @@ function applyInsets() {
 if (tg) { try { applyInsets(); ['safeAreaChanged', 'contentSafeAreaChanged', 'fullscreenChanged', 'viewportChanged'].forEach(ev => tg.onEvent(ev, applyInsets)); } catch (e) {} }
 if (tg) { try { tg.ready(); tg.expand(); if (!tg.isVersionAtLeast || tg.isVersionAtLeast('6.1')) { tg.setHeaderColor('#8f1a1e'); tg.setBackgroundColor('#ecdfc6'); } if (tg.isVersionAtLeast && tg.isVersionAtLeast('7.10') && tg.setBottomBarColor) tg.setBottomBarColor('#1a2e21'); } catch (e) {} }
 
-const S = cloudOK ? {
+const S = inVK ? {
+  get: async keys => { const r = await vkb().send('VKWebAppStorageGet', { keys }); const o = {}; for (const k of keys) o[k] = ''; for (const x of (r.keys || [])) o[x.key] = x.value || ''; return o; },
+  set: (k, v) => vkb().send('VKWebAppStorageSet', { key: k, value: v }),
+  del: async keys => { for (const k of keys) await vkb().send('VKWebAppStorageSet', { key: k, value: '' }); },
+  keys: async () => { const out = []; for (let off = 0; off < 5000; off += 1000) { const r = await vkb().send('VKWebAppStorageGetKeys', { count: 1000, offset: off }); const ks = r.keys || []; out.push(...ks); if (ks.length < 1000) break; } return out; }
+} : cloudOK ? {
   get: keys => new Promise((res, rej) => tg.CloudStorage.getItems(keys, (e, v) => e ? rej(e) : res(v || {}))),
   set: (k, v) => new Promise((res, rej) => tg.CloudStorage.setItem(k, v, (e, ok) => e ? rej(e) : res(ok))),
   del: keys => new Promise((res, rej) => tg.CloudStorage.removeItems(keys, (e, ok) => e ? rej(e) : res(ok))),
@@ -323,7 +359,7 @@ const fmtS = s => { const d = pd(s); return pad(d.getDate()) + '.' + pad(d.getMo
 const uid = () => Math.random().toString(36).slice(2, 8) + Date.now().toString(36).slice(-3);
 const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const num = v => { const n = parseFloat(String(v).replace(',', '.')); return isFinite(n) ? n : 0; };
-const hap = () => { try { tg && tg.HapticFeedback && tg.HapticFeedback.impactOccurred('light'); } catch (e) {} };
+const hap = () => { try { if (inVK) vkb() && vkb().send('VKWebAppTapticImpactOccurred', { style: 'light' }).catch(() => {}); else tg && tg.HapticFeedback && tg.HapticFeedback.impactOccurred('light'); } catch (e) {} };
 function toast(t) { const el = document.getElementById('toast'); el.textContent = t; el.classList.add('on'); clearTimeout(el._t); el._t = setTimeout(() => el.classList.remove('on'), 1600); }
 function ask(msg) {
   return new Promise(r => {
@@ -331,6 +367,36 @@ function ask(msg) {
     else r(confirm(msg));
   });
 }
+
+/* ===== звук нажатий (как клавиатура iPhone) ===== */
+let clickCtx = null, clickBuf = null;
+function soundOn() { try { return localStorage.getItem('lr_sound') !== '0'; } catch (e) { return true; } }
+function setSound(on) { try { localStorage.setItem('lr_sound', on ? '1' : '0'); } catch (e) {} }
+function initClick() {
+  if (clickCtx) return;
+  try {
+    clickCtx = new (window.AudioContext || window.webkitAudioContext)();
+    const sr = clickCtx.sampleRate, n = Math.floor(sr * 0.028);
+    clickBuf = clickCtx.createBuffer(1, n, sr);
+    const d = clickBuf.getChannelData(0);
+    for (let i = 0; i < n; i++) { const t = i / sr; d[i] = ((Math.random() * 2 - 1) * 0.55 + Math.sin(2 * Math.PI * 2400 * t) * 0.45) * Math.exp(-t * 260); }
+  } catch (e) { clickCtx = null; }
+}
+function tick(kind) {
+  if (!soundOn()) return;
+  initClick(); if (!clickCtx || !clickBuf) return;
+  try {
+    if (clickCtx.state === 'suspended') clickCtx.resume();
+    const src = clickCtx.createBufferSource(), f = clickCtx.createBiquadFilter(), g = clickCtx.createGain();
+    src.buffer = clickBuf; f.type = 'bandpass'; f.frequency.value = kind === 'soft' ? 1800 : 3200; f.Q.value = 0.9;
+    g.gain.value = kind === 'soft' ? 0.35 : 0.55;
+    src.connect(f); f.connect(g); g.connect(clickCtx.destination); src.start();
+  } catch (e) {}
+}
+document.addEventListener('pointerdown', e => {
+  const b = e.target.closest('button,.chip,[data-a]'); if (!b || b.disabled) return;
+  tick(b.closest('nav') || b.classList.contains('seg') || b.closest('.seg') ? 'soft' : 'key');
+}, true);
 
 /* ===== справочники и значения по умолчанию ===== */
 const CATS = ['Работа', 'Еда', 'Спорт', 'Учёба', 'Быт', 'Отдых', 'Другое'];
@@ -546,7 +612,10 @@ function vToday() {
   return h;
 }
 
-function vSettings() { return `<div class="sec"><p class="muted">Здесь пока пусто.</p></div>`; }
+function vSettings() {
+  const on = soundOn();
+  return `<div class="sec"><h3>Звук</h3><div class="row"><span class="grow">Звук нажатий<div class="sm muted">Тихий щелчок, как у клавиатуры iPhone</div></span><button class="tgl ${on ? 'on' : ''}" data-a="sound" aria-label="Звук нажатий"><i></i></button></div></div>`;
+}
 function vPeriod() {
   const segP = `<div class="seg"><button class="${st.pt !== 'cat' ? 'on' : ''}" data-a="pt" data-v="per">Период</button><button class="${st.pt === 'cat' ? 'on' : ''}" data-a="pt" data-v="cat">Каталог задач</button></div>`;
   if (st.pt === 'cat') return segP + vCat();
@@ -555,12 +624,12 @@ function vPeriod() {
   const p = per(); if (!p) return h + noPeriod();
   const s = stats(p);
   h += `<div class="sec"><h3>Даты</h3><div class="two"><label>С<input type="date" data-f="pstart" value="${p.start}"></label><label>По<input type="date" data-f="pend" value="${p.end}"></label></div></div>`;
-  h += `<div class="sec"><h3>Цели: сколько раз за период</h3>`;
+  h += `<div class="sec"><h3>Цели: сколько раз за период</h3><div class="btns" style="margin:0 0 6px"><button data-a="grec">Заполнить по рекомендациям</button><button data-a="gzero">Обнулить</button></div>`;
   for (const cg of CATS) {
     const L = DB.catalog.filter(c => c.cat === cg); if (!L.length) continue;
     h += `<div class="cat">${ICON[cg]} ${cg}</div>` + L.map(c => {
       const n = p.goals[c.id] || 0, dn = s.done[c.id] || 0, pl = s.plan[c.id] || 0, pc = n ? Math.min(100, dn / n * 100) : 0;
-      return `<div class="goal ${n ? '' : 'off'}"><div class="gn">${esc(c.name)}${n || dn ? `<div class="bar"><i style="width:${pc}%"></i></div><div class="muted sm">сделано ${dn}/${n} · в плане ${pl}</div>` : ''}</div><div class="step"><button data-a="goal" data-id="${c.id}" data-n="-1">−</button><b>${n}</b><button data-a="goal" data-id="${c.id}" data-n="1">+</button></div></div>`;
+      return `<div class="goal ${n ? '' : 'off'}"><div class="gn">${esc(c.name)}${n || dn ? `<div class="bar"><i style="width:${pc}%"></i></div><div class="muted sm">сделано ${dn}/${n} · в плане ${pl}</div>` : ''}${c.def ? `<div class="rec">рекомендация: ${c.def}${c.def === n ? ' ✓' : ''}</div>` : ''}</div><div class="step"><button data-a="goal" data-id="${c.id}" data-n="-1">−</button><b>${n}</b><button data-a="goal" data-id="${c.id}" data-n="1">+</button></div></div>`;
     }).join('');
   }
   h += `</div><div class="sec"><h3>Трекеры</h3>` + TRACKERS.map(t => {
@@ -600,7 +669,7 @@ function vCat() {
     const L = DB.catalog.filter(c => c.cat === cg);
     h += `<div class="sec"><h3>${ICON[cg]} ${cg}</h3>${L.map(c => `<div class="citem"><input data-f="cname" data-id="${c.id}" value="${esc(c.name)}"><div class="crow">${cg === 'Спорт' ? `<label>ккал<input type="number" inputmode="numeric" data-f="ckcal" data-id="${c.id}" value="${c.kcal || 0}"></label>` : ''}<label>в неделю<input type="number" inputmode="numeric" data-f="cdef" data-id="${c.id}" value="${c.def || 0}"></label><label>раздел<select data-f="ccat" data-id="${c.id}">${CATS.map(x => `<option ${x === cg ? 'selected' : ''}>${x}</option>`).join('')}</select></label><button class="x" data-a="cdel" data-id="${c.id}">✕</button></div></div>`).join('')}<button class="lnk" data-a="cadd" data-c="${cg}">+ пункт</button></div>`;
   }
-  h += `<div class="sec"><h3>Данные</h3><p class="muted sm">${cloudOK ? 'Хранятся в облаке Telegram и привязаны к твоему аккаунту.' : 'Открыто не в Telegram — данные сохраняются только в этом браузере (режим проверки).'}</p><div class="btns"><button data-a="exp">Экспорт</button><button data-a="imp">Импорт</button></div></div>`;
+  h += `<div class="sec"><h3>Данные</h3><p class="muted sm">${PLATFORM === 'vk' ? 'Хранятся в облаке ВКонтакте и привязаны к твоему аккаунту. Данные Telegram-версии отдельные — перенести можно через Экспорт/Импорт.' : PLATFORM === 'tg' ? 'Хранятся в облаке Telegram и привязаны к твоему аккаунту. Данные VK-версии отдельные — перенести можно через Экспорт/Импорт.' : 'Открыто не в Telegram и не в ВК — данные сохраняются только в этом браузере (режим проверки).'}</p><div class="btns"><button data-a="exp">Экспорт</button><button data-a="imp">Импорт</button></div></div>`;
   return h;
 }
 
@@ -622,7 +691,7 @@ function mPick() {
 }
 function mNewP() {
   const [s, e] = newDates();
-  return `<h3>Новый период</h3><div class="two"><label>С<input type="date" id="np_s" value="${s}"></label><label>По<input type="date" id="np_e" value="${e}"></label></div><p class="muted sm">${per() ? 'Цели, трекеры и КБЖУ скопируются из текущего периода — поправишь, если нужно.' : 'Цели заполнятся из каталога (поле «в неделю»).'}</p><button class="pri wide" data-a="createp">Создать</button>`;
+  return `<h3>Новый период</h3><div class="two"><label>С<input type="date" id="np_s" value="${s}"></label><label>По<input type="date" id="np_e" value="${e}"></label></div><p class="muted sm">Цели начнутся с нуля — под каждой будет рекомендация. ${per() ? 'Трекеры и КБЖУ скопируются из текущего периода.' : ''}</p><button class="pri wide" data-a="createp">Создать</button>`;
 }
 function mPAdd() {
   const L = [...DB.products].sort((a, b) => a.name.localeCompare(b.name, 'ru'));
@@ -1156,6 +1225,10 @@ document.addEventListener('click', async e => {
   if (a === 'ovclose') { if (e.target === b) { st.modal = null; render(); } return; }
   try { await act(a, D); } catch (err) { toast('Ошибка: ' + (err.message || err)); }
 });
+let lastTouch = 0;
+document.addEventListener('touchend', e => { const now = Date.now(); if (now - lastTouch < 350 && e.target.closest('button,[data-a]')) { e.preventDefault(); e.target.closest('button,[data-a]').click(); } lastTouch = now; }, { passive: false });
+document.addEventListener('gesturestart', e => e.preventDefault());
+document.addEventListener('dblclick', e => e.preventDefault());
 document.addEventListener('toggle', e => { if (e.target.id === 'oth') st.openOther = e.target.open; }, true);
 document.addEventListener('input', e => {
   if (e.target.id === 'psearch') {
@@ -1175,7 +1248,15 @@ async function act(a, D) {
   switch (a) {
     case 'tab': st.tab = D.t; st.modal = null; if (D.t === 'prog') await loadAll(); window.scrollTo(0, 0); break;
     case 'pt': st.pt = D.v; break;
-    case 'scan': st.modal = { t: 'scan', m: st.modal ? st.modal.m : null }; break;
+    case 'sound': setSound(!soundOn()); if (soundOn()) setTimeout(() => tick('key'), 30); break;
+    case 'scan': {
+      const m = st.modal ? st.modal.m : null;
+      if (inVK && vkb()) {
+        try { const r = await vkb().send('VKWebAppOpenCodeReader'); st.modal = { t: 'scan', m }; if (r && r.code_data) { await lookup(r.code_data); return; } }
+        catch (e) { if (e && e.error_data && (e.error_data.error_code === 4 || /cancel/i.test(JSON.stringify(e.error_data)))) { render(); return; } }
+      }
+      st.modal = { t: 'scan', m }; break;
+    }
     case 'scanman': { const sp = document.getElementById('spanel'); sp.classList.add('manual'); const i = document.getElementById('bcode'); if (i) i.focus(); return; }
     case 'torch': { try { const on = !st.torch; await scanner.applyVideoConstraints({ advanced: [{ torch: on }] }); st.torch = on; document.getElementById('torch').classList.toggle('on', on); } catch (e) { toast('Фонарик недоступен'); } return; }
     case 'bcfind': { const v = document.getElementById('bcode').value; await stopScan(); await lookup(v); return; }
@@ -1220,7 +1301,7 @@ async function act(a, D) {
       const src = per();
       const np = {
         id: uid(), start: s, end: e,
-        goals: src ? { ...src.goals } : Object.fromEntries(DB.catalog.filter(c => c.def > 0).map(c => [c.id, c.def])),
+        goals: {},
         trackers: src ? [...src.trackers] : TRACKERS.map(t => t.k),
         target: src ? { ...src.target } : { k: 1800, p: 100, f: 45, c: 250 },
         w0: src && src.w1 != null ? src.w1 : null, w1: null
@@ -1230,6 +1311,8 @@ async function act(a, D) {
       st.modal = null; await openPeriod(np.id); st.tab = 'period'; toast('Период создан'); break;
     }
     case 'goal': { p.goals[D.id] = Math.max(0, (p.goals[D.id] || 0) + +D.n); if (!p.goals[D.id]) delete p.goals[D.id]; mark('periods'); break; }
+    case 'grec': p.goals = Object.fromEntries(DB.catalog.filter(c => c.def > 0).map(c => [c.id, c.def])); mark('periods'); toast('Цели заполнены'); break;
+    case 'gzero': if (!(await ask('Обнулить все цели периода?'))) return; p.goals = {}; mark('periods'); break;
     case 'autoc': { const T = p.target; T.c = Math.max(0, Math.round((T.k - 4 * T.p - 9 * T.f) / 4)); mark('periods'); break; }
     case 'delp': {
       if (!(await ask('Удалить период и его меню? Отметки по дням останутся.'))) return;
@@ -1297,6 +1380,7 @@ async function field(f, el) {
 /* ===== запуск ===== */
 async function init() {
   try {
+    await loadVK();
     const r = await loadMany(['catalog', 'products', 'periods', 'profile', 'exercises', 'workouts', 'last', 'sess', 'active', 'gcats']);
     DB.exercises = r.exercises || defExercises(); if (!r.exercises) mark('exercises');
     DB.last = r.last || {}; DB.sess = r.sess || []; DB.active = r.active || null;
