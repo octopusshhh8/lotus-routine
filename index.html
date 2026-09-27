@@ -1,0 +1,711 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Неделя</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Yeseva+One&display=swap&subset=cyrillic" rel="stylesheet">
+<meta name="theme-color" content="#8f1a1e">
+<style>
+:root{--paper:#ecdfc6;--bg:#f7eedb;--bg2:#e9dabd;--line:#d6c09a;--tx:#2b1a14;--hint:#8a6c58;--acc:#9b1d20;--acc2:#7a1820;--acctx:#f7eedb;--ok:#3f6d44;--okd:#2c4f33;--bad:#9b1d20;--ochre:#c48a2a;--green:#1e3526;--pink:#d98891;--noise:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .32 0 0 0 0 .2 0 0 0 0 .12 0 0 0 .22 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--noise),var(--paper);color:var(--tx);font:15px/1.45 'Lora',Georgia,serif;padding-bottom:88px}
+#app{padding:0 12px 20px;max-width:640px;margin:0 auto}
+h1,h3,.disp{font-family:'Yeseva One',Georgia,serif;font-weight:400}
+.hero{position:relative;margin:0 -12px 22px;padding:22px 18px 26px;background:var(--noise),radial-gradient(120% 90% at 85% 20%,#b3262a 0,#8f1a1e 45%,#6e1219 100%);color:var(--acctx);overflow:hidden;min-height:150px}
+.hero::after{content:"";position:absolute;left:0;right:0;bottom:-7px;height:14px;background:radial-gradient(circle at 7px 0,#6e1219 6.5px,transparent 7.5px) repeat-x;background-size:14px 14px}
+.hero .lotus{position:absolute;right:-26px;top:-14px;width:172px;height:172px;opacity:.95}
+.hero .kick{font-size:11px;letter-spacing:.22em;text-transform:uppercase;opacity:.75}
+.hero h1{font-size:34px;margin:4px 0 2px;line-height:1.05;text-shadow:0 1px 0 rgba(0,0,0,.25)}
+.hero .per{font-size:13.5px;opacity:.85}
+.sec{background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:14px;margin-bottom:12px;box-shadow:inset 0 0 0 4px var(--bg),inset 0 0 0 5px #e6d4b2,0 1px 0 rgba(90,50,20,.08)}
+.sec h3{margin:0 0 10px;font-size:17px;color:var(--acc2);display:flex;align-items:center;gap:8px}
+.sec h3::before{content:"";width:16px;height:12px;flex:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 12'%3E%3Cpath d='M8 11C5 9 3 7 3 3.5c2 .3 3.8 1.8 5 4 1.2-2.2 3-3.7 5-4C13 7 11 9 8 11z' fill='%23d98891' stroke='%237a1820' stroke-width='.8'/%3E%3Cpath d='M8 9.5C7 7.5 7 4.5 8 1c1 3.5 1 6.5 0 8.5z' fill='%23e8a8b0' stroke='%237a1820' stroke-width='.8'/%3E%3C/svg%3E") center/contain no-repeat}
+button{font:inherit;color:inherit;background:var(--bg2);border:1px solid var(--line);border-radius:4px;padding:9px 12px;cursor:pointer}
+button:disabled{opacity:.3}
+button.pri{background:var(--noise),linear-gradient(#a8232a,#8a1a1f);color:var(--acctx);border-color:#6e1219;box-shadow:inset 0 0 0 2px rgba(247,238,219,.18)}
+button.danger{background:transparent;border:0;color:var(--bad)}
+button.wide{width:100%;margin-top:6px}
+button.lnk{background:none;border:0;color:var(--acc);padding:8px 0 2px;font-style:italic}
+.muted{color:var(--hint)}.sm{font-size:12.5px}
+.row{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px dashed var(--line)}
+.grow{flex:1;min-width:0}
+.cb{width:28px;height:28px;padding:0;border-radius:4px;border:1.5px solid #a88d68;background:#fbf5e8;flex:none;font-weight:700;color:#f7eedb}
+.chk.done .cb{background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.45) 0,transparent 40%),linear-gradient(135deg,#5b8a58,#2c4f33);border-color:#24402a}
+.chk.done .grow{text-decoration:line-through;text-decoration-color:var(--acc);color:var(--hint)}
+.x{background:none;border:0;color:var(--hint);padding:4px 6px;flex:none}
+.btns{display:flex;gap:8px;margin-top:12px}.btns>*{flex:1}
+.dnav{display:flex;align-items:center;justify-content:space-between;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px;margin-bottom:12px;text-align:center}
+.dnav b{font-family:'Yeseva One',serif;font-weight:400;font-size:18px;color:var(--acc2)}
+.dnav button{background:none;border:0;color:var(--acc);font-size:16px}
+.trk{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.tb{display:flex;align-items:center;gap:6px;background:var(--bg);text-align:left;font-size:13.5px;padding:11px 10px;border-radius:6px}
+.tb i{margin-left:auto;font-style:normal;font-weight:700;color:var(--hint)}
+.tb.ok{background:radial-gradient(circle at 20% 10%,rgba(255,255,255,.3) 0,transparent 45%),linear-gradient(135deg,#557f52,#2c4f33);color:#f7eedb;border-color:#24402a}.tb.ok i{color:#f7eedb}
+.tb.bad{background:radial-gradient(circle at 20% 10%,rgba(255,255,255,.25) 0,transparent 45%),linear-gradient(135deg,#8e2a33,#5c1219);color:#f7eedb;border-color:#4a0f15}.tb.bad i{color:#f7eedb}
+.tb.ok .dm,.tb.bad .dm{background:#f7eedb}
+.chips{display:flex;gap:6px;overflow-x:auto;padding-bottom:8px;margin-bottom:6px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{white-space:nowrap;background:var(--bg);font-size:13.5px;padding:7px 11px;flex:none}
+.chip.on{background:var(--noise),linear-gradient(#a8232a,#8a1a1f);color:var(--acctx);border-color:#6e1219}
+.chip.has:not(.on){box-shadow:inset 0 -3px 0 var(--ok)}
+.cat{font-size:11.5px;color:var(--acc);margin:14px 0 4px;text-transform:uppercase;letter-spacing:.12em;display:flex;align-items:center}
+.goal{display:flex;align-items:center;gap:10px;padding:6px 0}
+.goal.off .gn{color:var(--hint)}
+.gn{flex:1;min-width:0}
+.step{display:flex;align-items:center;gap:6px;flex:none}.step button{width:32px;height:32px;padding:0}.step b{min-width:20px;text-align:center}
+.bar{height:7px;background:#e3d1ae;border-radius:2px;overflow:hidden;margin-top:5px;box-shadow:inset 0 1px 1px rgba(80,40,10,.15)}.bar i{display:block;height:100%;background:linear-gradient(#6d9a67,#3f6d44)}
+.bar.over i{background:linear-gradient(#b8363b,#8a1a1f)}
+.bar.low i{background:linear-gradient(#d9a441,#b07a1d)}
+.macros{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+input,select{font:inherit;color:var(--tx);background:#fbf5e8;border:1px solid var(--line);border-radius:4px;padding:8px;width:100%;min-width:0}
+input:focus,select:focus{outline:2px solid var(--pink);outline-offset:0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.four{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:8px}
+label{font-size:12.5px;color:var(--hint);display:block}
+label input,label select{margin-top:3px}
+label.grow{font-size:15px;color:var(--tx);display:flex;align-items:center;gap:8px}
+label.grow input{width:auto;margin:0;accent-color:var(--ok)}
+input.g{width:68px;flex:none}
+.w{width:62px;text-align:right;flex:none}
+.citem{padding:8px 0;border-bottom:1px dashed var(--line)}
+.crow{display:flex;gap:6px;align-items:end;margin-top:6px}.crow label{flex:1}.crow select{flex:1.4}
+nav{position:fixed;bottom:0;left:0;right:0;display:flex;background:var(--noise),linear-gradient(#27432f,#1a2e21);border-top:3px solid #c48a2a;padding:5px 6px calc(5px + env(safe-area-inset-bottom));z-index:5}
+nav button{flex:1;background:none;border:0;font-size:11px;display:flex;flex-direction:column;align-items:center;gap:2px;color:rgba(247,238,219,.6);padding:5px 0;font-family:'Lora',serif}
+nav button svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+nav button.on{color:#f7eedb} nav button.on svg{stroke:#e8a8b0}
+.ov{position:fixed;inset:0;background:rgba(40,15,10,.5);display:flex;align-items:flex-end;z-index:10}
+.sheet{background:var(--noise),var(--bg);width:100%;max-width:640px;margin:0 auto;max-height:86vh;overflow:auto;border-radius:10px 10px 0 0;border-top:5px solid var(--acc);padding:18px 14px calc(16px + env(safe-area-inset-bottom))}
+.sheet h3{margin:0 0 12px;font-size:20px;color:var(--acc2)}
+.pk{display:flex;justify-content:space-between;align-items:center;width:100%;text-align:left;margin-bottom:6px;gap:8px;background:#fbf5e8}
+.pk.full{opacity:.5}
+details summary{color:var(--acc);padding:10px 0;cursor:pointer;font-style:italic}
+textarea{width:100%;height:200px;font:12.5px/1.5 'Lora',serif;background:#fbf5e8;color:var(--tx);border:1px solid var(--line);border-radius:4px;padding:8px}
+.prow{display:grid;grid-template-columns:1fr repeat(4,48px) 26px;gap:4px;align-items:center;margin-bottom:6px}
+.prow input{padding:6px 5px;font-size:13px}
+#toast{position:fixed;left:50%;bottom:100px;transform:translateX(-50%);background:#2b1a14;color:#f7eedb;padding:8px 16px;border-radius:4px;border:1px solid #c48a2a;font-size:13px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:20;white-space:nowrap}
+#toast.on{opacity:1}
+.seg{display:flex;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:3px;margin-bottom:12px}.seg button{flex:1;background:none;border:0;padding:8px}.seg button.on{background:var(--noise),linear-gradient(#a8232a,#8a1a1f);color:var(--acctx)}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:8px}
+.kv{display:flex;justify-content:space-between;gap:8px;padding:7px 0;border-bottom:1px dashed var(--line)}
+.pr{padding:6px 0}.pr .t{display:flex;justify-content:space-between;gap:8px}
+details.it summary{font-size:12.5px;padding:4px 0}
+.tbl{width:100%;border-collapse:collapse;font-size:13px}.tbl td,.tbl th{padding:7px 4px;border-bottom:1px dashed var(--line);text-align:left}.tbl th{color:var(--hint);font-weight:400;font-style:italic}
+.dm{display:inline-block;width:9px;height:9px;background:var(--c);transform:rotate(45deg);margin:0 8px 1px 2px;border-radius:1px;flex:none;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.35)}
+details.sec summary{padding:0}
+</style>
+</head>
+<body>
+<div id="app"><p class="muted">Загрузка…</p></div>
+<nav>
+  <button data-a="tab" data-t="today"><svg viewBox="0 0 24 24"><path d="M12 20c-4.5-1.6-7-4.7-7-9.5 3.2.2 5.6 2.3 7 5 1.4-2.7 3.8-4.8 7-5 0 4.8-2.5 7.9-7 9.5z"/><path d="M12 17c-1.6-2.6-1.6-7 0-12 1.6 5 1.6 9.4 0 12z"/></svg>День</button>
+  <button data-a="tab" data-t="period"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="1.5"/><path d="M4 10h16M9 3v4M15 3v4"/><path d="M12 13.2l1.8 1.8-1.8 1.8-1.8-1.8z"/></svg>Период</button>
+  <button data-a="tab" data-t="menu"><svg viewBox="0 0 24 24"><path d="M3.5 12h17a8.5 8.5 0 0 1-17 0z"/><path d="M9 9c0-1.7 1.6-1.9 1.6-3.6M13.4 9c0-1.7 1.6-1.9 1.6-3.6"/></svg>Меню</button>
+  <button data-a="tab" data-t="prog"><svg viewBox="0 0 24 24"><path d="M3 20h18"/><path d="M6 16l4-5 3.5 3L19 7"/><path d="M15.5 7H19v3.5"/></svg>Прогресс</button>
+  <button data-a="tab" data-t="cat"><svg viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M5 4.8l1.2 1.2L5 7.2 3.8 6zM5 10.8l1.2 1.2L5 13.2 3.8 12zM5 16.8l1.2 1.2L5 19.2 3.8 18z"/></svg>Каталог</button>
+</nav>
+<div id="toast"></div>
+<script>
+/* ===== Telegram + хранилище ===== */
+const tg = window.Telegram && window.Telegram.WebApp;
+const inTG = !!(tg && tg.initData);
+const cloudOK = inTG && tg.CloudStorage && (!tg.isVersionAtLeast || tg.isVersionAtLeast('6.9'));
+if (tg) { try { tg.ready(); tg.expand(); if (!tg.isVersionAtLeast || tg.isVersionAtLeast('6.1')) { tg.setHeaderColor('#8f1a1e'); tg.setBackgroundColor('#ecdfc6'); } if (tg.isVersionAtLeast && tg.isVersionAtLeast('7.10') && tg.setBottomBarColor) tg.setBottomBarColor('#1a2e21'); } catch (e) {} }
+
+const S = cloudOK ? {
+  get: keys => new Promise((res, rej) => tg.CloudStorage.getItems(keys, (e, v) => e ? rej(e) : res(v || {}))),
+  set: (k, v) => new Promise((res, rej) => tg.CloudStorage.setItem(k, v, (e, ok) => e ? rej(e) : res(ok))),
+  del: keys => new Promise((res, rej) => tg.CloudStorage.removeItems(keys, (e, ok) => e ? rej(e) : res(ok))),
+  keys: () => new Promise((res, rej) => tg.CloudStorage.getKeys((e, v) => e ? rej(e) : res(v || [])))
+} : {
+  get: async keys => Object.fromEntries(keys.map(k => [k, localStorage.getItem('wk_' + k) || ''])),
+  set: async (k, v) => localStorage.setItem('wk_' + k, v),
+  del: async keys => keys.forEach(k => localStorage.removeItem('wk_' + k)),
+  keys: async () => Object.keys(localStorage).filter(k => k.startsWith('wk_')).map(k => k.slice(3))
+};
+
+// Облако Telegram: до 4096 символов на ключ — длинные данные режем на куски
+const CH = 1300, chunkN = {};
+async function getMany(keys) {
+  const out = {};
+  for (let i = 0; i < keys.length; i += 20) Object.assign(out, await S.get(keys.slice(i, i + 20)));
+  return out;
+}
+async function loadMany(keys) {
+  const raw = await getMany(keys), str = {}, need = [];
+  for (const k of keys) {
+    const v = raw[k] || '';
+    if (v.startsWith('#ch:')) { const n = +v.slice(4); chunkN[k] = n; for (let i = 0; i < n; i++) need.push(k + '__' + i); }
+    else { chunkN[k] = 0; str[k] = v; }
+  }
+  if (need.length) {
+    const r2 = await getMany(need);
+    for (const k of keys) if (chunkN[k]) { let s = ''; for (let i = 0; i < chunkN[k]; i++) s += r2[k + '__' + i] || ''; str[k] = s; }
+  }
+  const out = {};
+  for (const k of keys) { try { out[k] = str[k] ? JSON.parse(str[k]) : undefined; } catch (e) { out[k] = undefined; } }
+  return out;
+}
+async function saveKey(k, obj) {
+  const s = JSON.stringify(obj), old = chunkN[k] || 0;
+  if (s.length <= CH) { await S.set(k, s); chunkN[k] = 0; }
+  else {
+    const n = Math.ceil(s.length / CH);
+    for (let i = 0; i < n; i++) await S.set(k + '__' + i, s.slice(i * CH, (i + 1) * CH));
+    await S.set(k, '#ch:' + n); chunkN[k] = n;
+  }
+  const nw = chunkN[k];
+  if (old > nw) { const rm = []; for (let i = nw; i < old; i++) rm.push(k + '__' + i); await S.del(rm); }
+}
+async function delKey(k) {
+  const n = chunkN[k] || 0, ks = [k];
+  for (let i = 0; i < n; i++) ks.push(k + '__' + i);
+  await S.del(ks); delete chunkN[k]; delete DB[k];
+}
+
+const DB = {}; const dirty = new Set(); let ft = null, flushing = Promise.resolve();
+function mark(k) { dirty.add(k); clearTimeout(ft); ft = setTimeout(flush, 500); }
+function flush() {
+  clearTimeout(ft);
+  const ks = [...dirty]; dirty.clear();
+  flushing = flushing.then(async () => {
+    for (const k of ks) {
+      try { if (DB[k] !== undefined) await saveKey(k, DB[k]); }
+      catch (e) { toast('Не сохранилось, попробую ещё'); dirty.add(k); }
+    }
+  });
+  return flushing;
+}
+document.addEventListener('visibilitychange', () => { if (document.hidden) flush(); });
+window.addEventListener('pagehide', flush);
+
+/* ===== утилиты ===== */
+const pad = n => String(n).padStart(2, '0');
+const ymd = d => d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
+const pd = s => { const [a, b, c] = s.split('-').map(Number); return new Date(a, b - 1, c); };
+const addD = (s, n) => { const d = pd(s); d.setDate(d.getDate() + n); return ymd(d); };
+const today = () => ymd(new Date());
+const rng = (a, b) => { const r = []; for (let s = a; s <= b && r.length < 400; s = addD(s, 1)) r.push(s); return r; };
+const WD = ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'];
+const fmt = s => { const d = pd(s); return WD[d.getDay()] + ' ' + pad(d.getDate()) + '.' + pad(d.getMonth() + 1); };
+const fmtS = s => { const d = pd(s); return pad(d.getDate()) + '.' + pad(d.getMonth() + 1); };
+const uid = () => Math.random().toString(36).slice(2, 8) + Date.now().toString(36).slice(-3);
+const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+const num = v => { const n = parseFloat(String(v).replace(',', '.')); return isFinite(n) ? n : 0; };
+const hap = () => { try { tg && tg.HapticFeedback && tg.HapticFeedback.impactOccurred('light'); } catch (e) {} };
+function toast(t) { const el = document.getElementById('toast'); el.textContent = t; el.classList.add('on'); clearTimeout(el._t); el._t = setTimeout(() => el.classList.remove('on'), 1600); }
+function ask(msg) {
+  return new Promise(r => {
+    if (inTG && tg.showConfirm && (!tg.isVersionAtLeast || tg.isVersionAtLeast('6.2'))) tg.showConfirm(msg, ok => r(!!ok));
+    else r(confirm(msg));
+  });
+}
+
+/* ===== справочники и значения по умолчанию ===== */
+const CATS = ['Работа', 'Еда', 'Спорт', 'Учёба', 'Быт', 'Отдых', 'Другое'];
+const dm = c => `<i class="dm" style="--c:${c}"></i>`;
+const ICON = { Работа: dm('#c48a2a'), Еда: dm('#b5442a'), Спорт: dm('#3f6d44'), Учёба: dm('#34507a'), Быт: dm('#7d9870'), Отдых: dm('#d98891'), Другое: dm('#6b3a2a') };
+const TRACKERS = [
+  { k: 'alco', name: 'Без алкоголя', ic: dm('#7a1820') },
+  { k: 'smoke', name: 'Без сигарет', ic: dm('#6b5a4e') },
+  { k: 'kbju', name: 'КБЖУ в норме', ic: dm('#d98891') },
+  { k: 'sport', name: 'Спорт был', ic: dm('#3f6d44') }
+];
+const MEALS = ['Завтрак', 'Обед', 'Ужин', 'Чай со вкусняшкой'];
+
+const defCatalog = () => [
+  ['Работа 4–5 ч', 'Работа', 0, 5],
+  ['Завтрак', 'Еда', 0, 7], ['Обед', 'Еда', 0, 7], ['Ужин', 'Еда', 0, 7], ['Чай со вкусняшкой', 'Еда', 0, 7],
+  ['Силовая (зал, 1 ч)', 'Спорт', 250, 3], ['Кардио (зал, 40 мин)', 'Спорт', 300, 3],
+  ['Мягкий фитнес (группа)', 'Спорт', 200, 4], ['Цигун', 'Спорт', 60, 7], ['Шаги 10к + сериал', 'Спорт', 350, 7],
+  ['Матан 1 ч', 'Учёба', 0, 4], ['Тренер групповых программ 1 ч', 'Учёба', 0, 3],
+  ['Быт 30 мин (любое)', 'Быт', 0, 7], ['Готовка на 3 дня', 'Быт', 0, 2], ['Посуда', 'Быт', 0, 0],
+  ['Стирка', 'Быт', 0, 0], ['Уборка', 'Быт', 0, 0], ['Полив цветов', 'Быт', 0, 1],
+  ['Отдых без дел', 'Отдых', 0, 2]
+].map(([name, cat, kcal, def]) => ({ id: uid(), name, cat, kcal, def }));
+
+const defProducts = () => [
+  ['Куриная грудка (сырая)', 113, 23.6, 1.9, 0.4], ['Филе индейки (сырое)', 115, 24, 1.5, 0],
+  ['Лосось (сырой)', 208, 20, 13, 0], ['Яйцо куриное', 157, 12.7, 11.5, 0.7],
+  ['Творог 5%', 121, 17.2, 5, 1.8], ['Йогурт греческий 2%', 73, 9.5, 2, 3.6],
+  ['Сыр твёрдый', 350, 26, 27, 0], ['Молоко 1,5%', 44, 2.8, 1.5, 4.7],
+  ['Гречка (сухая)', 313, 12.6, 3.3, 62.1], ['Рис (сухой)', 344, 6.7, 0.7, 78.9],
+  ['Овсянка (сухая)', 352, 12.3, 6.1, 59.5], ['Макароны тв. сортов (сухие)', 350, 12, 1.5, 70],
+  ['Хлеб цельнозерновой', 247, 13, 3.4, 41], ['Картофель', 77, 2, 0.4, 16.3],
+  ['Огурец', 15, 0.8, 0.1, 2.8], ['Помидор', 20, 1.1, 0.2, 3.7], ['Брокколи', 34, 2.8, 0.4, 6.6],
+  ['Банан', 96, 1.5, 0.5, 21.8], ['Яблоко', 47, 0.4, 0.4, 9.8], ['Авокадо', 160, 2, 14.7, 8.5],
+  ['Масло оливковое', 898, 0, 99.8, 0], ['Грецкие орехи', 654, 15.2, 65.2, 7],
+  ['Шоколад горький 70%', 580, 8, 42, 35], ['Мёд', 329, 0.8, 0, 81.5]
+].map(([name, k, p, f, c]) => ({ id: uid(), name, k, p, f, c }));
+
+/* ===== состояние ===== */
+const st = { tab: 'today', pid: null, date: today(), mdate: null, modal: null, openOther: false, shopF: null, shopT: null, pv: 'cur' };
+const per = () => (DB.periods || []).find(p => p.id === st.pid);
+const cat = id => DB.catalog.find(c => c.id === id);
+const prod = id => DB.products.find(p => p.id === id);
+const day = d => DB['d_' + d] || (DB['d_' + d] = { items: [], tr: {} });
+const menu = () => DB['m_' + st.pid] || (DB['m_' + st.pid] = { days: {} });
+const hasAny = md => md && MEALS.some(m => md[m] && md[m].length);
+
+async function openPeriod(id) {
+  st.pid = id; const p = per(); if (!p) return;
+  const keys = ['m_' + id, ...rng(p.start, p.end).map(d => 'd_' + d)].filter(k => !(k in DB));
+  if (keys.length) { const r = await loadMany(keys); for (const k of keys) DB[k] = r[k]; }
+  if (!DB['m_' + id]) DB['m_' + id] = { days: {} };
+  const t = today();
+  st.date = (p.start <= t && t <= p.end) ? t : p.start;
+  st.mdate = st.date; st.shopF = null; st.shopT = null;
+}
+
+function stats(p) {
+  const done = {}, plan = {};
+  for (const d of rng(p.start, p.end)) {
+    const x = DB['d_' + d]; if (!x) continue;
+    for (const it of x.items) { plan[it.id] = (plan[it.id] || 0) + 1; if (it.done) done[it.id] = (done[it.id] || 0) + 1; }
+  }
+  return { done, plan };
+}
+function trStats(p, k) {
+  const t = today(), last = p.end < t ? p.end : t;
+  let ok = 0, bad = 0;
+  for (const d of rng(p.start, last)) { const v = DB['d_' + d]?.tr?.[k]; if (v === 1) ok++; else if (v === -1) bad++; }
+  let s = 0, d = last;
+  if (d === t && DB['d_' + d]?.tr?.[k] === undefined) d = addD(d, -1);
+  for (; d >= p.start; d = addD(d, -1)) { if (DB['d_' + d]?.tr?.[k] === 1) s++; else break; }
+  return { ok, bad, streak: s };
+}
+function dayTot(date) {
+  const t = { k: 0, p: 0, f: 0, c: 0 }, md = menu().days[date]; if (!md) return t;
+  for (const ml of MEALS) for (const e of md[ml] || []) {
+    const pr = prod(e.pid); if (!pr) continue; const q = e.g / 100;
+    t.k += pr.k * q; t.p += pr.p * q; t.f += pr.f * q; t.c += pr.c * q;
+  }
+  return t;
+}
+function newDates() {
+  const P = DB.periods;
+  if (P.length) { const last = P.reduce((m, p) => p.end > m ? p.end : m, P[0].end); const s = addD(last, 1); return [s, addD(s, 6)]; }
+  const t = today(), dow = pd(t).getDay(), s = dow === 1 ? t : addD(t, (8 - dow) % 7);
+  return [s, addD(s, 6)];
+}
+
+const r1 = x => Math.round(x * 10) / 10;
+const fmtN = x => Math.round(x).toLocaleString('ru-RU');
+const sgn = x => (x > 0 ? '+' : '') + r1(x).toString().replace('.', ',');
+const kg = x => r1(x).toString().replace('.', ',');
+function bmr(w) { const P = DB.profile; return 10 * w + 6.25 * P.h - 5 * P.age + (P.sex === 'm' ? 5 : -161); }
+function burnDay(d) { const x = DB['d_' + d]; return x ? x.items.filter(i => i.done).reduce((a, i) => a + (cat(i.id)?.kcal || 0), 0) : 0; }
+async function loadAll() {
+  const keys = [];
+  for (const p of DB.periods) { keys.push('m_' + p.id); for (const d of rng(p.start, p.end)) keys.push('d_' + d); }
+  const need = [...new Set(keys)].filter(k => !(k in DB));
+  if (need.length) { const r = await loadMany(need); for (const k of need) DB[k] = r[k]; }
+}
+function periodReport(p) {
+  const ds = rng(p.start, p.end), t = today(), past = ds.filter(d => d <= t), s = stats(p);
+  const cats = {};
+  for (const c of DB.catalog) {
+    const g = p.goals[c.id] || 0, dn = s.done[c.id] || 0; if (!g && !dn) continue;
+    const o = cats[c.cat] || (cats[c.cat] = { g: 0, d: 0, dc: 0, items: [] });
+    o.g += g; o.d += dn; o.dc += g ? Math.min(dn, g) : 0; o.items.push([c.name, g, dn]);
+  }
+  let burn = 0; const sum = { k: 0, p: 0, f: 0, c: 0 }; let factDays = 0, def = 0;
+  const wRef = p.w0 != null ? p.w0 : null;
+  for (const d of ds) {
+    const b = burnDay(d); burn += b;
+    const f = DB['d_' + d]?.fact; if (!f || !f.k) continue;
+    factDays++; for (const k of ['k', 'p', 'f', 'c']) sum[k] += f[k] || 0;
+    if (wRef != null) def += bmr(wRef) * DB.profile.act + b - f.k;
+  }
+  const avg = {}; for (const k in sum) avg[k] = factDays ? sum[k] / factDays : 0;
+  const tr = {}; for (const k of p.trackers) { const r = trStats(p, k); tr[k] = { ...r, days: past.length }; }
+  const exp = (wRef != null && factDays) ? wRef - def / 7700 : null;
+  return { cats, burn, sum, avg, factDays, pastDays: past.length, days: ds.length, def, exp, tr };
+}
+function barRow(label, v, g, unit, lowWarn) {
+  const pc = g ? Math.min(100, v / g * 100) : 0, cls = g && v > g * 1.05 ? 'over' : (lowWarn && g && v < g * 0.9 ? 'low' : '');
+  return `<div class="pr"><div class="t"><span>${label}</span><span><b>${fmtN(v)}</b><span class="muted"> / ${fmtN(g)}${unit}</span></span></div><div class="bar ${cls}"><i style="width:${pc}%"></i></div></div>`;
+}
+function goalsBlock(cats) {
+  let h = '';
+  for (const cg of CATS) {
+    const o = cats[cg]; if (!o) continue;
+    h += barRow(`${ICON[cg]} ${cg}`, o.d, o.g, '', true);
+    h += `<details class="it"><summary>подробнее</summary>${o.items.map(([n, g, d]) => `<div class="kv sm"><span>${esc(n)}</span><span>${d} / ${g}</span></div>`).join('')}</details>`;
+  }
+  return h || '<p class="muted sm">Целей пока нет.</p>';
+}
+function macrosBlock(avg, T) {
+  return barRow('Калории', avg.k, T.k, ' ккал') + barRow('Белки', avg.p, T.p, ' г', true) + barRow('Жиры', avg.f, T.f, ' г') + barRow('Углеводы', avg.c, T.c, ' г');
+}
+function vProgress() {
+  let h = `<div class="seg"><button class="${st.pv !== 'all' ? 'on' : ''}" data-a="pv" data-v="cur">Этот период</button><button class="${st.pv === 'all' ? 'on' : ''}" data-a="pv" data-v="all">Всё время</button></div>`;
+  if (!per()) return h + noPeriod();
+  return h + (st.pv === 'all' ? vAll() : vCur());
+}
+function vCur() {
+  const p = per(), R = periodReport(p), P = DB.profile, T = p.target;
+  const wIn = (f, v, l) => `<label>${l}<input type="number" inputmode="decimal" step="0.1" data-f="${f}" value="${v ?? ''}"></label>`;
+  let h = `<div class="sec"><h3>Вес</h3><div class="three">${wIn('w0', p.w0, 'В начале')}${wIn('w1', p.w1, 'В конце')}${wIn('goalW', P.goalW, 'Цель')}</div>`;
+  if (R.exp != null) h += `<div class="kv"><span>Ожидаемый вес</span><b>${kg(R.exp)} кг</b></div><div class="muted sm">Дефицит ~${fmtN(R.def)} ккал за ${R.factDays} дн. с данными о еде (7700 ккал ≈ 1 кг).</div>`;
+  else h += `<p class="muted sm">${p.w0 == null ? 'Внеси вес в начале периода' : 'Вноси «Съедено по факту» на экране дня'} — тогда посчитаю ожидаемый вес.</p>`;
+  if (p.w0 != null && p.w1 != null) h += `<div class="kv"><span>Факт за период</span><b>${sgn(p.w1 - p.w0)} кг</b></div>`;
+  if (R.exp != null && p.w1 != null) h += `<div class="kv"><span>Факт vs ожидание</span><b>${sgn(p.w1 - R.exp)} кг</b></div>`;
+  const cur = p.w1 ?? p.w0; if (P.goalW != null && cur != null) h += `<div class="kv"><span>До цели</span><b>${kg(cur - P.goalW)} кг</b></div>`;
+  h += `<p class="muted sm">За неделю вес гуляет на 0,5–1 кг из-за воды, поэтому смотри на тренд за несколько периодов.</p></div>`;
+  h += `<div class="sec"><h3>КБЖУ: в среднем за день</h3>${R.factDays ? macrosBlock(R.avg, T) + `<div class="muted sm">по ${R.factDays} дн. с внесённой едой</div>` : '<p class="muted sm">Пока нет данных: вноси «Съедено по факту» на экране дня.</p>'}</div>`;
+  h += `<div class="sec"><h3>Цели: сделано / план</h3>${goalsBlock(R.cats)}<div class="kv"><span>Сожжено на тренировках</span><b>~${fmtN(R.burn)} ккал</b></div></div>`;
+  h += `<div class="sec"><h3>Трекеры</h3>${TRACKERS.filter(t => R.tr[t.k]).map(t => { const r = R.tr[t.k]; return `<div class="kv"><span>${t.ic} ${t.name}</span><span>✓${r.ok} ✗${r.bad} <span class="muted">из ${r.days} · серия ${r.streak}</span></span></div>`; }).join('') || '<p class="muted sm">Трекеры выключены.</p>'}</div>`;
+  h += profileBlock();
+  return h;
+}
+function vAll() {
+  const P = DB.profile, reps = DB.periods.map(p => [p, periodReport(p)]);
+  const cats = {}, sum = { k: 0, p: 0, f: 0, c: 0 }, tr = {}; let burn = 0, factDays = 0, days = 0;
+  for (const [p, R] of reps) {
+    for (const cg in R.cats) { const o = cats[cg] || (cats[cg] = { g: 0, d: 0, dc: 0, items: [] }), r = R.cats[cg]; o.g += r.g; o.d += r.d; o.dc += r.dc; }
+    for (const k in sum) sum[k] += R.sum[k];
+    burn += R.burn; factDays += R.factDays; days += R.pastDays;
+    for (const k in R.tr) { const o = tr[k] || (tr[k] = { ok: 0, bad: 0, days: 0 }); o.ok += R.tr[k].ok; o.bad += R.tr[k].bad; o.days += R.tr[k].days; }
+  }
+  for (const cg in cats) { const m = {}; for (const [p, R] of reps) for (const [n, g, d] of (R.cats[cg]?.items || [])) { const o = m[n] || (m[n] = [n, 0, 0]); o[1] += g; o[2] += d; } cats[cg].items = Object.values(m); }
+  const ws = reps.flatMap(([p]) => [p.w0, p.w1]).filter(w => w != null);
+  const first = ws[0], last = ws[ws.length - 1];
+  const avgT = reps.length ? reps[reps.length - 1][0].target : { k: 0, p: 0, f: 0, c: 0 };
+  const avg = {}; for (const k in sum) avg[k] = factDays ? sum[k] / factDays : 0;
+  let h = `<div class="sec"><h3>Вес</h3>`;
+  if (first != null) h += `<div class="kv"><span>Старт → сейчас</span><b>${kg(first)} → ${kg(last)} кг (${sgn(last - first)})</b></div>`;
+  else h += `<p class="muted sm">Вес ещё не вносился.</p>`;
+  if (P.goalW != null && last != null) h += `<div class="kv"><span>Цель ${kg(P.goalW)} кг, осталось</span><b>${kg(last - P.goalW)} кг</b></div>`;
+  h += `</div><div class="sec"><h3>КБЖУ: в среднем за день</h3>${factDays ? macrosBlock(avg, avgT) + `<div class="muted sm">по ${factDays} дням с данными, цель — из последнего периода</div>` : '<p class="muted sm">Пока нет данных о еде.</p>'}</div>`;
+  h += `<div class="sec"><h3>Цели за всё время</h3>${goalsBlock(cats)}<div class="kv"><span>Сожжено на тренировках</span><b>~${fmtN(burn)} ккал</b></div></div>`;
+  h += `<div class="sec"><h3>Трекеры</h3>${TRACKERS.filter(t => tr[t.k]).map(t => `<div class="kv"><span>${t.ic} ${t.name}</span><span>✓${tr[t.k].ok} ✗${tr[t.k].bad} <span class="muted">из ${tr[t.k].days}</span></span></div>`).join('') || '<p class="muted sm">Нет данных.</p>'}</div>`;
+  h += `<div class="sec"><h3>По периодам</h3><table class="tbl"><tr><th>Даты</th><th>Цели</th><th>Ккал/д</th><th>Вес</th></tr>${reps.map(([p, R]) => { let g = 0, d = 0; for (const c in R.cats) { g += R.cats[c].g; d += R.cats[c].dc; } return `<tr><td>${fmtS(p.start)}–${fmtS(p.end)}</td><td>${g ? Math.round(d / g * 100) + '%' : '—'}</td><td>${R.factDays ? fmtN(R.avg.k) : '—'}</td><td>${p.w0 != null ? kg(p.w0) : '—'} → ${p.w1 != null ? kg(p.w1) : '—'}</td></tr>`; }).join('')}</table></div>`;
+  return h;
+}
+function profileBlock() {
+  const P = DB.profile;
+  return `<details class="sec"><summary>Параметры для расчёта веса</summary><div class="two" style="margin-top:8px"><label>Рост, см<input type="number" inputmode="numeric" data-f="prof" data-k="h" value="${P.h}"></label><label>Возраст<input type="number" inputmode="numeric" data-f="prof" data-k="age" value="${P.age}"></label><label>Пол<select data-f="prof" data-k="sex"><option value="f" ${P.sex === 'f' ? 'selected' : ''}>женский</option><option value="m" ${P.sex === 'm' ? 'selected' : ''}>мужской</option></select></label><label>Бытовая активность<input type="number" inputmode="decimal" step="0.05" data-f="prof" data-k="act" value="${P.act}"></label></div><p class="muted sm">Расход = обмен веществ (формула Миффлина — Сан Жеора) × бытовая активность + калории отмеченных тренировок и шагов из каталога. Шаги и спорт считаются отдельно, поэтому коэффициент без них — 1,2–1,3.</p></details>`;
+}
+
+/* ===== экраны ===== */
+function noPeriod() {
+  return `<div class="sec"><p>Начни с периода: выбери даты, цели и трекеры. Потом собирай из них каждый день.</p><button class="pri wide" data-a="newp">Создать период</button></div>`;
+}
+
+function vToday() {
+  const p = per(); if (!p) return noPeriod();
+  const d = st.date, x = day(d);
+  const trs = TRACKERS.filter(t => p.trackers.includes(t.k));
+  let h = `<div class="dnav"><button data-a="dmove" data-n="-1" ${d <= p.start ? 'disabled' : ''}>◀</button><div><b>${fmt(d)}</b>${d === today() ? '<div class="muted sm">сегодня</div>' : ''}</div><button data-a="dmove" data-n="1" ${d >= p.end ? 'disabled' : ''}>▶</button></div>`;
+  if (trs.length) h += `<div class="trk">${trs.map(t => { const v = x.tr[t.k]; return `<button class="tb ${v === 1 ? 'ok' : v === -1 ? 'bad' : ''}" data-a="tr" data-k="${t.k}">${t.ic}${t.name}<i>${v === 1 ? '✓' : v === -1 ? '✗' : '·'}</i></button>`; }).join('')}</div>`;
+  const doneN = x.items.filter(i => i.done).length;
+  h += `<div class="sec"><h3>Чек-лист <span class="muted">${doneN}/${x.items.length}</span></h3>`;
+  if (!x.items.length) h += `<p class="muted sm">Пусто. Нажми «Добавить» и собери день из целей периода.</p>`;
+  h += x.items.map((it, i) => {
+    const c = cat(it.id), nm = c ? c.name : '(удалён из каталога)';
+    return `<div class="row chk ${it.done ? 'done' : ''}"><button class="cb" data-a="tog" data-k="${it.k}">${it.done ? '✓' : ''}</button><span class="grow" data-a="tog" data-k="${it.k}">${ICON[c?.cat] || '•'} ${esc(nm)}${c?.kcal ? ` <span class="muted sm">~${c.kcal} ккал</span>` : ''}</span><button class="x" data-a="up" data-i="${i}" ${i === 0 ? 'disabled' : ''}>↑</button><button class="x" data-a="rm" data-k="${it.k}">✕</button></div>`;
+  }).join('');
+  h += `<div class="btns"><button class="pri" data-a="pick">+ Добавить</button><button data-a="copyprev">Как вчера</button></div></div>`;
+  const burn = x.items.filter(i => i.done).reduce((a, i) => a + (cat(i.id)?.kcal || 0), 0);
+  const t = dayTot(d), T = p.target;
+  const F = x.fact || {};
+  h += `<div class="sec"><h3>Съедено по факту</h3><div class="four">${[['k', 'Ккал'], ['p', 'Белки'], ['f', 'Жиры'], ['c', 'Углев.']].map(([k, l]) => `<label>${l}<input type="number" inputmode="numeric" data-f="fact" data-k="${k}" value="${F[k] ?? ''}"></label>`).join('')}</div>${t.k ? `<button data-a="factmenu">= как в меню (${Math.round(t.k)} ккал)</button>` : ''}</div>`;
+  h += `<div class="sec"><h3>Итог дня</h3><div class="sm">Тренировки (отмеченные): ~${burn} ккал</div>${t.k ? `<div class="sm">По меню: ${Math.round(t.k)} / ${T.k} ккал · Б ${Math.round(t.p)} / ${T.p} г</div>` : '<div class="sm muted">Меню на этот день не составлено</div>'}${F.k ? `<div class="sm">Факт: ${F.k} / ${T.k} ккал · Б ${F.p || 0} / ${T.p} г</div>` : ''}</div>`;
+  return h;
+}
+
+function vPeriod() {
+  const P = DB.periods;
+  let h = `<div class="chips">${P.map(p => `<button class="chip ${p.id === st.pid ? 'on' : ''}" data-a="selp" data-id="${p.id}">${fmtS(p.start)}–${fmtS(p.end)}</button>`).join('')}<button class="chip" data-a="newp">+ Новый</button></div>`;
+  const p = per(); if (!p) return h + noPeriod();
+  const s = stats(p);
+  h += `<div class="sec"><h3>Даты</h3><div class="two"><label>С<input type="date" data-f="pstart" value="${p.start}"></label><label>По<input type="date" data-f="pend" value="${p.end}"></label></div></div>`;
+  h += `<div class="sec"><h3>Цели: сколько раз за период</h3>`;
+  for (const cg of CATS) {
+    const L = DB.catalog.filter(c => c.cat === cg); if (!L.length) continue;
+    h += `<div class="cat">${ICON[cg]} ${cg}</div>` + L.map(c => {
+      const n = p.goals[c.id] || 0, dn = s.done[c.id] || 0, pl = s.plan[c.id] || 0, pc = n ? Math.min(100, dn / n * 100) : 0;
+      return `<div class="goal ${n ? '' : 'off'}"><div class="gn">${esc(c.name)}${n || dn ? `<div class="bar"><i style="width:${pc}%"></i></div><div class="muted sm">сделано ${dn}/${n} · в плане ${pl}</div>` : ''}</div><div class="step"><button data-a="goal" data-id="${c.id}" data-n="-1">−</button><b>${n}</b><button data-a="goal" data-id="${c.id}" data-n="1">+</button></div></div>`;
+    }).join('');
+  }
+  h += `</div><div class="sec"><h3>Трекеры</h3>` + TRACKERS.map(t => {
+    const on = p.trackers.includes(t.k), ts = trStats(p, t.k);
+    return `<div class="row"><label class="grow"><input type="checkbox" data-f="trk" data-k="${t.k}" ${on ? 'checked' : ''}>${t.ic} ${t.name}</label>${on ? `<span class="muted sm">✓${ts.ok} ✗${ts.bad} · серия ${ts.streak}</span>` : ''}</div>`;
+  }).join('') + `</div>`;
+  const T = p.target;
+  h += `<div class="sec"><h3>КБЖУ на день</h3><div class="four">${[['k', 'Ккал'], ['p', 'Белки'], ['f', 'Жиры'], ['c', 'Углев.']].map(([k, l]) => `<label>${l}<input type="number" inputmode="numeric" data-f="target" data-k="${k}" value="${T[k]}"></label>`).join('')}</div><button data-a="autoc">Углеводы = остаток калорий</button></div>`;
+  h += `<button class="danger wide" data-a="delp">Удалить период</button>`;
+  return h;
+}
+
+function vMenu() {
+  const p = per(); if (!p) return noPeriod();
+  const ds = rng(p.start, p.end); if (!ds.includes(st.mdate)) st.mdate = ds[0];
+  const d = st.mdate, M = menu(), md = M.days[d] || {}, t = dayTot(d), T = p.target;
+  let h = `<div class="chips">${ds.map(x => `<button class="chip ${x === d ? 'on' : ''} ${hasAny(M.days[x]) ? 'has' : ''}" data-a="mday" data-d="${x}">${fmt(x)}</button>`).join('')}</div>`;
+  h += `<div class="sec macros">${[['k', 'Ккал'], ['p', 'Б'], ['f', 'Ж'], ['c', 'У']].map(([k, l]) => {
+    const v = Math.round(t[k]), g = T[k], pc = g ? Math.min(100, v / g * 100) : 0;
+    return `<div><div class="sm">${l} <b>${v}</b><span class="muted">/${g}</span></div><div class="bar ${v > g * 1.05 ? 'over' : ''}"><i style="width:${pc}%"></i></div></div>`;
+  }).join('')}</div>`;
+  for (const ml of MEALS) {
+    const L = md[ml] || [];
+    const mk = Math.round(L.reduce((a, e) => { const pr = prod(e.pid); return a + (pr ? pr.k * e.g / 100 : 0); }, 0));
+    h += `<div class="sec"><h3>${ml} ${mk ? `<span class="muted sm">${mk} ккал</span>` : ''}</h3>${L.map((e, i) => {
+      const pr = prod(e.pid), kc = pr ? Math.round(pr.k * e.g / 100) : 0;
+      return `<div class="row"><span class="grow">${esc(pr ? pr.name : '(удалён)')}</span><input class="g" type="number" inputmode="numeric" data-f="grams" data-m="${ml}" data-i="${i}" value="${e.g}"><span class="sm muted w">г · ${kc}</span><button class="x" data-a="mrm" data-m="${ml}" data-i="${i}">✕</button></div>`;
+    }).join('')}<button class="lnk" data-a="madd" data-m="${ml}">+ продукт</button></div>`;
+  }
+  h += `<div class="btns"><button data-a="mcopy">Копировать день →</button><button data-a="shop">Покупки</button></div><button class="wide" data-a="prods">База продуктов (${DB.products.length})</button>`;
+  return h;
+}
+
+function vCat() {
+  let h = `<p class="muted sm" style="margin:0 2px 10px">Все возможные пункты. «В неделю» подставляется в первый период. Калории спорта — ориентир, замени на свои из Apple Активности.</p>`;
+  for (const cg of CATS) {
+    const L = DB.catalog.filter(c => c.cat === cg);
+    h += `<div class="sec"><h3>${ICON[cg]} ${cg}</h3>${L.map(c => `<div class="citem"><input data-f="cname" data-id="${c.id}" value="${esc(c.name)}"><div class="crow">${cg === 'Спорт' ? `<label>ккал<input type="number" inputmode="numeric" data-f="ckcal" data-id="${c.id}" value="${c.kcal || 0}"></label>` : ''}<label>в неделю<input type="number" inputmode="numeric" data-f="cdef" data-id="${c.id}" value="${c.def || 0}"></label><label>раздел<select data-f="ccat" data-id="${c.id}">${CATS.map(x => `<option ${x === cg ? 'selected' : ''}>${x}</option>`).join('')}</select></label><button class="x" data-a="cdel" data-id="${c.id}">✕</button></div></div>`).join('')}<button class="lnk" data-a="cadd" data-c="${cg}">+ пункт</button></div>`;
+  }
+  h += `<div class="sec"><h3>Данные</h3><p class="muted sm">${cloudOK ? 'Хранятся в облаке Telegram и привязаны к твоему аккаунту.' : 'Открыто не в Telegram — данные сохраняются только в этом браузере (режим проверки).'}</p><div class="btns"><button data-a="exp">Экспорт</button><button data-a="imp">Импорт</button></div></div>`;
+  return h;
+}
+
+/* ===== модальные окна ===== */
+function mPick() {
+  const p = per(), s = stats(p), g = p.goals, x = day(st.date);
+  const inG = DB.catalog.filter(c => (g[c.id] || 0) > 0), other = DB.catalog.filter(c => !((g[c.id] || 0) > 0));
+  let h = `<h3>Добавить в ${fmt(st.date)}</h3>`;
+  for (const cg of CATS) {
+    const L = inG.filter(c => c.cat === cg); if (!L.length) continue;
+    h += `<div class="cat">${ICON[cg]} ${cg}</div>` + L.map(c => {
+      const pl = s.plan[c.id] || 0, gl = g[c.id], inDay = x.items.filter(i => i.id === c.id).length;
+      return `<button class="pk ${pl >= gl ? 'full' : ''}" data-a="add" data-id="${c.id}"><span>${esc(c.name)}${inDay ? ` <b>✓${inDay > 1 ? '×' + inDay : ''}</b>` : ''}</span><span class="muted sm">в плане ${pl}/${gl}</span></button>`;
+    }).join('');
+  }
+  if (other.length) h += `<details id="oth" ${st.openOther ? 'open' : ''}><summary>Ещё из каталога (вне целей)</summary>${other.map(c => `<button class="pk" data-a="add" data-id="${c.id}"><span>${ICON[c.cat]} ${esc(c.name)}</span></button>`).join('')}</details>`;
+  return h + `<button class="pri wide" data-a="close">Готово</button>`;
+}
+function mNewP() {
+  const [s, e] = newDates();
+  return `<h3>Новый период</h3><div class="two"><label>С<input type="date" id="np_s" value="${s}"></label><label>По<input type="date" id="np_e" value="${e}"></label></div><p class="muted sm">${per() ? 'Цели, трекеры и КБЖУ скопируются из текущего периода — поправишь, если нужно.' : 'Цели заполнятся из каталога (поле «в неделю»).'}</p><button class="pri wide" data-a="createp">Создать</button>`;
+}
+function mPAdd() {
+  const L = [...DB.products].sort((a, b) => a.name.localeCompare(b.name, 'ru'));
+  return `<h3>Добавить в «${st.modal.m}»</h3><input id="psearch" placeholder="Поиск…" autocomplete="off"><div style="margin-top:8px">${L.map(p => `<button class="pk" data-a="padd" data-id="${p.id}" data-pn="${esc(p.name.toLowerCase())}"><span>${esc(p.name)}</span><span class="muted sm">${p.k} ккал · Б ${p.p}</span></button>`).join('')}</div><button class="wide" data-a="prods">Добавить свой продукт</button>`;
+}
+function mCopy() {
+  const p = per(), ds = rng(p.start, p.end).filter(x => x !== st.mdate);
+  return `<h3>Копировать меню ${fmt(st.mdate)} на…</h3><p class="muted sm">Удобно, когда готовишь на 3 дня: собери один день и размножь. Меню выбранного дня перезапишется.</p><div class="chips" style="flex-wrap:wrap">${ds.map(x => `<button class="chip" data-a="mcp" data-d="${x}">${fmt(x)}</button>`).join('')}</div><button class="wide" data-a="close">Готово</button>`;
+}
+function shopText() {
+  const p = per(), M = menu(), agg = {};
+  const f = st.shopF || p.start, t = st.shopT || p.end;
+  for (const d of rng(f, t)) { const md = M.days[d]; if (!md) continue; for (const ml of MEALS) for (const e of md[ml] || []) agg[e.pid] = (agg[e.pid] || 0) + e.g; }
+  return Object.entries(agg).map(([id, g]) => [prod(id)?.name || '(удалён)', g]).sort((a, b) => a[0].localeCompare(b[0], 'ru'))
+    .map(([n, g]) => `${n} — ${g >= 1000 ? (g / 1000).toFixed(2).replace(/\.?0+$/, '') + ' кг' : Math.round(g) + ' г'}`).join('\n');
+}
+function mShop() {
+  const p = per(), ds = rng(p.start, p.end), f = st.shopF || p.start, t = st.shopT || p.end;
+  const opt = (sel) => ds.map(x => `<option value="${x}" ${x === sel ? 'selected' : ''}>${fmt(x)}</option>`).join('');
+  const txt = shopText();
+  return `<h3>Список покупок</h3><div class="two"><label>С<select data-f="shopF">${opt(f)}</select></label><label>По<select data-f="shopT">${opt(t)}</select></label></div><p class="muted sm">Граммы по меню за выбранные дни. Крупы и макароны — в сухом виде.</p><textarea id="cp" readonly>${esc(txt || 'В эти дни меню пустое')}</textarea><button class="pri wide" data-a="copytxt">Скопировать</button>`;
+}
+function mProds() {
+  return `<h3>База продуктов</h3><p class="muted sm">Значения на 100 г.</p><div class="prow sm muted"><span>Название</span><span>Ккал</span><span>Б</span><span>Ж</span><span>У</span><span></span></div>${DB.products.map(p => `<div class="prow"><input data-f="pr" data-id="${p.id}" data-k="name" value="${esc(p.name)}">${['k', 'p', 'f', 'c'].map(k => `<input type="number" inputmode="decimal" step="0.1" data-f="pr" data-id="${p.id}" data-k="${k}" value="${p[k]}">`).join('')}<button class="x" data-a="pdel" data-id="${p.id}">✕</button></div>`).join('')}<button class="lnk" data-a="pnew">+ продукт</button><button class="pri wide" data-a="close">Готово</button>`;
+}
+function modal() {
+  const m = st.modal;
+  switch (m.t) {
+    case 'pick': return mPick();
+    case 'newp': return mNewP();
+    case 'padd': return mPAdd();
+    case 'mcopy': return mCopy();
+    case 'shop': return mShop();
+    case 'prods': return mProds();
+    case 'exp': return `<h3>Экспорт</h3><p class="muted sm">Полная копия данных. Сохрани текст куда-нибудь (например, в «Избранное»).</p><textarea id="cp" readonly>${esc(m.txt)}</textarea><button class="pri wide" data-a="copytxt">Скопировать</button>`;
+    case 'imp': return `<h3>Импорт</h3><p class="muted sm">Вставь текст из экспорта. Данные с теми же ключами перезапишутся.</p><textarea id="imp"></textarea><button class="pri wide" data-a="doimp">Загрузить</button>`;
+  }
+  return '';
+}
+
+/* ===== отрисовка ===== */
+const LOTUS = `<svg class="lotus" viewBox="0 0 200 200" aria-hidden="true"><defs><linearGradient id="lp" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4c3c6"/><stop offset=".6" stop-color="#e3949c"/><stop offset="1" stop-color="#b85a67"/></linearGradient><linearGradient id="lf" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6f9c86"/><stop offset="1" stop-color="#2d5446"/></linearGradient></defs>
+<g opacity=".9"><ellipse cx="78" cy="168" rx="58" ry="17" fill="url(#lf)" stroke="#1c3a30" stroke-width="1.2"/><path d="M78 168L32 161M78 168L50 181M78 168L104 182M78 168L128 160M78 168L78 151" stroke="#a9c9b3" stroke-width=".9" opacity=".7"/></g>
+<path d="M120 150C120 170 112 185 104 200" stroke="#3d6b55" stroke-width="3" fill="none"/>
+<g stroke="#7a1820" stroke-width="1.1" fill="url(#lp)">
+<path transform="rotate(-62 120 140)" d="M120 140C104 112 106 82 120 58C134 82 136 112 120 140Z"/>
+<path transform="rotate(62 120 140)" d="M120 140C104 112 106 82 120 58C134 82 136 112 120 140Z"/>
+<path transform="rotate(-38 120 140)" d="M120 140C103 108 105 72 120 46C135 72 137 108 120 140Z"/>
+<path transform="rotate(38 120 140)" d="M120 140C103 108 105 72 120 46C135 72 137 108 120 140Z"/>
+<path transform="rotate(-16 120 140)" d="M120 140C102 104 104 64 120 36C136 64 138 104 120 140Z"/>
+<path transform="rotate(16 120 140)" d="M120 140C102 104 104 64 120 36C136 64 138 104 120 140Z"/>
+<path d="M120 142C101 104 103 60 120 28C137 60 139 104 120 142Z"/></g>
+<g stroke="#9b3a48" stroke-width=".7" fill="none" opacity=".7"><path d="M120 136V40"/><path transform="rotate(-16 120 140)" d="M120 134V46"/><path transform="rotate(16 120 140)" d="M120 134V46"/><path transform="rotate(-38 120 140)" d="M120 134V56"/><path transform="rotate(38 120 140)" d="M120 134V56"/></g>
+<g fill="#e8b85a"><circle cx="60" cy="40" r="1.6"/><circle cx="172" cy="96" r="1.3"/><circle cx="84" cy="102" r="1.1"/><circle cx="160" cy="36" r="1.8"/><circle cx="46" cy="120" r="1.2"/></g></svg>`;
+
+let rt = null, lastModal = null;
+function soon() { clearTimeout(rt); rt = setTimeout(render, 450); }
+function render() {
+  clearTimeout(rt);
+  const sheet = document.querySelector('.sheet'), sc = sheet ? sheet.scrollTop : 0;
+  const p = per();
+  const titles = { today: 'День', period: 'Период', menu: 'Меню', prog: 'Прогресс', cat: 'Каталог' };
+  let h = `<header class="hero">${LOTUS}<div class="kick">ритм · забота · дом</div><h1>${titles[st.tab]}</h1><div class="per">${p ? `период ${fmtS(p.start)} — ${fmtS(p.end)}` : 'период не выбран'}</div></header>`;
+  h += ({ today: vToday, period: vPeriod, menu: vMenu, prog: vProgress, cat: vCat })[st.tab]();
+  if (st.modal) h += `<div class="ov" data-a="ovclose"><div class="sheet">${modal()}</div></div>`;
+  document.getElementById('app').innerHTML = h;
+  const cur = st.modal ? st.modal.t : null;
+  if (cur && cur === lastModal) { const s = document.querySelector('.sheet'); if (s) s.scrollTop = sc; }
+  if (cur === 'prods' && st.focusLast) { st.focusLast = false; const ins = document.querySelectorAll('.prow input[data-k="name"]'); const last = ins[ins.length - 1]; if (last) { last.scrollIntoView({ block: 'center' }); last.select(); } }
+  lastModal = cur;
+  document.querySelectorAll('nav button').forEach(b => b.classList.toggle('on', b.dataset.t === st.tab));
+  if (inTG && tg.BackButton) { cur ? tg.BackButton.show() : tg.BackButton.hide(); }
+}
+if (inTG && tg.BackButton) tg.BackButton.onClick(() => { st.modal = null; render(); });
+
+/* ===== действия ===== */
+document.addEventListener('click', async e => {
+  const b = e.target.closest('[data-a]'); if (!b || b.disabled) return;
+  const a = b.dataset.a, D = b.dataset;
+  if (a === 'ovclose') { if (e.target === b) { st.modal = null; render(); } return; }
+  try { await act(a, D); } catch (err) { toast('Ошибка: ' + (err.message || err)); }
+});
+document.addEventListener('toggle', e => { if (e.target.id === 'oth') st.openOther = e.target.open; }, true);
+document.addEventListener('input', e => {
+  if (e.target.id === 'psearch') {
+    const q = e.target.value.toLowerCase().trim();
+    document.querySelectorAll('[data-pn]').forEach(r => r.style.display = r.dataset.pn.includes(q) ? '' : 'none');
+  }
+});
+document.addEventListener('change', async e => {
+  const el = e.target, f = el.dataset.f; if (!f) return;
+  try { await field(f, el); } catch (err) { toast('Ошибка: ' + (err.message || err)); }
+});
+
+async function act(a, D) {
+  const p = per();
+  const dk = 'd_' + st.date;
+  switch (a) {
+    case 'tab': st.tab = D.t; st.modal = null; if (D.t === 'prog') await loadAll(); window.scrollTo(0, 0); break;
+    case 'pv': st.pv = D.v; if (D.v === 'all') await loadAll(); break;
+    case 'factmenu': { const t = dayTot(st.date); day(st.date).fact = { k: Math.round(t.k), p: Math.round(t.p), f: Math.round(t.f), c: Math.round(t.c) }; mark(dk); break; }
+    case 'close': st.modal = null; break;
+    case 'dmove': st.date = addD(st.date, +D.n); break;
+    case 'tr': { const x = day(st.date), v = x.tr[D.k]; if (v === undefined) x.tr[D.k] = 1; else if (v === 1) x.tr[D.k] = -1; else delete x.tr[D.k]; hap(); mark(dk); break; }
+    case 'tog': { const it = day(st.date).items.find(i => i.k === D.k); if (it) { it.done = !it.done; hap(); mark(dk); } break; }
+    case 'rm': { const x = day(st.date); x.items = x.items.filter(i => i.k !== D.k); mark(dk); break; }
+    case 'up': { const x = day(st.date), i = +D.i; if (i > 0) { [x.items[i - 1], x.items[i]] = [x.items[i], x.items[i - 1]]; mark(dk); } break; }
+    case 'pick': st.modal = { t: 'pick' }; break;
+    case 'add': { day(st.date).items.push({ k: uid(), id: D.id, done: false }); hap(); mark(dk); break; }
+    case 'copyprev': {
+      const pk = 'd_' + addD(st.date, -1);
+      if (!(pk in DB)) { const r = await loadMany([pk]); DB[pk] = r[pk]; }
+      const prev = DB[pk], x = day(st.date);
+      if (!prev || !prev.items.length) { toast('Вчера чек-лист пустой'); return; }
+      if (x.items.length && !(await ask('Заменить сегодняшний чек-лист вчерашним?'))) return;
+      x.items = prev.items.map(i => ({ k: uid(), id: i.id, done: false })); mark(dk); toast('Скопировано'); break;
+    }
+    case 'selp': await flush(); await openPeriod(D.id); break;
+    case 'newp': st.modal = { t: 'newp' }; break;
+    case 'createp': {
+      let s = document.getElementById('np_s').value, e = document.getElementById('np_e').value;
+      if (!s || !e) { toast('Укажи даты'); return; }
+      if (e < s) [s, e] = [e, s];
+      const src = per();
+      const np = {
+        id: uid(), start: s, end: e,
+        goals: src ? { ...src.goals } : Object.fromEntries(DB.catalog.filter(c => c.def > 0).map(c => [c.id, c.def])),
+        trackers: src ? [...src.trackers] : TRACKERS.map(t => t.k),
+        target: src ? { ...src.target } : { k: 1800, p: 100, f: 45, c: 250 },
+        w0: src && src.w1 != null ? src.w1 : null, w1: null
+      };
+      DB.periods.push(np); DB.periods.sort((x, y) => x.start < y.start ? -1 : 1); mark('periods');
+      DB['m_' + np.id] = { days: {} }; chunkN['m_' + np.id] = 0; mark('m_' + np.id);
+      st.modal = null; await openPeriod(np.id); st.tab = 'period'; toast('Период создан'); break;
+    }
+    case 'goal': { p.goals[D.id] = Math.max(0, (p.goals[D.id] || 0) + +D.n); if (!p.goals[D.id]) delete p.goals[D.id]; mark('periods'); break; }
+    case 'autoc': { const T = p.target; T.c = Math.max(0, Math.round((T.k - 4 * T.p - 9 * T.f) / 4)); mark('periods'); break; }
+    case 'delp': {
+      if (!(await ask('Удалить период и его меню? Отметки по дням останутся.'))) return;
+      DB.periods = DB.periods.filter(x => x.id !== p.id); mark('periods'); await flush(); await delKey('m_' + p.id);
+      st.pid = null; if (DB.periods.length) await openPeriod(DB.periods[DB.periods.length - 1].id); break;
+    }
+    case 'mday': st.mdate = D.d; break;
+    case 'madd': st.modal = { t: 'padd', m: D.m }; break;
+    case 'padd': { const M = menu(), md = M.days[st.mdate] || (M.days[st.mdate] = {}); (md[st.modal.m] || (md[st.modal.m] = [])).push({ pid: D.id, g: 100 }); mark('m_' + st.pid); st.modal = null; toast('Добавлено, поправь граммы'); break; }
+    case 'mrm': { const md = menu().days[st.mdate]; md[D.m].splice(+D.i, 1); mark('m_' + st.pid); break; }
+    case 'mcopy': st.modal = { t: 'mcopy' }; break;
+    case 'mcp': { const M = menu(); M.days[D.d] = JSON.parse(JSON.stringify(M.days[st.mdate] || {})); mark('m_' + st.pid); hap(); toast('Скопировано на ' + fmt(D.d)); break; }
+    case 'shop': st.modal = { t: 'shop' }; break;
+    case 'prods': st.modal = { t: 'prods' }; break;
+    case 'pnew': DB.products.push({ id: uid(), name: 'Новый продукт', k: 0, p: 0, f: 0, c: 0 }); mark('products'); st.focusLast = true; break;
+    case 'pdel': { if (!(await ask('Удалить продукт из базы?'))) return; DB.products = DB.products.filter(x => x.id !== D.id); mark('products'); break; }
+    case 'cadd': DB.catalog.push({ id: uid(), name: 'Новый пункт', cat: D.c, kcal: 0, def: 0 }); mark('catalog'); break;
+    case 'cdel': { if (!(await ask('Удалить пункт из каталога?'))) return; DB.catalog = DB.catalog.filter(x => x.id !== D.id); mark('catalog'); break; }
+    case 'exp': { await flush(); const ks = await S.keys(); const raw = await getMany(ks); st.modal = { t: 'exp', txt: JSON.stringify(raw) }; break; }
+    case 'imp': st.modal = { t: 'imp' }; break;
+    case 'doimp': {
+      let obj; try { obj = JSON.parse(document.getElementById('imp').value); } catch (e) { toast('Не получилось прочитать текст'); return; }
+      if (!obj || typeof obj !== 'object') { toast('Неверный формат'); return; }
+      await flush(); for (const [k, v] of Object.entries(obj)) if (typeof v === 'string' && v) await S.set(k, v);
+      location.reload(); return;
+    }
+    case 'copytxt': {
+      const ta = document.getElementById('cp');
+      try { await navigator.clipboard.writeText(ta.value); toast('Скопировано'); }
+      catch (e) { ta.focus(); ta.select(); toast('Выдели текст и скопируй'); }
+      return;
+    }
+  }
+  render();
+}
+
+async function field(f, el) {
+  const p = per(), v = el.value, D = el.dataset;
+  switch (f) {
+    case 'pstart': case 'pend': {
+      if (!v) return;
+      p[f === 'pstart' ? 'start' : 'end'] = v;
+      if (p.end < p.start) p.end = p.start;
+      DB.periods.sort((x, y) => x.start < y.start ? -1 : 1); mark('periods');
+      await openPeriod(p.id); render(); return;
+    }
+    case 'trk': { p.trackers = el.checked ? [...new Set([...p.trackers, D.k])] : p.trackers.filter(k => k !== D.k); mark('periods'); render(); return; }
+    case 'target': p.target[D.k] = Math.max(0, Math.round(num(v))); mark('periods'); break;
+    case 'grams': { const md = menu().days[st.mdate]; md[D.m][+D.i].g = Math.max(0, Math.round(num(v))); mark('m_' + st.pid); break; }
+    case 'pr': { const pr = prod(D.id); if (!pr) return; pr[D.k] = D.k === 'name' ? (v.trim() || 'Без названия') : num(v); mark('products'); break; }
+    case 'cname': { const c = cat(D.id); c.name = v.trim() || 'Без названия'; mark('catalog'); break; }
+    case 'ckcal': { const c = cat(D.id); c.kcal = Math.max(0, Math.round(num(v))); mark('catalog'); break; }
+    case 'cdef': { const c = cat(D.id); c.def = Math.max(0, Math.round(num(v))); mark('catalog'); break; }
+    case 'ccat': { const c = cat(D.id); c.cat = v; mark('catalog'); render(); return; }
+    case 'fact': { const x = day(st.date); x.fact = x.fact || {}; if (v === '') delete x.fact[D.k]; else x.fact[D.k] = Math.max(0, Math.round(num(v))); if (!Object.keys(x.fact).length) delete x.fact; mark('d_' + st.date); break; }
+    case 'w0': case 'w1': p[f] = v === '' ? null : r1(num(v)); mark('periods'); break;
+    case 'goalW': DB.profile.goalW = v === '' ? null : r1(num(v)); mark('profile'); break;
+    case 'prof': DB.profile[D.k] = D.k === 'sex' ? v : num(v); mark('profile'); break;
+    case 'shopF': case 'shopT': { st[f] = v; if ((st.shopF || p.start) > (st.shopT || p.end)) st[f === 'shopF' ? 'shopT' : 'shopF'] = v; render(); return; }
+  }
+  soon();
+}
+
+/* ===== запуск ===== */
+async function init() {
+  try {
+    const r = await loadMany(['catalog', 'products', 'periods', 'profile']);
+    DB.profile = r.profile || { h: 172, age: 27, sex: 'f', act: 1.25, goalW: null }; if (!r.profile) mark('profile');
+    DB.catalog = r.catalog || defCatalog(); if (!r.catalog) mark('catalog');
+    DB.products = r.products || defProducts(); if (!r.products) mark('products');
+    DB.periods = r.periods || []; if (!r.periods) mark('periods');
+    const t = today(), P = DB.periods;
+    const cur = P.find(p => p.start <= t && t <= p.end) || P[P.length - 1];
+    if (cur) await openPeriod(cur.id);
+    render();
+  } catch (e) {
+    document.getElementById('app').innerHTML = `<div class="sec">Не удалось загрузить данные: ${esc(e.message || e)}</div>`;
+  }
+}
+init();
+</script>
+</body>
+</html>
