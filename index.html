@@ -9,14 +9,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Yeseva+One&display=swap&subset=cyrillic" rel="stylesheet">
 <meta name="theme-color" content="#8f1a1e">
 <style>
-:root{--paper:#ecdfc6;--bg:#f7eedb;--bg2:#e9dabd;--line:#d6c09a;--tx:#2b1a14;--hint:#8a6c58;--acc:#9b1d20;--acc2:#7a1820;--acctx:#f7eedb;--ok:#3f6d44;--okd:#2c4f33;--bad:#9b1d20;--ochre:#c48a2a;--green:#1e3526;--pink:#d98891;--noise:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .32 0 0 0 0 .2 0 0 0 0 .12 0 0 0 .22 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+:root{--top-inset:max(env(safe-area-inset-top),0px);--bot-inset:max(env(safe-area-inset-bottom),0px);--paper:#ecdfc6;--bg:#f7eedb;--bg2:#e9dabd;--line:#d6c09a;--tx:#2b1a14;--hint:#8a6c58;--acc:#9b1d20;--acc2:#7a1820;--acctx:#f7eedb;--ok:#3f6d44;--okd:#2c4f33;--bad:#9b1d20;--ochre:#c48a2a;--green:#1e3526;--pink:#d98891;--noise:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .32 0 0 0 0 .2 0 0 0 0 .12 0 0 0 .22 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-body{margin:0;background:var(--noise),var(--paper);color:var(--tx);font:15px/1.45 'Lora',Georgia,serif;padding-bottom:88px}
+body{margin:0;background:var(--noise),var(--paper);color:var(--tx);font:15px/1.45 'Lora',Georgia,serif;padding-bottom:calc(var(--bot-inset) + 110px)}
 #app{padding:0 12px 20px;max-width:640px;margin:0 auto}
 h1,h3,.disp{font-family:'Yeseva One',Georgia,serif;font-weight:400}
-.hero{position:relative;margin:0 -12px 22px;padding:22px 18px 26px;background:var(--noise),radial-gradient(120% 90% at 85% 20%,#b3262a 0,#8f1a1e 45%,#6e1219 100%);color:var(--acctx);overflow:hidden;min-height:150px}
+.hero{position:relative;margin:0 -12px 22px;padding:calc(var(--top-inset) + 18px) 18px 30px;background:var(--noise),radial-gradient(120% 90% at 85% 20%,#b3262a 0,#8f1a1e 45%,#6e1219 100%);color:var(--acctx);overflow:hidden;min-height:calc(var(--top-inset) + 130px)}
 .hero::after{content:"";position:absolute;left:0;right:0;bottom:-7px;height:14px;background:radial-gradient(circle at 7px 0,#6e1219 6.5px,transparent 7.5px) repeat-x;background-size:14px 14px}
-.hero .lotus{position:absolute;right:-26px;top:-14px;width:172px;height:172px;opacity:.95}
+.hero .lotus{position:absolute;right:-26px;top:calc(var(--top-inset) - 30px);width:172px;height:172px;opacity:.95}
 .hero .kick{font-size:11px;letter-spacing:.22em;text-transform:uppercase;opacity:.75}
 .hero h1{font-size:34px;margin:4px 0 2px;line-height:1.05;text-shadow:0 1px 0 rgba(0,0,0,.25)}
 .hero .per{font-size:13.5px;opacity:.85}
@@ -72,9 +72,9 @@ input.g{width:68px;flex:none}
 .w{width:62px;text-align:right;flex:none}
 .citem{padding:8px 0;border-bottom:1px dashed var(--line)}
 .crow{display:flex;gap:6px;align-items:end;margin-top:6px}.crow label{flex:1}.crow select{flex:1.4}
-nav{position:fixed;bottom:0;left:0;right:0;display:flex;background:var(--noise),linear-gradient(#27432f,#1a2e21);border-top:3px solid #c48a2a;padding:5px 6px calc(5px + env(safe-area-inset-bottom));z-index:5}
-nav button{flex:1;background:none;border:0;font-size:11px;display:flex;flex-direction:column;align-items:center;gap:2px;color:rgba(247,238,219,.6);padding:5px 0;font-family:'Lora',serif}
-nav button svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+nav{position:fixed;bottom:0;left:0;right:0;display:flex;background:var(--noise),linear-gradient(#27432f,#1a2e21);border-top:3px solid #c48a2a;padding:12px 8px calc(var(--bot-inset) + 16px);z-index:5}
+nav button{flex:1;background:none;border:0;font-size:12px;display:flex;flex-direction:column;align-items:center;gap:2px;color:rgba(247,238,219,.6);padding:5px 0;font-family:'Lora',serif}
+nav button svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 nav button.on{color:#f7eedb} nav button.on svg{stroke:#e8a8b0}
 .ov{position:fixed;inset:0;background:rgba(40,15,10,.5);display:flex;align-items:flex-end;z-index:10}
 .sheet{background:var(--noise),var(--bg);width:100%;max-width:640px;margin:0 auto;max-height:86vh;overflow:auto;border-radius:10px 10px 0 0;border-top:5px solid var(--acc);padding:18px 14px calc(16px + env(safe-area-inset-bottom))}
@@ -85,7 +85,7 @@ details summary{color:var(--acc);padding:10px 0;cursor:pointer;font-style:italic
 textarea{width:100%;height:200px;font:12.5px/1.5 'Lora',serif;background:#fbf5e8;color:var(--tx);border:1px solid var(--line);border-radius:4px;padding:8px}
 .prow{display:grid;grid-template-columns:1fr repeat(4,48px) 26px;gap:4px;align-items:center;margin-bottom:6px}
 .prow input{padding:6px 5px;font-size:13px}
-#toast{position:fixed;left:50%;bottom:100px;transform:translateX(-50%);background:#2b1a14;color:#f7eedb;padding:8px 16px;border-radius:4px;border:1px solid #c48a2a;font-size:13px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:20;white-space:nowrap}
+#toast{position:fixed;left:50%;bottom:calc(var(--bot-inset) + 120px);transform:translateX(-50%);background:#2b1a14;color:#f7eedb;padding:8px 16px;border-radius:4px;border:1px solid #c48a2a;font-size:13px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:20;white-space:nowrap}
 #toast.on{opacity:1}
 .seg{display:flex;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:3px;margin-bottom:12px}.seg button{flex:1;background:none;border:0;padding:8px}.seg button.on{background:var(--noise),linear-gradient(#a8232a,#8a1a1f);color:var(--acctx)}
 .three{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:8px}
@@ -112,6 +112,16 @@ details.sec summary{padding:0}
 const tg = window.Telegram && window.Telegram.WebApp;
 const inTG = !!(tg && tg.initData);
 const cloudOK = inTG && tg.CloudStorage && (!tg.isVersionAtLeast || tg.isVersionAtLeast('6.9'));
+function applyInsets() {
+  if (!tg) return;
+  const sa = tg.safeAreaInset || {}, ca = tg.contentSafeAreaInset || {};
+  let top = (sa.top || 0) + (ca.top || 0);
+  if (!top && tg.isFullscreen) top = 100;
+  if (top) document.documentElement.style.setProperty('--top-inset', top + 'px');
+  const bot = (sa.bottom || 0) + (ca.bottom || 0);
+  if (bot) document.documentElement.style.setProperty('--bot-inset', bot + 'px');
+}
+if (tg) { try { applyInsets(); ['safeAreaChanged', 'contentSafeAreaChanged', 'fullscreenChanged', 'viewportChanged'].forEach(ev => tg.onEvent(ev, applyInsets)); } catch (e) {} }
 if (tg) { try { tg.ready(); tg.expand(); if (!tg.isVersionAtLeast || tg.isVersionAtLeast('6.1')) { tg.setHeaderColor('#8f1a1e'); tg.setBackgroundColor('#ecdfc6'); } if (tg.isVersionAtLeast && tg.isVersionAtLeast('7.10') && tg.setBottomBarColor) tg.setBottomBarColor('#1a2e21'); } catch (e) {} }
 
 const S = cloudOK ? {
@@ -552,7 +562,7 @@ function render() {
   const sheet = document.querySelector('.sheet'), sc = sheet ? sheet.scrollTop : 0;
   const p = per();
   const titles = { today: 'День', period: 'Период', menu: 'Меню', prog: 'Прогресс', cat: 'Каталог' };
-  let h = `<header class="hero">${LOTUS}<div class="kick">ритм · забота · дом</div><h1>${titles[st.tab]}</h1><div class="per">${p ? `период ${fmtS(p.start)} — ${fmtS(p.end)}` : 'период не выбран'}</div></header>`;
+  let h = `<header class="hero">${LOTUS}<h1>${titles[st.tab]}</h1><div class="per">${p ? `период ${fmtS(p.start)} — ${fmtS(p.end)}` : 'период не выбран'}</div></header>`;
   h += ({ today: vToday, period: vPeriod, menu: vMenu, prog: vProgress, cat: vCat })[st.tab]();
   if (st.modal) h += `<div class="ov" data-a="ovclose"><div class="sheet">${modal()}</div></div>`;
   document.getElementById('app').innerHTML = h;
