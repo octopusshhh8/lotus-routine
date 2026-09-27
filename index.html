@@ -18,6 +18,7 @@ h1,h3,.disp{font-family:'Yeseva One',Georgia,serif;font-weight:400}
 .hero::after{content:"";position:absolute;left:0;right:0;bottom:-7px;height:14px;background:radial-gradient(circle at 7px 0,#6e1219 6.5px,transparent 7.5px) repeat-x;background-size:14px 14px}
 .hero .lotus{position:absolute;right:-26px;top:calc(var(--top-inset) - 30px);width:172px;height:172px;opacity:.95}
 .hero .kick{font-size:11px;letter-spacing:.22em;text-transform:uppercase;opacity:.75}
+.hero .navback+h1{margin-top:40px}
 .hero h1{font-size:34px;margin:4px 0 2px;line-height:1.05;text-shadow:0 1px 0 rgba(0,0,0,.25)}
 .hero .per{font-size:13.5px;opacity:.85}
 .sec{background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:14px;margin-bottom:12px;box-shadow:inset 0 0 0 4px var(--bg),inset 0 0 0 5px #e6d4b2,0 1px 0 rgba(90,50,20,.08)}
@@ -34,7 +35,7 @@ button.lnk{background:none;border:0;color:var(--acc);padding:8px 0 2px;font-styl
 .grow{flex:1;min-width:0}
 .cb{width:28px;height:28px;padding:0;border-radius:4px;border:1.5px solid #a88d68;background:#fbf5e8;flex:none;font-weight:700;color:#f7eedb}
 .chk.done .cb{background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.45) 0,transparent 40%),linear-gradient(135deg,#5b8a58,#2c4f33);border-color:#24402a}
-.chk.done .grow{text-decoration:line-through;text-decoration-color:var(--acc);color:var(--hint)}
+.chk.done .grow{color:var(--hint)}.chk.done .nm{text-decoration:line-through;text-decoration-color:var(--acc)}
 .x{background:none;border:0;color:var(--hint);padding:4px 6px;flex:none}
 .btns{display:flex;gap:8px;margin-top:12px}.btns>*{flex:1}
 .dnav{display:flex;align-items:center;justify-content:space-between;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px;margin-bottom:12px;text-align:center}
@@ -86,6 +87,7 @@ nav button.on{color:#f7eedb} nav button.on svg{stroke:#e8a8b0}
 .sheet h3{margin:0 0 12px;font-size:20px;color:var(--acc2)}
 .pk{display:flex;justify-content:space-between;align-items:center;width:100%;text-align:left;margin-bottom:6px;gap:8px;background:#fbf5e8}
 .pk.full{opacity:.5}
+.pk.on{box-shadow:inset 0 0 0 2px var(--acc)}
 .pkrow{display:flex;align-items:center;gap:10px;padding:8px 10px 8px 14px;margin-bottom:6px;background:#fbf5e8;border:1px solid var(--line);border-radius:6px}
 .pkrow .grow{cursor:pointer}
 .pkrow.full{opacity:.55}
@@ -128,34 +130,8 @@ label.ck{display:flex;align-items:center;gap:6px;color:var(--tx);font-size:13px;
 .sec.isdone h3{color:var(--ok)}
 .gmenu{margin:0 -12px 8px;padding:0 12px 8px}.chip.addc{border-style:dashed;color:var(--acc);background:transparent}
 .cathead{display:flex;align-items:baseline;justify-content:space-between;margin:4px 2px 10px}.cathead h2{font-family:'Yeseva One',serif;font-weight:400;font-size:24px;color:var(--acc2);margin:0}.cathead .x{font-style:italic;font-size:13px}
-.reader{width:100%;min-height:230px;background:#1b120e;border-radius:6px;overflow:hidden;border:1px solid var(--line)}.reader video{width:100%!important;display:block}
 .scanbtn{display:flex;align-items:center;justify-content:center;gap:8px}
 
-.scanfull{position:fixed;inset:0;z-index:30;background:#000;color:#fff;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",system-ui,sans-serif;overflow:hidden}
-.scanfull #reader{position:absolute!important;inset:0;border:0!important}
-.scanfull #reader video{position:absolute!important;inset:0;width:100%!important;height:100%!important;object-fit:cover}
-.scanfull #reader canvas,.scanfull #qr-shaded-region,.scanfull #reader img{display:none!important}
-.sframe{position:absolute;left:50%;top:42%;width:min(80vw,330px);height:180px;transform:translate(-50%,-50%);border-radius:30px;box-shadow:0 0 0 200vmax rgba(0,0,0,.52);pointer-events:none}
-.sframe svg{position:absolute;inset:-3px;width:calc(100% + 6px);height:calc(100% + 6px);overflow:visible}
-.sframe .sline{position:absolute;left:12%;right:12%;height:2px;border-radius:2px;top:18%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.95),transparent);box-shadow:0 0 12px rgba(255,255,255,.7);animation:sl 1.8s ease-in-out infinite alternate}
-@keyframes sl{to{top:82%}}
-.sframe.hit{box-shadow:0 0 0 200vmax rgba(0,0,0,.52),inset 0 0 0 3px #fff}
-.glass{background:rgba(118,118,128,.28);-webkit-backdrop-filter:blur(26px) saturate(180%);backdrop-filter:blur(26px) saturate(180%);border:.5px solid rgba(255,255,255,.22);color:#fff;box-shadow:0 8px 30px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.18)}
-.sbar{position:absolute;top:calc(var(--top-inset) + 8px);left:16px;right:16px;display:flex;justify-content:space-between;align-items:center;z-index:2}
-.cbtn{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;padding:0;font-size:17px}
-.cbtn svg{width:20px;height:20px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.cbtn.on{background:rgba(255,255,255,.92)}.cbtn.on svg{stroke:#000}
-.stitle{font-weight:600;font-size:15px;letter-spacing:-.2px;padding:10px 16px;border-radius:999px}
-.shint{position:absolute;left:0;right:0;top:calc(42% + 108px);text-align:center;font-size:13px;color:rgba(255,255,255,.85);font-weight:500}
-.spanel{position:absolute;left:12px;right:12px;bottom:calc(var(--bot-inset) + 14px);border-radius:32px;padding:10px;z-index:2}
-.pill{font-family:inherit;border:0;border-radius:999px;padding:12px 18px;font-size:15px;font-weight:600;letter-spacing:-.2px;width:100%;display:flex;align-items:center;justify-content:center;gap:8px}
-.pill.white{background:#fff;color:#000}
-.pill.clear{background:transparent;color:#fff}
-.mrow{display:none;gap:8px}.spanel.manual .mrow{display:flex}.spanel.manual .mtoggle{display:none}
-.mrow input{flex:1;font-family:inherit;background:rgba(255,255,255,.14);border:.5px solid rgba(255,255,255,.25);color:#fff;border-radius:999px;font-size:15px;padding:11px 16px;outline:none}
-.mrow input::placeholder{color:rgba(255,255,255,.55)}
-.mrow .pill{width:auto;padding:11px 20px}
-.serr{position:absolute;left:24px;right:24px;top:42%;transform:translateY(-50%);text-align:center;font-size:14px;color:rgba(255,255,255,.9);display:none}.serr.on{display:block}
 .sheet.ios{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",system-ui,sans-serif;background:#f6efe2;border-top:0;border-radius:22px 22px 0 0;padding-top:8px}
 .sheet.ios .grab{width:36px;height:5px;border-radius:3px;background:rgba(60,40,30,.25);margin:0 auto 14px}
 .sheet.ios h3{font-family:inherit;font-weight:700;font-size:19px;letter-spacing:-.4px;color:#1c1310;margin:0 0 4px}
@@ -168,6 +144,7 @@ label.ck{display:flex;align-items:center;gap:6px;color:var(--tx);font-size:13px;
 .irow input.left{text-align:left}
 .irow em{font-style:normal;color:#9a8677;font-size:13px}
 .ifoot{font-size:12px;color:#8f7b6d;margin:-2px 16px 18px}
+.pill{font-family:var(--sys);border:0;border-radius:999px;padding:12px 18px;font-size:15px;font-weight:600;letter-spacing:-.2px;width:100%;display:flex;align-items:center;justify-content:center;gap:8px}
 .pill.red{background:#9b1d20;color:#fff}
 .pill.tint{background:rgba(155,29,32,.1);color:#9b1d20;margin-top:8px}
 .spin{width:28px;height:28px;border-radius:50%;border:3px solid rgba(60,40,30,.15);border-top-color:#9b1d20;animation:spin .8s linear infinite;margin:24px auto}
@@ -219,6 +196,100 @@ input[type=date]::-webkit-calendar-picker-indicator{opacity:.5}
 .tgl i{display:block;width:27px;height:27px;border-radius:50%;background:#fff;box-shadow:0 2px 4px rgba(0,0,0,.2);transition:transform .2s}
 .tgl.on{background:var(--ok)}.tgl.on i{transform:translateX(20px)}
 .tgl:active{transform:none}
+
+.dwrap{display:flex;align-items:center;gap:12px}.dwrap>.grow{min-width:0}
+.donut{flex:none}.donut .hit{cursor:pointer}
+.dc{font-family:'Yeseva One',serif;font-size:22px;fill:var(--tx)}.dc.big{font-size:28px}
+.ds{font-size:10.5px;fill:var(--hint);font-family:var(--sys)}
+.lg{flex:1;min-width:0;display:flex;flex-direction:column;gap:6px;font-size:13px}.lg.row2{flex-direction:row;gap:14px;margin-top:4px;font-size:12px;color:var(--hint)}
+.lgi{display:flex;align-items:center;gap:7px}.lgi i{width:10px;height:10px;border-radius:3px;flex:none}.lgi b{font-weight:600;font-family:var(--sys);font-size:12.5px;white-space:nowrap}
+.chart{width:100%;height:auto;display:block;margin:2px 0 4px;overflow:visible}
+.chart .gl{stroke:#e6d6b6;stroke-width:1}.chart .ax{font-size:9.5px;fill:var(--hint);font-family:var(--sys)}
+.chart .vl{font-size:10px;fill:var(--tx);font-family:var(--sys);font-weight:600}
+.chart .ref{stroke:#7a1820;stroke-width:1.25;stroke-dasharray:4 3;opacity:.7}.chart .rl{font-size:9.5px;fill:#7a1820;font-family:var(--sys)}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:6px}.tile{background:#fbf5e8;border-radius:10px;padding:7px 9px}.tile b{display:block;font-family:var(--sys);font-size:16px;font-weight:600}.tile span{font-size:11px;color:var(--hint)}
+.sec>.tiles{grid-template-columns:repeat(3,1fr);margin-bottom:8px}
+.heat{overflow-x:auto;margin-bottom:8px;padding-bottom:2px}.hrow{display:flex;align-items:center;gap:3px;margin-bottom:3px}
+.hn{width:92px;flex:none;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hh i{font-style:normal;font-size:10px;color:var(--hint);text-align:center;flex:none}
+.hc{flex:none;border-radius:5px;background:#ecdfc4;display:grid;place-items:center;font-size:12px;color:#fff;font-weight:700}
+.hc.ok{background:#2f7d4a}.hc.bad{background:#b3261e}.hc.fut{background:transparent;box-shadow:inset 0 0 0 1px #e3d2b1}
+label.ckl{display:flex;align-items:flex-start;gap:8px;font-size:15px;color:var(--tx)}label.ckl input{width:auto;margin:3px 0 0;accent-color:var(--ok)}label.ckl .dm{margin-top:6px}
+#tip{position:fixed;z-index:40;background:#2b1a14;color:#f7eedb;font:500 12.5px/1.3 var(--sys);padding:7px 10px;border-radius:9px;pointer-events:none;opacity:0;transition:opacity .15s;max-width:240px;box-shadow:0 6px 20px rgba(0,0,0,.25)}#tip.on{opacity:1}
+.hit:focus{outline:none}
+.navback{position:absolute;left:14px;top:calc(var(--top-inset) + 10px);z-index:3;display:flex;align-items:center;gap:4px;padding:7px 13px 7px 9px;border-radius:999px;background:rgba(255,255,255,.18);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);color:#fff;font-weight:600;font-size:14px;border:.5px solid rgba(255,255,255,.25)}
+.navback svg{width:16px;height:16px;fill:none;stroke:#fff;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+
+.citem2{padding:10px 12px}.row0{display:flex;align-items:center;gap:8px;padding:5px 0}.row0+.row0{border-top:1px dashed var(--line)}
+.tname{font-size:15px;font-weight:500}.lbl{flex:1;font-size:13.5px;color:var(--hint)}.mval{min-width:74px!important;font-family:var(--sys);font-size:14px;font-weight:600}
+.kc{width:90px;text-align:right}.kc2{width:150px}
+.colors{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px}.csw{width:34px;height:34px;padding:0;border-radius:50%;border:0;box-shadow:inset 0 0 0 2px rgba(255,255,255,.35)}.csw.on{box-shadow:0 0 0 2px var(--bg),0 0 0 4px var(--tx)}
+.kvline{display:flex;flex-wrap:wrap;gap:6px 16px;font-family:var(--sys);font-size:15px}.kvline b{font-weight:600}
+details.kbju summary{font-family:'Yeseva One',serif;color:var(--acc2);font-style:normal;font-size:16px;padding:0}
+
+.dayhead{display:flex;align-items:center;justify-content:space-between;gap:8px;position:relative;z-index:2;text-align:center;margin-top:6px}
+.hero .navback+.dayhead{margin-top:44px}
+.dwrap.col{flex-direction:column;align-items:stretch}.dwrap.col .donut{align-self:center}
+.dh{flex:1;min-width:0}.dh1{font-size:12px;letter-spacing:.18em;text-transform:uppercase;opacity:.8}.dh2{font-family:'Yeseva One',serif;font-size:32px;line-height:1.05;margin:2px 0}.dh3{font-size:15px;opacity:.9}
+.darr{width:40px;height:40px;flex:none;padding:0;border-radius:50%;background:rgba(80,8,14,.38);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:.5px solid rgba(255,255,255,.22);display:grid;place-items:center}
+.darr svg{width:18px;height:18px;fill:none;stroke:#f7eedb;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}.darr:disabled{opacity:.25}
+.lotgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.lotb{display:flex;align-items:center;gap:8px;text-align:left;border-radius:14px;padding:8px 10px;background:#fbf5e8;box-shadow:inset 0 0 0 1px var(--line);font-size:13.5px;line-height:1.25;color:var(--tx)}
+.lotb.on{background:#fbeef0;box-shadow:inset 0 0 0 1px #e7b6bd}
+.lot{width:34px;height:34px;flex:none;transition:transform .25s cubic-bezier(.3,1.6,.5,1)}.lotb.on .lot{transform:scale(1.08)}
+.msub{font-size:12px;color:var(--hint);margin-top:2px;line-height:1.3}.msub b{font-weight:600;color:var(--tx);font-family:var(--sys)}.lnk2{color:var(--acc);text-decoration:underline}
+.chk.done .msub{text-decoration:none}
+.subh{font-size:11.5px;color:var(--acc);margin:14px 0 6px;text-transform:uppercase;letter-spacing:.12em}
+.bar.dbl{position:relative}.bar.dbl i{position:absolute;left:0;top:0;bottom:0}.bar.dbl i.pl{background:#e2cfa9}
+
+.ib{width:30px;height:30px;padding:0;border-radius:50%;background:var(--fill);display:grid;place-items:center;flex:none}.ib svg{width:15px;height:15px;fill:none;stroke:var(--acc);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.startb{flex:none;padding:6px 11px;font-size:12.5px;font-weight:600;background:var(--acc);color:#fff}
+.lotb small{display:block;font-size:10.5px;color:var(--hint);font-family:var(--sys);letter-spacing:.02em}
+.msub i{font-style:italic;color:var(--ochre)}
+
+.onb{position:fixed;inset:0;z-index:25;display:flex;flex-direction:column;background:var(--noise),var(--paper);font-family:var(--sys)}
+.ohead{display:flex;align-items:center;justify-content:space-between;padding:calc(var(--top-inset) + 10px) 14px 8px;background:var(--noise),linear-gradient(#a8232a,#8f1a1e);color:#f7eedb}
+.otitle{font-family:'Yeseva One',serif;font-size:18px}
+.obk{width:36px;height:36px;padding:0;border-radius:50%;background:rgba(255,255,255,.16);display:grid;place-items:center}.obk svg{width:17px;height:17px;fill:none;stroke:#fff;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
+.oskip{background:transparent;color:#f7eedb;opacity:.85;font-size:13.5px;padding:6px 4px}
+.oprog{height:3px;background:#6e1219}.oprog i{display:block;height:100%;background:#e8a8b0;transition:width .3s}
+.omsgs{flex:1;overflow-y:auto;padding:14px 12px 8px;display:flex;flex-direction:column;gap:8px;-webkit-overflow-scrolling:touch}
+.orow2{display:flex;align-items:flex-end;gap:7px}.oav{width:30px;height:30px;border-radius:50%;background:#fbeef0;display:grid;place-items:center;flex:none;box-shadow:inset 0 0 0 1px #e7b6bd}.oav .lot{width:22px;height:22px}
+.ob{max-width:84%;padding:9px 13px;border-radius:18px;font-size:14.5px;line-height:1.4}
+.ob.ai{background:#fffaf1;border-bottom-left-radius:6px;box-shadow:0 1px 2px rgba(60,30,10,.08)}
+.ob.ai.wide{max-width:100%;margin-left:37px}
+.ob.me{align-self:flex-end;background:var(--acc);color:#fff;border-bottom-right-radius:6px}
+.ob.new{animation:obin .35s ease}@keyframes obin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.oinput{padding:10px 12px calc(var(--bot-inset) + 12px);background:rgba(247,238,219,.9);border-top:1px solid var(--line);display:flex;flex-direction:column;gap:8px}
+.ochips{display:flex;flex-wrap:wrap;gap:7px}
+.ochip{background:#fffaf1;box-shadow:inset 0 0 0 1px var(--line);font-size:14px;padding:9px 14px}.ochip.on{background:var(--acc);color:#fff;box-shadow:none}
+.orow{display:flex;gap:8px}.orow input{flex:1;border-radius:999px;padding:11px 16px;font-size:16px;background:#fffaf1}
+.osend{width:44px;height:44px;padding:0;border-radius:50%;background:var(--acc);display:grid;place-items:center;flex:none}.osend svg{width:20px;height:20px;fill:none;stroke:#fff;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
+.osum{display:flex;flex-direction:column;gap:8px}.osb{background:#f7eedb;border-radius:12px;padding:9px 11px;font-size:13.5px}.osb>b{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--acc);margin-bottom:3px}
+.pill:disabled{opacity:.4}
+
+.plate{width:100%;max-width:320px;display:block;margin:4px auto}.plate .pt{font:600 10px var(--sys);fill:#fff}.plate .pt.s{font-weight:400;font-size:9px}.plate .pt.d{fill:var(--hint);font-weight:500}
+.step.sm2 button{width:28px;height:28px;font-size:15px}.step.sm2 b{min-width:24px;font-size:13px}
+.rcard{margin-bottom:8px;border-bottom:0;padding:12px}
+
+.coach{position:fixed;left:10px;right:10px;bottom:calc(var(--bot-inset) + 86px);z-index:8;background:#fffaf1;border-radius:18px;padding:12px 14px;box-shadow:0 10px 34px rgba(60,20,10,.28),0 0 0 1px #e7b6bd;font-family:var(--sys);max-width:620px;margin:0 auto;animation:obin .3s ease}
+.coach p{margin:6px 0 8px;font-size:14px;line-height:1.4}.coachh{display:flex;align-items:center;gap:8px}.coachh b{font-size:13px;color:var(--acc)}.coachh .oav{width:26px;height:26px}.coachh .oav .lot{width:19px;height:19px}
+.dots{display:flex;gap:4px;margin-left:auto}.dots i{width:6px;height:6px;border-radius:50%;background:#e8d9bb}.dots i.d{background:#3f6d44}.dots i.c{background:var(--acc)}
+.coachpill{position:fixed;right:12px;bottom:calc(var(--bot-inset) + 90px);z-index:8;display:flex;align-items:center;gap:6px;background:#fffaf1;box-shadow:0 6px 20px rgba(60,20,10,.25);padding:6px 12px 6px 6px;font-size:13px}.coachpill .lot{width:24px;height:24px}
+.coach-hl{position:relative;z-index:6;animation:hl 1.6s ease-in-out infinite;border-radius:12px}
+@keyframes hl{0%,100%{box-shadow:0 0 0 3px rgba(227,148,156,.9),0 0 0 8px rgba(227,148,156,.25)}50%{box-shadow:0 0 0 3px rgba(227,148,156,.9),0 0 0 14px rgba(227,148,156,0)}}
+nav button.lock{opacity:.35}
+body.hascoach{padding-bottom:calc(var(--bot-inset) + 320px)}
+body.hascoach #toast{bottom:auto;top:calc(var(--top-inset) + 16px)}
+.tl span{display:block;min-height:2.3em}
+#petal{position:fixed;left:50%;top:40%;transform:translate(-50%,0);z-index:30;font:700 22px var(--sys);color:#b85a67;opacity:0;pointer-events:none;text-shadow:0 2px 8px rgba(255,255,255,.9)}
+#petal.on{animation:pet 1.2s ease forwards}@keyframes pet{0%{opacity:0;transform:translate(-50%,10px) scale(.8)}20%{opacity:1;transform:translate(-50%,0) scale(1.1)}100%{opacity:0;transform:translate(-50%,-60px) scale(1)}}
+.garden{border-radius:14px;overflow:hidden;cursor:pointer;line-height:0}.gsvg{width:100%;height:auto;display:block}
+.gline{display:flex;justify-content:space-between;align-items:baseline;margin:8px 0 2px;font-size:14px}
+.petals{display:flex;justify-content:space-between;align-items:center;margin-top:10px;font-family:var(--sys)}.petals b{font-size:17px}
+.tiles2{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.tl{text-align:center;font-size:10px;line-height:1.15;color:var(--hint)}.tile{width:100%;height:auto;display:block;margin-bottom:3px}.tile.has{filter:drop-shadow(0 2px 3px rgba(60,20,10,.25))}
+body[data-bg="tiles"]{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44'%3E%3Crect width='44' height='44' fill='%23ecdfc6'/%3E%3Crect x='2' y='2' width='40' height='40' rx='4' fill='none' stroke='%23d9c49e' stroke-width='1'/%3E%3Cpath d='M22 12l4 10-4 10-4-10z' fill='%23e3c9a2'/%3E%3C/svg%3E")}
+body[data-bg="waves"]{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='30'%3E%3Crect width='60' height='30' fill='%23ecdfc6'/%3E%3Cpath d='M0 20q15-12 30 0t30 0' fill='none' stroke='%23d8c19a' stroke-width='1.4'/%3E%3C/svg%3E")}
 html,body{touch-action:manipulation;-webkit-text-size-adjust:100%}
 button,.chip,.pkrow,[data-a]{touch-action:manipulation;-webkit-user-select:none;user-select:none}
 </style>
@@ -234,6 +305,9 @@ button,.chip,.pkrow,[data-a]{touch-action:manipulation;-webkit-user-select:none;
   <button data-a="tab" data-t="set"><svg viewBox="0 0 24 24"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></svg>Настройки</button>
 </nav>
 <div id="toast"></div>
+<div id="tip"></div>
+<div id="coachwrap"></div>
+<div id="petal"></div>
 <script>
 /* ===== Telegram + хранилище ===== */
 const tg = window.Telegram && window.Telegram.WebApp;
@@ -368,47 +442,34 @@ function ask(msg) {
   });
 }
 
-/* ===== звук нажатий (как клавиатура iPhone) ===== */
-let clickCtx = null, clickBuf = null;
-function soundOn() { try { return localStorage.getItem('lr_sound') !== '0'; } catch (e) { return true; } }
-function setSound(on) { try { localStorage.setItem('lr_sound', on ? '1' : '0'); } catch (e) {} }
-function initClick() {
-  if (clickCtx) return;
-  try {
-    clickCtx = new (window.AudioContext || window.webkitAudioContext)();
-    const sr = clickCtx.sampleRate, n = Math.floor(sr * 0.028);
-    clickBuf = clickCtx.createBuffer(1, n, sr);
-    const d = clickBuf.getChannelData(0);
-    for (let i = 0; i < n; i++) { const t = i / sr; d[i] = ((Math.random() * 2 - 1) * 0.55 + Math.sin(2 * Math.PI * 2400 * t) * 0.45) * Math.exp(-t * 260); }
-  } catch (e) { clickCtx = null; }
-}
-function tick(kind) {
-  if (!soundOn()) return;
-  initClick(); if (!clickCtx || !clickBuf) return;
-  try {
-    if (clickCtx.state === 'suspended') clickCtx.resume();
-    const src = clickCtx.createBufferSource(), f = clickCtx.createBiquadFilter(), g = clickCtx.createGain();
-    src.buffer = clickBuf; f.type = 'bandpass'; f.frequency.value = kind === 'soft' ? 1800 : 3200; f.Q.value = 0.9;
-    g.gain.value = kind === 'soft' ? 0.35 : 0.55;
-    src.connect(f); f.connect(g); g.connect(clickCtx.destination); src.start();
-  } catch (e) {}
-}
-document.addEventListener('pointerdown', e => {
-  const b = e.target.closest('button,.chip,[data-a]'); if (!b || b.disabled) return;
-  tick(b.closest('nav') || b.classList.contains('seg') || b.closest('.seg') ? 'soft' : 'key');
-}, true);
-
 /* ===== справочники и значения по умолчанию ===== */
-const CATS = ['Работа', 'Еда', 'Спорт', 'Учёба', 'Быт', 'Отдых', 'Другое'];
+const CATS = [];
+const CAT_PAL = ['#d99414', '#c23a3a', '#0f8f78', '#5160c8', '#6f8f2a', '#a0508f', '#9a5a2c', '#2f6f9f'];
+const DEF_TC = [['Работа', '#d99414'], ['Еда', '#c23a3a'], ['Спорт', '#0f8f78', 1], ['Учёба', '#5160c8'], ['Быт', '#6f8f2a'], ['Отдых', '#a0508f'], ['Другое', '#9a5a2c']].map(([n, c, sp]) => ({ n, c, sport: !!sp }));
+const isSport = n => !!(DB.tcats || DEF_TC).find(x => x.n === n && x.sport);
+function syncCats() { const L = DB.tcats || DEF_TC; CATS.length = 0; for (const x of L) { CATS.push(x.n); ICON[x.n] = dm(x.c); CAT_C[x.n] = x.c; } }
+const DEF_MIN = { 'Работа 4–5 ч': 270, 'Завтрак': 20, 'Обед': 30, 'Ужин': 30, 'Чай со вкусняшкой': 15, 'Силовая (зал, 1 ч)': 60, 'Кардио (зал, 40 мин)': 40, 'Мягкий фитнес (группа)': 55, 'Цигун': 15, 'Шаги 10к + сериал': 90, 'Матан 1 ч': 60, 'Математика 1 ч': 60, 'Тренер групповых программ 1 ч': 60, 'Быт 30 мин (любое)': 30, 'Готовка на 3 дня': 120, 'Посуда': 15, 'Стирка': 15, 'Уборка': 45, 'Полив цветов': 15, 'Отдых без дел': 60 };
+const recOf = (c, p) => c.def ? Math.max(1, Math.min(rng(p.start, p.end).length * (c.def >= 7 ? 1 : 3), Math.round(c.def * rng(p.start, p.end).length / 7))) : 0;
+const fmtMin = m => { m = Math.round(m || 0); if (!m) return ''; const h = Math.floor(m / 60), r = m % 60; return (h ? h + ' ч' : '') + (h && r ? ' ' : '') + (r ? r + ' мин' : ''); };
 const dm = c => `<i class="dm" style="--c:${c}"></i>`;
-const ICON = { Работа: dm('#c48a2a'), Еда: dm('#b5442a'), Спорт: dm('#3f6d44'), Учёба: dm('#34507a'), Быт: dm('#7d9870'), Отдых: dm('#d98891'), Другое: dm('#6b3a2a') };
-const TRACKERS = [
-  { k: 'alco', name: 'Без алкоголя', ic: dm('#7a1820') },
-  { k: 'smoke', name: 'Без сигарет', ic: dm('#6b5a4e') },
-  { k: 'kbju', name: 'КБЖУ в норме', ic: dm('#d98891') },
-  { k: 'sport', name: 'Спорт был', ic: dm('#3f6d44') }
-];
+const ICON = {};
+const TR_COLORS = ['#7a1820', '#6b5a4e', '#d98891', '#3f6d44', '#34507a', '#c48a2a', '#6f8f2a', '#a0508f'];
+const DEF_TR = [{ k: 'alco', name: 'Без алкоголя', color: '#7a1820' }, { k: 'smoke', name: 'Без сигарет', color: '#6b5a4e' }, { k: 'kbju', name: 'КБЖУ в норме', color: '#d98891', auto: 'kbju' }, { k: 'sport', name: 'Спорт был', color: '#3f6d44', auto: 'sport' }];
+const KBJU_TOL = 10;
+const periodOf = d => DB.periods.find(x => x.start <= d && d <= x.end);
+function trVal(d, k) {
+  const t = trList().find(x => x.k === k), x = DB['d_' + d];
+  if (!t || !t.auto) return x?.tr?.[k];
+  if (!x) return undefined;
+  if (t.auto === 'sport') { const sp = x.items.filter(i => isSport(cat(i.id)?.cat)); return sp.length && sp.every(i => i.done) ? 1 : undefined; }
+  if (t.auto === 'kbju') { const p = periodOf(d), f = factOf(d, p && p.id); if (!p || !f) return undefined; const T = p.target; return ['p', 'f', 'c'].every(n => Math.abs((f[n] || 0) - (T[n] || 0)) <= KBJU_TOL) ? 1 : undefined; }
+  return x?.tr?.[k];
+}
+const autoHint = t => t.auto === 'sport' ? 'сам, когда выполнен весь спорт дня' : t.auto === 'kbju' ? `сам, когда Б, Ж и У в пределах ±${KBJU_TOL} г от нормы` : '';
+const trList = () => DB.trackers || DEF_TR;
+const trg = (p, k) => (p.trg && p.trg[k] != null) ? p.trg[k] : rng(p.start, p.end).length;
 const MEALS = ['Завтрак', 'Обед', 'Ужин', 'Чай со вкусняшкой'];
+function syncMealList() { if (DB.meals && DB.meals.length) { MEALS.length = 0; MEALS.push(...DB.meals); } }
 
 const defCatalog = () => [
   ['Работа 4–5 ч', 'Работа', 0, 5],
@@ -465,25 +526,21 @@ function stats(p) {
 function trStats(p, k) {
   const t = today(), last = p.end < t ? p.end : t;
   let ok = 0, bad = 0;
-  for (const d of rng(p.start, last)) { const v = DB['d_' + d]?.tr?.[k]; if (v === 1) ok++; else if (v === -1) bad++; }
+  for (const d of rng(p.start, last)) { const v = trVal(d, k); if (v === 1) ok++; else if (v === -1) bad++; }
   let s = 0, d = last;
-  if (d === t && DB['d_' + d]?.tr?.[k] === undefined) d = addD(d, -1);
-  for (; d >= p.start; d = addD(d, -1)) { if (DB['d_' + d]?.tr?.[k] === 1) s++; else break; }
+  if (d === t && trVal(d, k) === undefined) d = addD(d, -1);
+  for (; d >= p.start; d = addD(d, -1)) { if (trVal(d, k) === 1) s++; else break; }
   return { ok, bad, streak: s };
 }
 function dayTot(date) {
   const t = { k: 0, p: 0, f: 0, c: 0 }, md = menu().days[date]; if (!md) return t;
-  for (const ml of MEALS) for (const e of md[ml] || []) {
-    const pr = prod(e.pid); if (!pr) continue; const q = e.g / 100;
-    t.k += pr.k * q; t.p += pr.p * q; t.f += pr.f * q; t.c += pr.c * q;
-  }
+  for (const ml of MEALS) for (const e of md[ml] || []) { const x = entryTot(e); t.k += x.k; t.p += x.p; t.f += x.f; t.c += x.c; }
   return t;
 }
 function newDates() {
   const P = DB.periods;
   if (P.length) { const last = P.reduce((m, p) => p.end > m ? p.end : m, P[0].end); const s = addD(last, 1); return [s, addD(s, 6)]; }
-  const t = today(), dow = pd(t).getDay(), s = dow === 1 ? t : addD(t, (8 - dow) % 7);
-  return [s, addD(s, 6)];
+  const t = today(); return [t, addD(t, 6)];
 }
 
 const r1 = x => Math.round(x * 10) / 10;
@@ -498,6 +555,78 @@ async function loadAll() {
   const need = [...new Set(keys)].filter(k => !(k in DB));
   if (need.length) { const r = await loadMany(need); for (const k of need) DB[k] = r[k]; }
 }
+/* ===== диаграммы ===== */
+const CAT_C = {};
+const SERIES = ['#c23a3a', '#0f8f78', '#d99414', '#5160c8', '#a0508f', '#6f8f2a', '#9a5a2c'];
+const MAC_C = { p: '#c23a3a', f: '#d99414', c: '#0f8f78' };
+const GOOD = '#2f7d4a', BADC = '#b3261e';
+const tipAttr = t => `data-tip="${esc(t)}" tabindex="0"`;
+function legend(items) {
+  return `<div class="lg">${items.map(i => `<div class="lgi"><i style="background:${i.c}"></i><span class="grow">${esc(i.l)}</span><b>${i.v}</b></div>`).join('')}</div>`;
+}
+function donut(segs, center, sub, size = 150) {
+  const tot = segs.reduce((a, s) => a + s.v, 0), r = 56, cx = 75, cy = 75, sw = 20, C = 2 * Math.PI * r;
+  let off = 0, arcs = '';
+  if (!tot) arcs = `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#e8d9bb" stroke-width="${sw}"/>`;
+  else {
+    const gap = segs.filter(s => s.v > 0).length > 1 ? 2.5 : 0;
+    for (const s of segs) {
+      if (s.v <= 0) continue;
+      const len = s.v / tot * C, dash = Math.max(0.5, len - gap);
+      arcs += `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${s.c}" stroke-width="${sw}" stroke-dasharray="${dash} ${C - dash}" stroke-dashoffset="${-off}" transform="rotate(-90 ${cx} ${cy})" class="hit" ${tipAttr(`${s.l}: ${s.t || s.v}`)}/>`;
+      off += len;
+    }
+  }
+  return `<svg class="donut" viewBox="0 0 150 150" width="${size}" height="${size}" role="img">${arcs}<text x="75" y="73" text-anchor="middle" class="dc">${center}</text><text x="75" y="93" text-anchor="middle" class="ds">${sub || ''}</text></svg>`;
+}
+function ring(pct, color, label) {
+  const r = 52, C = 2 * Math.PI * r, v = Math.max(0, Math.min(100, pct));
+  return `<svg class="donut" viewBox="0 0 130 130" width="124" height="124" role="img" aria-label="${label}"><circle cx="65" cy="65" r="${r}" fill="none" stroke="#e8d9bb" stroke-width="12"/><circle cx="65" cy="65" r="${r}" fill="none" stroke="${color}" stroke-width="12" stroke-linecap="round" stroke-dasharray="${v / 100 * C} ${C}" transform="rotate(-90 65 65)"/><text x="65" y="70" text-anchor="middle" class="dc big">${Math.round(pct)}%</text></svg>`;
+}
+function niceMax(m) { if (m <= 0) return 1; const p = Math.pow(10, Math.floor(Math.log10(m))), n = m / p; return (n <= 1 ? 1 : n <= 2 ? 2 : n <= 5 ? 5 : 10) * p; }
+function columns(data, o = {}) {
+  const W = 320, H = 150, L = 30, R = 6, T = 16, B = 22, n = data.length || 1;
+  const vmax = niceMax(Math.max(o.ref || 0, ...data.map(d => Math.max(d.v || 0, d.g || 0)), 1));
+  const y = v => T + (H - T - B) * (1 - v / vmax), band = (W - L - R) / n, bw = Math.min(24, band * 0.62);
+  let g = '';
+  for (const t of [0, vmax / 2, vmax]) g += `<line x1="${L}" x2="${W - R}" y1="${y(t)}" y2="${y(t)}" class="gl"/><text x="${L - 5}" y="${y(t) + 3.5}" text-anchor="end" class="ax">${fmtN(t)}</text>`;
+  data.forEach((d, i) => {
+    const x = L + band * i + (band - bw) / 2, cx = x + bw / 2;
+    if (d.g) g += `<path d="${colPath(x, y(d.g), bw, y(0))}" fill="#eadcbf"/>`;
+    if (d.v > 0) g += `<path d="${colPath(x, y(d.v), bw, y(0))}" fill="${d.c || o.color}"/>`;
+    if (o.labels && d.v > 0) g += `<text x="${cx}" y="${y(d.v) - 4}" text-anchor="middle" class="vl">${o.fmt ? o.fmt(d.v) : fmtN(d.v)}</text>`;
+    g += `<text x="${cx}" y="${H - 6}" text-anchor="middle" class="ax">${esc(d.l)}</text>`;
+    g += `<rect x="${L + band * i}" y="${T}" width="${band}" height="${H - T - B}" fill="transparent" class="hit" ${tipAttr(d.tip || `${d.l}: ${fmtN(d.v || 0)}`)}/>`;
+  });
+  if (o.ref) g += `<line x1="${L}" x2="${W - R}" y1="${y(o.ref)}" y2="${y(o.ref)}" class="ref"/><text x="${W - R}" y="${y(o.ref) - 4}" text-anchor="end" class="rl">${esc(o.refLabel || '')}</text>`;
+  return `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img">${g}</svg>`;
+}
+function colPath(x, yt, w, yb) { const r = Math.min(4, w / 2, Math.max(0, yb - yt)); return `M${x} ${yb}V${yt + r}Q${x} ${yt} ${x + r} ${yt}H${x + w - r}Q${x + w} ${yt} ${x + w} ${yt + r}V${yb}Z`; }
+function lineChart(pts, o = {}) {
+  const W = 320, H = 150, L = 34, R = 10, T = 16, B = 22, vals = pts.map(p => p.v).concat(o.ref != null ? [o.ref] : []);
+  if (!pts.length) return '';
+  let lo = Math.min(...vals), hi = Math.max(...vals); if (hi - lo < 1) { lo -= 1; hi += 1; } const pad = (hi - lo) * 0.15; lo -= pad; hi += pad;
+  const x = i => pts.length === 1 ? (L + W - R) / 2 : L + (W - L - R) * i / (pts.length - 1), y = v => T + (H - T - B) * (1 - (v - lo) / (hi - lo));
+  let g = '';
+  for (const t of [lo + pad, (lo + hi) / 2, hi - pad]) g += `<line x1="${L}" x2="${W - R}" y1="${y(t)}" y2="${y(t)}" class="gl"/><text x="${L - 5}" y="${y(t) + 3.5}" text-anchor="end" class="ax">${kg(t)}</text>`;
+  if (o.ref != null) g += `<line x1="${L}" x2="${W - R}" y1="${y(o.ref)}" y2="${y(o.ref)}" class="ref"/><text x="${W - R}" y="${y(o.ref) - 4}" text-anchor="end" class="rl">${esc(o.refLabel || '')}</text>`;
+  g += `<path d="${pts.map((p, i) => (i ? 'L' : 'M') + x(i) + ' ' + y(p.v)).join('')}" fill="none" stroke="${o.color}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>`;
+  pts.forEach((p, i) => {
+    g += `<circle cx="${x(i)}" cy="${y(p.v)}" r="4.5" fill="${o.color}" stroke="#f7eedb" stroke-width="2"/><circle cx="${x(i)}" cy="${y(p.v)}" r="14" fill="transparent" class="hit" ${tipAttr(`${p.l}: ${kg(p.v)}${o.unit || ''}`)}/>`;
+    if (i === 0 || i === pts.length - 1 || pts.length <= 6) g += `<text x="${x(i)}" y="${H - 6}" text-anchor="middle" class="ax">${esc(p.l)}</text>`;
+  });
+  const last = pts[pts.length - 1]; g += `<text x="${x(pts.length - 1) - 6}" y="${y(last.v) - 9}" text-anchor="end" class="vl">${kg(last.v)}${o.unit || ''}</text>`;
+  return `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img">${g}</svg>`;
+}
+function heat(rows, days) {
+  const cols = days.length, cw = Math.min(30, (300 - 8) / Math.max(cols, 1));
+  let h = `<div class="heat"><div class="hrow hh"><span class="hn"></span>${days.map(d => `<i style="width:${cw}px">${WD[pd(d).getDay()]}</i>`).join('')}</div>`;
+  for (const r of rows) h += `<div class="hrow"><span class="hn">${esc(r.name)}</span>${days.map(d => { const v = r.vals[d]; const cls = v === 1 ? 'ok' : v === -1 ? 'bad' : d > today() ? 'fut' : ''; return `<b class="hc ${cls}" style="width:${cw}px;height:${cw}px" ${tipAttr(`${r.name}, ${fmt(d)}: ${v === 1 ? 'да' : v === -1 ? 'сорвалась' : 'нет отметки'}`)}>${v === 1 ? '✓' : v === -1 ? '✗' : ''}</b>`; }).join('')}</div>`;
+  return h + `</div>`;
+}
+function statTiles(items) { return `<div class="tiles">${items.map(i => `<div class="tile"><b>${i.v}</b><span>${i.l}</span></div>`).join('')}</div>`; }
+function sessIn(a, b) { return DB.sess.filter(x => x.date >= a && x.date <= b); }
+
 function periodReport(p) {
   const ds = rng(p.start, p.end), t = today(), past = ds.filter(d => d <= t), s = stats(p);
   const cats = {};
@@ -510,7 +639,7 @@ function periodReport(p) {
   const wRef = p.w0 != null ? p.w0 : null;
   for (const d of ds) {
     const b = burnDay(d); burn += b;
-    const f = DB['d_' + d]?.fact; if (!f || !f.k) continue;
+    const f = factOf(d, p.id); if (!f || !f.k) continue;
     factDays++; for (const k of ['k', 'p', 'f', 'c']) sum[k] += f[k] || 0;
     if (wRef != null) def += bmr(wRef) * DB.profile.act + b - f.k;
   }
@@ -536,53 +665,138 @@ function macrosBlock(avg, T) {
   return barRow('Калории', avg.k, T.k, ' ккал') + barRow('Белки', avg.p, T.p, ' г', true) + barRow('Жиры', avg.f, T.f, ' г') + barRow('Углеводы', avg.c, T.c, ' г');
 }
 function vProgress() {
-  let h = `<div class="seg"><button class="${st.pv !== 'all' ? 'on' : ''}" data-a="pv" data-v="cur">Этот период</button><button class="${st.pv === 'all' ? 'on' : ''}" data-a="pv" data-v="all">Всё время</button></div>`;
+  let h = vGarden() + `<div class="seg"><button class="${st.pv !== 'all' ? 'on' : ''}" data-a="pv" data-v="cur">Этот период</button><button class="${st.pv === 'all' ? 'on' : ''}" data-a="pv" data-v="all">Всё время</button></div>`;
   if (!per()) return h + noPeriod();
   return h + (st.pv === 'all' ? vAll() : vCur());
 }
-function vCur() {
-  const p = per(), R = periodReport(p), P = DB.profile, T = p.target;
+function weightBlock(p, R) {
+  const P = DB.profile;
   const wIn = (f, v, l) => `<label>${l}<input type="number" inputmode="decimal" step="0.1" data-f="${f}" value="${v ?? ''}"></label>`;
   let h = `<div class="sec"><h3>Вес</h3><div class="three">${wIn('w0', p.w0, 'В начале')}${wIn('w1', p.w1, 'В конце')}${wIn('goalW', P.goalW, 'Цель')}</div>`;
   if (R.exp != null) h += `<div class="kv"><span>Ожидаемый вес</span><b>${kg(R.exp)} кг</b></div><div class="muted sm">Дефицит ~${fmtN(R.def)} ккал за ${R.factDays} дн. с данными о еде (7700 ккал ≈ 1 кг).</div>`;
-  else h += `<p class="muted sm">${p.w0 == null ? 'Внеси вес в начале периода' : 'Вноси «Съедено по факту» на экране дня'} — тогда посчитаю ожидаемый вес.</p>`;
+  else h += `<p class="muted sm">${p.w0 == null ? 'Внеси вес в начале периода' : 'Отмечай приёмы пищи из меню в чек-листе дня'} — тогда посчитаю ожидаемый вес.</p>`;
   if (p.w0 != null && p.w1 != null) h += `<div class="kv"><span>Факт за период</span><b>${sgn(p.w1 - p.w0)} кг</b></div>`;
   if (R.exp != null && p.w1 != null) h += `<div class="kv"><span>Факт vs ожидание</span><b>${sgn(p.w1 - R.exp)} кг</b></div>`;
   const cur = p.w1 ?? p.w0; if (P.goalW != null && cur != null) h += `<div class="kv"><span>До цели</span><b>${kg(cur - P.goalW)} кг</b></div>`;
-  h += `<p class="muted sm">За неделю вес гуляет на 0,5–1 кг из-за воды, поэтому смотри на тренд за несколько периодов.</p></div>`;
-  h += `<div class="sec"><h3>КБЖУ: в среднем за день</h3>${R.factDays ? macrosBlock(R.avg, T) + `<div class="muted sm">по ${R.factDays} дн. с внесённой едой</div>` : '<p class="muted sm">Пока нет данных: вноси «Съедено по факту» на экране дня.</p>'}</div>`;
-  h += `<div class="sec"><h3>Цели: сделано / план</h3>${goalsBlock(R.cats)}<div class="kv"><span>Сожжено на тренировках</span><b>~${fmtN(R.burn)} ккал</b></div></div>`;
-  h += `<div class="sec"><h3>Трекеры</h3>${TRACKERS.filter(t => R.tr[t.k]).map(t => { const r = R.tr[t.k]; return `<div class="kv"><span>${t.ic} ${t.name}</span><span>✓${r.ok} ✗${r.bad} <span class="muted">из ${r.days} · серия ${r.streak}</span></span></div>`; }).join('') || '<p class="muted sm">Трекеры выключены.</p>'}</div>`;
-  h += profileBlock();
+  return h + `<p class="muted sm">За неделю вес гуляет на 0,5–1 кг из-за воды, поэтому смотри на тренд за несколько периодов.</p></div>`;
+}
+function catBars(cats) {
+  let h = '';
+  for (const cg of CATS) {
+    const o = cats[cg]; if (!o || !o.g) continue;
+    const pc = Math.min(100, o.d / o.g * 100);
+    h += `<div class="pr" ${tipAttr(`${cg}: сделано ${o.d} из ${o.g}`)}><div class="t"><span>${ICON[cg]}${cg}</span><span><b>${o.d}</b><span class="muted"> / ${o.g}</span></span></div><div class="bar"><i style="width:${pc}%;background:${CAT_C[cg]}"></i></div></div>`;
+    h += `<details class="it"><summary>подробнее</summary>${o.items.map(([n, g, d]) => `<div class="kv sm"><span>${esc(n)}</span><span>${d} / ${g}</span></div>`).join('')}</details>`;
+  }
+  return h || '<p class="muted sm">Целей пока нет — задай их во вкладке «Период».</p>';
+}
+function catDonut(cats, title) {
+  const segs = CATS.filter(c => cats[c] && cats[c].d).map(c => ({ l: c, v: cats[c].d, c: CAT_C[c] }));
+  const tot = segs.reduce((a, s) => a + s.v, 0);
+  if (!tot) return '';
+  return `<div class="sec"><h3>${title}</h3><div class="dwrap">${donut(segs, tot, 'дел')}${legend(segs.map(s => ({ c: s.c, l: s.l, v: `${s.v} · ${Math.round(s.v / tot * 100)}%` })))}</div></div>`;
+}
+function macroDonut(avg, T, days) {
+  const segs = [{ l: 'Белки', v: avg.p * 4, c: MAC_C.p, g: avg.p, t: T.p }, { l: 'Жиры', v: avg.f * 9, c: MAC_C.f, g: avg.f, t: T.f }, { l: 'Углеводы', v: avg.c * 4, c: MAC_C.c, g: avg.c, t: T.c }];
+  const tot = segs.reduce((a, s) => a + s.v, 0) || 1;
+  return `<div class="dwrap">${donut(segs.map(s => ({ ...s, t: Math.round(s.v / tot * 100) + '% калорий' })), fmtN(avg.k), 'ккал / день')}${legend(segs.map(s => ({ c: s.c, l: s.l, v: `${Math.round(s.g)} / ${s.t} г` })))}</div><div class="muted sm">Доля калорий из белков, жиров и углеводов · в среднем по ${days} дн.</div>`;
+}
+function vCur() {
+  const p = per(), R = periodReport(p), T = p.target, ds = rng(p.start, p.end), td = today();
+  let g = 0, dc = 0, dn = 0; for (const c in R.cats) { g += R.cats[c].g; dc += R.cats[c].dc; dn += R.cats[c].d; }
+  const ss = sessIn(p.start, p.end), mins = ss.reduce((a, x) => a + (x.min || 0), 0);
+  let h = `<div class="sec"><h3>Итог периода</h3><div class="dwrap">${ring(g ? dc / g * 100 : 0, '#3f6d44', 'выполнение целей')}<div class="grow">${statTiles([{ v: `${R.pastDays}/${R.days}`, l: 'дней прошло' }, { v: dn, l: 'дел сделано' }, { v: ss.length, l: 'тренировок' }, { v: '~' + fmtN(R.burn), l: 'ккал сожжено' }])}</div></div><div class="muted sm">Кольцо — доля выполненных целей периода.</div></div>`;
+  h += `<div class="sec"><h3>Цели по разделам</h3>${catBars(R.cats)}</div>`;
+  h += catDonut(R.cats, 'Из чего сложились дела');
+  const perDay = ds.map(d => { const x = DB['d_' + d]; const done = x ? x.items.filter(i => i.done).length : 0, plan = x ? x.items.length : 0; return { l: WD[pd(d).getDay()], v: done, g: plan, tip: `${fmt(d)}: сделано ${done} из ${plan}` }; });
+  if (perDay.some(x => x.g)) h += `<div class="sec"><h3>Дела по дням</h3>${columns(perDay, { color: '#3f6d44', labels: ds.length <= 10 })}<div class="lg row2"><div class="lgi"><i style="background:#3f6d44"></i><span>сделано</span></div><div class="lgi"><i style="background:#eadcbf"></i><span>в плане</span></div></div></div>`;
+  const kc = ds.filter(d => d <= td).map(d => { const f = factOf(d, p.id); return { l: WD[pd(d).getDay()], v: f?.k || 0, tip: `${fmt(d)}: ${f?.k ? fmtN(f.k) + ' ккал' : 'нет данных'}` }; });
+  if (soft()) h += plateCard(R.factDays ? ` Отмечено приёмов пищи в ${R.factDays} дн.` : '');
+  else if (R.factDays) {
+    h += `<div class="sec"><h3>Калории по дням</h3>${columns(kc, { color: '#0f8f78', ref: T.k, refLabel: 'цель ' + fmtN(T.k), labels: false })}<div class="muted sm">Столбцы — съедено (отмеченные приёмы пищи), линия — цель.</div></div>`;
+    h += `<div class="sec"><h3>Баланс БЖУ</h3>${macroDonut(R.avg, T, R.factDays)}</div>`;
+  } else h += `<div class="sec"><h3>Питание</h3><p class="muted sm">Графики калорий и БЖУ появятся, когда начнёшь отмечать приёмы пищи из меню в чек-листе дня.</p></div>`;
+  const trs = trList().filter(t => p.trackers.includes(t.k));
+  if (trs.length) {
+    h += `<div class="sec"><h3>Трекеры</h3>${heat(trs.map(t => ({ name: t.name, vals: Object.fromEntries(ds.map(d => [d, trVal(d, t.k)])) })), ds.length <= 14 ? ds : ds.slice(-14))}`;
+    h += trs.map(t => { const r = R.tr[t.k] || { ok: 0, bad: 0, streak: 0 }, gl = trg(p, t.k), pc = gl ? Math.min(100, r.ok / gl * 100) : 0; return `<div class="pr"><div class="t"><span>${dm(t.color)}${esc(t.name)}</span><span><b>${r.ok}</b><span class="muted"> / ${gl} · серия ${r.streak}</span></span></div><div class="bar"><i style="width:${pc}%;background:${GOOD}"></i></div></div>`; }).join('') + `</div>`;
+  }
+  if (ss.length) {
+    const by = {}; ss.forEach(x => { const k = x.kind || 'st'; by[k] = (by[k] || 0) + 1; });
+    const segs = Object.keys(by).map((k, i) => ({ l: gcat(k).name, v: by[k], c: SERIES[(DB.gcats.findIndex(x => x.id === k) + SERIES.length) % SERIES.length] }));
+    h += `<div class="sec"><h3>Спорт</h3><div class="dwrap">${donut(segs, ss.length, 'трениро­вок')}${legend(segs.map(s => ({ c: s.c, l: s.l, v: s.v })))}</div><div class="muted sm">Всего ${fmtN(mins)} мин в зале и дома.</div></div>`;
+  }
+  h += weightBlock(p, R) + profileBlock();
   return h;
 }
 function vAll() {
   const P = DB.profile, reps = DB.periods.map(p => [p, periodReport(p)]);
-  const cats = {}, sum = { k: 0, p: 0, f: 0, c: 0 }, tr = {}; let burn = 0, factDays = 0, days = 0;
-  for (const [p, R] of reps) {
-    for (const cg in R.cats) { const o = cats[cg] || (cats[cg] = { g: 0, d: 0, dc: 0, items: [] }), r = R.cats[cg]; o.g += r.g; o.d += r.d; o.dc += r.dc; }
-    for (const k in sum) sum[k] += R.sum[k];
-    burn += R.burn; factDays += R.factDays; days += R.pastDays;
-    for (const k in R.tr) { const o = tr[k] || (tr[k] = { ok: 0, bad: 0, days: 0 }); o.ok += R.tr[k].ok; o.bad += R.tr[k].bad; o.days += R.tr[k].days; }
-  }
+  const cats = {}; let burn = 0;
+  for (const [p, R] of reps) { burn += R.burn; for (const cg in R.cats) { const o = cats[cg] || (cats[cg] = { g: 0, d: 0, dc: 0, items: [] }), r = R.cats[cg]; o.g += r.g; o.d += r.d; o.dc += r.dc; } }
   for (const cg in cats) { const m = {}; for (const [p, R] of reps) for (const [n, g, d] of (R.cats[cg]?.items || [])) { const o = m[n] || (m[n] = [n, 0, 0]); o[1] += g; o[2] += d; } cats[cg].items = Object.values(m); }
-  const ws = reps.flatMap(([p]) => [p.w0, p.w1]).filter(w => w != null);
-  const first = ws[0], last = ws[ws.length - 1];
-  const avgT = reps.length ? reps[reps.length - 1][0].target : { k: 0, p: 0, f: 0, c: 0 };
-  const avg = {}; for (const k in sum) avg[k] = factDays ? sum[k] / factDays : 0;
+  const wp = []; reps.forEach(([p]) => { if (p.w0 != null) wp.push({ l: fmtS(p.start), v: p.w0 }); if (p.w1 != null) wp.push({ l: fmtS(p.end), v: p.w1 }); });
   let h = `<div class="sec"><h3>Вес</h3>`;
-  if (first != null) h += `<div class="kv"><span>Старт → сейчас</span><b>${kg(first)} → ${kg(last)} кг (${sgn(last - first)})</b></div>`;
-  else h += `<p class="muted sm">Вес ещё не вносился.</p>`;
-  if (P.goalW != null && last != null) h += `<div class="kv"><span>Цель ${kg(P.goalW)} кг, осталось</span><b>${kg(last - P.goalW)} кг</b></div>`;
-  h += `</div><div class="sec"><h3>КБЖУ: в среднем за день</h3>${factDays ? macrosBlock(avg, avgT) + `<div class="muted sm">по ${factDays} дням с данными, цель — из последнего периода</div>` : '<p class="muted sm">Пока нет данных о еде.</p>'}</div>`;
-  h += `<div class="sec"><h3>Цели за всё время</h3>${goalsBlock(cats)}<div class="kv"><span>Сожжено на тренировках</span><b>~${fmtN(burn)} ккал</b></div></div>`;
-  h += `<div class="sec"><h3>Трекеры</h3>${TRACKERS.filter(t => tr[t.k]).map(t => `<div class="kv"><span>${t.ic} ${t.name}</span><span>✓${tr[t.k].ok} ✗${tr[t.k].bad} <span class="muted">из ${tr[t.k].days}</span></span></div>`).join('') || '<p class="muted sm">Нет данных.</p>'}</div>`;
-  h += `<div class="sec"><h3>По периодам</h3><table class="tbl"><tr><th>Даты</th><th>Цели</th><th>Ккал/д</th><th>Вес</th></tr>${reps.map(([p, R]) => { let g = 0, d = 0; for (const c in R.cats) { g += R.cats[c].g; d += R.cats[c].dc; } return `<tr><td>${fmtS(p.start)}–${fmtS(p.end)}</td><td>${g ? Math.round(d / g * 100) + '%' : '—'}</td><td>${R.factDays ? fmtN(R.avg.k) : '—'}</td><td>${p.w0 != null ? kg(p.w0) : '—'} → ${p.w1 != null ? kg(p.w1) : '—'}</td></tr>`; }).join('')}</table></div>`;
+  if (wp.length) { const f = wp[0].v, l = wp[wp.length - 1].v; h += statTiles([{ v: kg(f), l: 'старт, кг' }, { v: kg(l), l: 'сейчас, кг' }, { v: sgn(l - f), l: 'изменение' }]) + (wp.length > 1 ? lineChart(wp, { color: '#c23a3a', unit: ' кг', ref: P.goalW, refLabel: P.goalW != null ? 'цель ' + kg(P.goalW) : '' }) : '<div class="muted sm">График появится со второго взвешивания.</div>'); }
+  else h += `<p class="muted sm">Вноси вес в начале и конце периода во вкладке «Этот период» — здесь появится график.</p>`;
+  h += `</div>`;
+  const comp = reps.map(([p, R]) => { let g = 0, d = 0; for (const c in R.cats) { g += R.cats[c].g; d += R.cats[c].dc; } return { l: fmtS(p.start), v: g ? Math.round(d / g * 100) : 0, tip: `${fmtS(p.start)}–${fmtS(p.end)}: ${g ? Math.round(d / g * 100) : 0}% целей` }; });
+  h += `<div class="sec"><h3>Выполнение целей по периодам</h3>${columns(comp, { color: '#3f6d44', labels: true, fmt: v => v + '%' })}</div>`;
+  const kc = reps.filter(([p, R]) => R.factDays).map(([p, R]) => ({ l: fmtS(p.start), v: Math.round(R.avg.k), tip: `${fmtS(p.start)}–${fmtS(p.end)}: ${fmtN(R.avg.k)} ккал/день` }));
+  if (kc.length && !soft()) { const T = reps[reps.length - 1][0].target; h += `<div class="sec"><h3>Калории в среднем за день</h3>${columns(kc, { color: '#0f8f78', ref: T.k, refLabel: 'цель ' + fmtN(T.k), labels: kc.length <= 8 })}</div>`; }
+  h += catDonut(cats, 'Дела за всё время');
+  const tr = {}; for (const [p, R] of reps) for (const k in R.tr) { const o = tr[k] || (tr[k] = { ok: 0, days: 0 }); o.ok += R.tr[k].ok; o.days += R.tr[k].days; }
+  const trs = trList().filter(t => tr[t.k]);
+  if (trs.length) h += `<div class="sec"><h3>Трекеры: дни «да»</h3>${trs.map(t => { const o = tr[t.k], pc = o.days ? o.ok / o.days * 100 : 0; return `<div class="pr" ${tipAttr(`${t.name}: ${o.ok} из ${o.days} дн.`)}><div class="t"><span>${dm(t.color)}${esc(t.name)}</span><span><b>${Math.round(pc)}%</b><span class="muted"> · ${o.ok} из ${o.days}</span></span></div><div class="bar"><i style="width:${pc}%;background:${GOOD}"></i></div></div>`; }).join('')}</div>`;
+  if (DB.sess.length) {
+    const by = {}; DB.sess.forEach(x => { const k = x.kind || 'st'; by[k] = (by[k] || 0) + 1; });
+    const segs = Object.keys(by).map(k => ({ l: gcat(k).name, v: by[k], c: SERIES[(DB.gcats.findIndex(x => x.id === k) + SERIES.length) % SERIES.length] }));
+    h += `<div class="sec"><h3>Тренировки</h3><div class="dwrap">${donut(segs, DB.sess.length, 'всего')}${legend(segs.map(s => ({ c: s.c, l: s.l, v: s.v })))}</div><div class="muted sm">Сожжено на отмеченных тренировках ~${fmtN(burn)} ккал.</div></div>`;
+  }
+  h += `<div class="sec"><h3>Таблица по периодам</h3><table class="tbl"><tr><th>Даты</th><th>Цели</th><th>Ккал/д</th><th>Вес</th></tr>${reps.map(([p, R]) => { let g = 0, d = 0; for (const c in R.cats) { g += R.cats[c].g; d += R.cats[c].dc; } return `<tr><td>${fmtS(p.start)}–${fmtS(p.end)}</td><td>${g ? Math.round(d / g * 100) + '%' : '—'}</td><td>${R.factDays ? fmtN(R.avg.k) : '—'}</td><td>${p.w0 != null ? kg(p.w0) : '—'} → ${p.w1 != null ? kg(p.w1) : '—'}</td></tr>`; }).join('')}</table></div>`;
   return h;
 }
 function profileBlock() {
   const P = DB.profile;
   return `<details class="sec"><summary>Параметры для расчёта веса</summary><div class="two" style="margin-top:8px"><label>Рост, см<input type="number" inputmode="numeric" data-f="prof" data-k="h" value="${P.h}"></label><label>Возраст<input type="number" inputmode="numeric" data-f="prof" data-k="age" value="${P.age}"></label><label>Пол<select data-f="prof" data-k="sex"><option value="f" ${P.sex === 'f' ? 'selected' : ''}>женский</option><option value="m" ${P.sex === 'm' ? 'selected' : ''}>мужской</option></select></label><label>Бытовая активность<input type="number" inputmode="decimal" step="0.05" data-f="prof" data-k="act" value="${P.act}"></label></div><p class="muted sm">Расход = обмен веществ (формула Миффлина — Сан Жеора) × бытовая активность + калории отмеченных тренировок и шагов из каталога. Шаги и спорт считаются отдельно, поэтому коэффициент без них — 1,2–1,3.</p></details>`;
+}
+
+
+/* ===== день: еда из меню, лотосы ===== */
+const WDF = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
+const MON = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+function relDay(d) { const t = today(); return d === t ? 'Сегодня' : d === addD(t, -1) ? 'Вчера' : d === addD(t, 1) ? 'Завтра' : d < t ? 'Прошедший день' : 'Впереди'; }
+const mealOf = c => c && (c.meal || (MEALS.includes(c.name) ? c.name : null));
+function pidOf(d) { const p = DB.periods.find(x => x.start <= d && d <= x.end); return p ? p.id : st.pid; }
+function mealTot(d, meal, pid) {
+  const t = { k: 0, p: 0, f: 0, c: 0, n: [] }, md = (DB['m_' + (pid || pidOf(d))] || { days: {} }).days[d]; if (!md) return t;
+  for (const e of md[meal] || []) { const x = entryTot(e); t.k += x.k; t.p += x.p; t.f += x.f; t.c += x.c; t.n.push(x.label); }
+  return t;
+}
+function factOf(d, pid) {
+  const x = DB['d_' + d]; if (!x) return null;
+  const t = { k: 0, p: 0, f: 0, c: 0 }; let any = false;
+  for (const it of x.items) { if (!it.done) continue; const ml = mealOf(cat(it.id)); if (!ml) continue; const m = mealTot(d, ml, pid); if (m.k) { any = true; for (const k in t) t[k] += m[k]; } }
+  if (any) return t;
+  return x.fact && x.fact.k ? x.fact : null;
+}
+function syncMeals(d) {
+  const x = day(d), pid = pidOf(d), md = (DB['m_' + pid] || { days: {} }).days[d]; if (!md) return;
+  let ch = false;
+  for (const ml of MEALS) {
+    if (!(md[ml] && md[ml].length)) continue;
+    const c = DB.catalog.find(c => mealOf(c) === ml); if (!c) continue;
+    if (!x.items.some(i => i.id === c.id)) { x.items.push({ k: uid(), id: c.id, done: false }); ch = true; }
+  }
+  if (ch) { x.items.sort((a, b) => { const ia = MEALS.indexOf(mealOf(cat(a.id))), ib = MEALS.indexOf(mealOf(cat(b.id))); return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib); }); mark('d_' + d); }
+}
+function lotusIcon(on, color) {
+  const petal = 'M12 20C8.6 16.6 8.4 11 12 5.5C15.6 11 15.4 16.6 12 20Z';
+  return `<svg class="lot ${on ? 'on' : ''}" viewBox="0 0 24 24" aria-hidden="true"><g stroke="${on ? '#7a1820' : '#b69a7a'}" stroke-width="1.1" fill="${on ? 'url(#lg1)' : 'none'}"><path transform="rotate(-58 12 20)" d="${petal}"/><path transform="rotate(58 12 20)" d="${petal}"/><path transform="rotate(-29 12 20)" d="${petal}"/><path transform="rotate(29 12 20)" d="${petal}"/><path d="${petal}"/></g>${on ? `<path d="M5 21.2h14" stroke="${color || '#3f6d44'}" stroke-width="1.6" stroke-linecap="round"/>` : ''}</svg>`;
+}
+const LOT_DEFS = `<svg width="0" height="0" style="position:absolute"><defs><linearGradient id="lg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6c9cd"/><stop offset=".6" stop-color="#e3949c"/><stop offset="1" stop-color="#b85a67"/></linearGradient></defs></svg>`;
+function dayHero(d, p) {
+  const dt = pd(d);
+  return `<div class="dayhead"><button class="darr" data-a="dmove" data-n="-1" ${d <= p.start ? 'disabled' : ''} aria-label="Предыдущий день"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><div class="dh"><div class="dh1">${relDay(d)}</div><div class="dh2">${WDF[dt.getDay()]}</div><div class="dh3">${dt.getDate()} ${MON[dt.getMonth()]}</div></div><button class="darr" data-a="dmove" data-n="1" ${d >= p.end ? 'disabled' : ''} aria-label="Следующий день"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button></div>`;
 }
 
 /* ===== экраны ===== */
@@ -592,30 +806,64 @@ function noPeriod() {
 
 function vToday() {
   const p = per(); if (!p) return noPeriod();
-  const d = st.date, x = day(d);
-  const trs = TRACKERS.filter(t => p.trackers.includes(t.k));
-  let h = `<div class="dnav"><button data-a="dmove" data-n="-1" ${d <= p.start ? 'disabled' : ''}>◀</button><div><b>${fmt(d)}</b>${d === today() ? '<div class="muted sm">сегодня</div>' : ''}</div><button data-a="dmove" data-n="1" ${d >= p.end ? 'disabled' : ''}>▶</button></div>`;
-  if (trs.length) h += `<div class="trk">${trs.map(t => { const v = x.tr[t.k]; return `<button class="tb ${v === 1 ? 'ok' : v === -1 ? 'bad' : ''}" data-a="tr" data-k="${t.k}">${t.ic}${t.name}<i>${v === 1 ? '✓' : v === -1 ? '✗' : '·'}</i></button>`; }).join('')}</div>`;
+  const d = st.date; syncMeals(d); const x = day(d);
+  const trs = trList().filter(t => p.trackers.includes(t.k));
+  let h = LOT_DEFS;
+  if (trs.length) h += `<div class="sec"><h3>Трекеры <span class="muted">${trs.filter(t => trVal(d, t.k) === 1).length}/${trs.length}</span></h3><div class="lotgrid">${trs.map(t => { const on = trVal(d, t.k) === 1; return `<button class="lotb ${on ? 'on' : ''} ${t.auto ? 'auto' : ''}" data-a="tr" data-k="${t.k}" aria-pressed="${on}">${lotusIcon(on, t.color)}<span>${esc(t.name)}${t.auto ? '<small>авто</small>' : ''}</span></button>`; }).join('')}</div></div>`;
   const doneN = x.items.filter(i => i.done).length;
-  h += `<div class="sec"><h3>Чек-лист <span class="muted">${doneN}/${x.items.length}</span></h3>`;
-  if (!x.items.length) h += `<p class="muted sm">Пусто. Нажми «Добавить» и собери день из целей периода.</p>`;
+  const dmin = x.items.reduce((a, i) => a + (cat(i.id)?.min || 0), 0);
+  h += `<div class="sec"><h3>Чек-лист <span class="muted">${doneN}/${x.items.length}${dmin ? ' · ~' + fmtMin(dmin) : ''}</span></h3>`;
+  if (!x.items.length) h += `<p class="muted sm">Пусто. Нажми «Добавить» и собери день из целей периода. Приёмы пищи появятся сами, когда составишь меню на этот день.</p>`;
   h += x.items.map((it, i) => {
-    const c = cat(it.id), nm = c ? c.name : '(удалён из каталога)';
-    return `<div class="row chk ${it.done ? 'done' : ''}"><button class="cb" data-a="tog" data-k="${it.k}">${it.done ? '✓' : ''}</button><span class="grow" data-a="tog" data-k="${it.k}">${ICON[c?.cat] || '•'} ${esc(nm)}${c?.kcal ? ` <span class="muted sm">~${c.kcal} ккал</span>` : ''}</span><button class="x" data-a="up" data-i="${i}" ${i === 0 ? 'disabled' : ''}>↑</button><button class="x" data-a="rm" data-k="${it.k}">✕</button></div>`;
+    const c = cat(it.id), nm = c ? c.name : '(удалён из каталога)', ml = mealOf(c), mt = ml ? mealTot(d, ml) : null;
+    const edited = ml && x.mo && x.mo[ml] !== undefined;
+    const sub = ml ? (mt.n.length ? `<div class="msub">${esc(mt.n.join(', '))}${soft() ? '' : ` · <b>${fmtN(mt.k)} ккал</b>`}${edited ? ' · <i>изменено</i>' : ''}</div>` : `<div class="msub muted">пока пусто${edited ? ' · <i>изменено</i>' : ''}</div>`) : '';
+    const wk = c && isSport(c.cat) ? pickWorkout(c.id, it.w) : null, wkN = wk && c.gc ? DB.workouts.filter(w => (w.kind || 'st') === c.gc).length : 0;
+    const acts = ml ? `<button class="ib" data-a="dswap" data-m="${ml}" aria-label="Заменить блюдо"><svg viewBox="0 0 24 24"><path d="M4 8h13l-3-3M20 16H7l3 3"/></svg></button><button class="ib" data-a="medit" data-m="${ml}" aria-label="Изменить"><svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></svg></button>${edited ? `<button class="ib" data-a="mrev" data-m="${ml}" aria-label="Вернуть как в меню"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.4-5.7"/><path d="M4 4v5h5"/></svg></button>` : ''}` : wk && !it.done ? `${wkN > 1 ? `<button class="ib" data-a="wswap" data-k="${it.k}" aria-label="Другая тренировка"><svg viewBox="0 0 24 24"><path d="M4 8h13l-3-3M20 16H7l3 3"/></svg></button>` : ''}<button class="startb" data-a="dstart" data-id="${wk.id}">▶ Начать</button>` : '';
+    const wsub = wk ? `<div class="msub">${esc(wk.name)} · ${esc(gcat(wk.kind || 'st').name)}</div>` : '';
+    return `<div class="row chk ${it.done ? 'done' : ''}"><button class="cb" data-a="tog" data-k="${it.k}">${it.done ? '✓' : ''}</button><span class="grow" data-a="tog" data-k="${it.k}">${ICON[c?.cat] || '•'} <span class="nm">${esc(nm)}</span>${c?.min && !ml ? ` <span class="muted sm">${fmtMin(c.min)}</span>` : ''}${sub}${wsub}</span>${acts}<button class="x" data-a="up" data-i="${i}" ${i === 0 ? 'disabled' : ''}>↑</button><button class="x" data-a="rm" data-k="${it.k}">✕</button></div>`;
   }).join('');
   h += `<div class="btns"><button class="pri" data-a="pick">+ Добавить</button><button data-a="copyprev">Как вчера</button></div></div>`;
-  const burn = x.items.filter(i => i.done).reduce((a, i) => a + (cat(i.id)?.kcal || 0), 0);
-  const t = dayTot(d), T = p.target;
-  const F = x.fact || {};
-  h += `<div class="sec"><h3>Съедено по факту</h3><div class="four">${[['k', 'Ккал'], ['p', 'Белки'], ['f', 'Жиры'], ['c', 'Углев.']].map(([k, l]) => `<label>${l}<input type="number" inputmode="numeric" data-f="fact" data-k="${k}" value="${F[k] ?? ''}"></label>`).join('')}</div>${t.k ? `<button data-a="factmenu">= как в меню (${Math.round(t.k)} ккал)</button>` : ''}</div>`;
-  h += `<div class="sec"><h3>Итог дня</h3><div class="sm">Тренировки (отмеченные): ~${burn} ккал</div>${t.k ? `<div class="sm">По меню: ${Math.round(t.k)} / ${T.k} ккал · Б ${Math.round(t.p)} / ${T.p} г</div>` : '<div class="sm muted">Меню на этот день не составлено</div>'}${F.k ? `<div class="sm">Факт: ${F.k} / ${T.k} ккал · Б ${F.p || 0} / ${T.p} г</div>` : ''}</div>`;
+  h += dayResults(d, p, x, trs);
   return h;
 }
 
-function vSettings() {
-  const on = soundOn();
-  return `<div class="sec"><h3>Звук</h3><div class="row"><span class="grow">Звук нажатий<div class="sm muted">Тихий щелчок, как у клавиатуры iPhone</div></span><button class="tgl ${on ? 'on' : ''}" data-a="sound" aria-label="Звук нажатий"><i></i></button></div></div>`;
+function pickWorkout(cid, wid) {
+  if (wid && wko(wid)) return wko(wid);
+  const c = cat(cid), L = DB.workouts.filter(w => (c && c.gc) ? (w.kind || 'st') === c.gc : w.link === cid); if (!L.length) return null;
+  const cnt = useCount(); return L.sort((a, b) => (b.fav ? 1 : 0) - (a.fav ? 1 : 0) || (cnt[b.id] || 0) - (cnt[a.id] || 0))[0];
 }
+function dayMenu(d) { const pid = pidOf(d), M = DB['m_' + pid] || (DB['m_' + pid] = { days: {} }); return { pid, md: M.days[d] || (M.days[d] = {}) }; }
+function snapMeal(d, ml) { const x = day(d), { md } = dayMenu(d); x.mo = x.mo || {}; if (x.mo[ml] === undefined) { x.mo[ml] = JSON.parse(JSON.stringify(md[ml] || [])); mark('d_' + d); } }
+function mMeal() {
+  const d = st.date, ml = st.modal.m, { md } = dayMenu(d), L = md[ml] || [], t = mealTot(d, ml), x = day(d), edited = x.mo && x.mo[ml] !== undefined;
+  return `<h3>${esc(ml)} · ${fmt(d)}</h3>${soft() ? '' : `<div class="sm muted" style="margin:-6px 0 8px">${fmtN(t.k)} ккал · Б ${fmtN(t.p)} · Ж ${fmtN(t.f)} · У ${fmtN(t.c)}</div>`}${L.map((e, i) => entryRow(e, i, ml, 'd')).join('') || '<p class="muted sm">Пока пусто.</p>'}<div class="btns" style="margin-top:6px"><button data-a="dswap" data-m="${esc(ml)}">⇄ блюдо</button><button data-a="dmadd">+ продукт</button></div>${edited ? `<button class="wide" data-a="mrev" data-m="${esc(ml)}">↺ Вернуть как было в меню</button>` : ''}<button class="pri wide" data-a="close">Готово</button><p class="muted sm">Изменения сохраняются в меню этого дня.</p>`;
+}
+function dayResults(d, p, x, trs) {
+  const T = p.target, tot = x.items.length, dn = x.items.filter(i => i.done).length;
+  const minAll = x.items.reduce((a, i) => a + (cat(i.id)?.min || 0), 0), minDone = x.items.filter(i => i.done).reduce((a, i) => a + (cat(i.id)?.min || 0), 0);
+  const burn = x.items.filter(i => i.done).reduce((a, i) => a + (cat(i.id)?.kcal || 0), 0);
+  const F = factOf(d) || { k: 0, p: 0, f: 0, c: 0 }, plan = { k: 0, p: 0, f: 0, c: 0 };
+  for (const ml of MEALS) { const m = mealTot(d, ml); for (const k in plan) plan[k] += m[k]; }
+  const trOk = trs.filter(t => trVal(d, t.k) === 1).length;
+  let h = `<div class="sec dres"><h3>Итоги дня</h3>`;
+  if (!tot && !trs.length) return h + `<p class="muted sm">Собери чек-лист — здесь появится прогресс дня.</p></div>`;
+  h += `<div class="dwrap">${ring(tot ? dn / tot * 100 : 0, '#3f6d44', 'выполнение дня')}<div class="grow">${statTiles([{ v: `${dn}/${tot}`, l: 'дел сделано' }, { v: fmtMin(minDone) || '0', l: `из ${fmtMin(minAll) || '0 мин'}` }, { v: `${trOk}/${trs.length}`, l: 'лотосов' }, { v: '~' + fmtN(burn), l: 'ккал сожжено' }])}</div></div>`;
+  const byCat = {}; x.items.forEach(i => { const c = cat(i.id); if (!c || !c.min) return; const o = byCat[c.cat] || (byCat[c.cat] = { a: 0, d: 0 }); o.a += c.min; if (i.done) o.d += c.min; });
+  const segs = CATS.filter(c => byCat[c]).map(c => ({ l: c, v: byCat[c].a, c: CAT_C[c], t: `${fmtMin(byCat[c].d) || '0'} / ${fmtMin(byCat[c].a)}` }));
+  if (segs.length) h += `<div class="subh">Время по разделам</div><div class="dwrap col">${donut(segs, fmtMin(minAll).replace(' мин', 'м').replace(' ч', 'ч'), 'в плане', 132)}${legend(segs.map(s => ({ c: s.c, l: s.l, v: s.t })))}</div>`;
+  h += `<div class="subh">Питание</div>`;
+  if (soft()) return h + ((plan.k || F.k) ? `<div class="sm">Белки — <b>${softWord(F.p, T.p)}</b>, жиры — <b>${softWord(F.f, T.f)}</b>, углеводы — <b>${softWord(F.c, T.c)}</b></div><div class="muted sm">По отмеченным приёмам пищи.</div>` : '') + PLATE + `<p class="muted sm">Каждый приём пищи — как тарелка: половина овощей, четверть белка, четверть круп, немного жиров и вода.</p></div>`;
+  if (plan.k || F.k) {
+    h += [['k', 'Калории', '', '#0f8f78'], ['p', 'Белки', ' г', MAC_C.p], ['f', 'Жиры', ' г', MAC_C.f], ['c', 'Углеводы', ' г', MAC_C.c]].map(([k, l, u, col]) => {
+      const v = F[k] || 0, g = T[k] || 0, pl = plan[k] || 0, pc = g ? Math.min(100, v / g * 100) : 0, pp = g ? Math.min(100, pl / g * 100) : 0;
+      return `<div class="pr" ${tipAttr(`${l}: съедено ${fmtN(v)}${u}, по меню ${fmtN(pl)}${u}, норма ${fmtN(g)}${u}`)}><div class="t"><span>${l}</span><span><b>${fmtN(v)}</b><span class="muted"> / ${fmtN(g)}${u}</span></span></div><div class="bar dbl"><i class="pl" style="width:${pp}%"></i><i style="width:${pc}%;background:${col}"></i></div></div>`;
+    }).join('') + `<div class="muted sm">Считается по отмеченным приёмам пищи из меню. Светлая полоса — сколько запланировано на день.</div>`;
+  } else h += `<p class="muted sm">Составь меню на этот день во вкладке «Питание» и отмечай приёмы пищи в чек-листе — здесь появятся калории и БЖУ.</p>`;
+  return h + `</div>`;
+}
+
+function vSettings() { return `<div class="sec"><h3>Питание</h3><div class="row"><span class="grow">Мягкий режим<div class="sm muted">Без цифр калорий: подсказки словами и метод тарелки. Можно включать и выключать в любой момент.</div></span><button class="tgl ${soft() ? 'on' : ''}" data-a="soft" aria-label="Мягкий режим" aria-pressed="${soft()}"><i></i></button></div></div><div class="sec"><h3>Помощница</h3><p class="muted sm">Можно снова пройти обучение по вкладкам или быстро пересобрать план по анкете: категории, задачи, тренировки, приёмы пищи и КБЖУ.</p><button class="pri wide" data-a="tutre">Пройти обучение заново</button><button class="wide" data-a="onbre">Быстрая настройка по анкете</button></div>` + dataBlock(); }
 function vPeriod() {
   const segP = `<div class="seg"><button class="${st.pt !== 'cat' ? 'on' : ''}" data-a="pt" data-v="per">Период</button><button class="${st.pt === 'cat' ? 'on' : ''}" data-a="pt" data-v="cat">Каталог задач</button></div>`;
   if (st.pt === 'cat') return segP + vCat();
@@ -629,17 +877,91 @@ function vPeriod() {
     const L = DB.catalog.filter(c => c.cat === cg); if (!L.length) continue;
     h += `<div class="cat">${ICON[cg]} ${cg}</div>` + L.map(c => {
       const n = p.goals[c.id] || 0, dn = s.done[c.id] || 0, pl = s.plan[c.id] || 0, pc = n ? Math.min(100, dn / n * 100) : 0;
-      return `<div class="goal ${n ? '' : 'off'}"><div class="gn">${esc(c.name)}${n || dn ? `<div class="bar"><i style="width:${pc}%"></i></div><div class="muted sm">сделано ${dn}/${n} · в плане ${pl}</div>` : ''}${c.def ? `<div class="rec">рекомендация: ${c.def}${c.def === n ? ' ✓' : ''}</div>` : ''}</div><div class="step"><button data-a="goal" data-id="${c.id}" data-n="-1">−</button><b>${n}</b><button data-a="goal" data-id="${c.id}" data-n="1">+</button></div></div>`;
+      return `<div class="goal ${n ? '' : 'off'}"><div class="gn">${esc(c.name)}${n || dn ? `<div class="bar"><i style="width:${pc}%"></i></div><div class="muted sm">сделано ${dn}/${n} · в плане ${pl}</div>` : ''}${recOf(c, p) ? `<div class="rec">рекомендация: ${recOf(c, p)}${recOf(c, p) === n ? ' ✓' : ''}${c.min ? ' · ' + fmtMin(c.min) : ''}</div>` : c.min ? `<div class="rec">${fmtMin(c.min)}</div>` : ''}</div><div class="step"><button data-a="goal" data-id="${c.id}" data-n="-1">−</button><b>${n}</b><button data-a="goal" data-id="${c.id}" data-n="1">+</button></div></div>`;
     }).join('');
   }
-  h += `</div><div class="sec"><h3>Трекеры</h3>` + TRACKERS.map(t => {
-    const on = p.trackers.includes(t.k), ts = trStats(p, t.k);
-    return `<div class="row"><label class="grow"><input type="checkbox" data-f="trk" data-k="${t.k}" ${on ? 'checked' : ''}>${t.ic} ${t.name}</label>${on ? `<span class="muted sm">✓${ts.ok} ✗${ts.bad} · серия ${ts.streak}</span>` : ''}</div>`;
-  }).join('') + `</div>`;
+  const nd = rng(p.start, p.end).length;
+  h += `</div><div class="sec"><h3>Трекеры</h3>` + trList().map(t => {
+    const on = p.trackers.includes(t.k), ts = trStats(p, t.k), g = trg(p, t.k);
+    return `<div class="goal ${on ? '' : 'off'}"><label class="grow ckl"><input type="checkbox" data-f="trk" data-k="${t.k}" ${on ? 'checked' : ''}>${dm(t.color)}<span>${esc(t.name)}${on ? `<div class="muted sm">✓${ts.ok} ✗${ts.bad} · серия ${ts.streak} · цель ${g} из ${nd} дн.</div>` : ''}</span></label>${on ? `<div class="step"><button data-a="trg" data-k="${t.k}" data-n="-1" ${g <= 0 ? 'disabled' : ''}>−</button><b>${g}</b><button data-a="trg" data-k="${t.k}" data-n="1" ${g >= nd ? 'disabled' : ''}>+</button></div>` : ''}</div>`;
+  }).join('') + `<button class="wide" data-a="trman">Настроить трекеры</button></div>`;
   const T = p.target;
-  h += `<div class="sec"><h3>КБЖУ на день</h3><div class="four">${[['k', 'Ккал'], ['p', 'Белки'], ['f', 'Жиры'], ['c', 'Углев.']].map(([k, l]) => `<label>${l}<input type="number" inputmode="numeric" data-f="target" data-k="${k}" value="${T[k]}"></label>`).join('')}</div><button data-a="autoc">Углеводы = остаток калорий</button></div>`;
+  h += `<div class="sec"><h3>КБЖУ на день</h3><div class="kvline">${[['k', 'Ккал', ''], ['p', 'Б', ' г'], ['f', 'Ж', ' г'], ['c', 'У', ' г']].map(([k, l, u]) => `<span><b>${fmtN(T[k])}</b>${u} <span class="muted">${l}</span></span>`).join('')}</div><p class="muted sm" style="margin:8px 0 6px">Нормы задаются во вкладке «Питание» и действуют на весь период.${soft() ? ' Сейчас включён мягкий режим — в приложении вместо цифр подсказки и метод тарелки.' : ''}</p><button class="wide" data-a="kbjugo">Изменить в «Питании»</button></div>`;
   h += `<button class="danger wide" data-a="delp">Удалить период</button>`;
   return h;
+}
+
+/* ===== питание: рецепты, меню, мягкий режим ===== */
+const dish = id => (DB.dishes || []).find(x => x.id === id);
+const soft = () => !!(DB.profile && DB.profile.soft);
+function dishTot(ds) { const t = { k: 0, p: 0, f: 0, c: 0, g: 0 }; if (!ds) return t; for (const it of ds.items) { const pr = prod(it.pid); if (!pr) continue; const q = it.g / 100; t.k += pr.k * q; t.p += pr.p * q; t.f += pr.f * q; t.c += pr.c * q; t.g += it.g; } return t; }
+function dishPer(ds) { const t = dishTot(ds), n = Math.max(1, ds ? ds.portions || 1 : 1); return { k: t.k / n, p: t.p / n, f: t.f / n, c: t.c / n, g: t.g / n }; }
+function entryTot(e) {
+  if (e.dish) { const ds = dish(e.dish), pp = dishPer(ds), q = e.por || 1; return { k: pp.k * q, p: pp.p * q, f: pp.f * q, c: pp.c * q, label: ds ? `${ds.name}${q !== 1 ? ' × ' + kg(q) : ''}` : '(рецепт удалён)' }; }
+  const pr = prod(e.pid); if (!pr) return { k: 0, p: 0, f: 0, c: 0, label: '(удалён)' };
+  const q = e.g / 100; return { k: pr.k * q, p: pr.p * q, f: pr.f * q, c: pr.c * q, label: pr.name.replace(/\s*\(.*?\)\s*/g, ' ').trim() + ' ' + e.g + ' г' };
+}
+const PORTION_STEP = 0.5;
+function softWord(v, g) { if (!g) return '—'; const r = v / g; return r < 0.6 ? 'можно добавить' : r < 0.9 ? 'почти' : r <= 1.15 ? 'в самый раз' : 'с запасом'; }
+const PLATE = `<svg class="plate" viewBox="0 0 220 150" role="img" aria-label="Метод тарелки: половина — овощи, четверть — белок, четверть — сложные углеводы, плюс немного полезных жиров и вода">
+<circle cx="80" cy="75" r="66" fill="#fffaf1" stroke="#d6c09a" stroke-width="2"/><circle cx="80" cy="75" r="56" fill="none" stroke="#eadcbf" stroke-width="1"/>
+<path d="M80 75 L80 19 A56 56 0 0 0 80 131 Z" fill="#6f8f2a" opacity=".88"/><path d="M80 75 L80 19 A56 56 0 0 1 136 75 Z" fill="#c23a3a" opacity=".85"/><path d="M80 75 L136 75 A56 56 0 0 1 80 131 Z" fill="#d99414" opacity=".85"/>
+<path d="M80 19V131M80 75H136" stroke="#fffaf1" stroke-width="2.5"/>
+<text x="52" y="72" text-anchor="middle" class="pt">Овощи</text><text x="52" y="86" text-anchor="middle" class="pt s">½ тарелки</text>
+<text x="106" y="52" text-anchor="middle" class="pt">Белок</text><text x="106" y="64" text-anchor="middle" class="pt s">¼</text>
+<text x="106" y="98" text-anchor="middle" class="pt">Крупы</text><text x="106" y="110" text-anchor="middle" class="pt s">¼</text>
+<path d="M170 34c7 10 11 16 11 21a11 11 0 0 1-22 0c0-5 4-11 11-21z" fill="#c48a2a" opacity=".85"/><text x="170" y="84" text-anchor="middle" class="pt d">Немного</text><text x="170" y="96" text-anchor="middle" class="pt d">жиров</text>
+<rect x="160" y="104" width="20" height="32" rx="4" fill="#cfe3ec" stroke="#8fb3c4"/><text x="200" y="124" text-anchor="middle" class="pt d">Вода</text></svg>`;
+function plateCard(extra) { return `<div class="sec platec"><h3>Метод тарелки</h3>${PLATE}<p class="muted sm">Полноценный приём пищи: половина — овощи и зелень, четверть — белок, четверть — сложные углеводы, немного полезных жиров и вода. Это ориентир, а не правило — слушай своё тело.${extra || ''}</p></div>`; }
+function cookTask() {
+  let c = DB.catalog.find(x => /готов/i.test(x.name)); if (c) return c;
+  const catn = CATS.includes('Быт') ? 'Быт' : CATS.includes('Еда') ? 'Еда' : CATS[0];
+  c = { id: uid(), name: 'Готовка', cat: catn, min: 90, def: 0, kcal: 0 }; DB.catalog.push(c); mark('catalog'); return c;
+}
+function vFood() {
+  const seg = `<div class="seg"><button class="${st.nv !== 'rec' && st.nv !== 'prod' ? 'on' : ''}" data-a="nv" data-v="menu">Меню</button><button class="${st.nv === 'rec' ? 'on' : ''}" data-a="nv" data-v="rec">Рецепты</button><button class="${st.nv === 'prod' ? 'on' : ''}" data-a="nv" data-v="prod">Продукты</button></div>`;
+  if (st.nv === 'rec') return (st.rid && dish(st.rid) ? '' : seg) + vRecipes();
+  if (st.nv === 'prod') return seg + `<div class="sec">${mProds().replace('<h3>База продуктов</h3>', '<h3>Продукты</h3>').replace('<button class="pri wide" data-a="close">Готово</button>', '')}</div>`;
+  return seg + vMenu();
+}
+function vRecipes() {
+  if (st.rid && dish(st.rid)) return vRecEdit(dish(st.rid));
+  const L = DB.dishes || [];
+  let h = `<button class="pri wide" data-a="recnew" style="margin-bottom:12px">+ Новый рецепт</button>`;
+  if (!L.length) h += `<div class="sec"><p class="muted sm">Здесь твоя книга рецептов. Добавь блюдо один раз — например, борщ на 8 порций, — и потом ставь его в меню в пару касаний.</p></div>`;
+  for (const ml of [...MEALS, '']) {
+    const G = L.filter(d => ml ? (d.meals || []).includes(ml) : !(d.meals || []).length); if (!G.length) continue;
+    h += `<div class="cat">${ml || 'Без приёма пищи'}</div>` + G.map(d => { const pp = dishPer(d); return `<div class="sec row rcard" data-a="recopen" data-id="${d.id}"><span class="grow"><b>${esc(d.name)}</b><div class="sm muted">${d.portions || 1} порц.${soft() ? '' : ` · ${fmtN(pp.k)} ккал · Б ${fmtN(pp.p)} на порцию`} · ${d.items.length} ингр.</div></span><span class="muted">›</span></div>`; }).join('');
+  }
+  return h;
+}
+function vRecEdit(d) {
+  const pp = dishPer(d), T = dishTot(d);
+  let h = `<div class="dnav"><button data-a="recback">◀</button><b>Рецепт</b><span style="width:36px"></span></div>`;
+  h += `<div class="sec"><label>Название<input data-f="recname" value="${esc(d.name)}" placeholder="Например, Борщ"></label><div class="row0" style="margin-top:6px"><span class="lbl">Порций из рецепта</span><div class="step"><button data-a="recpor" data-n="-1" ${d.portions <= 1 ? 'disabled' : ''}>−</button><b>${d.portions}</b><button data-a="recpor" data-n="1">+</button></div></div><div class="cat">Подходит для</div><div class="ochips">${MEALS.map(m => `<button class="ochip ${(d.meals || []).includes(m) ? 'on' : ''}" data-a="recmeal" data-m="${esc(m)}">${esc(m)}</button>`).join('')}</div></div>`;
+  h += `<div class="sec"><h3>Ингредиенты <span class="muted sm">на всё блюдо</span></h3>${d.items.map((e, i) => { const pr = prod(e.pid); return `<div class="row"><span class="grow">${esc(pr ? pr.name : '(удалён)')}</span><input class="g" type="number" inputmode="numeric" data-f="recg" data-i="${i}" value="${e.g}"><span class="sm muted w">г</span><button class="x" data-a="recrm" data-i="${i}">✕</button></div>`; }).join('') || '<p class="muted sm">Добавь продукты с граммовкой на всю кастрюлю — калории на порцию посчитаются сами.</p>'}<button class="lnk" data-a="recadd">+ ингредиент</button></div>`;
+  h += `<div class="sec"><h3>Одна порция</h3>${soft() ? `<p class="sm">~${fmtN(pp.g)} г · сытность: ${pp.p >= 20 ? 'белка хорошо' : 'белка немного — можно добавить'}</p>` : `<div class="kvline"><span><b>${fmtN(pp.g)}</b> г</span><span><b>${fmtN(pp.k)}</b> ккал</span><span><b>${fmtN(pp.p)}</b> Б</span><span><b>${fmtN(pp.f)}</b> Ж</span><span><b>${fmtN(pp.c)}</b> У</span></div><div class="sm muted" style="margin-top:4px">Всё блюдо: ${fmtN(T.g)} г · ${fmtN(T.k)} ккал</div>`}<label style="margin-top:10px">Заметка<input data-f="recnote" value="${esc(d.note || '')}" placeholder="Как готовить, хранение…"></label></div>`;
+  return h + `<button class="danger wide" data-a="recdel">Удалить рецепт</button>`;
+}
+function mDishAdd() {
+  const ml = st.modal.m, L = DB.dishes || [], fit = L.filter(d => (d.meals || []).includes(ml)), oth = L.filter(d => !(d.meals || []).includes(ml));
+  const btn = d => { const pp = dishPer(d); return `<button class="pk" data-a="dpick" data-id="${d.id}" data-pn="${esc(d.name.toLowerCase())}"><span>${esc(d.name)}</span><span class="muted sm">${soft() ? d.portions + ' порц.' : fmtN(pp.k) + ' ккал/порц.'}</span></button>`; };
+  return `<h3>Блюдо в «${esc(ml)}»</h3>${L.length ? `<input id="psearch" placeholder="Поиск…" autocomplete="off"><div style="margin-top:8px">${fit.map(btn).join('')}${oth.length ? `<details ${fit.length ? '' : 'open'}><summary>Другие рецепты (${oth.length})</summary>${oth.map(btn).join('')}</details>` : ''}</div>` : '<p class="muted sm">В книге рецептов пока пусто.</p>'}<button class="wide" data-a="recnewfrom">+ Новый рецепт</button>`;
+}
+function mDishPlace() {
+  const m = st.modal, ds = dish(m.id), p = per(), left = rng(st.mdate, p.end).length;
+  const opts = [['1', 'Только этот день'], ['2', '2 дня'], ['3', '3 дня'], ['wd', 'Все будни'], ['all', `До конца периода (${left})`]].filter(([v]) => v === 'wd' || v === 'all' || +v <= left);
+  return `<h3>${esc(ds.name)}</h3><div class="row0"><span class="lbl">Порций за раз</span><div class="step"><button data-a="plpor" data-n="-1" ${m.por <= PORTION_STEP ? 'disabled' : ''}>−</button><b>${kg(m.por)}</b><button data-a="plpor" data-n="1">+</button></div></div><div class="cat">В какие дни — «${esc(m.m)}»</div><div class="ochips">${opts.map(([v, l]) => `<button class="ochip ${m.span === v ? 'on' : ''}" data-a="dspan" data-v="${v}">${l}</button>`).join('')}</div>${m.span !== '1' ? `<label class="ckl" style="margin-top:10px"><input type="checkbox" id="dcook" ${m.cook ? 'checked' : ''} data-f="dcook"> Добавить «Готовку» в ${fmt(st.mdate)}</label><p class="muted sm">Приготовишь один раз — блюдо встанет в меню на выбранные дни.</p>` : ''}<button class="pri wide" data-a="dplace">Добавить в меню</button>`;
+}
+function mDishSwap() {
+  const ml = st.modal.m, L = (DB.dishes || []).filter(d => (d.meals || []).includes(ml)), O = (DB.dishes || []).filter(d => !(d.meals || []).includes(ml));
+  const btn = d => `<button class="pk" data-a="dswapto" data-id="${d.id}"><span>${esc(d.name)}</span><span class="muted sm">${soft() ? '' : fmtN(dishPer(d).k) + ' ккал'}</span></button>`;
+  return `<h3>Заменить «${esc(ml)}»</h3><p class="muted sm" style="margin:-6px 0 8px">Выбери другое блюдо на ${fmt(st.date)}. Вернуть как было можно кнопкой ↺.</p>${L.map(btn).join('') || '<p class="muted sm">Нет рецептов для этого приёма пищи.</p>'}${O.length ? `<details><summary>Другие рецепты</summary>${O.map(btn).join('')}</details>` : ''}<button class="wide" data-a="medit" data-m="${esc(ml)}">Собрать из продуктов</button>`;
+}
+function entryRow(e, i, ml, f) {
+  const t = entryTot(e);
+  if (e.dish) return `<div class="row"><span class="grow">${esc(dish(e.dish)?.name || '(рецепт удалён)')}<div class="sm muted">рецепт${soft() ? '' : ' · ' + fmtN(t.k) + ' ккал'}</div></span><div class="step sm2"><button data-a="${f}por" data-m="${esc(ml)}" data-i="${i}" data-n="-1" ${(e.por || 1) <= PORTION_STEP ? 'disabled' : ''}>−</button><b>${kg(e.por || 1)}</b><button data-a="${f}por" data-m="${esc(ml)}" data-i="${i}" data-n="1">+</button></div><span class="sm muted">порц.</span><button class="x" data-a="${f === 'm' ? 'mrm' : 'dmrm'}" data-m="${esc(ml)}" data-i="${i}">✕</button></div>`;
+  return `<div class="row"><span class="grow">${esc(prod(e.pid)?.name || '(удалён)')}</span><input class="g" type="number" inputmode="numeric" data-f="${f === 'm' ? 'grams' : 'dmg'}" data-m="${esc(ml)}" data-i="${i}" value="${e.g}"><span class="sm muted w">г${soft() ? '' : ' · ' + fmtN(t.k)}</span><button class="x" data-a="${f === 'm' ? 'mrm' : 'dmrm'}" data-m="${esc(ml)}" data-i="${i}">✕</button></div>`;
 }
 
 function vMenu() {
@@ -647,30 +969,43 @@ function vMenu() {
   const ds = rng(p.start, p.end); if (!ds.includes(st.mdate)) st.mdate = ds[0];
   const d = st.mdate, M = menu(), md = M.days[d] || {}, t = dayTot(d), T = p.target;
   let h = `<div class="chips">${ds.map(x => `<button class="chip ${x === d ? 'on' : ''} ${hasAny(M.days[x]) ? 'has' : ''}" data-a="mday" data-d="${x}">${fmt(x)}</button>`).join('')}</div>`;
-  h += `<div class="sec macros">${[['k', 'Ккал'], ['p', 'Б'], ['f', 'Ж'], ['c', 'У']].map(([k, l]) => {
+  h += `<details class="sec kbju" ${st.kbjuOpen ? 'open' : ''}><summary>Нормы КБЖУ на день${soft() ? '' : ' · ' + fmtN(T.k) + ' ккал'}</summary><div class="four" style="margin-top:8px">${[['k', 'Ккал'], ['p', 'Белки'], ['f', 'Жиры'], ['c', 'Углев.']].map(([k, l]) => `<label>${l}<input type="number" inputmode="numeric" data-f="target" data-k="${k}" value="${T[k]}"></label>`).join('')}</div><button data-a="autoc">Углеводы = остаток калорий</button><p class="muted sm" style="margin:6px 0 0">Действуют на весь период ${fmtS(p.start)}–${fmtS(p.end)}. Их видно и во вкладке «Период».</p></details>`;
+  if (soft()) h += `<div class="sec"><div class="sm">На этот день: белки — <b>${softWord(t.p, T.p)}</b>, жиры — <b>${softWord(t.f, T.f)}</b>, углеводы — <b>${softWord(t.c, T.c)}</b>.</div></div>` + plateCard();
+  else h += `<div class="sec macros">${[['k', 'Ккал'], ['p', 'Б'], ['f', 'Ж'], ['c', 'У']].map(([k, l]) => {
     const v = Math.round(t[k]), g = T[k], pc = g ? Math.min(100, v / g * 100) : 0;
     return `<div><div class="sm">${l} <b>${v}</b><span class="muted">/${g}</span></div><div class="bar ${v > g * 1.05 ? 'over' : ''}"><i style="width:${pc}%"></i></div></div>`;
   }).join('')}</div>`;
   for (const ml of MEALS) {
-    const L = md[ml] || [];
-    const mk = Math.round(L.reduce((a, e) => { const pr = prod(e.pid); return a + (pr ? pr.k * e.g / 100 : 0); }, 0));
-    h += `<div class="sec"><h3>${ml} ${mk ? `<span class="muted sm">${mk} ккал</span>` : ''}</h3>${L.map((e, i) => {
-      const pr = prod(e.pid), kc = pr ? Math.round(pr.k * e.g / 100) : 0;
-      return `<div class="row"><span class="grow">${esc(pr ? pr.name : '(удалён)')}</span><input class="g" type="number" inputmode="numeric" data-f="grams" data-m="${ml}" data-i="${i}" value="${e.g}"><span class="sm muted w">г · ${kc}</span><button class="x" data-a="mrm" data-m="${ml}" data-i="${i}">✕</button></div>`;
-    }).join('')}<button class="lnk" data-a="madd" data-m="${ml}">+ продукт</button></div>`;
+    const L = md[ml] || [], mk = Math.round(L.reduce((a, e) => a + entryTot(e).k, 0));
+    h += `<div class="sec"><h3>${esc(ml)} ${mk && !soft() ? `<span class="muted sm">${mk} ккал</span>` : ''}</h3>${L.map((e, i) => entryRow(e, i, ml, 'm')).join('')}<div class="btns" style="margin-top:6px"><button data-a="dadd" data-m="${esc(ml)}">+ блюдо</button><button data-a="madd" data-m="${esc(ml)}">+ продукт</button></div></div>`;
   }
-  h += `<div class="btns"><button data-a="mcopy">Копировать день →</button><button data-a="shop">Покупки</button></div><button class="wide" data-a="prods">База продуктов (${DB.products.length})</button>`;
+  h += `<div class="btns"><button data-a="mcopy">Копировать день →</button><button data-a="shop">Покупки</button></div>`;
   return h;
 }
 
 function vCat() {
-  let h = `<p class="muted sm" style="margin:0 2px 10px">Все возможные пункты. «В неделю» подставляется в первый период. Калории спорта — ориентир, замени на свои из Apple Активности.</p>`;
-  for (const cg of CATS) {
-    const L = DB.catalog.filter(c => c.cat === cg);
-    h += `<div class="sec"><h3>${ICON[cg]} ${cg}</h3>${L.map(c => `<div class="citem"><input data-f="cname" data-id="${c.id}" value="${esc(c.name)}"><div class="crow">${cg === 'Спорт' ? `<label>ккал<input type="number" inputmode="numeric" data-f="ckcal" data-id="${c.id}" value="${c.kcal || 0}"></label>` : ''}<label>в неделю<input type="number" inputmode="numeric" data-f="cdef" data-id="${c.id}" value="${c.def || 0}"></label><label>раздел<select data-f="ccat" data-id="${c.id}">${CATS.map(x => `<option ${x === cg ? 'selected' : ''}>${x}</option>`).join('')}</select></label><button class="x" data-a="cdel" data-id="${c.id}">✕</button></div></div>`).join('')}<button class="lnk" data-a="cadd" data-c="${cg}">+ пункт</button></div>`;
-  }
-  h += `<div class="sec"><h3>Данные</h3><p class="muted sm">${PLATFORM === 'vk' ? 'Хранятся в облаке ВКонтакте и привязаны к твоему аккаунту. Данные Telegram-версии отдельные — перенести можно через Экспорт/Импорт.' : PLATFORM === 'tg' ? 'Хранятся в облаке Telegram и привязаны к твоему аккаунту. Данные VK-версии отдельные — перенести можно через Экспорт/Импорт.' : 'Открыто не в Telegram и не в ВК — данные сохраняются только в этом браузере (режим проверки).'}</p><div class="btns"><button data-a="exp">Экспорт</button><button data-a="imp">Импорт</button></div></div>`;
+  if (!CATS.includes(st.cc)) st.cc = CATS[0];
+  const cg = st.cc, tc = (DB.tcats || DEF_TC).find(x => x.n === cg) || { n: cg, c: '#999' };
+  let h = `<div class="chips gmenu">${CATS.map(n => `<button class="chip ${n === cg ? 'on' : ''}" data-a="cc" data-n="${esc(n)}">${ICON[n]}${esc(n)} <span class="${n === cg ? '' : 'muted'}">${DB.catalog.filter(c => c.cat === n).length}</span></button>`).join('')}<button class="chip addc" data-a="tcnew">+ Категория</button></div>`;
+  if (!cg) return h;
+  const L = DB.catalog.filter(c => c.cat === cg), tot = L.reduce((a, c) => a + (c.min || 0), 0);
+  h += `<div class="cathead"><h2>${ICON[cg]}${esc(cg)}</h2><button class="x" data-a="tcedit" data-n="${esc(cg)}">настроить</button></div>`;
+  h += `<button class="pri wide" data-a="cadd" data-c="${esc(cg)}" style="margin-bottom:12px">+ Новая задача</button>`;
+  if (!L.length) h += `<div class="sec"><p class="muted sm">В этой категории пока нет задач.</p></div>`;
+  h += L.map(c => {
+    const m = c.min || 0;
+    return `<div class="sec citem2"><div class="row0"><input class="grow tname" data-f="cname" data-id="${c.id}" value="${esc(c.name)}"><button class="x" data-a="cdel" data-id="${c.id}" aria-label="Удалить">✕</button></div><div class="row0"><span class="lbl">Время</span><div class="step"><button data-a="cmin" data-id="${c.id}" data-n="-1" ${m <= 0 ? 'disabled' : ''}>−</button><b class="mval">${m ? fmtMin(m) : '—'}</b><button data-a="cmin" data-id="${c.id}" data-n="1">+</button></div></div>${isSport(cg) ? `<div class="row0"><span class="lbl">Тренировки из раздела</span><select class="kc2" data-f="cgc" data-id="${c.id}"><option value="">— без шаблонов —</option>${DB.gcats.map(g => `<option value="${g.id}" ${c.gc === g.id ? 'selected' : ''}>${esc(g.name)}</option>`).join('')}</select></div>` : ''}${isSport(cg) ? `<div class="row0"><span class="lbl">Ккал за раз</span><input class="kc" type="number" inputmode="numeric" data-f="ckcal" data-id="${c.id}" value="${c.kcal || 0}"></div>` : ''}<div class="row0"><span class="lbl">Категория</span><select class="kc2" data-f="ccat" data-id="${c.id}">${CATS.map(x => `<option ${x === cg ? 'selected' : ''}>${esc(x)}</option>`).join('')}</select></div></div>`;
+  }).join('');
+  if (L.length) h += `<p class="muted sm" style="margin:0 2px">Всего по категории: ${fmtMin(tot) || '0 мин'} за один раз каждой задачи.${isSport(cg) ? ' Спорт бывает разным: привяжи задачу к разделу тренировок — тогда в «Дне» можно будет выбрать конкретную тренировку и сразу её начать. Калории — ориентир, замени на свои из Apple Активности.' : ''}</p>`;
   return h;
+}
+function dataBlock() {
+  return `<div class="sec"><h3>Данные</h3><p class="muted sm">${PLATFORM === 'vk' ? 'Хранятся в облаке ВКонтакте и привязаны к твоему аккаунту. Данные Telegram-версии отдельные — перенести можно через Экспорт/Импорт.' : PLATFORM === 'tg' ? 'Хранятся в облаке Telegram и привязаны к твоему аккаунту. Данные VK-версии отдельные — перенести можно через Экспорт/Импорт.' : 'Открыто не в Telegram и не в ВК — данные сохраняются только в этом браузере (режим проверки).'}</p><div class="btns"><button data-a="exp">Экспорт</button><button data-a="imp">Импорт</button></div></div>`;
+}
+function mTcat() {
+  const n = st.modal.n, x = n ? (DB.tcats || DEF_TC).find(y => y.n === n) : { n: '', c: CAT_PAL[(DB.tcats || DEF_TC).length % CAT_PAL.length] };
+  const col = st.modal.c || x.c, cnt = n ? DB.catalog.filter(c => c.cat === n).length : 0;
+  return `<h3>${n ? 'Категория' : 'Новая категория'}</h3><label>Название<input id="tc_name" value="${esc(st.modal.draft ?? x.n)}" placeholder="Например, Творчество"></label><div class="cat" style="margin-top:12px">Цвет</div><div class="colors">${CAT_PAL.map(c => `<button class="csw ${c === col ? 'on' : ''}" data-a="tccol" data-c="${c}" style="background:${c}" aria-label="цвет"></button>`).join('')}</div><button class="pri wide" data-a="tcsave">Сохранить</button>${n ? `<button class="danger wide" data-a="tcdel">Удалить категорию${cnt ? ` и ${cnt} задач` : ''}</button>` : ''}`;
 }
 
 /* ===== модальные окна ===== */
@@ -695,7 +1030,7 @@ function mNewP() {
 }
 function mPAdd() {
   const L = [...DB.products].sort((a, b) => a.name.localeCompare(b.name, 'ru'));
-  return `<h3>Добавить в «${st.modal.m}»</h3><button class="pri wide scanbtn" data-a="scan">Сканировать штрихкод</button><input id="psearch" style="margin-top:10px" placeholder="Поиск…" autocomplete="off"><div style="margin-top:8px">${L.map(p => `<button class="pk" data-a="padd" data-id="${p.id}" data-pn="${esc(p.name.toLowerCase())}"><span>${esc(p.name)}</span><span class="muted sm">${p.k} ккал · Б ${p.p}</span></button>`).join('')}</div><button class="wide" data-a="prods">Добавить свой продукт</button>`;
+  return `<h3>${st.modal.back === 'rec' ? 'Ингредиент' : `Добавить в «${esc(st.modal.m)}»`}</h3><button class="pri wide scanbtn" data-a="scan">Найти по штрихкоду</button><input id="psearch" style="margin-top:10px" placeholder="Поиск…" autocomplete="off"><div style="margin-top:8px">${L.map(p => `<button class="pk" data-a="padd" data-id="${p.id}" data-pn="${esc(p.name.toLowerCase())}"><span>${esc(p.name)}</span><span class="muted sm">${p.k} ккал · Б ${p.p}</span></button>`).join('')}</div><button class="wide" data-a="prods">Добавить свой продукт</button>`;
 }
 function mCopy() {
   const p = per(), ds = rng(p.start, p.end).filter(x => x !== st.mdate);
@@ -704,7 +1039,7 @@ function mCopy() {
 function shopText() {
   const p = per(), M = menu(), agg = {};
   const f = st.shopF || p.start, t = st.shopT || p.end;
-  for (const d of rng(f, t)) { const md = M.days[d]; if (!md) continue; for (const ml of MEALS) for (const e of md[ml] || []) agg[e.pid] = (agg[e.pid] || 0) + e.g; }
+  for (const d of rng(f, t)) { const md = M.days[d]; if (!md) continue; for (const ml of MEALS) for (const e of md[ml] || []) { if (e.dish) { const ds = dish(e.dish); if (!ds) continue; const q = (e.por || 1) / Math.max(1, ds.portions || 1); for (const it of ds.items) agg[it.pid] = (agg[it.pid] || 0) + it.g * q; } else agg[e.pid] = (agg[e.pid] || 0) + e.g; } }
   return Object.entries(agg).map(([id, g]) => [prod(id)?.name || '(удалён)', g]).sort((a, b) => a[0].localeCompare(b[0], 'ru'))
     .map(([n, g]) => `${n} — ${g >= 1000 ? (g / 1000).toFixed(2).replace(/\.?0+$/, '') + ' кг' : Math.round(g) + ' г'}`).join('\n');
 }
@@ -715,7 +1050,7 @@ function mShop() {
   return `<h3>Список покупок</h3><div class="two"><label>С<select data-f="shopF">${opt(f)}</select></label><label>По<select data-f="shopT">${opt(t)}</select></label></div><p class="muted sm">Граммы по меню за выбранные дни. Крупы и макароны — в сухом виде.</p><textarea id="cp" readonly>${esc(txt || 'В эти дни меню пустое')}</textarea><button class="pri wide" data-a="copytxt">Скопировать</button>`;
 }
 function mProds() {
-  return `<h3>База продуктов</h3><button class="pri wide scanbtn" data-a="scan">Сканировать штрихкод</button><p class="muted sm">Значения на 100 г.</p><div class="prow sm muted"><span>Название</span><span>Ккал</span><span>Б</span><span>Ж</span><span>У</span><span></span></div>${DB.products.map(p => `<div class="prow"><input data-f="pr" data-id="${p.id}" data-k="name" value="${esc(p.name)}">${['k', 'p', 'f', 'c'].map(k => `<input type="number" inputmode="decimal" step="0.1" data-f="pr" data-id="${p.id}" data-k="${k}" value="${p[k]}">`).join('')}<button class="x" data-a="pdel" data-id="${p.id}">✕</button></div>`).join('')}<button class="lnk" data-a="pnew">+ продукт</button><button class="pri wide" data-a="close">Готово</button>`;
+  return `<h3>База продуктов</h3><button class="pri wide scanbtn" data-a="scan">Найти по штрихкоду</button><p class="muted sm">Значения на 100 г.</p><div class="prow sm muted"><span>Название</span><span>Ккал</span><span>Б</span><span>Ж</span><span>У</span><span></span></div>${DB.products.map(p => `<div class="prow"><input data-f="pr" data-id="${p.id}" data-k="name" value="${esc(p.name)}">${['k', 'p', 'f', 'c'].map(k => `<input type="number" inputmode="decimal" step="0.1" data-f="pr" data-id="${p.id}" data-k="${k}" value="${p[k]}">`).join('')}<button class="x" data-a="pdel" data-id="${p.id}">✕</button></div>`).join('')}<button class="lnk" data-a="pnew">+ продукт</button><button class="pri wide" data-a="close">Готово</button>`;
 }
 function modal() {
   const m = st.modal;
@@ -729,6 +1064,14 @@ function modal() {
     case 'expick': return mExPick();
     case 'exedit': return mExEdit();
     case 'hist': return mHist();
+    case 'decor': return mDecor();
+    case 'meal': return mMeal();
+    case 'dadd': return mDishAdd();
+    case 'dplace': return mDishPlace();
+    case 'dswap': return mDishSwap();
+    case 'wswap': { const it = day(st.date).items.find(i => i.k === st.modal.k), c = cat(it.id), L = DB.workouts.filter(w => (w.kind || 'st') === c.gc); return `<h3>Какая тренировка сегодня?</h3><p class="muted sm" style="margin:-6px 0 8px">«${esc(c.name)}» — выбери шаблон из раздела «${esc(gcat(c.gc).name)}».</p>${L.map(w => `<button class="pk ${pickWorkout(c.id, it.w)?.id === w.id ? 'on' : ''}" data-a="wswapto" data-id="${w.id}"><span>${esc(w.name)}${w.fav ? ' ★' : ''}</span><span class="muted sm">${tplSummary(w)}</span></button>`).join('')}`; }
+    case 'tcat': return mTcat();
+    case 'trman': return `<h3>Трекеры</h3><p class="sm muted" style="margin:-6px 0 8px">Название можно менять. Цвет — нажми на ромбик. Отметки по дням сохраняются.</p>${trList().map(t => `<div class="row"><button class="x" data-a="trcol" data-k="${t.k}" aria-label="Цвет">${dm(t.color)}</button><span class="grow"><input data-f="trname" data-k="${t.k}" value="${esc(t.name)}">${t.auto ? `<span class="sm muted">отмечается ${autoHint(t)}</span>` : ''}</span><button class="x" data-a="trdel" data-k="${t.k}" aria-label="Удалить">✕</button></div>`).join('')}<div class="row"><input id="trnew" class="grow" placeholder="Новый трекер, например «Вода 2 л»"><button data-a="tradd">Добавить</button></div><button class="pri wide" data-a="close">Готово</button>`;
     case 'scan': return mScan();
     case 'scanres': return mScanRes();
     case 'gcat': return mGcat();
@@ -741,37 +1084,17 @@ function modal() {
 
 
 /* ===== штрихкоды (Open Food Facts) ===== */
-let scanner = null, scanBusy = false;
-function loadScanLib() {
-  return window.Html5Qrcode ? Promise.resolve() : new Promise((res, rej) => { const el = document.createElement('script'); el.src = 'https://cdn.jsdelivr.net/npm/html5-qrcode@2.3.8/html5-qrcode.min.js'; el.onload = res; el.onerror = () => rej(new Error('не загрузился сканер')); document.head.appendChild(el); });
-}
-async function stopScan() { st.torch = false; if (!scanner) return; const sc = scanner; scanner = null; try { await sc.stop(); } catch (e) {} try { sc.clear(); } catch (e) {} }
-async function startScan() {
-  if (scanner) return; scanBusy = false;
-  try {
-    await loadScanLib();
-    if (!document.getElementById('reader') || !st.modal || st.modal.t !== 'scan') return;
-    const F = window.Html5QrcodeSupportedFormats;
-    scanner = new window.Html5Qrcode('reader', { verbose: false, formatsToSupport: [F.EAN_13, F.EAN_8, F.UPC_A, F.UPC_E, F.CODE_128], experimentalFeatures: { useBarCodeDetectorIfSupported: true } });
-    await scanner.start({ facingMode: 'environment' }, { fps: 12, aspectRatio: window.innerHeight / window.innerWidth },
-      code => { if (scanBusy) return; scanBusy = true; hap(); const fr = document.getElementById('sframe'); if (fr) fr.classList.add('hit'); setTimeout(() => stopScan().then(() => lookup(code)), 250); }, () => {});
-    try { const cap = scanner.getRunningTrackCapabilities && scanner.getRunningTrackCapabilities(); if (cap && cap.torch) { const t = document.getElementById('torch'); if (t) t.style.visibility = 'visible'; } } catch (e) {}
-  } catch (e) {
-    scanner = null;
-    const el = document.getElementById('scanerr'); if (el) { el.textContent = 'Нет доступа к камере. Разреши его в настройках или введи код вручную.'; el.classList.add('on'); }
-    const sh = document.getElementById('shint'); if (sh) sh.style.display = 'none'; const sp = document.getElementById('spanel'); if (sp) sp.classList.add('manual');
-  }
-}
-function addToMeal(pid, meal) {
+function addToMeal(pid, meal, back) {
+  if (back === 'rec' && dish(st.rid)) { dish(st.rid).items.push({ pid, g: 100 }); mark('dishes'); return; }
   if (!meal || !st.pid) return;
   const M = menu(), md = M.days[st.mdate] || (M.days[st.mdate] = {}); (md[meal] || (md[meal] = [])).push({ pid, g: 100 }); mark('m_' + st.pid);
 }
 async function lookup(raw) {
-  const code = String(raw).replace(/\D/g, ''), meal = st.modal && st.modal.m;
+  const code = String(raw).replace(/\D/g, ''), meal = st.modal && st.modal.m, back = st.modal && st.modal.back;
   if (code.length < 8) { toast('Похоже, это не штрихкод'); return; }
   const own = DB.products.find(p => p.bc === code);
-  if (own) { addToMeal(own.id, meal); st.modal = null; toast(meal ? `«${own.name}» добавлен, поправь граммы` : `Уже есть в базе: ${own.name}`); render(); return; }
-  st.modal = { t: 'scanres', m: meal, code, loading: true }; render();
+  if (own) { addToMeal(own.id, meal, back); st.modal = null; toast(meal ? `«${own.name}» добавлен, поправь граммы` : `Уже есть в базе: ${own.name}`); render(); return; }
+  st.modal = { t: 'scanres', m: meal, back, code, loading: true }; render();
   let d = { name: '', k: 0, p: 0, f: 0, c: 0, found: false };
   try {
     const r = await fetch(`https://world.openfoodfacts.org/api/v2/product/${code}.json?fields=product_name,product_name_ru,brands,nutriments`);
@@ -786,20 +1109,7 @@ async function lookup(raw) {
   Object.assign(st.modal, { loading: false, d }); render();
 }
 function mScan() {
-  const corner = 'M3 36V20Q3 3 20 3h16';
-  return `<div class="scanfull"><div id="reader"></div>
-  <div class="sframe" id="sframe"><svg viewBox="0 0 100 100" preserveAspectRatio="none"></svg><div class="sline"></div></div>
-  <div class="serr" id="scanerr"></div>
-  <div class="sbar"><button class="cbtn glass" data-a="close" aria-label="Закрыть"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button><div class="stitle glass">Штрихкод</div><button class="cbtn glass" id="torch" data-a="torch" aria-label="Фонарик" style="visibility:hidden"><svg viewBox="0 0 24 24"><path d="M9 2h6l-1 6h-4z"/><path d="M10 8h4v13a2 2 0 0 1-4 0z"/><path d="M12 12v2"/></svg></button></div>
-  <div class="shint" id="shint">Наведите камеру на штрихкод</div>
-  <div class="spanel glass" id="spanel"><button class="pill clear mtoggle" data-a="scanman"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><rect x="3" y="6" width="18" height="12" rx="3"/><path d="M7 10h.01M11 10h.01M15 10h.01M8 14h8"/></svg>Ввести код вручную</button><div class="mrow"><input id="bcode" inputmode="numeric" placeholder="Цифры под штрихкодом"><button class="pill white" data-a="bcfind">Найти</button></div></div></div>`;
-}
-function drawCorners() {
-  const fr = document.getElementById('sframe'); if (!fr) return;
-  const w = fr.offsetWidth, h = fr.offsetHeight, r = 30, L = 34, svg = fr.querySelector('svg');
-  svg.setAttribute('viewBox', `-3 -3 ${w + 6} ${h + 6}`);
-  const c = (x, y, sx, sy) => `M${x} ${y + sy * L}V${y + sy * r}Q${x} ${y} ${x + sx * r} ${y}H${x + sx * L}`;
-  svg.innerHTML = `<path d="${c(0, 0, 1, 1)} ${c(w, 0, -1, 1)} ${c(0, h, 1, -1)} ${c(w, h, -1, -1)}" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round"/>`;
+  return `<div class="grab"></div><h3>Штрихкод</h3><p class="iossub">Введи цифры под штрихкодом на упаковке — найду продукт в открытой базе Open Food Facts.</p><div class="igroup"><div class="irow"><input id="bcode" class="grow left" inputmode="numeric" autocomplete="off" placeholder="Например, 4607025392408"></div></div><button class="pill red" data-a="bcfind">Найти</button>`;
 }
 function mScanRes() {
   const m = st.modal;
@@ -807,13 +1117,13 @@ function mScanRes() {
   const d = m.d;
   const msg = d.found ? 'Нашла в Open Food Facts. Сверь КБЖУ с упаковкой.' : d.err ? 'Нет связи с базой. Заполни по упаковке.' : 'Этого продукта нет в открытой базе. Заполни по упаковке — он сохранится у тебя со штрихкодом.';
   const row = (k, l, u) => `<div class="irow"><span>${l}</span><input id="sr_${k}" type="number" inputmode="decimal" class="grow" value="${d[k] || ''}" placeholder="0"><em>${u}</em></div>`;
-  return `<div class="grab"></div><h3>${d.found ? 'Продукт найден' : 'Новый продукт'}</h3><p class="iossub">${msg}</p><div class="igroup"><div class="irow"><input id="sr_name" class="grow left" value="${esc(d.name)}" placeholder="Название продукта"></div></div><div class="igroup">${row('k', 'Калории', 'ккал')}${row('p', 'Белки', 'г')}${row('f', 'Жиры', 'г')}${row('c', 'Углеводы', 'г')}</div><div class="ifoot">На 100 г · штрихкод ${m.code}</div><button class="pill red" data-a="srsave">${m.m ? `Добавить в «${m.m}»` : 'Сохранить в базу'}</button><button class="pill tint" data-a="scan">Сканировать другой</button>`;
+  return `<div class="grab"></div><h3>${d.found ? 'Продукт найден' : 'Новый продукт'}</h3><p class="iossub">${msg}</p><div class="igroup"><div class="irow"><input id="sr_name" class="grow left" value="${esc(d.name)}" placeholder="Название продукта"></div></div><div class="igroup">${row('k', 'Калории', 'ккал')}${row('p', 'Белки', 'г')}${row('f', 'Жиры', 'г')}${row('c', 'Углеводы', 'г')}</div><div class="ifoot">На 100 г · штрихкод ${m.code}</div><button class="pill red" data-a="srsave">${m.m ? `Добавить в «${m.m}»` : 'Сохранить в базу'}</button><button class="pill tint" data-a="scan">Другой штрихкод</button>`;
 }
 
 /* ===== тренировки ===== */
 const DEF_GC = [{ id: 'st', name: 'Силовые', ex: 'st', re: 'силов' }, { id: 'c', name: 'Кардио', ex: 'c', re: 'кардио' }, { id: 'stretch', name: 'Растяжка', ex: 'tm', re: '' }, { id: 'qg', name: 'Цигун', ex: 'tm', re: 'цигун' }];
 const gcat = id => (DB.gcats || []).find(x => x.id === id) || { id, name: 'Без категории', ex: 'st', link: '' };
-function seedGcats() { return DEF_GC.map(x => { const c = x.re && DB.catalog.find(c => c.cat === 'Спорт' && new RegExp(x.re, 'i').test(c.name)); return { id: x.id, name: x.name, ex: x.ex, link: c ? c.id : '' }; }); }
+function seedGcats() { return DEF_GC.map(x => { const c = x.re && DB.catalog.find(c => isSport(c.cat) && new RegExp(x.re, 'i').test(c.name)); return { id: x.id, name: x.name, ex: x.ex, link: c ? c.id : '' }; }); }
 const EXK = { st: 'Силовое', c: 'Кардио', tm: 'На время (растяжка, цигун)' };
 const MU = { fl: 'этажи', st: 'шаги', km: 'км' };
 const defExercises = () => [
@@ -992,7 +1302,7 @@ function vHist(list, bare) {
 function vWEdit() {
   const w = wko(st.wedit);
   let h = `<div class="dnav"><button data-a="gback">◀</button><b>${esc(gcat(w.kind || 'st').name)}: шаблон</b><span style="width:40px"></span></div>`;
-  h += `<div class="sec"><label>Название<input data-f="wname" value="${esc(w.name)}"></label><label style="margin-top:10px">Отмечать в чек-листе дня<select data-f="wlink"><option value="">— не отмечать —</option>${DB.catalog.filter(c => c.cat === 'Спорт').map(c => `<option value="${c.id}" ${w.link === c.id ? 'selected' : ''}>${esc(c.name)}</option>`).join('')}</select></label>${gcat(w.kind || 'st').ex === 'tm' ? `<div class="sm muted" style="margin-top:8px">Общее время ~${fmtDur(w.items.reduce((a, i) => a + itemDur(i), 0))}</div>` : ''}</div>`;
+  h += `<div class="sec"><label>Название<input data-f="wname" value="${esc(w.name)}"></label><label style="margin-top:10px">Отмечать в чек-листе дня<select data-f="wlink"><option value="">— не отмечать —</option>${DB.catalog.filter(c => isSport(c.cat)).map(c => `<option value="${c.id}" ${w.link === c.id ? 'selected' : ''}>${esc(c.name)}</option>`).join('')}</select></label>${gcat(w.kind || 'st').ex === 'tm' ? `<div class="sm muted" style="margin-top:8px">Общее время ~${fmtDur(w.items.reduce((a, i) => a + itemDur(i), 0))}</div>` : ''}</div>`;
   h += w.items.map((it, i) => {
     const ex = exo(it.exId);
     return `<div class="sec"><div class="exhead"><h3 class="grow">${esc(ex?.name || '(удалено)')}</h3><button class="x" data-a="wiup" data-i="${i}" ${i ? '' : 'disabled'}>↑</button><button class="x" data-a="wirm" data-i="${i}">✕</button></div>${lastLine(it.exId)}${itemBody(it, i, false)}</div>`;
@@ -1021,7 +1331,7 @@ function mExPick() {
 }
 function mGcat() {
   const id = st.modal.id, g = id ? gcat(id) : { name: '', ex: 'st', link: '' }, used = id && DB.exercises.some(e => gcOf(e) === id);
-  return `<h3>${id ? 'Категория' : 'Новая категория'}</h3><label>Название<input id="gc_name" value="${esc(g.name)}" placeholder="Например, Пилатес"></label><label style="margin-top:8px">Тип упражнений<select id="gc_ex" ${used ? 'disabled' : ''}>${Object.entries(EXK).map(([v, l]) => `<option value="${v}" ${g.ex === v ? 'selected' : ''}>${l}</option>`).join('')}</select></label>${used ? '<div class="sm muted">Тип нельзя поменять, пока в категории есть упражнения.</div>' : ''}<label style="margin-top:8px">Отмечать в чек-листе дня<select id="gc_link"><option value="">— не отмечать —</option>${DB.catalog.filter(c => c.cat === 'Спорт').map(c => `<option value="${c.id}" ${g.link === c.id ? 'selected' : ''}>${esc(c.name)}</option>`).join('')}</select></label><div class="sm muted" style="margin-top:4px">Подставляется в новые тренировки этой категории.</div><button class="pri wide" data-a="gcsave">Сохранить</button>${id ? `<button class="danger wide" data-a="gcdel" data-id="${id}">Удалить категорию</button>` : ''}`;
+  return `<h3>${id ? 'Категория' : 'Новая категория'}</h3><label>Название<input id="gc_name" value="${esc(g.name)}" placeholder="Например, Пилатес"></label><label style="margin-top:8px">Тип упражнений<select id="gc_ex" ${used ? 'disabled' : ''}>${Object.entries(EXK).map(([v, l]) => `<option value="${v}" ${g.ex === v ? 'selected' : ''}>${l}</option>`).join('')}</select></label>${used ? '<div class="sm muted">Тип нельзя поменять, пока в категории есть упражнения.</div>' : ''}<label style="margin-top:8px">Отмечать в чек-листе дня<select id="gc_link"><option value="">— не отмечать —</option>${DB.catalog.filter(c => isSport(c.cat)).map(c => `<option value="${c.id}" ${g.link === c.id ? 'selected' : ''}>${esc(c.name)}</option>`).join('')}</select></label><div class="sm muted" style="margin-top:4px">Подставляется в новые тренировки этой категории.</div><button class="pri wide" data-a="gcsave">Сохранить</button>${id ? `<button class="danger wide" data-a="gcdel" data-id="${id}">Удалить категорию</button>` : ''}`;
 }
 function mExEdit() {
   const e = exo(st.modal.id); if (!e) return '';
@@ -1064,14 +1374,15 @@ async function finishWorkout() {
       n++; if (it.c) { kcal += it.c.kcal || 0; DB.last[it.exId] = { date: s.date, c: { ...it.c } }; } else DB.last[it.exId] = { date: s.date, t: { ...it.t } };
     }
   }
-  mark('last'); mark('s_' + s.id);
+  mark('last'); mark('s_' + s.id); award('w:' + s.id, 5);
   DB.sess.unshift({ id: s.id, date: s.date, name: s.name, wid: s.wid, kind: s.kind, min: Math.round((s.end - s.start) / 60000), vol: Math.round(vol), kcal: Math.round(kcal), sets: n }); mark('sess');
   const w = wko(s.wid);
-  if (w && w.link) {
+  {
     const dk = 'd_' + s.date;
     if (!(dk in DB)) { const r = await loadMany([dk]); DB[dk] = r[dk]; }
-    const x = day(s.date), it = x.items.find(i => i.id === w.link && !i.done);
-    if (it) it.done = true; else x.items.push({ k: uid(), id: w.link, done: true });
+    const x = day(s.date), kind = s.kind || (w && w.kind);
+    const it = x.items.find(i => !i.done && i.w === s.wid) || x.items.find(i => !i.done && cat(i.id)?.gc && cat(i.id).gc === kind) || (w && w.link && x.items.find(i => !i.done && i.id === w.link));
+    if (it) it.done = true; else { const tc = (w && w.link && cat(w.link)) || DB.catalog.find(c => c.gc === kind); if (tc) x.items.push({ k: uid(), id: tc.id, done: true }); }
     mark(dk);
   }
   if (w && await ask(`Обновить шаблон «${w.name}» значениями из этой тренировки?`)) {
@@ -1181,6 +1492,424 @@ function seedWorkouts() {
   ];
 }
 
+/* ===== помощник первого запуска ===== */
+const SPORTS = [
+  { id: 'gym', l: 'Силовые в зале', task: 'Силовая тренировка', min: 60, met: 5, gc: 'st' },
+  { id: 'cardio', l: 'Кардио-тренажёры', task: 'Кардио', min: 40, met: 7, gc: 'c' },
+  { id: 'run', l: 'Бег', task: 'Бег', min: 40, met: 9, gc: 'run' },
+  { id: 'group', l: 'Групповые занятия', task: 'Групповая тренировка', min: 55, met: 5.5 },
+  { id: 'yoga', l: 'Йога и растяжка', task: 'Растяжка / йога', min: 30, met: 2.8, gc: 'stretch' },
+  { id: 'qg', l: 'Цигун', task: 'Цигун', min: 20, met: 2.5, gc: 'qg' },
+  { id: 'swim', l: 'Плавание', task: 'Плавание', min: 45, met: 7, gc: 'swim' },
+  { id: 'none', l: 'Пока не занимаюсь' }
+];
+const BEHAV = [['irreg', 'Ем нерегулярно'], ['snack', 'Часто перекусываю'], ['skipb', 'Пропускаю завтрак'], ['late', 'Ем поздно вечером'], ['sweet', 'Люблю сладкое'], ['out', 'Часто ем вне дома'], ['ok', 'В целом всё в порядке']];
+const AREAS = [['work', 'Работа'], ['study', 'Учёба'], ['home', 'Дом и быт'], ['create', 'Творчество'], ['rest', 'Отдых'], ['self', 'Уход за собой']];
+const HABITS = [['alco', 'Без алкоголя'], ['smoke', 'Без сигарет'], ['water', 'Вода 2 л'], ['sleep', 'Сон до 23:00'], ['sugar', 'Без сладкого'], ['late', 'Ужин до 20:00'], ['social', 'Без соцсетей утром'], ['kbju', 'КБЖУ в норме'], ['sport', 'Спорт был']];
+const tgName = () => { try { return (tg && tg.initDataUnsafe && tg.initDataUnsafe.user && tg.initDataUnsafe.user.first_name) || ''; } catch (e) { return ''; } };
+const hi = a => a.name ? `, ${a.name}` : '';
+const OQ = [
+  { id: 'intro', type: 'chips', opts: [['go', 'Давай начнём'], ['skip', 'Настрою сама']], say: a => `Привет! Я помощница этого приложения 🪷\n\nЗдесь можно собрать весь свой ритм в одном месте: ежедневный чек-лист, привычки-лотосы, меню с КБЖУ, тренировки и прогресс с графиками.\n\nЧтобы начать заботу о себе, давай настроим приложение под тебя. Я задам несколько вопросов — это 2–3 минуты. А потом сама соберу категории, задачи, тренировки, приёмы пищи и нормы КБЖУ. Тебе останется только подправить.` },
+  { id: 'name', type: 'text', ph: 'Имя', opts: () => tgName() ? [[tgName(), tgName()]] : [], say: () => 'Как к тебе обращаться?' },
+  { id: 'sex', type: 'chips', opts: [['f', 'Женский'], ['m', 'Мужской']], say: a => `Приятно познакомиться${hi(a)}! Для расчёта обмена веществ мне нужен пол.` },
+  { id: 'age', type: 'num', ph: 'Возраст, лет', min: 14, max: 90, say: () => 'Сколько тебе лет?' },
+  { id: 'h', type: 'num', ph: 'Рост, см', min: 120, max: 220, say: () => 'Какой у тебя рост?' },
+  { id: 'w', type: 'num', ph: 'Вес, кг', min: 35, max: 250, dec: true, say: () => 'И текущий вес? Он останется только у тебя.' },
+  { id: 'goal', type: 'chips', opts: [['lose', 'Снизить вес'], ['keep', 'Держать форму'], ['gain', 'Набрать массу'], ['health', 'Больше энергии и здоровья']], say: () => 'Какая главная цель на ближайшие месяцы?' },
+  { id: 'gw', type: 'num', ph: 'Желаемый вес, кг', min: 35, max: 250, dec: true, skippable: true, when: a => a.goal === 'lose' || a.goal === 'gain', say: () => 'К какому весу хочется прийти? Можно пропустить.' },
+  { id: 'meals', type: 'chips', opts: [['2', '2 раза'], ['3', '3 раза'], ['4', '4 раза']], say: () => 'Теперь про еду. Сколько раз в день ты обычно ешь основательно?' },
+  { id: 'snacks', type: 'chips', opts: [['0', 'Не перекусываю'], ['1', '1 раз'], ['2', '2 раза'], ['3', '3 и больше']], say: () => 'А перекусы? Сколько раз в день примерно?' },
+  { id: 'behav', type: 'multi', opts: BEHAV, say: () => 'Что из этого про тебя? Можно выбрать несколько — это поможет подобрать привычки.' },
+  { id: 'cook', type: 'chips', opts: [['daily', 'Каждый день'], ['batch', 'Заготовки 2–3 раза в неделю'], ['rare', 'Редко']], say: () => 'Как часто готовишь?' },
+  { id: 'sports', type: 'multi', opts: SPORTS.map(s => [s.id, s.l]), say: () => 'Перейдём к движению. Чем занимаешься или хочешь заниматься?' },
+  { id: 'freq', type: 'chips', opts: [['1', '1–2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6+']], when: a => a.sports && a.sports.some(x => x !== 'none'), say: () => 'Сколько тренировок в неделю реально для тебя?' },
+  { id: 'dur', type: 'chips', opts: [['30', '30 мин'], ['45', '45 мин'], ['60', '1 час'], ['90', '1,5 часа']], when: a => a.sports && a.sports.some(x => x !== 'none'), say: () => 'Сколько обычно длится одна тренировка?' },
+  { id: 'steps', type: 'chips', opts: [['6000', '6 000'], ['8000', '8 000'], ['10000', '10 000'], ['0', 'Не нужна']], say: () => 'Поставить ежедневную цель по шагам?' },
+  { id: 'areas', type: 'multi', opts: AREAS, say: () => 'Что ещё хочется упорядочить в жизни?' },
+  { id: 'workh', type: 'chips', opts: [['2', '2 ч'], ['4', '4 ч'], ['6', '6 ч'], ['8', '8 ч']], when: a => (a.areas || []).includes('work'), say: () => 'Сколько часов в день уходит на работу?' },
+  { id: 'custom', type: 'text', ph: 'Например: английский, медитация, прогулка с собакой', skippable: true, say: () => 'Есть конкретные дела, которые хочешь видеть в чек-листе? Напиши через запятую — я разложу их по категориям.' },
+  { id: 'habits', type: 'multi', opts: a => HABITS.filter(h => h[0] !== 'sport' || (a.sports || []).some(x => x !== 'none')), pre: a => { const p = ['kbju']; if ((a.sports || []).some(x => x !== 'none')) p.push('sport'); if ((a.behav || []).includes('sweet')) p.push('sugar'); if ((a.behav || []).includes('late')) p.push('late'); return p; }, say: () => 'Последнее: какие привычки отслеживать лотосами? Я отметила те, что подходят по твоим ответам.' },
+  { id: 'summary', type: 'final', say: a => `Готово${hi(a)}! Вот что я собрала:` }
+];
+const oq = id => QL().find(q => q.id === id);
+const optsOf = (q, a) => typeof q.opts === 'function' ? q.opts(a) : (q.opts || []);
+function onbStart(rerun, set) { st.onb = { i: 0, a: {}, sel: null, rerun: !!rerun, set: set || 'plan' }; }
+function onbNextIndex(from) { const a = st.onb.a; let i = from; while (i < QL().length && QL()[i].when && !QL()[i].when(a)) i++; return i; }
+function onbPrevIndex(from) { const a = st.onb.a; let i = from - 1; while (i > 0 && QL()[i].when && !QL()[i].when(a)) i--; return Math.max(0, i); }
+function ansText(q, v) {
+  if (v == null || v === '' || (Array.isArray(v) && !v.length)) return 'Пропустить';
+  const o = optsOf(q, st.onb.a);
+  if (q.type === 'chips') return (o.find(x => x[0] === v) || [v, v])[1];
+  if (q.type === 'multi') return v.map(x => (o.find(y => y[0] === x) || [x, x])[1]).join(', ');
+  if (q.type === 'num') return q.id === 'age' ? v + ' лет' : q.id === 'h' ? v + ' см' : kg(v) + ' кг';
+  return v;
+}
+function buildPlan(a) {
+  const w = +a.w || 60, h = +a.h || 165, age = +a.age || 30, sex = a.sex || 'f';
+  const sp = (a.sports || []).filter(x => x !== 'none').map(id => SPORTS.find(s => s.id === id)).filter(Boolean);
+  const freq = sp.length ? Math.max(sp.length === 1 ? 1 : 2, +a.freq || 3) : 0, dur = +a.dur || 0;
+  const bmrV = 10 * w + 6.25 * h - 5 * age + (sex === 'm' ? 5 : -161);
+  const act = freq >= 5 ? 1.6 : freq >= 3 ? 1.5 : freq >= 1 ? 1.4 : 1.3;
+  let kcal = bmrV * act;
+  if (a.goal === 'lose') kcal = Math.max(kcal * 0.85, bmrV * 1.1, sex === 'm' ? 1500 : 1300);
+  if (a.goal === 'gain') kcal *= 1.1;
+  kcal = Math.round(kcal / 50) * 50;
+  const pK = a.goal === 'lose' ? 1.6 : a.goal === 'gain' ? 1.8 : 1.4, fK = a.goal === 'lose' ? 0.75 : 0.9;
+  const P = Math.round(w * pK), F = Math.round(w * fK), C = Math.max(0, Math.round((kcal - P * 4 - F * 9) / 4));
+  // meals
+  const nm = +a.meals || 3, ns = +a.snacks || 0, sweet = (a.behav || []).includes('sweet');
+  const mains = nm === 2 ? ['Завтрак', 'Ужин'] : nm === 4 ? ['Завтрак', 'Обед', 'Полдник', 'Ужин'] : ['Завтрак', 'Обед', 'Ужин'];
+  const snackNames = []; for (let i = 0; i < ns; i++) snackNames.push(i === 0 && sweet ? 'Чай со вкусняшкой' : ns > 1 ? `Перекус ${i + 1 - (sweet ? 1 : 0) || 1}` : 'Перекус');
+  const uniq = []; snackNames.forEach(n => { let x = n, k = 2; while (uniq.includes(x) || mains.includes(x)) x = 'Перекус ' + k++; uniq.push(x); });
+  const order = []; mains.forEach((m, i) => { order.push(m); if (uniq[i]) order.push(uniq[i]); }); uniq.slice(mains.length).forEach(s => order.push(s));
+  const meals = order;
+  // categories & tasks
+  const tasks = [], T = (name, cat, min, def, extra = {}) => tasks.push({ id: uid(), name, cat, min, def, kcal: 0, ...extra });
+  meals.forEach(m => T(m, 'Еда', mains.includes(m) ? (m === 'Завтрак' ? 20 : 30) : 10, 7, { meal: m }));
+  const sess = {}; if (sp.length) { for (let i = 0; i < freq; i++) { const s = sp[i % sp.length]; sess[s.id] = (sess[s.id] || 0) + 1; } }
+  sp.forEach(s => { const m = ['yoga', 'qg'].includes(s.id) ? s.min : (dur || s.min); T(s.task, 'Спорт', m, sess[s.id] || 1, { kcal: Math.round(s.met * w * m / 60), sid: s.id, ...(s.gc ? { gc: s.gc } : {}) }); });
+  if (!sp.length) T('Прогулка', 'Спорт', 30, 3, { kcal: Math.round(3.5 * w * 0.5) });
+  if (+a.steps) T(`Шаги ${fmtN(+a.steps)}`, 'Спорт', Math.round(+a.steps / 100), 7, { kcal: Math.round(3.5 * w * (+a.steps / 100) / 60) });
+  const ar = a.areas || [];
+  if (ar.includes('work')) T('Работа', 'Работа', (+a.workh || 6) * 60, 5);
+  if (ar.includes('study')) T('Учёба', 'Учёба', 60, 4);
+  if (ar.includes('home')) { T('Уборка', 'Быт', 30, 3); T('Стирка', 'Быт', 15, 2); T('Полив цветов', 'Быт', 10, 1); }
+  T(a.cook === 'daily' ? 'Готовка' : a.cook === 'batch' ? 'Готовка заготовок' : 'Готовка', 'Быт', a.cook === 'daily' ? 45 : a.cook === 'batch' ? 120 : 60, a.cook === 'daily' ? 7 : a.cook === 'batch' ? 2 : 1);
+  if (ar.includes('create')) T('Творчество', 'Творчество', 60, 3);
+  if (ar.includes('rest')) T('Отдых без дел', 'Отдых', 30, 7);
+  if (ar.includes('self')) T('Уход за собой', 'Уход за собой', 20, 7);
+  const KW = [[/англ|язык|курс|учеб|учёб|чтен|книг|лекц|дз|домашк|экзам|матем/i, 'Учёба'], [/убор|стир|посуд|готов|цвет|полив|быт|магазин|покупк/i, 'Быт'], [/медит|сон|спа|отдых|ванн|прогулк|собак/i, 'Отдых'], [/рисов|музык|вяз|творч|гитар|фото|пис[аь]т/i, 'Творчество'], [/работ|проект|отчёт|отчет|письм|клиент/i, 'Работа'], [/уход|маск|крем|маникюр|волос/i, 'Уход за собой'], [/йог|бег|зал|трен|плав|растяж|цигун|танц/i, 'Спорт']];
+  String(a.custom || '').split(/[,;\n]+/).map(x => x.trim()).filter(Boolean).slice(0, 15).forEach(x => {
+    const nmx = x[0].toUpperCase() + x.slice(1); if (tasks.some(t => t.name.toLowerCase() === nmx.toLowerCase())) return;
+    const c = (KW.find(([re]) => re.test(x)) || [0, 'Другое'])[1]; T(nmx, c, 30, 3);
+  });
+  const COL = { Работа: '#d99414', Еда: '#c23a3a', Спорт: '#0f8f78', Учёба: '#5160c8', Быт: '#6f8f2a', Творчество: '#2f6f9f', Отдых: '#a0508f', 'Уход за собой': '#c0647f', Другое: '#9a5a2c' };
+  const tcats = Object.keys(COL).filter(n => tasks.some(t => t.cat === n)).map(n => ({ n, c: COL[n], sport: n === 'Спорт' }));
+  const HN = Object.fromEntries(HABITS);
+  const trackers = (a.habits || []).map(k => ({ k, name: HN[k], color: { alco: '#7a1820', smoke: '#6b5a4e', water: '#34507a', sleep: '#a0508f', sugar: '#c48a2a', late: '#6f8f2a', social: '#2f6f9f', kbju: '#d98891', sport: '#3f6d44' }[k] || '#3f6d44', ...(k === 'kbju' || k === 'sport' ? { auto: k } : {}) }));
+  return { profile: { h, age, sex, act: 1.25, goalW: a.gw ? +a.gw : null }, w, target: { k: kcal, p: P, f: F, c: C }, meals, tasks, tcats, trackers, sp, sess, freq, bmr: Math.round(bmrV) };
+}
+function planSummary(pl) {
+  const byCat = {}; pl.tasks.forEach(t => (byCat[t.cat] = byCat[t.cat] || []).push(t));
+  const T = pl.target;
+  let h = `<div class="osum"><div class="osb"><b>КБЖУ на день</b><div class="kvline">${[['k', 'ккал'], ['p', 'г Б'], ['f', 'г Ж'], ['c', 'г У']].map(([k, u]) => `<span><b>${fmtN(T[k])}</b> <span class="muted">${u}</span></span>`).join('')}</div><div class="sm muted">Обмен веществ ~${fmtN(pl.bmr)} ккал${st.onb.a.goal === 'lose' ? ', мягкий дефицит без голодания' : ''}.</div></div>`;
+  h += `<div class="osb"><b>Приёмы пищи</b><div>${pl.meals.join(' · ')}</div></div>`;
+  if (pl.sp.length) h += `<div class="osb"><b>Спорт · ${pl.freq} в неделю</b><div>${pl.sp.map(s => `${s.task} × ${pl.sess[s.id] || 1}`).join(' · ')}</div><div class="sm muted">Шаблоны тренировок будут во вкладке «Спорт».</div></div>`;
+  h += `<div class="osb"><b>Категории и задачи</b>${Object.keys(byCat).map(c => `<div><span class="muted">${esc(c)}:</span> ${byCat[c].filter(t => !t.meal).map(t => esc(t.name)).join(', ') || byCat[c].length + ' приёма пищи'}</div>`).join('')}</div>`;
+  h += `<div class="osb"><b>Лотосы-привычки</b><div>${pl.trackers.map(t => esc(t.name)).join(' · ') || '—'}</div></div></div>`;
+  return h + `<div class="sm muted" style="margin-top:8px">Я создам период на 7 дней с сегодняшнего дня и расставлю цели. Всё можно поменять потом.${st.onb.rerun ? ' Каталог задач, трекеры и нормы заменятся, история останется.' : ''}</div>`;
+}
+function applyPlan(pl) {
+  DB.profile = { ...DB.profile, ...pl.profile }; mark('profile');
+  DB.tcats = pl.tcats; mark('tcats'); syncCats();
+  DB.meals = pl.meals; mark('meals'); syncMealList();
+  DB.catalog = pl.tasks.map(({ sid, ...t }) => t); mark('catalog');
+  DB.trackers = pl.trackers; mark('trackers');
+  // спорт: категории и шаблоны
+  const want = new Set(pl.sp.map(s => s.gc).filter(Boolean));
+  const extra = { run: { name: 'Бег', ex: 'c', exs: [['Бег', { min: 30, lvl: 0, hr: 145, mu: 'km' }]] }, swim: { name: 'Плавание', ex: 'c', exs: [['Плавание', { min: 40, lvl: 0, hr: 130, mu: 'km' }]] } };
+  for (const id of ['run', 'swim']) if (want.has(id) && !DB.exercises.some(e => e.gc === id)) {
+    for (const [n, o] of extra[id].exs) DB.exercises.push({ id: uid(), name: n, grp: extra[id].name, kind: 'c', gc: id, note: '', sets: 3, reps: 10, w: 0, u: 'r', amt: 0, kcal: 0, dur: 60, rep: 0, sides: false, ...o });
+  }
+  mark('exercises');
+  const taskFor = gc => { const s = pl.sp.find(x => x.gc === gc); return s ? DB.catalog.find(c => c.name === s.task) : null; };
+  const baseG = [{ id: 'st', name: 'Силовые', ex: 'st' }, { id: 'c', name: 'Кардио', ex: 'c' }, { id: 'run', name: 'Бег', ex: 'c' }, { id: 'stretch', name: 'Растяжка', ex: 'tm' }, { id: 'qg', name: 'Цигун', ex: 'tm' }, { id: 'swim', name: 'Плавание', ex: 'c' }];
+  DB.gcats = baseG.filter(g => want.has(g.id) || ['st', 'stretch'].includes(g.id)).map(g => ({ ...g, link: taskFor(g.id)?.id || '' })); mark('gcats');
+  const E = DB.exercises, byName = n => E.find(e => e.name === n);
+  const W = (kind, name, list) => ({ id: uid(), kind, name, link: gcat(kind).link || '', fav: want.has(kind), items: list.map(byName).filter(Boolean).map(mkItem) });
+  const tpl = [W('st', 'Силовая · всё тело', ['Присед со штангой', 'Тяга верхнего блока', 'Жим гантелей лёжа', 'Ягодичный мост', 'Планка']), W('stretch', 'Растяжка после тренировки', ['Кошка-корова', 'Выпад с растяжкой передней поверхности бедра', 'Наклон к ногам сидя', 'Бабочка', 'Поза ребёнка'])];
+  if (want.has('c')) tpl.push(W('c', 'Кардио на тренажёрах', ['Лестница (степпер)', 'Эллипсоид']));
+  if (want.has('qg')) tpl.push(W('qg', 'Цигун · короткий комплекс', ['Суставная разминка', 'Поднять руки к небу', 'Натянуть лук', 'Стояние столбом', 'Собрать и опустить ци']));
+  if (want.has('run')) tpl.push(W('run', 'Пробежка', ['Бег']));
+  if (want.has('swim')) tpl.push(W('swim', 'Бассейн', ['Плавание']));
+  DB.workouts = tpl; mark('workouts');
+  // период на 7 дней
+  const s0 = today(), p = { id: uid(), start: s0, end: addD(s0, 6), goals: {}, trackers: pl.trackers.map(t => t.k), trg: {}, target: pl.target, w0: pl.w, w1: null };
+  p.goals = Object.fromEntries(DB.catalog.filter(c => recOf(c, p) > 0).map(c => [c.id, recOf(c, p)]));
+  DB.periods.push(p); DB.periods.sort((x, y) => x.start < y.start ? -1 : 1); mark('periods');
+  DB['m_' + p.id] = { days: {} }; chunkN['m_' + p.id] = 0; mark('m_' + p.id);
+  DB['d_' + s0] = { items: DB.catalog.filter(c => (c.def || 0) >= 7 || (c.meal)).map(c => ({ k: uid(), id: c.id, done: false })), tr: {} }; chunkN['d_' + s0] = 0; mark('d_' + s0);
+  DB.onb = { done: 1, a: st.onb.a }; mark('onb');
+  return p;
+}
+function vOnb() {
+  const o = st.onb, a = o.a;
+  let msgs = '';
+  for (let i = 0; i < o.i; i++) { const q = QL()[i]; if (q.when && !q.when(a)) continue; msgs += bubble(q.say(a)); if (q.id in a || q.type !== 'final') msgs += `<div class="ob me">${esc(ansText(q, a[q.id]))}</div>`; }
+  const q = QL()[o.i];
+  msgs += bubble(q.say(a), true);
+  let inp = '';
+  if (q.type === 'final' && st.onb.set === 'intro') inp = `<div class="ochips"><button class="pill red" data-a="onbintro">Идём дальше</button></div>`;
+  else if (q.type === 'final') { const pl = buildPlan(a); msgs += `<div class="ob ai wide">${planSummary(pl)}</div>`; inp = `<div class="ochips"><button class="pill red" data-a="onbapply">Создать мой план</button></div>`; }
+  else if (q.type === 'chips') inp = `<div class="ochips">${optsOf(q, a).map(([v, l]) => `<button class="ochip" data-a="onbans" data-v="${esc(v)}">${esc(l)}</button>`).join('')}</div>`;
+  else if (q.type === 'multi') { const sel = o.sel || (q.pre ? q.pre(a) : []); o.sel = sel; inp = `<div class="ochips">${optsOf(q, a).map(([v, l]) => `<button class="ochip ${sel.includes(v) ? 'on' : ''}" data-a="onbtog" data-v="${esc(v)}">${sel.includes(v) ? '✓ ' : ''}${esc(l)}</button>`).join('')}</div><button class="pill red" data-a="onbmulti" ${sel.length ? '' : 'disabled'}>Дальше</button>`; }
+  else { const o2 = optsOf(q, a); inp = `${o2.length ? `<div class="ochips">${o2.map(([v, l]) => `<button class="ochip" data-a="onbans" data-v="${esc(v)}">${esc(l)}</button>`).join('')}</div>` : ''}<div class="orow"><input id="onbin" ${q.type === 'num' ? `type="number" inputmode="${q.dec ? 'decimal' : 'numeric'}"` : 'type="text"'} placeholder="${esc(q.ph || '')}" value="${esc(a[q.id] ?? '')}" autocomplete="off"><button class="osend" data-a="onbtxt" aria-label="Отправить"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>${q.skippable ? '<button class="lnk" data-a="onbskip">Пропустить</button>' : ''}`; }
+  const nq = QL().filter(x => x.type !== 'final').length, pos = Math.min(nq, QL().slice(0, o.i).filter(x => x.type !== 'final' && (!x.when || x.when(a))).length);
+  return `<div class="onb"><div class="ohead">${o.i > 0 ? '<button class="obk" data-a="onbback" aria-label="Назад"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>' : '<span style="width:36px"></span>'}<div class="otitle">${o.set === 'intro' ? 'Знакомство' : 'Настройка'}${o.i ? ` · ${pos} из ${nq}` : ''}</div>${o.i > 0 && q.type !== 'final' && o.set !== 'intro' ? '<button class="oskip" data-a="onbquit">Выйти</button>' : '<span style="width:36px"></span>'}</div><div class="oprog"><i style="width:${o.i ? pos / nq * 100 : 0}%"></i></div><div class="omsgs" id="omsgs">${msgs}</div><div class="oinput">${inp}</div></div>`;
+}
+function bubble(t, last) { return `<div class="orow2"><div class="oav">${lotusIcon(true)}</div><div class="ob ai ${last ? 'new' : ''}">${esc(t).replace(/\n/g, '<br>')}</div></div>`; }
+function onbAnswer(v) {
+  const o = st.onb, q = QL()[o.i];
+  if (q.id === 'intro' && v === 'skip') { DB.onb = { done: 1, skipped: 1 }; mark('onb'); st.onb = null; toast('Помощника можно открыть в «Настройках»'); return; }
+  if (q.type === 'num' && v !== '' && v != null) { const n = num(v); if (!(n >= q.min && n <= q.max)) { toast(`Введи число от ${q.min} до ${q.max}`); return false; } v = q.dec ? r1(n) : Math.round(n); }
+  if (q.type === 'text' && !q.skippable && !String(v || '').trim()) { toast('Напиши ответ'); return false; }
+  o.a[q.id] = typeof v === 'string' ? v.trim() : v; o.sel = null; o.i = onbNextIndex(o.i + 1);
+}
+async function onbAct(a, D) {
+  const o = st.onb; if (!o) return false;
+  switch (a) {
+    case 'onbans': onbAnswer(D.v); break;
+    case 'onbtxt': { const v = document.getElementById('onbin').value; if (onbAnswer(v) === false) return true; break; }
+    case 'onbskip': onbAnswer(null); break;
+    case 'onbtog': { const q = QL()[o.i]; let sel = o.sel || []; if (sel.includes(D.v)) sel = sel.filter(x => x !== D.v); else { if (q.id === 'sports' && D.v === 'none') sel = []; if (q.id === 'sports' && D.v !== 'none') sel = sel.filter(x => x !== 'none'); if (q.id === 'behav' && D.v === 'ok') sel = []; if (q.id === 'behav' && D.v !== 'ok') sel = sel.filter(x => x !== 'ok'); sel = [...sel, D.v]; } o.sel = sel; break; }
+    case 'onbmulti': onbAnswer(o.sel || []); break;
+    case 'onbback': { o.i = onbPrevIndex(o.i); o.sel = Array.isArray(o.a[QL()[o.i].id]) ? [...o.a[QL()[o.i].id]] : null; break; }
+    case 'onbquit': if (!(await ask('Выйти из настройки? Ответы не сохранятся.'))) return true; if (!o.rerun) { DB.onb = { done: 1, skipped: 1 }; mark('onb'); } st.onb = null; break;
+    case 'onbintro': applyIntro(o.a); st.onb = null; navHist.length = 0; tutGo(1, 0); break;
+    case 'onbapply': {
+      if (o.rerun && !(await ask('Заменить каталог задач, трекеры, шаблоны тренировок и нормы КБЖУ? История и меню сохранятся.'))) return true;
+      const p = applyPlan(buildPlan(o.a)); st.onb = null; await openPeriod(p.id); st.tab = 'today'; st.date = today(); navHist.length = 0; toast('План готов — подкорректируй под себя'); break;
+    }
+    default: return false;
+  }
+  render();
+  requestAnimationFrame(() => { const m = document.getElementById('omsgs'); if (m) m.scrollTop = m.scrollHeight; const i = document.getElementById('onbin'); if (i && !('ontouchstart' in window)) i.focus(); });
+  return true;
+}
+
+/* ===== знакомство (глава 0) ===== */
+const GOALS = [['energy', 'Больше энергии'], ['routine', 'Наладить режим'], ['food', 'Подружиться с едой'], ['move', 'Двигаться с удовольствием'], ['weight', 'Бережно изменить вес'], ['calm', 'Меньше тревоги и вины']];
+const OQI = [
+  { id: 'hello', type: 'chips', opts: [['go', 'Звучит хорошо']], say: () => `Привет! Я помощница этого приложения 🪷\n\nОно — про заботу о себе. Главная цель — помочь научиться любить себя и своё тело.\n\nДержать дисциплину трудно. Но мучиться от вины и неуверенности в себе — ещё труднее. Поэтому здесь нет «провалов»: каждый маленький шаг считается, а пропущенный день — это просто день.` },
+  { id: 'care', type: 'chips', opts: [['ok', 'Понятно, начнём']], say: () => `Одна важная вещь. Приложение помогает с режимом, но не заменяет специалистов.\n\nЕсли есть вопросы о здоровье, питании или весе — советуйся с врачом: терапевтом, эндокринологом, диетологом. А если отношения с едой или телом причиняют боль — обратиться к психологу или психотерапевту — это смелый и правильный шаг. Ты не одна.` },
+  { id: 'name', type: 'text', ph: 'Имя', opts: () => tgName() ? [[tgName(), tgName()]] : [], say: () => 'Давай познакомимся. Как к тебе обращаться?' },
+  { id: 'age', type: 'num', ph: 'Возраст, лет', min: 14, max: 90, say: a => `Очень приятно${hi(a)}! Сколько тебе лет?` },
+  { id: 'sex', type: 'chips', opts: [['f', 'Женский'], ['m', 'Мужской']], say: () => 'Для расчёта обмена веществ нужен пол по физиологии.' },
+  { id: 'h', type: 'num', ph: 'Рост, см', min: 120, max: 220, say: () => 'Какой у тебя рост?' },
+  { id: 'w', type: 'num', ph: 'Вес, кг', min: 35, max: 250, dec: true, say: () => 'И вес. Это просто цифра для расчётов — она не говорит ничего о твоей ценности, и видишь её только ты.' },
+  { id: 'goals', type: 'multi', opts: GOALS, say: () => 'Чего хочется больше всего? Можно выбрать несколько.' },
+  { id: 'wdir', type: 'chips', opts: [['lose', 'Немного снизить'], ['gain', 'Немного набрать']], when: a => (a.goals || []).includes('weight'), say: () => 'В какую сторону хочется изменить вес? Будем двигаться бережно, без резких ограничений.' },
+  { id: 'fin', type: 'final', say: a => `Спасибо${hi(a)}! Теперь я проведу тебя по приложению — вкладка за вкладкой, с маленькими заданиями.\n\nЗа каждый шаг ты получаешь лепестки 🌸 и глазурованные плитки, а из лепестков вырастет твой сад. В каждой вкладке уже лежит пример, чтобы было с чего начать.` }
+];
+const QL = () => st.onb && st.onb.set === 'intro' ? OQI : OQ;
+function applyIntro(a) {
+  const w = +a.w || 60, h = +a.h || 165, age = +a.age || 30, sex = a.sex || 'f';
+  const bmrV = 10 * w + 6.25 * h - 5 * age + (sex === 'm' ? 5 : -161);
+  let kcal = bmrV * 1.45; if (a.wdir === 'lose') kcal = Math.max(kcal * 0.88, bmrV * 1.15); if (a.wdir === 'gain') kcal *= 1.08;
+  kcal = Math.round(kcal / 50) * 50;
+  const P = Math.round(w * (a.wdir === 'gain' ? 1.7 : 1.5)), F = Math.round(w * 0.9), C = Math.max(0, Math.round((kcal - P * 4 - F * 9) / 4));
+  DB.profile = { ...DB.profile, h, age, sex, act: 1.25, name: a.name || '', goals: a.goals || [], soft: (a.goals || []).includes('calm') || (a.goals || []).includes('food') ? DB.profile.soft : DB.profile.soft };
+  mark('profile');
+  DB.tcats = [{ n: 'Еда', c: '#c23a3a', sport: false }, { n: 'Спорт', c: '#0f8f78', sport: true }, { n: 'Забота о себе', c: '#a0508f', sport: false }]; mark('tcats'); syncCats();
+  DB.meals = ['Завтрак', 'Обед', 'Ужин', 'Перекус']; mark('meals'); syncMealList();
+  DB.catalog = [
+    ...DB.meals.map(m => ({ id: uid(), name: m, cat: 'Еда', meal: m, min: m === 'Перекус' ? 10 : 25, def: 7, kcal: 0 })),
+    { id: uid(), name: 'Растяжка 15 мин', cat: 'Спорт', min: 15, def: 3, kcal: Math.round(2.8 * w * 0.25), gc: 'stretch' },
+    { id: uid(), name: 'Прогулка 30 мин', cat: 'Забота о себе', min: 30, def: 3, kcal: 0 }
+  ]; mark('catalog');
+  DB.trackers = [{ k: 'water', name: 'Вода 2 л', color: '#34507a' }, { k: 'kbju', name: 'КБЖУ в норме', color: '#d98891', auto: 'kbju' }, { k: 'sport', name: 'Спорт был', color: '#3f6d44', auto: 'sport' }]; mark('trackers');
+  DB.gcats = [{ id: 'st', name: 'Силовые', ex: 'st', link: '' }, { id: 'stretch', name: 'Растяжка', ex: 'tm', link: DB.catalog.find(c => c.gc === 'stretch').id }, { id: 'c', name: 'Кардио', ex: 'c', link: '' }]; mark('gcats');
+  DB.workouts = seedWorkouts().filter(x => x.kind === 'stretch' || x.kind === 'st').map(x => ({ ...x, link: x.kind === 'stretch' ? DB.catalog.find(c => c.gc === 'stretch').id : '' })); mark('workouts');
+  DB.introTarget = { k: kcal, p: P, f: F, c: C, w };
+  DB.onb = { done: 1, a }; mark('onb');
+  DB.tut = { ch: 1, step: 0, lock: true }; mark('tut');
+  award('tut:ch0', 5); giveTile('seed');
+}
+
+/* ===== обучение по главам ===== */
+const TCH = [
+  { t: 'Знакомство' },
+  { t: 'Период', tab: 'period' },
+  { t: 'День', tab: 'today' },
+  { t: 'Питание', tab: 'menu' },
+  { t: 'Спорт', tab: 'gym' },
+  { t: 'Прогресс', tab: 'prog' },
+  { t: 'Настройки', tab: 'set' }
+];
+const TAB_CH = { period: 1, today: 2, menu: 3, gym: 4, prog: 5, set: 6 };
+const tutBase = {};
+const STEPS = {
+  1: [
+    { sel: '[data-a=pt][data-v=cat]', txt: 'Это «Период» — место, где ты планируешь неделю. Начнём с основы: категорий. Открой «Каталог задач».', done: () => st.pt === 'cat' },
+    { sel: '[data-a=tcnew]', txt: 'Категории — это большие сферы жизни: еда, движение, забота о себе, работа, учёба. Они помогают видеть баланс — чтобы в неделе было место не только делам, но и отдыху. Пример уже есть — «Забота о себе». Создай свою категорию: нажми «+ Категория».', enter: () => { tutBase.tc = (DB.tcats || []).length; }, done: () => (DB.tcats || []).length > (tutBase.tc ?? 99) },
+    { sel: '[data-a=cadd]', txt: 'Внутри категории живут задачи. Хорошая задача — конкретная и посильная: не «заняться собой», а «прогулка 30 минут». Добавь задачу — «+ Новая задача» — и дай ей понятное название.', enter: () => { tutBase.cc = DB.catalog.length; }, done: () => DB.catalog.length > (tutBase.cc ?? 999) },
+    { sel: '[data-a=cmin]', txt: 'У каждой задачи есть время. Оно помогает честно видеть, сколько помещается в день, и не перегружать себя. Поменяй время кнопками − и +.', done: () => tutBase.cmin },
+    { sel: '[data-a=pt][data-v=per]', txt: 'Теперь сам период. Вернись на вкладку «Период».', done: () => st.pt !== 'cat' },
+    { sel: '[data-a=newp]', txt: 'Период — это отрезок, например неделя, на который ты берёшь посильные цели. Задачи из каталога — это «меню возможностей», а в период ты выбираешь то, что реально сделать сейчас. Создай свой первый период.', done: () => DB.periods.length > 0 },
+    { sel: '[data-a=goal][data-n="1"]', txt: 'Сколько раз за период ты хочешь сделать каждую задачу? Когда число задано заранее, легче распределить силы и видеть прогресс. Начни с малого — это не экзамен. Поставь цель хотя бы одной задаче кнопкой +.', done: () => { const p = per(); return !!p && Object.values(p.goals || {}).some(v => v > 0); } }
+  ],
+  2: [
+    { sel: '[data-a=pick]', txt: 'Это твой день. Стрелками в шапке можно листать дни. Собери сегодняшний чек-лист из целей периода — нажми «+ Добавить».', done: () => !st.modal && day(today()).items.some(i => !mealOf(cat(i.id))) },
+    { sel: '.chk .cb', txt: 'Отметь что-нибудь выполненным. Даже маленький шаг — это шаг. За каждую отметку — лепесток 🌸', done: () => day(today()).items.some(i => i.done) },
+    { sel: '.lotb:not(.auto)', txt: 'Лотосы — это привычки. Нажми на лотос, когда привычка сегодня получилась. «Спорт был» и «КБЖУ в норме» распускаются сами, по твоему плану.', done: () => trList().some(t => !t.auto && day(today()).tr[t.k] === 1) },
+    { sel: '.dres', txt: 'Внизу — итоги дня. Смотри на них как на поддержку, а не как на оценку. Сделала меньше, чем планировала, — это нормально: план подстраивается под тебя, а не наоборот.', cta: 'Понятно' }
+  ],
+  3: [
+    { sel: '[data-a=nv][data-v=rec]', txt: 'Питание начинается с книги рецептов. Открой «Рецепты».', done: () => st.nv === 'rec' },
+    { sel: '[data-a=recopen]', txt: 'Здесь твои блюда. Пример уже есть — открой его и посмотри, как он устроен.', done: () => !!st.rid },
+    { sel: '[data-a=recback]', txt: 'В рецепте — продукты с граммами на всё блюдо и число порций. Калории на порцию считаются сами. Так можно вписать даже борщ на целую кастрюлю. Вернись к списку.', done: () => !st.rid },
+    { sel: '[data-a=nv][data-v=menu]', txt: 'Теперь открой «Меню».', done: () => st.nv === 'menu' || !st.nv },
+    { sel: '[data-a=dadd]', txt: 'Меню — это раскладка блюд по дням. Поставь блюдо в приём пищи — «+ блюдо». Если готовишь заранее, можно сразу на несколько дней. А в «Дне» приёмы пищи появятся сами.', done: () => { const M = st.pid && DB['m_' + st.pid]; return !!M && Object.values(M.days || {}).some(md => Object.values(md).some(L => (L || []).some(e => e.dish || e.pid))); } },
+    { sel: null, txt: 'Если цифры калорий вызывают тревогу, можно включить мягкий режим: вместо цифр — подсказки словами и метод тарелки. Выключить можно в любой момент в «Настройках».', ctas: [['tutsoft', 'Включить мягкий режим'], ['tutnext', 'Оставить цифры']] }
+  ],
+  4: [
+    { sel: '.gmenu [data-a=gc]:not([data-id=""])', txt: 'Спорт бывает разным: силовые, кардио, растяжка, цигун — и твоё собственное. Выбери категорию в меню сверху.', done: () => !!st.gc },
+    { sel: '[data-a=wfav]', txt: 'Внутри категории — тренировки и упражнения. Отметь тренировку звёздочкой — она попадёт в «Любимые» на главной «Спорта».', done: () => DB.workouts.some(w => w.fav) },
+    { sel: null, txt: 'Задачу спорта в каталоге можно привязать к разделу тренировок — тогда в «Дне» появится кнопка «▶ Начать». Двигайся с удовольствием. А если есть боли или хронические состояния — сначала посоветуйся с врачом.', cta: 'Понятно' }
+  ],
+  5: [
+    { sel: '.garden', txt: 'Здесь твой прогресс и сад. Сад растёт от лепестков, которые ты получаешь за заботу о себе, и никогда не вянет. Нажми на сад.', done: () => tutBase.garden },
+    { sel: '.tiles2', txt: 'А это коллекция глазурованных плиток — за главы и за заботливые привычки. Некоторые плитки оживляют сад: в нём появляются стрекозы, рыбки и фонарики.', cta: 'Красиво' }
+  ],
+  6: [
+    { sel: '[data-a=soft]', txt: 'В «Настройках» — мягкий режим питания, копия данных и повтор обучения. На этом всё: теперь приложение полностью твоё. Заботься о себе бережно 🪷', cta: 'Завершить обучение' }
+  ]
+};
+const tut = () => DB.tut || { done: true };
+const tutOn = () => !!(DB.tut && !DB.tut.done);
+const tabOpen = t => !tutOn() || !tut().lock || (TAB_CH[t] || 0) <= tut().ch;
+function tutStep() { const T = tut(); return tutOn() ? (STEPS[T.ch] || [])[T.step] : null; }
+function tutGo(ch, step) {
+  DB.tut = { ...tut(), ch, step, done: false }; mark('tut');
+  const s = tutStep(); if (s && s.enter) s.enter();
+  if (step === 0 && TCH[ch] && TCH[ch].tab) { st.tab = TCH[ch].tab; st.modal = null; window.scrollTo(0, 0); }
+}
+function tutAdvance() {
+  const T = tut(), L = STEPS[T.ch] || [];
+  award(`tut:${T.ch}:${T.step}`, 2);
+  if (T.step + 1 < L.length) { tutGo(T.ch, T.step + 1); return; }
+  const tileId = { 1: 'roots', 2: 'leaf', 3: 'plate', 4: 'wave', 5: 'pond', 6: 'garden' }[T.ch];
+  award(`tut:ch${T.ch}`, 5); if (tileId) giveTile(tileId);
+  if (T.ch + 1 < TCH.length) { tutGo(T.ch + 1, 0); toast(`Открыта вкладка «${TCH[T.ch + 1].t}»`); }
+  else { DB.tut = { ...T, done: true }; mark('tut'); toast('Обучение пройдено — сад открыт 🪷'); }
+}
+function tutCheck() { const s = tutStep(); if (s && s.done && s.done()) { tutAdvance(); return true; } return false; }
+function coachCard() {
+  const s = tutStep(); if (!s || st.modal) return '';
+  const T = tut(), L = STEPS[T.ch] || [];
+  const btns = s.ctas ? `<div class="btns">${s.ctas.map(([a, l], i) => `<button class="${i ? '' : 'pri'}" data-a="${a}">${l}</button>`).join('')}</div>` : s.cta ? `<button class="pri wide" data-a="tutnext">${s.cta}</button>` : '';
+  if (st.coachMin) return `<button class="coachpill" data-a="coachmax">${lotusIcon(true)}<span>Глава ${T.ch} · задание</span></button>`;
+  return `<div class="coach"><div class="coachh"><span class="oav">${lotusIcon(true)}</span><b>Глава ${T.ch} · ${TCH[T.ch].t}</b><span class="dots">${L.map((_, i) => `<i class="${i < T.step ? 'd' : i === T.step ? 'c' : ''}"></i>`).join('')}</span><button class="x" data-a="coachmin" aria-label="Свернуть">⌄</button></div><p>${esc(s.txt)}</p>${btns}</div>`;
+}
+function coachHighlight() {
+  document.querySelectorAll('.coach-hl').forEach(e => e.classList.remove('coach-hl'));
+  const s = tutStep(); if (!s || !s.sel || st.modal) return;
+  const el = document.querySelector(s.sel); if (!el) return;
+  el.classList.add('coach-hl');
+  const r = el.getBoundingClientRect(); if (r.top < 60 || r.bottom > innerHeight - 280 || r.right > innerWidth || r.left < 0) el.scrollIntoView({ block: 'center', inline: 'center', behavior: 'smooth' });
+}
+
+/* ===== лепестки и плитки ===== */
+const rw = () => DB.rw || (DB.rw = { pet: 0, life: 0, tiles: {}, got: {}, owned: ['lotus', 'paper'], flower: 'lotus', bg: 'paper' });
+function award(key, n, quiet) {
+  const R = rw(); if (R.got[key]) return false;
+  R.got[key] = today(); R.pet += n; R.life += n; mark('rw');
+  if (!quiet) petalPop(n);
+  return true;
+}
+function awardDaily(key, n, cap) {
+  const d = today(), cnt = Object.keys(rw().got).filter(k => k.startsWith(`d:${d}:`)).length;
+  if (cap && cnt >= cap) return false; return award(`d:${d}:${key}`, n);
+}
+function petalPop(n) { const el = document.getElementById('petal'); if (!el) return; el.textContent = `+${n} 🌸`; el.classList.remove('on'); void el.offsetWidth; el.classList.add('on'); }
+const TILES = [
+  { id: 'seed', n: 'Семечко', d: 'Знакомство', c: '#6f8f2a', m: 'sprout' },
+  { id: 'roots', n: 'Корни', d: 'Первый период', c: '#9a5a2c', m: 'root' },
+  { id: 'leaf', n: 'Первый лист', d: 'Первый день', c: '#3f6d44', m: 'leaf' },
+  { id: 'plate', n: 'Тарелка', d: 'Глава «Питание»', c: '#c23a3a', m: 'bowl', g: 'кои в пруду' },
+  { id: 'wave', n: 'Движение', d: 'Глава «Спорт»', c: '#0f8f78', m: 'wave', g: 'стрекозы' },
+  { id: 'pond', n: 'Пруд', d: 'Глава «Прогресс»', c: '#34507a', m: 'drop' },
+  { id: 'garden', n: 'Сад открыт', d: 'Всё обучение', c: '#a0508f', m: 'lotus', g: 'фонарики' },
+  { id: 'streak3', n: 'Три рассвета', d: '3 дня подряд с отметками', c: '#d99414', m: 'sun' },
+  { id: 'streak7', n: 'Неделя заботы', d: '7 дней подряд с отметками', c: '#c48a2a', m: 'star', g: 'светлячки' },
+  { id: 'return', n: 'Возвращение', d: 'Вернулась после перерыва', c: '#d98891', m: 'heart' },
+  { id: 'cook', n: 'Своя кухня', d: '5 рецептов в книге', c: '#b5442a', m: 'bowl' },
+  { id: 'move10', n: 'Десять движений', d: '10 тренировок', c: '#2f6f9f', m: 'wave', g: 'мостик' },
+  { id: 'lotus7', n: 'Лотосовая неделя', d: 'Все лотосы 7 дней', c: '#e3949c', m: 'lotus' },
+  { id: 'honest', n: 'Честный взгляд', d: 'Вес в начале и в конце периода', c: '#6b5a4e', m: 'moon' }
+];
+function giveTile(id) { const R = rw(); if (R.tiles[id]) return; R.tiles[id] = today(); R.pet += 5; R.life += 5; mark('rw'); const t = TILES.find(x => x.id === id); setTimeout(() => toast(`Новая плитка: «${t ? t.n : id}» +5 🌸`), 400); }
+function activeDays() { return Object.keys(DB).filter(k => k.startsWith('d_') && DB[k] && DB[k].items && DB[k].items.some(i => i.done)).map(k => k.slice(2)).sort(); }
+function checkTiles() {
+  if (!DB.rw) return;
+  const ad = activeDays(), t = today(), set = new Set(ad);
+  let s = 0; for (let d = t; set.has(d); d = addD(d, -1)) s++;
+  if (s >= 3) giveTile('streak3'); if (s >= 7) giveTile('streak7');
+  if (set.has(t)) { const prev = ad.filter(d => d < t).pop(); if (prev && prev < addD(t, -3)) giveTile('return'); }
+  if ((DB.dishes || []).length >= 5) giveTile('cook');
+  if (DB.sess.length >= 10) giveTile('move10');
+  if (DB.periods.some(p => p.w0 != null && p.w1 != null)) giveTile('honest');
+  const man = trList().filter(x => !x.auto); if (man.length) { let ok = 0; for (let d = t, i = 0; i < 7; i++, d = addD(d, -1)) if (man.every(x => trVal(d, x.k) === 1)) ok++; if (ok >= 7) giveTile('lotus7'); }
+}
+function tileSVG(t, has) {
+  const M = {
+    sprout: 'M32 46V28M32 30c-8 0-12-6-12-12 7 0 12 5 12 12zM32 34c7 0 11-5 11-11-7 0-11 5-11 11z',
+    root: 'M32 18v16M32 34l-8 10M32 34l8 10M32 38l-3 10M32 38l3 10M24 24h16',
+    leaf: 'M20 44c0-14 10-24 24-24 0 14-10 24-24 24zM20 44l16-16',
+    bowl: 'M16 32h32a16 12 0 0 1-32 0zM26 26c0-3 3-3 3-6M34 26c0-3 3-3 3-6',
+    wave: 'M14 30c6-6 12 6 18 0s12 6 18 0M14 40c6-6 12 6 18 0s12 6 18 0',
+    drop: 'M32 16c8 11 12 17 12 23a12 12 0 0 1-24 0c0-6 4-12 12-23z',
+    lotus: 'M32 46c-6-6-6-16 0-26 6 10 6 20 0 26zM32 46c-10-2-16-9-17-18 9 1 15 7 17 18zM32 46c10-2 16-9 17-18-9 1-15 7-17 18z',
+    sun: 'M32 24a8 8 0 1 0 0 16 8 8 0 0 0 0-16zM32 14v5M32 45v5M14 32h5M45 32h5M19 19l4 4M41 41l4 4M45 19l-4 4M23 41l-4 4',
+    star: 'M32 15l5 11 12 1-9 8 3 12-11-6-11 6 3-12-9-8 12-1z',
+    heart: 'M32 46S16 36 16 26a8 8 0 0 1 16-3 8 8 0 0 1 16 3c0 10-16 20-16 20z',
+    moon: 'M38 16a16 16 0 1 0 8 26 13 13 0 0 1-8-26z'
+  };
+  return `<svg viewBox="0 0 64 64" class="tile ${has ? 'has' : ''}"><defs><radialGradient id="tg_${t.id}" cx=".32" cy=".28" r=".9"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".35" stop-color="${t.c}" stop-opacity=".92"/><stop offset="1" stop-color="${t.c}"/></radialGradient></defs><rect x="3" y="3" width="58" height="58" rx="8" fill="${has ? `url(#tg_${t.id})` : '#efe4cc'}" stroke="${has ? 'rgba(0,0,0,.25)' : '#d6c09a'}" stroke-width="1.5"/><rect x="8" y="8" width="48" height="48" rx="5" fill="none" stroke="${has ? 'rgba(255,255,255,.35)' : '#e2d2b0'}" stroke-width="1.2"/>${has ? `<path d="${M[t.m] || M.lotus}" fill="${['wave', 'root', 'sun'].includes(t.m) ? 'none' : 'rgba(255,255,255,.82)'}" stroke="rgba(255,255,255,.9)" stroke-width="${['wave', 'root', 'sun'].includes(t.m) ? 2.6 : 1}" stroke-linecap="round" stroke-linejoin="round"/>` : '<text x="32" y="39" text-anchor="middle" font-size="18" fill="#c9b48f">?</text>'}</svg>`;
+}
+
+/* ===== сад ===== */
+const GLV = [[0, 'Тихая вода'], [20, 'Первый лист'], [50, 'Бутон'], [100, 'Лотос раскрылся'], [170, 'Камыши'], [260, 'Второй лотос'], [380, 'Цветущая гладь'], [520, 'Мостик'], [700, 'Сад в цвету'], [900, 'Лунный сад']];
+function gardenLevel() { const L = rw().life; let i = 0; while (i + 1 < GLV.length && L >= GLV[i + 1][0]) i++; return i; }
+function gardenSVG() {
+  const lv = gardenLevel(), T = rw().tiles, has = id => !!T[id];
+  const night = lv >= 9;
+  let g = `<defs><linearGradient id="gsky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${night ? '#2b2a4a' : '#f6dcc4'}"/><stop offset="1" stop-color="${night ? '#5a4a6a' : '#f3e7d2'}"/></linearGradient><linearGradient id="gw" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${night ? '#3b5566' : '#9cc3c0'}"/><stop offset="1" stop-color="${night ? '#22384a' : '#5f8f8c'}"/></linearGradient></defs>`;
+  g += `<rect width="340" height="200" fill="url(#gsky)"/>`;
+  if (night) g += `<circle cx="285" cy="38" r="16" fill="#f7eedb" opacity=".95"/><circle cx="291" cy="33" r="14" fill="#2b2a4a" opacity=".35"/>`; else g += `<circle cx="285" cy="40" r="18" fill="#f2b98f" opacity=".7"/>`;
+  g += `<path d="M0 110 Q60 96 120 104 T240 100 T340 106 V200 H0Z" fill="#8fae7e" opacity=".55"/>`;
+  g += `<ellipse cx="170" cy="150" rx="150" ry="42" fill="url(#gw)"/><path d="M40 146q30-6 60 0M200 160q30-6 60 0M110 170q25-5 50 0" stroke="#fff" stroke-opacity=".35" stroke-width="1.5" fill="none"/>`;
+  const pad = (x, y, s) => `<g transform="translate(${x} ${y}) scale(${s})"><ellipse rx="22" ry="8" fill="#4f7f5e" stroke="#2d5446" stroke-width="1"/><path d="M0 0L18 -3" stroke="#2d5446" stroke-width="1"/></g>`;
+  const lotus = (x, y, s, open) => `<g transform="translate(${x} ${y}) scale(${s})">${open ? ['-60', '-30', '0', '30', '60'].map(r => `<path transform="rotate(${r})" d="M0 0C-5 -8 -5 -16 0 -24C5 -16 5 -8 0 0Z" fill="#eaa2ab" stroke="#b85a67" stroke-width=".8"/>`).join('') : `<path d="M0 0C-5 -7 -4 -15 0 -20C4 -15 5 -7 0 0Z" fill="#eaa2ab" stroke="#b85a67" stroke-width=".8"/>`}</g>`;
+  if (lv >= 1) g += pad(130, 150, 1);
+  if (lv >= 2) g += lotus(136, 146, 1, lv >= 3);
+  if (lv >= 4) g += `<g stroke="#5b7a4a" stroke-width="2" stroke-linecap="round">${[[28, 150], [36, 146], [44, 152], [300, 150], [308, 146]].map(([x, y]) => `<path d="M${x} ${y}V${y - 40}"/><ellipse cx="${x}" cy="${y - 44}" rx="2.5" ry="7" fill="#7a5a3a" stroke="none"/>`).join('')}</g>`;
+  if (lv >= 5) g += pad(220, 160, .9) + lotus(226, 156, .9, true);
+  if (lv >= 6) g += pad(90, 164, .7) + lotus(94, 161, .7, true) + pad(260, 140, .6);
+  if (lv >= 7) g += `<path d="M190 120 Q230 96 270 120" stroke="#8a4a2a" stroke-width="5" fill="none"/><path d="M196 116v8M210 108v12M224 104v14M238 104v14M252 108v12M264 116v8" stroke="#8a4a2a" stroke-width="2"/>`;
+  if (lv >= 8) g += lotus(60, 138, .8, true) + pad(56, 142, .7);
+  if (has('plate')) g += `<g opacity=".9"><path d="M180 176c8-5 16-5 22 0-6 5-14 5-22 0z" fill="#e8743a"/><path d="M180 176l-6-4v8z" fill="#e8743a"/><path d="M250 146c7-4 14-4 19 0-5 4-12 4-19 0z" fill="#f7eedb"/><circle cx="262" cy="145" r="1.8" fill="#c23a3a"/></g>`;
+  if (has('wave')) g += `<g stroke="#2d5446" stroke-width="1.2" fill="#9fd3d6" fill-opacity=".7"><path d="M100 80h26" stroke="#34507a" stroke-width="2"/><ellipse cx="108" cy="76" rx="7" ry="3"/><ellipse cx="108" cy="84" rx="7" ry="3"/><ellipse cx="118" cy="76" rx="6" ry="2.6"/><ellipse cx="118" cy="84" rx="6" ry="2.6"/></g>`;
+  if (has('garden')) g += `<g><path d="M318 150V112" stroke="#6b3a2a" stroke-width="2.5"/><rect x="311" y="100" width="14" height="14" rx="3" fill="#f5c26b" stroke="#8a4a2a"/><circle cx="318" cy="107" r="9" fill="#f5c26b" opacity=".25"/></g>`;
+  if (has('streak7')) g += [[60, 90], [150, 70], [240, 84], [200, 60], [90, 60]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="2" fill="#fff3a8"/><circle cx="${x}" cy="${y}" r="6" fill="#fff3a8" opacity=".25"/>`).join('');
+  if (has('move10')) g += `<path d="M20 186h40" stroke="#8a4a2a" stroke-width="3"/>`;
+  return `<svg viewBox="0 0 340 200" class="gsvg" role="img" aria-label="Сад, уровень ${lv + 1}: ${GLV[lv][1]}">${g}</svg>`;
+}
+const SHOP = [
+  { id: 'peony', kind: 'flower', n: 'Пион в шапке', p: 40 }, { id: 'magnolia', kind: 'flower', n: 'Магнолия в шапке', p: 80 }, { id: 'chrys', kind: 'flower', n: 'Хризантема в шапке', p: 120 },
+  { id: 'tiles', kind: 'bg', n: 'Фон «Плитка»', p: 60 }, { id: 'waves', kind: 'bg', n: 'Фон «Волны»', p: 100 }
+];
+function vGarden() {
+  const R = rw(), lv = gardenLevel(), nx = GLV[lv + 1];
+  let h = `<div class="sec gsec"><h3>Мой сад</h3><div class="garden" data-a="gtap">${gardenSVG()}</div><div class="gline"><b>${GLV[lv][1]}</b><span class="muted">уровень ${lv + 1} из ${GLV.length}</span></div>`;
+  h += nx ? `<div class="bar"><i style="width:${Math.min(100, (R.life - GLV[lv][0]) / (nx[0] - GLV[lv][0]) * 100)}%;background:#e3949c"></i></div><div class="muted sm">До следующего чуда — ${nx[0] - R.life} 🌸. Сад растёт от заботы и никогда не вянет.</div>` : '<div class="muted sm">Сад расцвёл полностью. Лепестки теперь можно тратить на украшения.</div>';
+  h += `<div class="petals"><span>🌸 <b>${R.pet}</b> лепестков</span><button data-a="shopopen">Украшения</button></div></div>`;
+  h += `<div class="sec"><h3>Плитки <span class="muted sm">${Object.keys(R.tiles).length} из ${TILES.length}</span></h3><div class="tiles2">${TILES.map(t => `<div class="tl" ${tipAttr(`${t.n} — ${t.d}${t.g ? '. В саду: ' + t.g : ''}${R.tiles[t.id] ? '' : ' (ещё впереди)'}`)}>${tileSVG(t, !!R.tiles[t.id])}<span>${R.tiles[t.id] ? t.n : ''}</span></div>`).join('')}</div><p class="muted sm">Лепестки: +1 за отметку в чек-листе, +2 за лотос, +5 за полностью прожитый день и за тренировку.</p></div>`;
+  return h;
+}
+function mDecor() {
+  const R = rw();
+  const cur = k => k === 'flower' ? R.flower : R.bg;
+  const row = (id, kind, n, p) => { const own = R.owned.includes(id), on = cur(kind) === id; return `<div class="row"><span class="grow">${n}${own ? '' : `<div class="sm muted">${p} 🌸</div>`}</span>${on ? '<span class="sm muted">выбрано</span>' : own ? `<button data-a="shopuse" data-id="${id}" data-k="${kind}">Выбрать</button>` : `<button class="pri" data-a="shopbuy" data-id="${id}" ${R.pet < p ? 'disabled' : ''}>Купить</button>`}</div>`; };
+  return `<h3>Украшения</h3><p class="muted sm" style="margin:-6px 0 8px">У тебя ${R.pet} 🌸. Сад от покупок не уменьшается — он растёт от всех собранных лепестков.</p><div class="cat">Цветок в шапке</div>${row('lotus', 'flower', 'Лотос', 0)}${SHOP.filter(x => x.kind === 'flower').map(x => row(x.id, x.kind, x.n.replace(' в шапке', ''), x.p)).join('')}<div class="cat">Фон</div>${row('paper', 'bg', 'Бумага', 0)}${SHOP.filter(x => x.kind === 'bg').map(x => row(x.id, x.kind, x.n.replace('Фон ', ''), x.p)).join('')}<button class="wide" data-a="close">Готово</button>`;
+}
+function flowerSVG() {
+  const f = DB.rw ? DB.rw.flower : 'lotus'; if (f === 'lotus' || !f) return LOTUS;
+  const cfg = { peony: { c1: '#f7c6d2', c2: '#d9607f', st: '#9a2b4a', n: 11, w: 22, l: 58, r: 38 }, magnolia: { c1: '#fff5f2', c2: '#e7b2c4', st: '#9a5a7a', n: 6, w: 13, l: 70, r: 60 }, chrys: { c1: '#ffe2a3', c2: '#e39a2a', st: '#9a5a1a', n: 18, w: 5, l: 52, r: 180 } }[f];
+  let p = ''; for (let i = 0; i < cfg.n; i++) { const a = -80 + 160 * i / (cfg.n - 1); p += `<path transform="rotate(${a} 120 140)" d="M120 140C${120 - cfg.w} ${140 - cfg.l * .5} ${120 - cfg.w} ${140 - cfg.l} 120 ${140 - cfg.l - 6}C${120 + cfg.w} ${140 - cfg.l} ${120 + cfg.w} ${140 - cfg.l * .5} 120 140Z"/>`; }
+  return `<svg class="lotus" viewBox="0 0 200 200" aria-hidden="true"><defs><linearGradient id="fp" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${cfg.c1}"/><stop offset="1" stop-color="${cfg.c2}"/></linearGradient></defs><path d="M120 150C120 170 112 185 104 200" stroke="#3d6b55" stroke-width="3" fill="none"/><g fill="url(#fp)" stroke="${cfg.st}" stroke-width="1">${p}</g><circle cx="120" cy="136" r="${f === 'chrys' ? 9 : 6}" fill="${f === 'chrys' ? '#c48a2a' : '#f5d08a'}"/></svg>`;
+}
+
 /* ===== отрисовка ===== */
 const LOTUS = `<svg class="lotus" viewBox="0 0 200 200" aria-hidden="true"><defs><linearGradient id="lp" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4c3c6"/><stop offset=".6" stop-color="#e3949c"/><stop offset="1" stop-color="#b85a67"/></linearGradient><linearGradient id="lf" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6f9c86"/><stop offset="1" stop-color="#2d5446"/></linearGradient></defs>
 <g opacity=".9"><ellipse cx="78" cy="168" rx="58" ry="17" fill="url(#lf)" stroke="#1c3a30" stroke-width="1.2"/><path d="M78 168L32 161M78 168L50 181M78 168L104 182M78 168L128 160M78 168L78 151" stroke="#a9c9b3" stroke-width=".9" opacity=".7"/></g>
@@ -1198,28 +1927,67 @@ const LOTUS = `<svg class="lotus" viewBox="0 0 200 200" aria-hidden="true"><defs
 
 let rt = null, lastModal = null;
 function soon() { clearTimeout(rt); rt = setTimeout(render, 450); }
+/* ===== навигация «назад» ===== */
+const navHist = []; let navLast = null, navBackNow = false;
+const navSnap = () => JSON.stringify({ tab: st.tab, pt: st.pt, pv: st.pv, gc: st.gc, gsub: st.gsub, gmode: st.gmode, wedit: st.wedit, modal: st.modal && st.modal.t === 'exp' ? { t: 'exp', txt: '' } : st.modal });
+function navTrack() {
+  const cur = navSnap();
+  if (navLast && cur !== navLast && !navBackNow) {
+    if (navHist.length && navHist[navHist.length - 1] === cur) navHist.pop();
+    else if (!JSON.parse(navLast).modal) { navHist.push(navLast); if (navHist.length > 60) navHist.shift(); }
+  }
+  navBackNow = false; navLast = cur;
+}
+async function goBack() {
+  if (st.modal) { st.modal = null; render(); return; }
+  if (!navHist.length) return;
+  const s0 = JSON.parse(navHist.pop());
+  Object.assign(st, s0); navBackNow = true;
+  if (st.tab === 'prog') await loadAll();
+  render(); window.scrollTo(0, 0);
+}
+const canBack = () => !!(st.modal || navHist.length);
 function render() {
   clearTimeout(rt);
-  if (scanner) stopScan();
+  if (!st.onb) { let n = 0; while (n++ < 3 && tutCheck()); }
+  if (st.onb) { document.getElementById('app').innerHTML = LOT_DEFS + vOnb(); document.querySelector('nav').style.display = 'none'; if (inTG && tg.BackButton) { st.onb.i > 0 ? tg.BackButton.show() : tg.BackButton.hide(); } requestAnimationFrame(() => { const m = document.getElementById('omsgs'); if (m) m.scrollTop = m.scrollHeight; }); return; }
+  document.querySelector('nav').style.display = '';
+  { const tp = document.getElementById('tip'); if (tp) tp.classList.remove('on'); }
+  navTrack();
   const sheet = document.querySelector('.sheet'), sc = sheet ? sheet.scrollTop : 0;
   const p = per();
   const titles = { today: 'День', period: 'Период', menu: 'Питание', prog: 'Прогресс', set: 'Настройки', gym: 'Спорт' };
-  let h = `<header class="hero">${LOTUS}<h1>${titles[st.tab]}</h1><div class="per">${p ? `период ${fmtS(p.start)} — ${fmtS(p.end)}` : 'период не выбран'}</div></header>`;
-  h += ({ today: vToday, period: vPeriod, menu: vMenu, prog: vProgress, set: vSettings, gym: vGym })[st.tab]();
-  if (st.modal) h += st.modal.t === 'scan' ? modal() : `<div class="ov" data-a="ovclose"><div class="sheet ${st.modal.t === 'scanres' ? 'ios' : ''}">${modal()}</div></div>`;
+  if (DB.rw) { checkTiles(); document.body.dataset.bg = rw().bg || 'paper'; }
+  let h = `<header class="hero">${flowerSVG()}${!inTG && canBack() && !st.modal ? '<button class="navback" data-a="back"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>Назад</button>' : ''}${st.tab === 'today' && p ? dayHero(st.date, p) : `<h1>${titles[st.tab]}</h1><div class="per">${p ? `период ${fmtS(p.start)} — ${fmtS(p.end)}` : 'период не выбран'}</div>`}</header>`;
+  h += ({ today: vToday, period: vPeriod, prog: vProgress, set: vSettings, gym: vGym, menu: vFood })[st.tab]();
+  if (st.modal) h += `<div class="ov" data-a="ovclose"><div class="sheet ${st.modal.t === 'scanres' || st.modal.t === 'scan' ? 'ios' : ''}">${modal()}</div></div>`;
   document.getElementById('app').innerHTML = h;
   const cur = st.modal ? st.modal.t : null;
   if (cur && cur === lastModal) { const s = document.querySelector('.sheet'); if (s) s.scrollTop = sc; }
   if (cur === 'prods' && st.focusLast) { st.focusLast = false; const ins = document.querySelectorAll('.prow input[data-k="name"]'); const last = ins[ins.length - 1]; if (last) { last.scrollIntoView({ block: 'center' }); last.select(); } }
   lastModal = cur;
-  if (cur === 'scan') { drawCorners(); setTimeout(startScan, 60); }
-  document.querySelectorAll('nav button').forEach(b => b.classList.toggle('on', b.dataset.t === st.tab));
-  if (inTG && tg.BackButton) { cur ? tg.BackButton.show() : tg.BackButton.hide(); }
+  if (cur === 'scan') { const i = document.getElementById('bcode'); if (i) setTimeout(() => i.focus(), 60); }
+  document.querySelectorAll('nav button').forEach(b => { b.classList.toggle('on', b.dataset.t === st.tab); b.classList.toggle('lock', !tabOpen(b.dataset.t)); });
+  const cc = document.getElementById('coachwrap'); if (cc) { cc.innerHTML = coachCard(); document.body.classList.toggle('hascoach', !!cc.querySelector('.coach')); }
+  requestAnimationFrame(coachHighlight);
+  if (inTG && tg.BackButton) { canBack() ? tg.BackButton.show() : tg.BackButton.hide(); }
 }
-if (inTG && tg.BackButton) tg.BackButton.onClick(() => { st.modal = null; render(); });
+if (inTG && tg.BackButton) tg.BackButton.onClick(() => { if (st.onb) { onbAct('onbback', {}); return; } goBack(); });
+if (inVK) window.addEventListener('popstate', () => goBack());
 
 /* ===== действия ===== */
+let tipT = null;
+function showTip(el) {
+  const t = document.getElementById('tip'); t.textContent = el.dataset.tip;
+  const r = el.getBoundingClientRect(); t.classList.add('on');
+  const w = t.offsetWidth, h = t.offsetHeight;
+  t.style.left = Math.max(8, Math.min(innerWidth - w - 8, r.left + r.width / 2 - w / 2)) + 'px';
+  t.style.top = Math.max(8, r.top - h - 8) + 'px';
+  clearTimeout(tipT); tipT = setTimeout(() => t.classList.remove('on'), 2200);
+}
+document.addEventListener('focusin', e => { if (e.target.dataset && e.target.dataset.tip) showTip(e.target); });
 document.addEventListener('click', async e => {
+  const tipEl = e.target.closest('[data-tip]'); if (tipEl) { showTip(tipEl); if (!tipEl.closest('[data-a]')) return; }
   const b = e.target.closest('[data-a]'); if (!b || b.disabled) return;
   const a = b.dataset.a, D = b.dataset;
   if (a === 'ovclose') { if (e.target === b) { st.modal = null; render(); } return; }
@@ -1229,7 +1997,8 @@ let lastTouch = 0;
 document.addEventListener('touchend', e => { const now = Date.now(); if (now - lastTouch < 350 && e.target.closest('button,[data-a]')) { e.preventDefault(); e.target.closest('button,[data-a]').click(); } lastTouch = now; }, { passive: false });
 document.addEventListener('gesturestart', e => e.preventDefault());
 document.addEventListener('dblclick', e => e.preventDefault());
-document.addEventListener('toggle', e => { if (e.target.id === 'oth') st.openOther = e.target.open; }, true);
+document.addEventListener('toggle', e => { if (e.target.id === 'oth') st.openOther = e.target.open; if (e.target.classList && e.target.classList.contains('kbju')) st.kbjuOpen = e.target.open; }, true);
+document.addEventListener('keydown', e => { if (e.key === 'Enter' && e.target.id === 'bcode') { e.preventDefault(); act('bcfind', {}); } if (e.key === 'Enter' && e.target.id === 'onbin') { e.preventDefault(); act('onbtxt', {}); } });
 document.addEventListener('input', e => {
   if (e.target.id === 'psearch') {
     const q = e.target.value.toLowerCase().trim();
@@ -1242,38 +2011,70 @@ document.addEventListener('change', async e => {
 });
 
 async function act(a, D) {
+  if (a.startsWith('onb')) { if (await onbAct(a, D)) return; }
   const g = await gymAct(a, D); if (g === false) return; if (g === true) { render(); return; }
   const p = per();
   const dk = 'd_' + st.date;
   switch (a) {
-    case 'tab': st.tab = D.t; st.modal = null; if (D.t === 'prog') await loadAll(); window.scrollTo(0, 0); break;
+    case 'back': await goBack(); return;
+    case 'tab': if (!tabOpen(D.t)) { toast(`Откроется в главе «${TCH[TAB_CH[D.t]].t}» — сначала закончим текущую`); return; } st.tab = D.t; st.modal = null; if (D.t === 'prog') await loadAll(); window.scrollTo(0, 0); break;
     case 'pt': st.pt = D.v; break;
-    case 'sound': setSound(!soundOn()); if (soundOn()) setTimeout(() => tick('key'), 30); break;
-    case 'scan': {
-      const m = st.modal ? st.modal.m : null;
-      if (inVK && vkb()) {
-        try { const r = await vkb().send('VKWebAppOpenCodeReader'); st.modal = { t: 'scan', m }; if (r && r.code_data) { await lookup(r.code_data); return; } }
-        catch (e) { if (e && e.error_data && (e.error_data.error_code === 4 || /cancel/i.test(JSON.stringify(e.error_data)))) { render(); return; } }
-      }
-      st.modal = { t: 'scan', m }; break;
-    }
-    case 'scanman': { const sp = document.getElementById('spanel'); sp.classList.add('manual'); const i = document.getElementById('bcode'); if (i) i.focus(); return; }
-    case 'torch': { try { const on = !st.torch; await scanner.applyVideoConstraints({ advanced: [{ torch: on }] }); st.torch = on; document.getElementById('torch').classList.toggle('on', on); } catch (e) { toast('Фонарик недоступен'); } return; }
-    case 'bcfind': { const v = document.getElementById('bcode').value; await stopScan(); await lookup(v); return; }
+    case 'trman': st.modal = { t: 'trman' }; break;
+    case 'trg': { const nd = rng(p.start, p.end).length; p.trg = p.trg || {}; p.trg[D.k] = Math.max(0, Math.min(nd, trg(p, D.k) + +D.n)); mark('periods'); break; }
+    case 'trcol': { const t = trList().find(x => x.k === D.k); t.color = TR_COLORS[(TR_COLORS.indexOf(t.color) + 1) % TR_COLORS.length]; DB.trackers = trList(); mark('trackers'); break; }
+    case 'tradd': { const nm = document.getElementById('trnew').value.trim(); if (!nm) { toast('Напиши название'); return; } const L = trList(); const t = { k: 't' + uid(), name: nm, color: TR_COLORS[L.length % TR_COLORS.length] }; DB.trackers = [...L, t]; mark('trackers'); if (p && !p.trackers.includes(t.k)) { p.trackers.push(t.k); mark('periods'); } break; }
+    case 'trdel': { if (!(await ask('Удалить трекер? Он пропадёт из всех периодов.'))) return; DB.trackers = trList().filter(x => x.k !== D.k); mark('trackers'); DB.periods.forEach(x => x.trackers = x.trackers.filter(k => k !== D.k)); mark('periods'); break; }
+    case 'scan': st.modal = { t: 'scan', m: st.modal ? st.modal.m : null, back: st.modal ? st.modal.back : null }; break;
+    case 'bcfind': { const v = document.getElementById('bcode').value; await lookup(v); return; }
     case 'srsave': {
       const m = st.modal, name = document.getElementById('sr_name').value.trim();
       if (!name) { toast('Напиши название'); return; }
       const pr = { id: uid(), name, bc: m.code };
       for (const k of ['k', 'p', 'f', 'c']) pr[k] = num(document.getElementById('sr_' + k).value);
-      DB.products.push(pr); mark('products'); addToMeal(pr.id, m.m); st.modal = null;
-      toast(m.m ? 'Добавлено, поправь граммы' : 'Сохранено в базу'); break;
+      DB.products.push(pr); mark('products'); addToMeal(pr.id, m.m, m.back); st.modal = null;
+      toast(m.m || m.back ? 'Добавлено, поправь граммы' : 'Сохранено в базу'); break;
     }
     case 'pv': st.pv = D.v; if (D.v === 'all') await loadAll(); break;
     case 'factmenu': { const t = dayTot(st.date); day(st.date).fact = { k: Math.round(t.k), p: Math.round(t.p), f: Math.round(t.f), c: Math.round(t.c) }; mark(dk); break; }
     case 'close': st.modal = null; break;
     case 'dmove': st.date = addD(st.date, +D.n); break;
-    case 'tr': { const x = day(st.date), v = x.tr[D.k]; if (v === undefined) x.tr[D.k] = 1; else if (v === 1) x.tr[D.k] = -1; else delete x.tr[D.k]; hap(); mark(dk); break; }
-    case 'tog': { const it = day(st.date).items.find(i => i.k === D.k); if (it) { it.done = !it.done; hap(); mark(dk); } break; }
+    case 'tr': { const t = trList().find(y => y.k === D.k); if (t && t.auto) { toast('Отмечается ' + autoHint(t)); return; } const x = day(st.date); if (x.tr[D.k] === 1) delete x.tr[D.k]; else { x.tr[D.k] = 1; if (st.date === today()) awardDaily('l:' + D.k, 2); } hap(); mark(dk); break; }
+    case 'medit': st.modal = { t: 'meal', m: D.m }; break;
+    case 'nv': st.nv = D.v; st.rid = null; break;
+    case 'recnew': case 'recnewfrom': { const ml = st.modal && st.modal.m; const ds = { id: uid(), name: 'Новый рецепт', portions: 1, meals: ml ? [ml] : [], items: [], note: '' }; DB.dishes = [...(DB.dishes || []), ds]; mark('dishes'); st.modal = null; st.tab = 'menu'; st.nv = 'rec'; st.rid = ds.id; window.scrollTo(0, 0); render(); const i = document.querySelector('[data-f=recname]'); if (i) { i.focus(); i.select(); } return; }
+    case 'recopen': st.rid = D.id; window.scrollTo(0, 0); break;
+    case 'recback': st.rid = null; break;
+    case 'recpor': { const ds = dish(st.rid); ds.portions = Math.max(1, (ds.portions || 1) + +D.n); mark('dishes'); break; }
+    case 'recmeal': { const ds = dish(st.rid); ds.meals = (ds.meals || []).includes(D.m) ? ds.meals.filter(x => x !== D.m) : [...(ds.meals || []), D.m]; mark('dishes'); break; }
+    case 'recrm': { const ds = dish(st.rid); ds.items.splice(+D.i, 1); mark('dishes'); break; }
+    case 'recadd': st.modal = { t: 'padd', back: 'rec' }; break;
+    case 'recdel': { if (!(await ask('Удалить рецепт? Из меню он тоже пропадёт.'))) return; DB.dishes = DB.dishes.filter(x => x.id !== st.rid); mark('dishes'); st.rid = null; break; }
+    case 'dadd': st.modal = { t: 'dadd', m: D.m }; break;
+    case 'dpick': st.modal = { t: 'dplace', m: st.modal.m, id: D.id, por: 1, span: '1', cook: true }; break;
+    case 'plpor': st.modal.por = Math.max(PORTION_STEP, st.modal.por + PORTION_STEP * +D.n); break;
+    case 'dspan': st.modal.span = D.v; break;
+    case 'dplace': {
+      const m = st.modal, p = per(), ds0 = rng(st.mdate, p.end);
+      let days = m.span === 'all' ? ds0 : m.span === 'wd' ? ds0.filter(d => { const w = pd(d).getDay(); return w >= 1 && w <= 5; }) : ds0.slice(0, +m.span);
+      const M = menu();
+      for (const d of days) { const md = M.days[d] || (M.days[d] = {}); (md[m.m] || (md[m.m] = [])).push({ dish: m.id, por: m.por }); }
+      mark('m_' + st.pid);
+      if (days.length > 1 && m.cook) { const c = cookTask(), x = day(st.mdate); if (!x.items.some(i => i.id === c.id)) { x.items.push({ k: uid(), id: c.id, done: false }); mark('d_' + st.mdate); } }
+      st.modal = null; toast(days.length > 1 ? `Добавлено на ${days.length} дн.` : 'Добавлено'); break;
+    }
+    case 'mpor': { const md = menu().days[st.mdate], e = md[D.m][+D.i]; e.por = Math.max(PORTION_STEP, (e.por || 1) + PORTION_STEP * +D.n); mark('m_' + st.pid); break; }
+    case 'dpor': { const ml = D.m, { pid, md } = dayMenu(st.date); snapMeal(st.date, ml); const e = md[ml][+D.i]; e.por = Math.max(PORTION_STEP, (e.por || 1) + PORTION_STEP * +D.n); mark('m_' + pid); break; }
+    case 'dswap': st.modal = { t: 'dswap', m: D.m }; break;
+    case 'wswap': st.modal = { t: 'wswap', k: D.k }; break;
+    case 'wswapto': { const it = day(st.date).items.find(i => i.k === st.modal.k); it.w = D.id; mark(dk); st.modal = null; break; }
+    case 'dswapto': { const ml = st.modal.m, { pid, md } = dayMenu(st.date); snapMeal(st.date, ml); md[ml] = [{ dish: D.id, por: 1 }]; mark('m_' + pid); st.modal = null; toast('Заменено — вернуть можно кнопкой ↺'); break; }
+    case 'soft': DB.profile.soft = !DB.profile.soft; mark('profile'); break;
+    case 'mrev': { const x = day(st.date), ml = D.m; if (!x.mo || x.mo[ml] === undefined) break; const { pid, md } = dayMenu(st.date); md[ml] = x.mo[ml]; delete x.mo[ml]; mark('m_' + pid); mark(dk); toast('Вернула как было в меню'); break; }
+    case 'dmrm': { const ml = D.m || st.modal.m, { pid, md } = dayMenu(st.date); snapMeal(st.date, ml); md[ml].splice(+D.i, 1); mark('m_' + pid); break; }
+    case 'dmadd': st.mdate = st.date; st.modal = { t: 'padd', m: st.modal.m, back: 'meal' }; break;
+    case 'dstart': { if (sess()) { toast('Уже идёт тренировка — открываю её'); } else startWorkout(D.id); st.tab = 'gym'; st.gmode = 'sess'; window.scrollTo(0, 0); break; }
+    case 'gomenu': st.tab = 'menu'; st.mdate = st.date; window.scrollTo(0, 0); break;
+    case 'tog': { const x = day(st.date), it = x.items.find(i => i.k === D.k); if (it) { it.done = !it.done; hap(); mark(dk); if (it.done && st.date === today()) { awardDaily('t:' + it.k, 1, 40); if (x.items.length >= 3 && x.items.every(i => i.done)) awardDaily('all', 5); } } break; }
     case 'rm': { const x = day(st.date); x.items = x.items.filter(i => i.k !== D.k); mark(dk); break; }
     case 'up': { const x = day(st.date), i = +D.i; if (i > 0) { [x.items[i - 1], x.items[i]] = [x.items[i], x.items[i - 1]]; mark(dk); } break; }
     case 'pick': st.modal = { t: 'pick' }; break;
@@ -1302,16 +2103,16 @@ async function act(a, D) {
       const np = {
         id: uid(), start: s, end: e,
         goals: {},
-        trackers: src ? [...src.trackers] : TRACKERS.map(t => t.k),
-        target: src ? { ...src.target } : { k: 1800, p: 100, f: 45, c: 250 },
-        w0: src && src.w1 != null ? src.w1 : null, w1: null
+        trackers: src ? [...src.trackers] : trList().map(t => t.k), trg: src && src.trg ? { ...src.trg } : {},
+        target: src ? { ...src.target } : DB.introTarget ? { k: DB.introTarget.k, p: DB.introTarget.p, f: DB.introTarget.f, c: DB.introTarget.c } : { k: 1800, p: 100, f: 45, c: 250 },
+        w0: src && src.w1 != null ? src.w1 : (DB.introTarget ? DB.introTarget.w : null), w1: null
       };
       DB.periods.push(np); DB.periods.sort((x, y) => x.start < y.start ? -1 : 1); mark('periods');
       DB['m_' + np.id] = { days: {} }; chunkN['m_' + np.id] = 0; mark('m_' + np.id);
       st.modal = null; await openPeriod(np.id); st.tab = 'period'; toast('Период создан'); break;
     }
     case 'goal': { p.goals[D.id] = Math.max(0, (p.goals[D.id] || 0) + +D.n); if (!p.goals[D.id]) delete p.goals[D.id]; mark('periods'); break; }
-    case 'grec': p.goals = Object.fromEntries(DB.catalog.filter(c => c.def > 0).map(c => [c.id, c.def])); mark('periods'); toast('Цели заполнены'); break;
+    case 'grec': p.goals = Object.fromEntries(DB.catalog.filter(c => recOf(c, p) > 0).map(c => [c.id, recOf(c, p)])); mark('periods'); toast('Цели заполнены'); break;
     case 'gzero': if (!(await ask('Обнулить все цели периода?'))) return; p.goals = {}; mark('periods'); break;
     case 'autoc': { const T = p.target; T.c = Math.max(0, Math.round((T.k - 4 * T.p - 9 * T.f) / 4)); mark('periods'); break; }
     case 'delp': {
@@ -1321,7 +2122,8 @@ async function act(a, D) {
     }
     case 'mday': st.mdate = D.d; break;
     case 'madd': st.modal = { t: 'padd', m: D.m }; break;
-    case 'padd': { const M = menu(), md = M.days[st.mdate] || (M.days[st.mdate] = {}); (md[st.modal.m] || (md[st.modal.m] = [])).push({ pid: D.id, g: 100 }); mark('m_' + st.pid); st.modal = null; toast('Добавлено, поправь граммы'); break; }
+    case 'padd': { const back = st.modal.back, ml = st.modal.m;
+      if (back === 'rec') { const ds = dish(st.rid); ds.items.push({ pid: D.id, g: 100 }); mark('dishes'); st.modal = null; toast('Добавлено, поправь граммы'); break; } if (back === 'meal') snapMeal(st.mdate, ml); const M = menu(), md = M.days[st.mdate] || (M.days[st.mdate] = {}); (md[ml] || (md[ml] = [])).push({ pid: D.id, g: 100 }); mark('m_' + st.pid); st.modal = back === 'meal' ? { t: 'meal', m: ml } : null; toast('Добавлено, поправь граммы'); break; }
     case 'mrm': { const md = menu().days[st.mdate]; md[D.m].splice(+D.i, 1); mark('m_' + st.pid); break; }
     case 'mcopy': st.modal = { t: 'mcopy' }; break;
     case 'mcp': { const M = menu(); M.days[D.d] = JSON.parse(JSON.stringify(M.days[st.mdate] || {})); mark('m_' + st.pid); hap(); toast('Скопировано на ' + fmt(D.d)); break; }
@@ -1329,7 +2131,37 @@ async function act(a, D) {
     case 'prods': st.modal = { t: 'prods', m: st.modal && st.modal.t === 'padd' ? st.modal.m : null }; break;
     case 'pnew': DB.products.push({ id: uid(), name: 'Новый продукт', k: 0, p: 0, f: 0, c: 0 }); mark('products'); st.focusLast = true; break;
     case 'pdel': { if (!(await ask('Удалить продукт из базы?'))) return; DB.products = DB.products.filter(x => x.id !== D.id); mark('products'); break; }
-    case 'cadd': DB.catalog.push({ id: uid(), name: 'Новый пункт', cat: D.c, kcal: 0, def: 0 }); mark('catalog'); break;
+    case 'cadd': { const it = { id: uid(), name: 'Новая задача', cat: D.c, kcal: 0, def: 0, min: 30 }; DB.catalog.push(it); DB.catalog = [it, ...DB.catalog.filter(x => x !== it)]; mark('catalog'); render(); const i = document.querySelector(`[data-f=cname][data-id="${it.id}"]`); if (i) { i.focus(); i.select(); } return; }
+    case 'cc': st.cc = D.n; break;
+    case 'tutnext': tutAdvance(); break;
+    case 'tutsoft': DB.profile.soft = true; mark('profile'); tutAdvance(); break;
+    case 'coachmin': st.coachMin = true; break;
+    case 'coachmax': st.coachMin = false; break;
+    case 'gtap': tutBase.garden = true; toast('Сад благодарит за заботу 🪷'); break;
+    case 'shopopen': st.modal = { t: 'decor' }; break;
+    case 'shopbuy': { const it = SHOP.find(x => x.id === D.id), R = rw(); if (!it || R.pet < it.p) return; R.pet -= it.p; R.owned.push(it.id); if (it.kind === 'flower') R.flower = it.id; else R.bg = it.id; mark('rw'); toast('Готово — украшение уже на месте'); break; }
+    case 'shopuse': { const R = rw(); if (D.k === 'flower') R.flower = D.id; else R.bg = D.id; mark('rw'); break; }
+    case 'tutre': DB.tut = { ch: 1, step: 0, done: false, lock: false }; mark('tut'); navHist.length = 0; tutGo(1, 0); break;
+    case 'onbre': onbStart(true, 'plan'); break;
+    case 'kbjugo': st.tab = 'menu'; st.kbjuOpen = true; window.scrollTo(0, 0); break;
+    case 'cmin': { tutBase.cmin = true; const c = cat(D.id), m = c.min || 0, stp = (+D.n > 0 ? m < 60 : m <= 60) ? 5 : 15; c.min = Math.max(0, m + stp * +D.n); mark('catalog'); break; }
+    case 'tcnew': st.modal = { t: 'tcat', n: null }; break;
+    case 'tcedit': st.modal = { t: 'tcat', n: D.n }; break;
+    case 'tccol': { st.modal.c = D.c; const i = document.getElementById('tc_name'); st.modal.draft = i ? i.value : null; break; }
+    case 'tcsave': {
+      const nm = document.getElementById('tc_name').value.trim(), L = [...(DB.tcats || DEF_TC)], old = st.modal.n;
+      if (!nm) { toast('Напиши название'); return; }
+      if (nm !== old && L.some(x => x.n === nm)) { toast('Такая категория уже есть'); return; }
+      if (old) { const x = L.find(y => y.n === old); x.n = nm; if (st.modal.c) x.c = st.modal.c; DB.catalog.forEach(c => { if (c.cat === old) c.cat = nm; }); mark('catalog'); }
+      else L.push({ n: nm, c: st.modal.c || CAT_PAL[L.length % CAT_PAL.length], sport: false });
+      DB.tcats = L; mark('tcats'); syncCats(); st.cc = nm; st.modal = null; break;
+    }
+    case 'tcdel': {
+      const n = st.modal.n; if (!(await ask(`Удалить категорию «${n}» вместе с её задачами?`))) return;
+      const gone = new Set(DB.catalog.filter(c => c.cat === n).map(c => c.id));
+      DB.catalog = DB.catalog.filter(c => !gone.has(c.id)); DB.periods.forEach(pp => gone.forEach(id => delete pp.goals[id]));
+      DB.tcats = (DB.tcats || DEF_TC).filter(x => x.n !== n); ICON[n] = undefined; mark('catalog'); mark('tcats'); mark('periods'); syncCats(); st.cc = CATS[0]; st.modal = null; break;
+    }
     case 'cdel': { if (!(await ask('Удалить пункт из каталога?'))) return; DB.catalog = DB.catalog.filter(x => x.id !== D.id); mark('catalog'); break; }
     case 'exp': { await flush(); const ks = await S.keys(); const raw = await getMany(ks); st.modal = { t: 'exp', txt: JSON.stringify(raw) }; break; }
     case 'imp': st.modal = { t: 'imp' }; break;
@@ -1361,10 +2193,17 @@ async function field(f, el) {
       await openPeriod(p.id); render(); return;
     }
     case 'trk': { p.trackers = el.checked ? [...new Set([...p.trackers, D.k])] : p.trackers.filter(k => k !== D.k); mark('periods'); render(); return; }
+    case 'recname': { const ds = dish(st.rid); ds.name = v.trim() || 'Без названия'; mark('dishes'); return; }
+    case 'recnote': { const ds = dish(st.rid); ds.note = v; mark('dishes'); return; }
+    case 'recg': { const ds = dish(st.rid); ds.items[+D.i].g = Math.max(0, Math.round(num(v))); mark('dishes'); break; }
+    case 'dcook': st.modal.cook = el.checked; return;
+    case 'dmg': { const ml = st.modal.m, { pid, md } = dayMenu(st.date); snapMeal(st.date, ml); md[ml][+D.i].g = Math.max(0, Math.round(num(v))); mark('m_' + pid); break; }
+    case 'trname': { const t = trList().find(x => x.k === D.k); if (t) { t.name = v.trim() || 'Без названия'; DB.trackers = trList(); mark('trackers'); } return; }
     case 'target': p.target[D.k] = Math.max(0, Math.round(num(v))); mark('periods'); break;
     case 'grams': { const md = menu().days[st.mdate]; md[D.m][+D.i].g = Math.max(0, Math.round(num(v))); mark('m_' + st.pid); break; }
     case 'pr': { const pr = prod(D.id); if (!pr) return; pr[D.k] = D.k === 'name' ? (v.trim() || 'Без названия') : num(v); mark('products'); break; }
     case 'cname': { const c = cat(D.id); c.name = v.trim() || 'Без названия'; mark('catalog'); break; }
+    case 'cgc': { const c = cat(D.id); c.gc = v || undefined; mark('catalog'); render(); return; }
     case 'ckcal': { const c = cat(D.id); c.kcal = Math.max(0, Math.round(num(v))); mark('catalog'); break; }
     case 'cdef': { const c = cat(D.id); c.def = Math.max(0, Math.round(num(v))); mark('catalog'); break; }
     case 'ccat': { const c = cat(D.id); c.cat = v; mark('catalog'); render(); return; }
@@ -1381,7 +2220,7 @@ async function field(f, el) {
 async function init() {
   try {
     await loadVK();
-    const r = await loadMany(['catalog', 'products', 'periods', 'profile', 'exercises', 'workouts', 'last', 'sess', 'active', 'gcats']);
+    const r = await loadMany(['catalog', 'products', 'periods', 'profile', 'exercises', 'workouts', 'last', 'sess', 'active', 'gcats', 'trackers', 'tcats', 'meals', 'onb', 'dishes', 'tut', 'rw', 'introTarget']);
     DB.exercises = r.exercises || defExercises(); if (!r.exercises) mark('exercises');
     DB.last = r.last || {}; DB.sess = r.sess || []; DB.active = r.active || null;
     if (DB.active) { const r2 = await loadMany(['s_' + DB.active]); if (r2['s_' + DB.active]) DB['s_' + DB.active] = r2['s_' + DB.active]; else DB.active = null; }
@@ -1389,11 +2228,36 @@ async function init() {
     DB.catalog = r.catalog || defCatalog(); if (!r.catalog) mark('catalog');
     DB.products = r.products || defProducts(); if (!r.products) mark('products');
     DB.periods = r.periods || []; if (!r.periods) mark('periods');
+    DB.tcats = r.tcats || null; syncCats();
+    DB.meals = r.meals || null; syncMealList();
+    DB.dishes = r.dishes || null;
+    if (!DB.dishes) {
+      const need = [['Свёкла', 43, 1.5, 0.1, 8.8], ['Капуста белокочанная', 27, 1.8, 0.1, 4.7], ['Морковь', 35, 1.3, 0.1, 6.9], ['Лук репчатый', 41, 1.4, 0, 8.2], ['Говядина (сырая)', 187, 18.9, 12.4, 0], ['Томатная паста', 99, 4.8, 0, 19], ['Сметана 15%', 162, 2.6, 15, 3]];
+      for (const [n, k, p, f2, c] of need) if (!DB.products.some(x => x.name === n)) DB.products.push({ id: uid(), name: n, k, p, f: f2, c });
+      mark('products');
+      const P = n => DB.products.find(x => x.name.startsWith(n))?.id;
+      DB.dishes = [
+        { id: uid(), name: 'Борщ', portions: 8, meals: ['Обед', 'Ужин'].filter(m => MEALS.includes(m)), note: 'Пример из книги рецептов — поменяй под себя.', items: [['Говядина', 500], ['Свёкла', 400], ['Капуста', 400], ['Картофель', 400], ['Морковь', 150], ['Лук', 150], ['Томатная', 50], ['Масло оливковое', 20]].map(([n, g]) => ({ pid: P(n), g })).filter(x => x.pid) },
+        { id: uid(), name: 'Овсянка с бананом', portions: 1, meals: MEALS.includes('Завтрак') ? ['Завтрак'] : [], note: '', items: [['Овсянка', 60], ['Молоко', 150], ['Банан', 100]].map(([n, g]) => ({ pid: P(n), g })).filter(x => x.pid) }
+      ];
+      mark('dishes');
+    } DB.onb = r.onb || null;
+    DB.catalog.forEach(c => { if (!c.meal && MEALS.includes(c.name)) { c.meal = c.name; mark('catalog'); } });
+    DB.catalog.forEach(c => { if (c.min == null) { c.min = DEF_MIN[c.name] ?? 30; mark('catalog'); } });
+    DB.trackers = r.trackers || DEF_TR.map(t => ({ ...t }));
+    DB.trackers.forEach(t => { if (!t.auto && (t.k === 'sport' || t.k === 'kbju')) t.auto = t.k; });
     DB.gcats = r.gcats || seedGcats(); if (!r.gcats) mark('gcats');
     DB.workouts = r.workouts || seedWorkouts(); if (!r.workouts) mark('workouts');
+    DB.gcats.forEach(g => { const c = g.link && cat(g.link); if (c && !c.gc) { c.gc = g.id; mark('catalog'); } });
     const t = today(), P = DB.periods;
     const cur = P.find(p => p.start <= t && t <= p.end) || P[P.length - 1];
     if (cur) await openPeriod(cur.id);
+    DB.rw = r.rw || null; DB.introTarget = r.introTarget || null;
+    if (DB.rw) { const lim = addD(today(), -40); for (const k of Object.keys(DB.rw.got || {})) if (k.startsWith('d:') && k.slice(2, 12) < lim) delete DB.rw.got[k]; }
+    DB.tut = r.tut || null;
+    if (QS.has('notut')) { DB.onb = DB.onb || { done: 1 }; DB.tut = { done: true }; }
+    if (!DB.tut && (DB.periods.length || DB.onb)) { DB.tut = { done: true }; mark('tut'); }
+    if (!DB.onb && !DB.periods.length) onbStart(false, 'intro');
     render();
   } catch (e) {
     document.getElementById('app').innerHTML = `<div class="sec">Не удалось загрузить данные: ${esc(e.message || e)}</div>`;
