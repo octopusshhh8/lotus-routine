@@ -63,6 +63,10 @@ button.lnk{background:none;border:0;color:var(--acc);padding:8px 0 2px;font-styl
 input,select{font:inherit;color:var(--tx);background:#fbf5e8;border:1px solid var(--line);border-radius:4px;padding:8px;width:100%;min-width:0}
 input:focus,select:focus{outline:2px solid var(--pink);outline-offset:0}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.two>*,.three>*,.four>*,.cgrid>*{min-width:0}
+input[type=date]{-webkit-appearance:none;appearance:none;display:block;width:100%;max-width:100%;min-width:0;min-height:40px;text-align:center;line-height:1.2}
+input[type=date]::-webkit-date-and-time-value{text-align:center}
+input[type=date]::-webkit-calendar-picker-indicator{margin:0}
 .four{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:8px}
 label{font-size:12.5px;color:var(--hint);display:block}
 label input,label select{margin-top:3px}
@@ -73,7 +77,7 @@ input.g{width:68px;flex:none}
 .citem{padding:8px 0;border-bottom:1px dashed var(--line)}
 .crow{display:flex;gap:6px;align-items:end;margin-top:6px}.crow label{flex:1}.crow select{flex:1.4}
 nav{position:fixed;bottom:0;left:0;right:0;display:flex;background:var(--noise),linear-gradient(#27432f,#1a2e21);border-top:3px solid #c48a2a;padding:12px 8px calc(var(--bot-inset) + 16px);z-index:5}
-nav button{flex:1;background:none;border:0;font-size:12px;display:flex;flex-direction:column;align-items:center;gap:2px;color:rgba(247,238,219,.6);padding:5px 0;font-family:'Lora',serif}
+nav button{flex:1;min-width:0;background:none;border:0;font-size:11px;display:flex;flex-direction:column;align-items:center;gap:2px;color:rgba(247,238,219,.6);padding:5px 0;font-family:'Lora',serif}
 nav button svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 nav button.on{color:#f7eedb} nav button.on svg{stroke:#e8a8b0}
 .ov{position:fixed;inset:0;background:rgba(40,15,10,.5);display:flex;align-items:flex-end;z-index:10}
@@ -81,6 +85,11 @@ nav button.on{color:#f7eedb} nav button.on svg{stroke:#e8a8b0}
 .sheet h3{margin:0 0 12px;font-size:20px;color:var(--acc2)}
 .pk{display:flex;justify-content:space-between;align-items:center;width:100%;text-align:left;margin-bottom:6px;gap:8px;background:#fbf5e8}
 .pk.full{opacity:.5}
+.pkrow{display:flex;align-items:center;gap:10px;padding:8px 10px 8px 14px;margin-bottom:6px;background:#fbf5e8;border:1px solid var(--line);border-radius:6px}
+.pkrow .grow{cursor:pointer}
+.pkrow.full{opacity:.55}
+.pkrow.has{border-color:#b9cba6;background:#f1f3e3}
+.pkrow .step b{min-width:22px}
 details summary{color:var(--acc);padding:10px 0;cursor:pointer;font-style:italic}
 textarea{width:100%;height:200px;font:12.5px/1.5 'Lora',serif;background:#fbf5e8;color:var(--tx);border:1px solid var(--line);border-radius:4px;padding:8px}
 .prow{display:grid;grid-template-columns:1fr repeat(4,48px) 26px;gap:4px;align-items:center;margin-bottom:6px}
@@ -95,6 +104,115 @@ details.it summary{font-size:12.5px;padding:4px 0}
 .tbl{width:100%;border-collapse:collapse;font-size:13px}.tbl td,.tbl th{padding:7px 4px;border-bottom:1px dashed var(--line);text-align:left}.tbl th{color:var(--hint);font-weight:400;font-style:italic}
 .dm{display:inline-block;width:9px;height:9px;background:var(--c);transform:rotate(45deg);margin:0 8px 1px 2px;border-radius:1px;flex:none;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.35)}
 details.sec summary{padding:0}
+.setrow{display:grid;grid-template-columns:30px 22px 1fr 1fr 26px;gap:6px;align-items:center;margin-bottom:6px}
+.setrow.t{grid-template-columns:22px 1fr 1fr 26px}
+.setrow .n{color:var(--hint);font-size:12.5px;text-align:center}
+.setrow input{padding:7px 6px;text-align:center}
+.sethdr{font-size:11.5px;color:var(--hint);font-style:italic;margin-bottom:2px}.sethdr span{text-align:center}
+.sd{width:30px;height:30px;padding:0;border-radius:4px;border:1.5px solid #a88d68;background:#fbf5e8;font-weight:700;color:#f7eedb}
+.sd.on{background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.45) 0,transparent 40%),linear-gradient(135deg,#5b8a58,#2c4f33);border-color:#24402a}
+.setrow.dn input{background:#e7efdc;border-color:#b9cba6}
+.last{font-size:12.5px;color:var(--hint);font-style:italic;margin:-4px 0 4px}
+.banner{display:flex;align-items:center;gap:10px;width:100%;text-align:left;background:var(--noise),linear-gradient(135deg,#3b5f3f,#1e3526);color:#f7eedb;border:1px solid #16281c;border-radius:6px;padding:12px 14px;margin-bottom:12px}
+.timer{font-family:'Yeseva One',serif;font-size:24px}
+.exhead{display:flex;align-items:center;gap:4px}.exhead h3{margin-bottom:6px}
+.chipline{font-size:13px;margin-top:6px;color:var(--tx)}
+.cgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:8px 0}
+label.ck{display:flex;align-items:center;gap:6px;color:var(--tx);font-size:13px;padding-top:16px}label.ck input{width:auto;margin:0;accent-color:var(--ok)}
+.donebtn{width:100%;margin-top:4px}.donebtn.on{background:radial-gradient(circle at 20% 10%,rgba(255,255,255,.3) 0,transparent 45%),linear-gradient(135deg,#557f52,#2c4f33);color:#f7eedb;border-color:#24402a}
+.tpanel{background:var(--noise),linear-gradient(160deg,#fbf3e3,#f0e0c0);border:1px solid #c9a978;border-radius:6px;padding:14px;margin-bottom:12px;text-align:center;box-shadow:inset 0 0 0 4px #fbf3e3,inset 0 0 0 5px #e2c99c}
+.tpanel .tname{font-family:'Yeseva One',serif;font-size:19px;color:var(--acc2);margin:4px 0}
+.tbig{font-family:'Yeseva One',serif;font-size:60px;line-height:1.05;color:var(--okd);margin:6px 0}.tbig.prep{color:var(--ochre)}
+.sec.cur{border-color:var(--ochre);box-shadow:inset 0 0 0 4px var(--bg),inset 0 0 0 5px var(--ochre)}
+.sec.isdone h3{color:var(--ok)}
+.gmenu{margin:0 -12px 8px;padding:0 12px 8px}.chip.addc{border-style:dashed;color:var(--acc);background:transparent}
+.cathead{display:flex;align-items:baseline;justify-content:space-between;margin:4px 2px 10px}.cathead h2{font-family:'Yeseva One',serif;font-weight:400;font-size:24px;color:var(--acc2);margin:0}.cathead .x{font-style:italic;font-size:13px}
+.reader{width:100%;min-height:230px;background:#1b120e;border-radius:6px;overflow:hidden;border:1px solid var(--line)}.reader video{width:100%!important;display:block}
+.scanbtn{display:flex;align-items:center;justify-content:center;gap:8px}
+
+.scanfull{position:fixed;inset:0;z-index:30;background:#000;color:#fff;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",system-ui,sans-serif;overflow:hidden}
+.scanfull #reader{position:absolute!important;inset:0;border:0!important}
+.scanfull #reader video{position:absolute!important;inset:0;width:100%!important;height:100%!important;object-fit:cover}
+.scanfull #reader canvas,.scanfull #qr-shaded-region,.scanfull #reader img{display:none!important}
+.sframe{position:absolute;left:50%;top:42%;width:min(80vw,330px);height:180px;transform:translate(-50%,-50%);border-radius:30px;box-shadow:0 0 0 200vmax rgba(0,0,0,.52);pointer-events:none}
+.sframe svg{position:absolute;inset:-3px;width:calc(100% + 6px);height:calc(100% + 6px);overflow:visible}
+.sframe .sline{position:absolute;left:12%;right:12%;height:2px;border-radius:2px;top:18%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.95),transparent);box-shadow:0 0 12px rgba(255,255,255,.7);animation:sl 1.8s ease-in-out infinite alternate}
+@keyframes sl{to{top:82%}}
+.sframe.hit{box-shadow:0 0 0 200vmax rgba(0,0,0,.52),inset 0 0 0 3px #fff}
+.glass{background:rgba(118,118,128,.28);-webkit-backdrop-filter:blur(26px) saturate(180%);backdrop-filter:blur(26px) saturate(180%);border:.5px solid rgba(255,255,255,.22);color:#fff;box-shadow:0 8px 30px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.18)}
+.sbar{position:absolute;top:calc(var(--top-inset) + 8px);left:16px;right:16px;display:flex;justify-content:space-between;align-items:center;z-index:2}
+.cbtn{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;padding:0;font-size:17px}
+.cbtn svg{width:20px;height:20px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.cbtn.on{background:rgba(255,255,255,.92)}.cbtn.on svg{stroke:#000}
+.stitle{font-weight:600;font-size:15px;letter-spacing:-.2px;padding:10px 16px;border-radius:999px}
+.shint{position:absolute;left:0;right:0;top:calc(42% + 108px);text-align:center;font-size:13px;color:rgba(255,255,255,.85);font-weight:500}
+.spanel{position:absolute;left:12px;right:12px;bottom:calc(var(--bot-inset) + 14px);border-radius:32px;padding:10px;z-index:2}
+.pill{font-family:inherit;border:0;border-radius:999px;padding:12px 18px;font-size:15px;font-weight:600;letter-spacing:-.2px;width:100%;display:flex;align-items:center;justify-content:center;gap:8px}
+.pill.white{background:#fff;color:#000}
+.pill.clear{background:transparent;color:#fff}
+.mrow{display:none;gap:8px}.spanel.manual .mrow{display:flex}.spanel.manual .mtoggle{display:none}
+.mrow input{flex:1;font-family:inherit;background:rgba(255,255,255,.14);border:.5px solid rgba(255,255,255,.25);color:#fff;border-radius:999px;font-size:15px;padding:11px 16px;outline:none}
+.mrow input::placeholder{color:rgba(255,255,255,.55)}
+.mrow .pill{width:auto;padding:11px 20px}
+.serr{position:absolute;left:24px;right:24px;top:42%;transform:translateY(-50%);text-align:center;font-size:14px;color:rgba(255,255,255,.9);display:none}.serr.on{display:block}
+.sheet.ios{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",system-ui,sans-serif;background:#f6efe2;border-top:0;border-radius:22px 22px 0 0;padding-top:8px}
+.sheet.ios .grab{width:36px;height:5px;border-radius:3px;background:rgba(60,40,30,.25);margin:0 auto 14px}
+.sheet.ios h3{font-family:inherit;font-weight:700;font-size:19px;letter-spacing:-.4px;color:#1c1310;margin:0 0 4px}
+.iossub{font-size:13.5px;color:#7d6a5d;margin:0 0 16px;line-height:1.35}
+.igroup{background:#fffcf6;border-radius:14px;margin-bottom:10px;overflow:hidden}
+.irow{display:flex;align-items:center;gap:12px;padding:0 14px;min-height:42px;position:relative}
+.irow+.irow::before{content:"";position:absolute;left:16px;right:0;top:0;height:.5px;background:rgba(60,40,30,.18)}
+.irow span{font-size:15px;color:#1c1310;flex:none;min-width:84px}
+.irow input{border:0;background:transparent;text-align:right;font-size:15px;font-family:inherit;padding:12px 0;color:#1c1310;outline:none}
+.irow input.left{text-align:left}
+.irow em{font-style:normal;color:#9a8677;font-size:13px}
+.ifoot{font-size:12px;color:#8f7b6d;margin:-2px 16px 18px}
+.pill.red{background:#9b1d20;color:#fff}
+.pill.tint{background:rgba(155,29,32,.1);color:#9b1d20;margin-top:8px}
+.spin{width:28px;height:28px;border-radius:50%;border:3px solid rgba(60,40,30,.15);border-top-color:#9b1d20;animation:spin .8s linear infinite;margin:24px auto}
+@keyframes spin{to{transform:rotate(360deg)}}
+.star{background:none;border:0;font-size:22px;color:var(--ochre);padding:0 4px;line-height:1}.stari{color:var(--ochre)}
+
+/* ===== кнопки в стиле iOS ===== */
+:root{--sys:-apple-system,BlinkMacSystemFont,"SF Pro Text",system-ui,sans-serif;--tintbg:rgba(155,29,32,.09);--fill:rgba(120,90,60,.1)}
+button{font-family:var(--sys);font-size:14.5px;font-weight:500;letter-spacing:-.1px;border:0;border-radius:999px;padding:9px 16px;background:var(--fill);color:var(--tx);transition:transform .12s ease,opacity .12s ease}
+button:active{transform:scale(.97);opacity:.8}
+button.pri{background:var(--acc);color:#fff;border:0;box-shadow:none;font-weight:600}
+button.wide{padding:11px 16px}
+button.danger{background:transparent;color:var(--bad);font-weight:500}
+button.lnk{font-family:var(--sys);font-style:normal;font-size:14px;font-weight:500;color:var(--acc);background:none;border-radius:8px}
+button.x{background:none;color:var(--hint);border-radius:50%;padding:4px 7px;font-size:13px}
+.btns{gap:10px}
+.chip{border:0;background:var(--fill);font-size:13.5px;padding:7px 14px;border-radius:999px}
+.chip.on{background:var(--acc);color:#fff;border:0}
+.chip.addc{background:transparent;box-shadow:inset 0 0 0 1px rgba(155,29,32,.35);color:var(--acc)}
+.seg{background:rgba(120,90,60,.12);border:0;border-radius:11px;padding:2px}
+.seg button{border-radius:9px;padding:7px 8px;font-size:13.5px;background:transparent;color:var(--tx)}
+.seg button.on{background:#fffaf1;color:var(--tx);box-shadow:0 2px 6px rgba(60,30,10,.14),0 0 0 .5px rgba(60,30,10,.06);font-weight:600}
+.dnav button{width:36px;height:36px;padding:0;border-radius:50%;background:var(--fill);color:var(--acc);font-size:13px}
+.step button{width:32px;height:32px;border-radius:50%;padding:0;font-size:17px;background:var(--tintbg);color:var(--acc)}
+.tb{border:0;border-radius:14px;background:var(--bg);box-shadow:0 0 0 1px var(--line) inset;font-family:var(--sys);font-size:13.5px}
+.tb.ok,.tb.bad{box-shadow:none}
+.pk{border-radius:12px;background:#fbf5e8;border:0;box-shadow:0 0 0 1px var(--line) inset;font-family:var(--sys);font-size:14px;padding:11px 14px}
+.cb,.sd{border-radius:8px}
+.donebtn{border-radius:999px}
+.donebtn.on{border:0}
+.banner{border:0;border-radius:16px;font-family:var(--sys)}
+.banner b{font-weight:600}
+.star{background:none;font-size:22px;padding:0 4px}
+input,select,textarea{border-radius:10px}
+nav button{font-family:'Lora',serif;font-weight:400;border-radius:12px}
+nav button:active{transform:none}
+.sheet{border-radius:22px 22px 0 0}
+.sheet h3{font-size:19px}
+.star:active,.x:active{transform:scale(.9)}
+
+/* iOS: поля даты не вылезают за карточку */
+.two,.three,.four,.cgrid{grid-template-columns:repeat(var(--n),minmax(0,1fr))}.two{--n:2}.three{--n:3}.four{--n:4}.cgrid{--n:3}
+label{min-width:0}
+input[type=date]{-webkit-appearance:none;appearance:none;display:block;width:100%;min-width:0;max-width:100%;min-height:38px;text-align:left;line-height:1.2}
+input[type=date]::-webkit-date-and-time-value{text-align:left;margin:0}
+input[type=date]::-webkit-calendar-picker-indicator{opacity:.5}
 </style>
 </head>
 <body>
@@ -102,9 +220,10 @@ details.sec summary{padding:0}
 <nav>
   <button data-a="tab" data-t="today"><svg viewBox="0 0 24 24"><path d="M12 20c-4.5-1.6-7-4.7-7-9.5 3.2.2 5.6 2.3 7 5 1.4-2.7 3.8-4.8 7-5 0 4.8-2.5 7.9-7 9.5z"/><path d="M12 17c-1.6-2.6-1.6-7 0-12 1.6 5 1.6 9.4 0 12z"/></svg>День</button>
   <button data-a="tab" data-t="period"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="1.5"/><path d="M4 10h16M9 3v4M15 3v4"/><path d="M12 13.2l1.8 1.8-1.8 1.8-1.8-1.8z"/></svg>Период</button>
-  <button data-a="tab" data-t="menu"><svg viewBox="0 0 24 24"><path d="M3.5 12h17a8.5 8.5 0 0 1-17 0z"/><path d="M9 9c0-1.7 1.6-1.9 1.6-3.6M13.4 9c0-1.7 1.6-1.9 1.6-3.6"/></svg>Меню</button>
+  <button data-a="tab" data-t="menu"><svg viewBox="0 0 24 24"><path d="M3.5 12h17a8.5 8.5 0 0 1-17 0z"/><path d="M9 9c0-1.7 1.6-1.9 1.6-3.6M13.4 9c0-1.7 1.6-1.9 1.6-3.6"/></svg>Питание</button>
+  <button data-a="tab" data-t="gym"><svg viewBox="0 0 24 24"><path d="M6.5 7v10M3.5 9.5v5M17.5 7v10M20.5 9.5v5M6.5 12h11"/></svg>Спорт</button>
   <button data-a="tab" data-t="prog"><svg viewBox="0 0 24 24"><path d="M3 20h18"/><path d="M6 16l4-5 3.5 3L19 7"/><path d="M15.5 7H19v3.5"/></svg>Прогресс</button>
-  <button data-a="tab" data-t="cat"><svg viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M5 4.8l1.2 1.2L5 7.2 3.8 6zM5 10.8l1.2 1.2L5 13.2 3.8 12zM5 16.8l1.2 1.2L5 19.2 3.8 18z"/></svg>Каталог</button>
+  <button data-a="tab" data-t="set"><svg viewBox="0 0 24 24"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></svg>Настройки</button>
 </nav>
 <div id="toast"></div>
 <script>
@@ -251,7 +370,7 @@ const defProducts = () => [
 ].map(([name, k, p, f, c]) => ({ id: uid(), name, k, p, f, c }));
 
 /* ===== состояние ===== */
-const st = { tab: 'today', pid: null, date: today(), mdate: null, modal: null, openOther: false, shopF: null, shopT: null, pv: 'cur' };
+const st = { tab: 'today', pid: null, date: today(), mdate: null, modal: null, openOther: false, shopF: null, shopT: null, pv: 'cur', gc: null, gsub: 'wk', gmode: null, wedit: null, pt: 'per', run: null };
 const per = () => (DB.periods || []).find(p => p.id === st.pid);
 const cat = id => DB.catalog.find(c => c.id === id);
 const prod = id => DB.products.find(p => p.id === id);
@@ -427,9 +546,12 @@ function vToday() {
   return h;
 }
 
+function vSettings() { return `<div class="sec"><p class="muted">Здесь пока пусто.</p></div>`; }
 function vPeriod() {
+  const segP = `<div class="seg"><button class="${st.pt !== 'cat' ? 'on' : ''}" data-a="pt" data-v="per">Период</button><button class="${st.pt === 'cat' ? 'on' : ''}" data-a="pt" data-v="cat">Каталог задач</button></div>`;
+  if (st.pt === 'cat') return segP + vCat();
   const P = DB.periods;
-  let h = `<div class="chips">${P.map(p => `<button class="chip ${p.id === st.pid ? 'on' : ''}" data-a="selp" data-id="${p.id}">${fmtS(p.start)}–${fmtS(p.end)}</button>`).join('')}<button class="chip" data-a="newp">+ Новый</button></div>`;
+  let h = segP + `<div class="chips">${P.map(p => `<button class="chip ${p.id === st.pid ? 'on' : ''}" data-a="selp" data-id="${p.id}">${fmtS(p.start)}–${fmtS(p.end)}</button>`).join('')}<button class="chip" data-a="newp">+ Новый</button></div>`;
   const p = per(); if (!p) return h + noPeriod();
   const s = stats(p);
   h += `<div class="sec"><h3>Даты</h3><div class="two"><label>С<input type="date" data-f="pstart" value="${p.start}"></label><label>По<input type="date" data-f="pend" value="${p.end}"></label></div></div>`;
@@ -486,15 +608,16 @@ function vCat() {
 function mPick() {
   const p = per(), s = stats(p), g = p.goals, x = day(st.date);
   const inG = DB.catalog.filter(c => (g[c.id] || 0) > 0), other = DB.catalog.filter(c => !((g[c.id] || 0) > 0));
-  let h = `<h3>Добавить в ${fmt(st.date)}</h3>`;
+  const row = (c, withGoal) => {
+    const n = x.items.filter(i => i.id === c.id).length, pl = s.plan[c.id] || 0, gl = g[c.id] || 0;
+    return `<div class="pkrow ${withGoal && pl >= gl && !n ? 'full' : ''} ${n ? 'has' : ''}"><span class="grow" data-a="add" data-id="${c.id}">${withGoal ? '' : ICON[c.cat]}${esc(c.name)}${withGoal ? `<div class="sm muted">в плане ${pl}/${gl}</div>` : ''}</span><div class="step"><button data-a="rm1" data-id="${c.id}" ${n ? '' : 'disabled'} aria-label="Убрать">−</button><b>${n}</b><button data-a="add" data-id="${c.id}" aria-label="Добавить">+</button></div></div>`;
+  };
+  let h = `<h3>Собрать ${fmt(st.date)}</h3><p class="sm muted" style="margin:-6px 0 6px">Число — сколько раз пункт стоит в этом дне.</p>`;
   for (const cg of CATS) {
     const L = inG.filter(c => c.cat === cg); if (!L.length) continue;
-    h += `<div class="cat">${ICON[cg]} ${cg}</div>` + L.map(c => {
-      const pl = s.plan[c.id] || 0, gl = g[c.id], inDay = x.items.filter(i => i.id === c.id).length;
-      return `<button class="pk ${pl >= gl ? 'full' : ''}" data-a="add" data-id="${c.id}"><span>${esc(c.name)}${inDay ? ` <b>✓${inDay > 1 ? '×' + inDay : ''}</b>` : ''}</span><span class="muted sm">в плане ${pl}/${gl}</span></button>`;
-    }).join('');
+    h += `<div class="cat">${ICON[cg]} ${cg}</div>` + L.map(c => row(c, true)).join('');
   }
-  if (other.length) h += `<details id="oth" ${st.openOther ? 'open' : ''}><summary>Ещё из каталога (вне целей)</summary>${other.map(c => `<button class="pk" data-a="add" data-id="${c.id}"><span>${ICON[c.cat]} ${esc(c.name)}</span></button>`).join('')}</details>`;
+  if (other.length) h += `<details id="oth" ${st.openOther ? 'open' : ''}><summary>Ещё из каталога (вне целей)</summary>${other.map(c => row(c, false)).join('')}</details>`;
   return h + `<button class="pri wide" data-a="close">Готово</button>`;
 }
 function mNewP() {
@@ -503,7 +626,7 @@ function mNewP() {
 }
 function mPAdd() {
   const L = [...DB.products].sort((a, b) => a.name.localeCompare(b.name, 'ru'));
-  return `<h3>Добавить в «${st.modal.m}»</h3><input id="psearch" placeholder="Поиск…" autocomplete="off"><div style="margin-top:8px">${L.map(p => `<button class="pk" data-a="padd" data-id="${p.id}" data-pn="${esc(p.name.toLowerCase())}"><span>${esc(p.name)}</span><span class="muted sm">${p.k} ккал · Б ${p.p}</span></button>`).join('')}</div><button class="wide" data-a="prods">Добавить свой продукт</button>`;
+  return `<h3>Добавить в «${st.modal.m}»</h3><button class="pri wide scanbtn" data-a="scan">Сканировать штрихкод</button><input id="psearch" style="margin-top:10px" placeholder="Поиск…" autocomplete="off"><div style="margin-top:8px">${L.map(p => `<button class="pk" data-a="padd" data-id="${p.id}" data-pn="${esc(p.name.toLowerCase())}"><span>${esc(p.name)}</span><span class="muted sm">${p.k} ккал · Б ${p.p}</span></button>`).join('')}</div><button class="wide" data-a="prods">Добавить свой продукт</button>`;
 }
 function mCopy() {
   const p = per(), ds = rng(p.start, p.end).filter(x => x !== st.mdate);
@@ -523,7 +646,7 @@ function mShop() {
   return `<h3>Список покупок</h3><div class="two"><label>С<select data-f="shopF">${opt(f)}</select></label><label>По<select data-f="shopT">${opt(t)}</select></label></div><p class="muted sm">Граммы по меню за выбранные дни. Крупы и макароны — в сухом виде.</p><textarea id="cp" readonly>${esc(txt || 'В эти дни меню пустое')}</textarea><button class="pri wide" data-a="copytxt">Скопировать</button>`;
 }
 function mProds() {
-  return `<h3>База продуктов</h3><p class="muted sm">Значения на 100 г.</p><div class="prow sm muted"><span>Название</span><span>Ккал</span><span>Б</span><span>Ж</span><span>У</span><span></span></div>${DB.products.map(p => `<div class="prow"><input data-f="pr" data-id="${p.id}" data-k="name" value="${esc(p.name)}">${['k', 'p', 'f', 'c'].map(k => `<input type="number" inputmode="decimal" step="0.1" data-f="pr" data-id="${p.id}" data-k="${k}" value="${p[k]}">`).join('')}<button class="x" data-a="pdel" data-id="${p.id}">✕</button></div>`).join('')}<button class="lnk" data-a="pnew">+ продукт</button><button class="pri wide" data-a="close">Готово</button>`;
+  return `<h3>База продуктов</h3><button class="pri wide scanbtn" data-a="scan">Сканировать штрихкод</button><p class="muted sm">Значения на 100 г.</p><div class="prow sm muted"><span>Название</span><span>Ккал</span><span>Б</span><span>Ж</span><span>У</span><span></span></div>${DB.products.map(p => `<div class="prow"><input data-f="pr" data-id="${p.id}" data-k="name" value="${esc(p.name)}">${['k', 'p', 'f', 'c'].map(k => `<input type="number" inputmode="decimal" step="0.1" data-f="pr" data-id="${p.id}" data-k="${k}" value="${p[k]}">`).join('')}<button class="x" data-a="pdel" data-id="${p.id}">✕</button></div>`).join('')}<button class="lnk" data-a="pnew">+ продукт</button><button class="pri wide" data-a="close">Готово</button>`;
 }
 function modal() {
   const m = st.modal;
@@ -534,10 +657,459 @@ function modal() {
     case 'mcopy': return mCopy();
     case 'shop': return mShop();
     case 'prods': return mProds();
+    case 'expick': return mExPick();
+    case 'exedit': return mExEdit();
+    case 'hist': return mHist();
+    case 'scan': return mScan();
+    case 'scanres': return mScanRes();
+    case 'gcat': return mGcat();
     case 'exp': return `<h3>Экспорт</h3><p class="muted sm">Полная копия данных. Сохрани текст куда-нибудь (например, в «Избранное»).</p><textarea id="cp" readonly>${esc(m.txt)}</textarea><button class="pri wide" data-a="copytxt">Скопировать</button>`;
     case 'imp': return `<h3>Импорт</h3><p class="muted sm">Вставь текст из экспорта. Данные с теми же ключами перезапишутся.</p><textarea id="imp"></textarea><button class="pri wide" data-a="doimp">Загрузить</button>`;
   }
   return '';
+}
+
+
+
+/* ===== штрихкоды (Open Food Facts) ===== */
+let scanner = null, scanBusy = false;
+function loadScanLib() {
+  return window.Html5Qrcode ? Promise.resolve() : new Promise((res, rej) => { const el = document.createElement('script'); el.src = 'https://cdn.jsdelivr.net/npm/html5-qrcode@2.3.8/html5-qrcode.min.js'; el.onload = res; el.onerror = () => rej(new Error('не загрузился сканер')); document.head.appendChild(el); });
+}
+async function stopScan() { st.torch = false; if (!scanner) return; const sc = scanner; scanner = null; try { await sc.stop(); } catch (e) {} try { sc.clear(); } catch (e) {} }
+async function startScan() {
+  if (scanner) return; scanBusy = false;
+  try {
+    await loadScanLib();
+    if (!document.getElementById('reader') || !st.modal || st.modal.t !== 'scan') return;
+    const F = window.Html5QrcodeSupportedFormats;
+    scanner = new window.Html5Qrcode('reader', { verbose: false, formatsToSupport: [F.EAN_13, F.EAN_8, F.UPC_A, F.UPC_E, F.CODE_128], experimentalFeatures: { useBarCodeDetectorIfSupported: true } });
+    await scanner.start({ facingMode: 'environment' }, { fps: 12, aspectRatio: window.innerHeight / window.innerWidth },
+      code => { if (scanBusy) return; scanBusy = true; hap(); const fr = document.getElementById('sframe'); if (fr) fr.classList.add('hit'); setTimeout(() => stopScan().then(() => lookup(code)), 250); }, () => {});
+    try { const cap = scanner.getRunningTrackCapabilities && scanner.getRunningTrackCapabilities(); if (cap && cap.torch) { const t = document.getElementById('torch'); if (t) t.style.visibility = 'visible'; } } catch (e) {}
+  } catch (e) {
+    scanner = null;
+    const el = document.getElementById('scanerr'); if (el) { el.textContent = 'Нет доступа к камере. Разреши его в настройках или введи код вручную.'; el.classList.add('on'); }
+    const sh = document.getElementById('shint'); if (sh) sh.style.display = 'none'; const sp = document.getElementById('spanel'); if (sp) sp.classList.add('manual');
+  }
+}
+function addToMeal(pid, meal) {
+  if (!meal || !st.pid) return;
+  const M = menu(), md = M.days[st.mdate] || (M.days[st.mdate] = {}); (md[meal] || (md[meal] = [])).push({ pid, g: 100 }); mark('m_' + st.pid);
+}
+async function lookup(raw) {
+  const code = String(raw).replace(/\D/g, ''), meal = st.modal && st.modal.m;
+  if (code.length < 8) { toast('Похоже, это не штрихкод'); return; }
+  const own = DB.products.find(p => p.bc === code);
+  if (own) { addToMeal(own.id, meal); st.modal = null; toast(meal ? `«${own.name}» добавлен, поправь граммы` : `Уже есть в базе: ${own.name}`); render(); return; }
+  st.modal = { t: 'scanres', m: meal, code, loading: true }; render();
+  let d = { name: '', k: 0, p: 0, f: 0, c: 0, found: false };
+  try {
+    const r = await fetch(`https://world.openfoodfacts.org/api/v2/product/${code}.json?fields=product_name,product_name_ru,brands,nutriments`);
+    const j = await r.json();
+    if (j.status === 1 && j.product) {
+      const P = j.product, n = P.nutriments || {}, br = (P.brands || '').split(',')[0].trim();
+      const kc = n['energy-kcal_100g'] != null ? n['energy-kcal_100g'] : (n['energy_100g'] ? n['energy_100g'] / 4.184 : 0);
+      d = { name: [P.product_name_ru || P.product_name || '', br ? `(${br})` : ''].join(' ').trim(), k: Math.round(kc), p: r1(n.proteins_100g || 0), f: r1(n.fat_100g || 0), c: r1(n.carbohydrates_100g || 0), found: true };
+    }
+  } catch (e) { d.err = true; }
+  if (!st.modal || st.modal.t !== 'scanres') return;
+  Object.assign(st.modal, { loading: false, d }); render();
+}
+function mScan() {
+  const corner = 'M3 36V20Q3 3 20 3h16';
+  return `<div class="scanfull"><div id="reader"></div>
+  <div class="sframe" id="sframe"><svg viewBox="0 0 100 100" preserveAspectRatio="none"></svg><div class="sline"></div></div>
+  <div class="serr" id="scanerr"></div>
+  <div class="sbar"><button class="cbtn glass" data-a="close" aria-label="Закрыть"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button><div class="stitle glass">Штрихкод</div><button class="cbtn glass" id="torch" data-a="torch" aria-label="Фонарик" style="visibility:hidden"><svg viewBox="0 0 24 24"><path d="M9 2h6l-1 6h-4z"/><path d="M10 8h4v13a2 2 0 0 1-4 0z"/><path d="M12 12v2"/></svg></button></div>
+  <div class="shint" id="shint">Наведите камеру на штрихкод</div>
+  <div class="spanel glass" id="spanel"><button class="pill clear mtoggle" data-a="scanman"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><rect x="3" y="6" width="18" height="12" rx="3"/><path d="M7 10h.01M11 10h.01M15 10h.01M8 14h8"/></svg>Ввести код вручную</button><div class="mrow"><input id="bcode" inputmode="numeric" placeholder="Цифры под штрихкодом"><button class="pill white" data-a="bcfind">Найти</button></div></div></div>`;
+}
+function drawCorners() {
+  const fr = document.getElementById('sframe'); if (!fr) return;
+  const w = fr.offsetWidth, h = fr.offsetHeight, r = 30, L = 34, svg = fr.querySelector('svg');
+  svg.setAttribute('viewBox', `-3 -3 ${w + 6} ${h + 6}`);
+  const c = (x, y, sx, sy) => `M${x} ${y + sy * L}V${y + sy * r}Q${x} ${y} ${x + sx * r} ${y}H${x + sx * L}`;
+  svg.innerHTML = `<path d="${c(0, 0, 1, 1)} ${c(w, 0, -1, 1)} ${c(0, h, 1, -1)} ${c(w, h, -1, -1)}" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round"/>`;
+}
+function mScanRes() {
+  const m = st.modal;
+  if (m.loading) return `<div class="grab"></div><h3>Ищу продукт…</h3><p class="iossub">Штрихкод ${m.code}</p><div class="spin"></div>`;
+  const d = m.d;
+  const msg = d.found ? 'Нашла в Open Food Facts. Сверь КБЖУ с упаковкой.' : d.err ? 'Нет связи с базой. Заполни по упаковке.' : 'Этого продукта нет в открытой базе. Заполни по упаковке — он сохранится у тебя со штрихкодом.';
+  const row = (k, l, u) => `<div class="irow"><span>${l}</span><input id="sr_${k}" type="number" inputmode="decimal" class="grow" value="${d[k] || ''}" placeholder="0"><em>${u}</em></div>`;
+  return `<div class="grab"></div><h3>${d.found ? 'Продукт найден' : 'Новый продукт'}</h3><p class="iossub">${msg}</p><div class="igroup"><div class="irow"><input id="sr_name" class="grow left" value="${esc(d.name)}" placeholder="Название продукта"></div></div><div class="igroup">${row('k', 'Калории', 'ккал')}${row('p', 'Белки', 'г')}${row('f', 'Жиры', 'г')}${row('c', 'Углеводы', 'г')}</div><div class="ifoot">На 100 г · штрихкод ${m.code}</div><button class="pill red" data-a="srsave">${m.m ? `Добавить в «${m.m}»` : 'Сохранить в базу'}</button><button class="pill tint" data-a="scan">Сканировать другой</button>`;
+}
+
+/* ===== тренировки ===== */
+const DEF_GC = [{ id: 'st', name: 'Силовые', ex: 'st', re: 'силов' }, { id: 'c', name: 'Кардио', ex: 'c', re: 'кардио' }, { id: 'stretch', name: 'Растяжка', ex: 'tm', re: '' }, { id: 'qg', name: 'Цигун', ex: 'tm', re: 'цигун' }];
+const gcat = id => (DB.gcats || []).find(x => x.id === id) || { id, name: 'Без категории', ex: 'st', link: '' };
+function seedGcats() { return DEF_GC.map(x => { const c = x.re && DB.catalog.find(c => c.cat === 'Спорт' && new RegExp(x.re, 'i').test(c.name)); return { id: x.id, name: x.name, ex: x.ex, link: c ? c.id : '' }; }); }
+const EXK = { st: 'Силовое', c: 'Кардио', tm: 'На время (растяжка, цигун)' };
+const MU = { fl: 'этажи', st: 'шаги', km: 'км' };
+const defExercises = () => [
+  ['Присед со штангой', 'Ноги', 'st', { sets: 3, reps: 10, w: 30 }], ['Румынская тяга', 'Ноги', 'st', { sets: 3, reps: 10, w: 30 }],
+  ['Выпады с гантелями', 'Ноги', 'st', { sets: 3, reps: 10, w: 6 }], ['Ягодичный мост', 'Ягодицы', 'st', { sets: 3, reps: 12, w: 40 }],
+  ['Тяга верхнего блока', 'Спина', 'st', { sets: 3, reps: 12, w: 30 }], ['Тяга гантели в наклоне', 'Спина', 'st', { sets: 3, reps: 12, w: 8 }],
+  ['Жим гантелей лёжа', 'Грудь', 'st', { sets: 3, reps: 12, w: 8 }], ['Жим гантелей сидя', 'Плечи', 'st', { sets: 3, reps: 12, w: 5 }],
+  ['Планка', 'Кор', 'st', { sets: 3, reps: 45, w: 0, u: 's' }],
+  ['Лестница (степпер)', 'Кардио', 'c', { min: 20, lvl: 8, hr: 140, amt: 0, mu: 'fl', kcal: 0 }],
+  ['Эллипсоид', 'Кардио', 'c', { min: 20, lvl: 6, hr: 135, amt: 0, mu: 'km', kcal: 0 }],
+  ['Кошка-корова', 'Растяжка', 'tm', { dur: 40 }], ['Выпад с растяжкой передней поверхности бедра', 'Растяжка', 'tm', { dur: 40, sides: true }],
+  ['Наклон к ногам сидя', 'Растяжка', 'tm', { dur: 45 }], ['Бабочка', 'Растяжка', 'tm', { dur: 45 }],
+  ['Растяжка грудных у стены', 'Растяжка', 'tm', { dur: 30, sides: true }], ['Поза ребёнка', 'Растяжка', 'tm', { dur: 60 }],
+  ['Суставная разминка', 'Цигун', 'tm', { dur: 120 }], ['Стояние столбом', 'Цигун', 'tm', { dur: 300 }],
+  ['Поднять руки к небу', 'Цигун', 'tm', { dur: 60, rep: 8 }], ['Натянуть лук', 'Цигун', 'tm', { dur: 60, rep: 8, sides: true }],
+  ['Собрать и опустить ци', 'Цигун', 'tm', { dur: 60 }]
+].map(([name, grp, kind, o]) => { const e = { id: uid(), name, grp, kind, note: '', sets: 3, reps: 10, w: 0, u: 'r', min: 20, lvl: 5, hr: 130, amt: 0, mu: 'fl', kcal: 0, dur: 60, rep: 0, sides: false, ...o }; e.gc = gcOf(e); return e; });
+const blankEx = (gc, name) => { const k = gcat(gc).ex, base = defExercises().find(e => e.kind === k) || defExercises()[0]; return { ...base, id: uid(), name, grp: '', kind: k, gc, note: '' }; };
+const exo = id => DB.exercises.find(e => e.id === id);
+const wko = id => DB.workouts.find(w => w.id === id);
+const exKind = ex => (ex && ex.kind) || 'st';
+const gcOf = e => e.gc || (exKind(e) === 'c' ? 'c' : exKind(e) === 'tm' ? (/цигун/i.test(e.grp || '') ? 'qg' : 'stretch') : 'st');
+const useCount = () => { const c = {}; DB.sess.forEach(x => c[x.wid] = (c[x.wid] || 0) + 1); return c; };
+const unitOf = ex => ex && ex.u === 's' ? 'сек' : 'раз';
+const mkSets = ex => Array.from({ length: Math.max(1, ex.sets || 3) }, () => ({ w: ex.w || 0, r: ex.reps || 10 }));
+const mkC = ex => ({ min: ex.min || 0, lvl: ex.lvl || 0, hr: ex.hr || 0, amt: ex.amt || 0, kcal: ex.kcal || 0 });
+const mkT = ex => ({ dur: ex.dur || 60, rep: ex.rep || 0, sides: !!ex.sides });
+function mkItem(ex) { const k = exKind(ex); return k === 'c' ? { exId: ex.id, c: mkC(ex) } : k === 'tm' ? { exId: ex.id, t: mkT(ex) } : { exId: ex.id, sets: mkSets(ex) }; }
+const cloneItem = (it, live) => it.c ? { exId: it.exId, c: { ...it.c }, ...(live ? { done: false } : {}) } : it.t ? { exId: it.exId, t: { ...it.t }, ...(live ? { done: false } : {}) } : { exId: it.exId, sets: it.sets.map(x => live ? { w: x.w, r: x.r, done: false } : { w: x.w, r: x.r }) };
+const fmtSets = sets => sets.map(x => (x.w ? kg(x.w) + '×' : '') + x.r).join(' · ');
+const fmtDur = sec => { sec = Math.max(0, Math.round(sec)); return Math.floor(sec / 60) + ':' + pad(sec % 60); };
+const fmtC = (c, ex) => [c.min ? c.min + ' мин' : '', c.lvl ? 'ур. ' + c.lvl : '', c.hr ? 'пульс ' + c.hr : '', c.amt ? kg(c.amt) + ' ' + (MU[ex?.mu] || '') : '', c.kcal ? c.kcal + ' ккал' : ''].filter(Boolean).join(' · ');
+const fmtT = t => fmtDur(t.dur) + (t.sides ? ' × 2 стороны' : '') + (t.rep ? ' · ' + t.rep + ' раз' : '');
+const itemDur = it => it.t ? it.t.dur * (it.t.sides ? 2 : 1) : it.c ? (it.c.min || 0) * 60 : 0;
+const sess = () => DB.active ? DB['s_' + DB.active] : null;
+function elapsed(s) { const m = Math.max(0, Math.floor((Date.now() - s.start) / 60000)); return Math.floor(m / 60) + ':' + pad(m % 60); }
+setInterval(() => { const s = sess(); if (s) document.querySelectorAll('[data-timer]').forEach(el => el.textContent = elapsed(s)); }, 15000);
+
+/* таймер для растяжки и цигун */
+let actx = null, wl = null;
+function beep(f = 660, d = .45) {
+  try { actx = actx || new (window.AudioContext || window.webkitAudioContext)(); const o = actx.createOscillator(), g = actx.createGain(); o.frequency.value = f; o.connect(g); g.connect(actx.destination); g.gain.setValueAtTime(.25, actx.currentTime); g.gain.exponentialRampToValueAtTime(.001, actx.currentTime + d); o.start(); o.stop(actx.currentTime + d); } catch (e) {}
+  try { tg && tg.HapticFeedback && tg.HapticFeedback.notificationOccurred('success'); } catch (e) {}
+}
+async function wake(on) { try { if (on && !wl && navigator.wakeLock) { wl = await navigator.wakeLock.request('screen'); wl.addEventListener('release', () => wl = null); } else if (!on && wl) { await wl.release(); wl = null; } } catch (e) {} }
+const PREP = 5000;
+const nextTimed = (s, from) => s.items.findIndex((it, k) => k >= from && it.t && !it.done);
+function runLeft() { const r = st.run; return r ? (r.paused ? r.left : r.end - Date.now()) : 0; }
+function runStart() {
+  const s = sess(); if (!s) return;
+  if (!st.run) { const i = nextTimed(s, 0); if (i < 0) { toast('Все упражнения выполнены'); return; } st.run = { i, side: 0, prep: true, left: PREP, total: PREP }; }
+  st.run.end = Date.now() + st.run.left; st.run.paused = false; beep(880, .12); wake(true);
+}
+function runPause() { const r = st.run; if (!r || r.paused) return; r.left = r.end - Date.now(); r.paused = true; wake(false); }
+function runPhaseDone(skip) {
+  const s = sess(), r = st.run; if (!s || !r) return;
+  const it = s.items[r.i];
+  if (r.prep) { const ms = it.t.dur * 1000; Object.assign(r, { prep: false, left: ms, total: ms, end: Date.now() + ms }); if (!skip) beep(880, .25); }
+  else if (it.t.sides && r.side === 0) { Object.assign(r, { side: 1, prep: true, left: PREP, total: PREP, end: Date.now() + PREP }); if (!skip) beep(); }
+  else {
+    it.done = true; mark('s_' + s.id); if (!skip) beep(520, .6);
+    const n = nextTimed(s, r.i + 1);
+    if (n < 0) { st.run = null; wake(false); toast('Комплекс завершён'); setTimeout(() => beep(700, .8), 700); }
+    else Object.assign(r, { i: n, side: 0, prep: true, left: PREP, total: PREP, end: Date.now() + PREP });
+  }
+  if (st.run && r.paused) r.end = Date.now() + r.left;
+  render();
+}
+setInterval(() => {
+  const r = st.run; if (!r || r.paused) return;
+  const left = r.end - Date.now();
+  if (left <= 0) { runPhaseDone(false); return; }
+  const b = document.getElementById('tbig'), bar = document.getElementById('tbar');
+  if (b) b.textContent = fmtDur(Math.ceil(left / 1000));
+  if (bar) bar.style.width = Math.min(100, (1 - left / r.total) * 100) + '%';
+  if (!r.prep && left < 3200 && left > 2800 && !r.warned) { r.warned = true; beep(990, .08); }
+  if (left > 3500) r.warned = false;
+}, 200);
+function timerPanel(s) {
+  if (!s.items.some(it => it.t)) return '';
+  const r = st.run;
+  if (!r) {
+    const i = nextTimed(s, 0);
+    return `<div class="tpanel"><div class="sm">Таймер</div>${i < 0 ? '<div class="tname">Всё выполнено</div>' : `<div class="tname">Начнём с «${esc(exo(s.items[i].exId)?.name || '')}»</div><div class="sm">Перед каждым упражнением 5 секунд на подготовку, в конце — звуковой сигнал.</div><button class="pri wide" data-a="rstart">▶ Старт</button>`}</div>`;
+  }
+  const it = s.items[r.i], ex = exo(it.exId), left = runLeft();
+  const pos = s.items.filter(x => x.t).indexOf(it) + 1, cnt = s.items.filter(x => x.t).length;
+  return `<div class="tpanel"><div class="sm">${r.prep ? 'Приготовься' : 'Сейчас'} · ${pos} из ${cnt}</div><div class="tname">${esc(ex?.name || '')}${it.t.sides ? ` <span class="sm">· ${r.side ? 'вторая' : 'первая'} сторона</span>` : ''}${it.t.rep && !r.prep ? ` <span class="sm">· ${it.t.rep} раз</span>` : ''}</div><div class="tbig ${r.prep ? 'prep' : ''}" id="tbig">${fmtDur(Math.ceil(left / 1000))}</div><div class="bar"><i id="tbar" style="width:${Math.min(100, (1 - left / r.total) * 100)}%"></i></div><div class="btns">${r.paused ? '<button class="pri" data-a="rstart">▶ Продолжить</button>' : '<button data-a="rpause">❚❚ Пауза</button>'}<button data-a="rskip">Далее ›</button><button data-a="rstop">■</button></div></div>`;
+}
+
+/* строки ввода */
+function setHdr(live, ex) { return `<div class="setrow sethdr ${live ? '' : 't'}">${live ? '<span></span>' : ''}<span>№</span><span>вес, кг</span><span>${unitOf(ex)}</span><span></span></div>`; }
+function setRow(live, x, i, j, f) {
+  return `<div class="setrow ${live ? '' : 't'} ${live && x.done ? 'dn' : ''}">${live ? `<button class="sd ${x.done ? 'on' : ''}" data-a="sdone" data-i="${i}" data-j="${j}">${x.done ? '✓' : ''}</button>` : ''}<span class="n">${j + 1}</span><input type="number" inputmode="decimal" step="0.5" data-f="${f}" data-i="${i}" data-j="${j}" data-k="w" value="${x.w}"><input type="number" inputmode="numeric" data-f="${f}" data-i="${i}" data-j="${j}" data-k="r" value="${x.r}"><button class="x" data-a="${live ? 'ssrm' : 'wsrm'}" data-i="${i}" data-j="${j}">✕</button></div>`;
+}
+function cGrid(c, ex, i, f) {
+  return `<div class="cgrid">${[['min', 'Минуты'], ['lvl', 'Уровень'], ['hr', 'Ср. пульс'], ['amt', MU[ex?.mu] || 'объём'], ['kcal', 'Ккал']].map(([k, l]) => `<label>${l}<input type="number" inputmode="decimal" data-f="${f}" data-i="${i}" data-k="${k}" value="${c[k] || ''}" placeholder="—"></label>`).join('')}</div>`;
+}
+function tGrid(t, i, f) {
+  return `<div class="cgrid"><label>Секунды<input type="number" inputmode="numeric" data-f="${f}" data-i="${i}" data-k="dur" value="${t.dur}"></label><label>Повторы<input type="number" inputmode="numeric" data-f="${f}" data-i="${i}" data-k="rep" value="${t.rep || ''}" placeholder="—"></label><label class="ck"><input type="checkbox" data-f="${f}" data-i="${i}" data-k="sides" ${t.sides ? 'checked' : ''}> обе стороны</label></div>`;
+}
+function lastLine(exId) {
+  const L = DB.last[exId], ex = exo(exId);
+  if (!L) return `<div class="last">Ещё не выполнялось</div>`;
+  const txt = L.c ? fmtC(L.c, ex) : L.t ? fmtT(L.t) : fmtSets(L.sets) + ' ' + unitOf(ex);
+  return `<div class="last">Прошлый раз ${fmtS(L.date)}: ${txt}</div>`;
+}
+function itemBody(it, i, live) {
+  const ex = exo(it.exId);
+  if (it.c) return cGrid(it.c, ex, i, live ? 'sc' : 'wc') + (live ? `<button class="${it.done ? 'donebtn on' : 'donebtn'}" data-a="idone" data-i="${i}">${it.done ? '✓ Выполнено' : 'Отметить выполненным'}</button>` : '');
+  if (it.t) return tGrid(it.t, i, live ? 'st2' : 'wt') + (live ? `<button class="${it.done ? 'donebtn on' : 'donebtn'}" data-a="idone" data-i="${i}">${it.done ? '✓ Выполнено' : 'Отметить выполненным'}</button>` : '');
+  return `<div style="margin-top:8px">${setHdr(live, ex)}${it.sets.map((x, j) => setRow(live, x, i, j, live ? 'sset' : 'wset')).join('')}</div><button class="lnk" data-a="${live ? 'ssadd' : 'wsadd'}" data-i="${i}">+ подход</button>`;
+}
+function tplSummary(w) {
+  const n = w.items.length, ek = gcat(w.kind || 'st').ex;
+  if (ek === 'c') return `${n} упр. · ${w.items.reduce((a, i) => a + (i.c?.min || 0), 0)} мин`;
+  if (ek === 'tm') return `${n} упр. · ~${fmtDur(w.items.reduce((a, i) => a + itemDur(i), 0))}`;
+  return `${n} упр. · ${w.items.reduce((a, i) => a + (i.sets?.length || 0), 0)} подх.`;
+}
+
+/* экраны */
+function vGym() {
+  if (st.gmode === 'sess' && sess()) return vSession();
+  if (st.gmode === 'edit' && wko(st.wedit)) return vWEdit();
+  if (st.gmode === 'hist') return `<div class="dnav"><button data-a="gback">◀</button><b>История</b><span style="width:40px"></span></div>` + vHist(DB.sess);
+  let h = '';
+  const s = sess();
+  if (s) h += `<button class="banner" data-a="gsess"><span class="grow"><b>Идёт тренировка</b><br><span class="sm">${esc(s.name)} · <span data-timer>${elapsed(s)}</span></span></span><span>Продолжить →</span></button>`;
+  if (st.gc && !DB.gcats.some(x => x.id === st.gc)) st.gc = null;
+  h += `<div class="chips gmenu"><button class="chip ${!st.gc ? 'on' : ''}" data-a="gc" data-id="">★ Любимые</button>${DB.gcats.map(x => `<button class="chip ${st.gc === x.id ? 'on' : ''}" data-a="gc" data-id="${x.id}">${esc(x.name)}</button>`).join('')}<button class="chip addc" data-a="gcnew">+ Категория</button></div>`;
+  if (!st.gc) return h + vGymHome();
+  const g = gcat(st.gc);
+  h += `<div class="cathead"><h2>${esc(g.name)}</h2><button class="x" data-a="gcedit" data-id="${g.id}">настроить</button></div>`;
+  h += `<div class="seg"><button class="${st.gsub !== 'ex' ? 'on' : ''}" data-a="gsub" data-v="wk">Тренировки</button><button class="${st.gsub === 'ex' ? 'on' : ''}" data-a="gsub" data-v="ex">Упражнения</button></div>`;
+  if (st.gsub === 'ex') return h + vExList(g.id);
+  const cnt = useCount(), L = DB.workouts.filter(w => (w.kind || 'st') === g.id);
+  if (!L.length) h += `<div class="sec"><p class="muted sm">В этой категории пока нет тренировок.</p></div>`;
+  h += L.map(w => wCard(w, cnt)).join('');
+  return h + `<button class="wide" data-a="wnew">+ Новая тренировка</button>`;
+}
+function wCard(w, cnt) {
+  const ln = w.link && cat(w.link), n = cnt[w.id] || 0;
+  return `<div class="sec"><div class="exhead"><h3 class="grow">${esc(w.name)}</h3><button class="star ${w.fav ? 'on' : ''}" data-a="wfav" data-id="${w.id}" aria-label="В любимые">${w.fav ? '★' : '☆'}</button></div><div class="sm muted">${tplSummary(w)}${n ? ` · ${n} раз` : ''}${ln ? ` · отметит «${esc(ln.name)}»` : ''}</div><div class="chipline">${w.items.map(i => esc(exo(i.exId)?.name || '?')).join(' · ') || '<span class="muted">пока без упражнений</span>'}</div><div class="btns"><button class="pri" data-a="wstart" data-id="${w.id}">Начать</button><button data-a="wedit" data-id="${w.id}">Изменить</button></div></div>`;
+}
+function vGymHome() {
+  const cnt = useCount();
+  const fav = DB.workouts.filter(w => w.fav || cnt[w.id]).sort((a, b) => (b.fav ? 1 : 0) - (a.fav ? 1 : 0) || (cnt[b.id] || 0) - (cnt[a.id] || 0)).slice(0, 8);
+  let h = `<div class="sec"><h3>Любимые тренировки</h3>`;
+  h += fav.length ? fav.map(w => `<div class="row"><span class="grow"><b>${esc(w.name)}</b>${w.fav ? ' <span class="stari">★</span>' : ''}<div class="sm muted">${esc(gcat(w.kind || 'st').name)} · ${tplSummary(w)}${cnt[w.id] ? ` · ${cnt[w.id]} раз` : ''}</div></span><button class="pri" data-a="wstart" data-id="${w.id}">▶</button></div>`).join('')
+    : `<p class="muted sm">Отметь ☆ у тренировок в категориях. Тренировки, которые делаешь чаще всего, появятся здесь сами.</p>`;
+  h += `</div>`;
+  if (DB.sess.length) h += `<div class="sec"><h3>Недавние</h3>${vHist(DB.sess.slice(0, 4), true)}${DB.sess.length > 4 ? `<button class="lnk" data-a="ghist">Вся история (${DB.sess.length}) ›</button>` : ''}</div>`;
+  return h;
+}
+function exDetail(e) {
+  const k = exKind(e);
+  if (k === 'c') return fmtC(mkC(e), e) || 'кардио';
+  if (k === 'tm') return fmtT(mkT(e));
+  return `${e.sets}×${e.reps} ${unitOf(e)}${e.w ? ' · ' + kg(e.w) + ' кг' : ''}`;
+}
+function vExList(gc) {
+  const E = DB.exercises.filter(e => gcOf(e) === gc);
+  const groups = [...new Set(E.map(e => e.grp || 'Без группы'))];
+  let h = E.length ? '' : `<div class="sec"><p class="muted sm">Упражнений пока нет.</p></div>`;
+  for (const gname of groups) {
+    const L = E.filter(e => (e.grp || 'Без группы') === gname);
+    h += `<div class="sec"><h3>${esc(gname)}</h3>${L.map(e => `<div class="row" data-a="exedit" data-id="${e.id}"><span class="grow">${esc(e.name)}<div class="sm muted">${exDetail(e)}</div></span><span class="muted">›</span></div>`).join('')}</div>`;
+  }
+  return h + `<button class="wide" data-a="exnew">+ Новое упражнение</button>`;
+}
+function vHist(list, bare) {
+  if (!list.length) return `<div class="sec"><p class="muted sm">Здесь появятся завершённые тренировки.</p></div>`;
+  const rows = list.map(x => `<div class="row" data-a="hview" data-id="${x.id}"><span class="grow">${esc(x.name)}<div class="sm muted">${fmt(x.date)} · ${x.min} мин${x.sets ? ' · ' + x.sets + (gcat(x.kind || 'st').ex === 'st' ? ' подх.' : ' упр.') : ''}${x.vol ? ' · объём ' + fmtN(x.vol) + ' кг' : ''}${x.kcal ? ' · ' + fmtN(x.kcal) + ' ккал' : ''}</div></span><span class="muted">›</span></div>`).join('');
+  return bare ? rows : `<div class="sec">${rows}</div>`;
+}
+function vWEdit() {
+  const w = wko(st.wedit);
+  let h = `<div class="dnav"><button data-a="gback">◀</button><b>${esc(gcat(w.kind || 'st').name)}: шаблон</b><span style="width:40px"></span></div>`;
+  h += `<div class="sec"><label>Название<input data-f="wname" value="${esc(w.name)}"></label><label style="margin-top:10px">Отмечать в чек-листе дня<select data-f="wlink"><option value="">— не отмечать —</option>${DB.catalog.filter(c => c.cat === 'Спорт').map(c => `<option value="${c.id}" ${w.link === c.id ? 'selected' : ''}>${esc(c.name)}</option>`).join('')}</select></label>${gcat(w.kind || 'st').ex === 'tm' ? `<div class="sm muted" style="margin-top:8px">Общее время ~${fmtDur(w.items.reduce((a, i) => a + itemDur(i), 0))}</div>` : ''}</div>`;
+  h += w.items.map((it, i) => {
+    const ex = exo(it.exId);
+    return `<div class="sec"><div class="exhead"><h3 class="grow">${esc(ex?.name || '(удалено)')}</h3><button class="x" data-a="wiup" data-i="${i}" ${i ? '' : 'disabled'}>↑</button><button class="x" data-a="wirm" data-i="${i}">✕</button></div>${lastLine(it.exId)}${itemBody(it, i, false)}</div>`;
+  }).join('');
+  return h + `<button class="pri wide" data-a="wexadd">+ Упражнение</button><button class="wide" data-a="wfav" data-id="${w.id}">${w.fav ? '★ В любимых' : '☆ Добавить в любимые'}</button><button class="danger wide" data-a="wdel">Удалить тренировку</button>`;
+}
+function vSession() {
+  const s = sess(); let tot = 0, dn = 0;
+  s.items.forEach(it => { if (it.sets) it.sets.forEach(x => { tot++; if (x.done) dn++; }); else { tot++; if (it.done) dn++; } });
+  let h = `<div class="banner"><span class="grow"><b>${esc(s.name)}</b><br><span class="sm">${fmt(s.date)} · выполнено ${dn}/${tot}</span></span><span class="timer" data-timer>${elapsed(s)}</span></div>`;
+  h += timerPanel(s);
+  h += s.items.map((it, i) => {
+    const ex = exo(it.exId), L = DB.last[it.exId], cur = st.run && st.run.i === i;
+    return `<div class="sec ${cur ? 'cur' : ''} ${(it.done) ? 'isdone' : ''}"><div class="exhead"><h3 class="grow">${esc(ex?.name || '(удалено)')}</h3><button class="x" data-a="sirm" data-i="${i}">✕</button></div>${lastLine(it.exId)}${L ? `<button class="lnk sm" data-a="slast" data-i="${i}">↺ взять как в прошлый раз</button>` : ''}${ex?.note ? `<div class="sm muted">${esc(ex.note)}</div>` : ''}${itemBody(it, i, true)}</div>`;
+  }).join('');
+  return h + `<button class="wide" data-a="sexadd">+ Упражнение</button><div class="btns"><button data-a="gback">Свернуть</button><button class="pri" data-a="sfin">Завершить</button></div><button class="danger wide" data-a="scancel">Отменить тренировку</button>`;
+}
+function pickGc() { return st.modal.to === 'w' ? (wko(st.wedit)?.kind || 'st') : (sess()?.kind || 'st'); }
+function pickKind() { return gcat(pickGc()).ex; }
+function mExPick() {
+  const gc = pickGc(), k = pickKind(), same = DB.exercises.filter(e => exKind(e) === k);
+  const E = same.filter(e => gcOf(e) === gc), O = same.filter(e => gcOf(e) !== gc);
+  const btn = e => `<button class="pk" data-a="expk" data-id="${e.id}" data-pn="${esc(e.name.toLowerCase())}"><span>${esc(e.name)}</span><span class="muted sm">${exDetail(e)}</span></button>`;
+  const groups = [...new Set(E.map(e => e.grp || 'Без группы'))];
+  return `<h3>Добавить упражнение</h3><input id="psearch" placeholder="Поиск…" autocomplete="off">${groups.map(g => `<div class="cat">${esc(g)}</div>` + E.filter(e => (e.grp || 'Без группы') === g).map(btn).join('')).join('')}${O.length ? `<details><summary>Из других категорий (${O.length})</summary>${O.map(btn).join('')}</details>` : ''}<div class="cat">Новое упражнение</div><div class="row"><input id="exnewname" class="grow" placeholder="Название"><button data-a="excreate">Создать</button></div>`;
+}
+function mGcat() {
+  const id = st.modal.id, g = id ? gcat(id) : { name: '', ex: 'st', link: '' }, used = id && DB.exercises.some(e => gcOf(e) === id);
+  return `<h3>${id ? 'Категория' : 'Новая категория'}</h3><label>Название<input id="gc_name" value="${esc(g.name)}" placeholder="Например, Пилатес"></label><label style="margin-top:8px">Тип упражнений<select id="gc_ex" ${used ? 'disabled' : ''}>${Object.entries(EXK).map(([v, l]) => `<option value="${v}" ${g.ex === v ? 'selected' : ''}>${l}</option>`).join('')}</select></label>${used ? '<div class="sm muted">Тип нельзя поменять, пока в категории есть упражнения.</div>' : ''}<label style="margin-top:8px">Отмечать в чек-листе дня<select id="gc_link"><option value="">— не отмечать —</option>${DB.catalog.filter(c => c.cat === 'Спорт').map(c => `<option value="${c.id}" ${g.link === c.id ? 'selected' : ''}>${esc(c.name)}</option>`).join('')}</select></label><div class="sm muted" style="margin-top:4px">Подставляется в новые тренировки этой категории.</div><button class="pri wide" data-a="gcsave">Сохранить</button>${id ? `<button class="danger wide" data-a="gcdel" data-id="${id}">Удалить категорию</button>` : ''}`;
+}
+function mExEdit() {
+  const e = exo(st.modal.id); if (!e) return '';
+  const k = exKind(e), groups = [...new Set(DB.exercises.map(x => x.grp).filter(Boolean))];
+  const inp = (key, l, t = 'number', extra = '') => `<label>${l}<input ${t === 'number' ? 'type="number" inputmode="decimal"' : ''} data-f="ex" data-id="${e.id}" data-k="${key}" value="${esc(e[key] ?? '')}" ${extra}></label>`;
+  let body = '';
+  if (k === 'st') body = `<div class="four">${inp('sets', 'Подходы')}${inp('reps', 'Повторы')}${inp('w', 'Вес, кг')}<label>Единица<select data-f="ex" data-id="${e.id}" data-k="u"><option value="r" ${e.u !== 's' ? 'selected' : ''}>раз</option><option value="s" ${e.u === 's' ? 'selected' : ''}>сек</option></select></label></div>`;
+  if (k === 'c') body = `<div class="cgrid">${inp('min', 'Минуты')}${inp('lvl', 'Уровень')}${inp('hr', 'Ср. пульс')}${inp('amt', 'Объём')}<label>Считать в<select data-f="ex" data-id="${e.id}" data-k="mu">${Object.entries(MU).map(([v, l]) => `<option value="${v}" ${e.mu === v ? 'selected' : ''}>${l}</option>`).join('')}</select></label>${inp('kcal', 'Ккал')}</div>`;
+  if (k === 'tm') body = `<div class="cgrid">${inp('dur', 'Секунды')}${inp('rep', 'Повторы')}<label class="ck"><input type="checkbox" data-f="ex" data-id="${e.id}" data-k="sides" ${e.sides ? 'checked' : ''}> обе стороны</label></div>`;
+  return `<h3>Упражнение</h3>${inp('name', 'Название', 'text')}<div class="two" style="margin:8px 0">${inp('grp', 'Группа', 'text', 'list="grps"')}<label>Категория<select data-f="ex" data-id="${e.id}" data-k="gc">${DB.gcats.map(x => `<option value="${x.id}" ${gcOf(e) === x.id ? 'selected' : ''}>${esc(x.name)}</option>`).join('')}</select></label></div><datalist id="grps">${groups.map(g => `<option value="${esc(g)}">`).join('')}</datalist>${body}${inp('note', 'Заметка (техника, тренажёр)', 'text')}${lastLine(e.id)}<button class="pri wide" data-a="close">Готово</button><button class="danger wide" data-a="exdel" data-id="${e.id}">Удалить упражнение</button>`;
+}
+function mHist() {
+  const x = DB['s_' + st.modal.id], meta = DB.sess.find(m => m.id === st.modal.id);
+  if (!x) return `<p class="muted">Не удалось загрузить.</p>`;
+  return `<h3>${esc(x.name)}</h3><div class="sm muted">${fmt(x.date)} · ${meta?.min ?? '?'} мин${meta?.vol ? ' · объём ' + fmtN(meta.vol) + ' кг' : ''}${meta?.kcal ? ' · ' + fmtN(meta.kcal) + ' ккал' : ''}</div>${x.items.map(it => {
+    const ex = exo(it.exId);
+    let t = '—';
+    if (it.sets) { const d = it.sets.filter(y => y.done); if (d.length) t = fmtSets(d) + ' ' + unitOf(ex); }
+    else if (it.done) t = it.c ? fmtC(it.c, ex) : fmtT(it.t);
+    return `<div class="kv"><span>${esc(ex?.name || '(удалено)')}</span><span class="sm">${t}</span></div>`;
+  }).join('')}<button class="wide" data-a="close">Закрыть</button><button class="danger wide" data-a="hdel" data-id="${x.id}">Удалить из истории</button>`;
+}
+
+/* логика */
+function startWorkout(wid) {
+  const w = wko(wid), id = uid();
+  DB['s_' + id] = { id, wid, kind: w.kind || 'st', name: w.name, date: today(), start: Date.now(), items: w.items.map(it => cloneItem(it, true)) };
+  chunkN['s_' + id] = 0; mark('s_' + id); DB.active = id; mark('active'); st.run = null;
+}
+async function finishWorkout() {
+  const s = sess(); s.end = Date.now(); st.run = null; wake(false);
+  let vol = 0, n = 0, kcal = 0;
+  for (const it of s.items) {
+    const ex = exo(it.exId);
+    if (it.sets) {
+      const d = it.sets.filter(x => x.done); n += d.length;
+      if (ex?.u !== 's') vol += d.reduce((a, x) => a + x.w * x.r, 0);
+      if (d.length) DB.last[it.exId] = { date: s.date, sets: d.map(x => ({ w: x.w, r: x.r })) };
+    } else if (it.done) {
+      n++; if (it.c) { kcal += it.c.kcal || 0; DB.last[it.exId] = { date: s.date, c: { ...it.c } }; } else DB.last[it.exId] = { date: s.date, t: { ...it.t } };
+    }
+  }
+  mark('last'); mark('s_' + s.id);
+  DB.sess.unshift({ id: s.id, date: s.date, name: s.name, wid: s.wid, kind: s.kind, min: Math.round((s.end - s.start) / 60000), vol: Math.round(vol), kcal: Math.round(kcal), sets: n }); mark('sess');
+  const w = wko(s.wid);
+  if (w && w.link) {
+    const dk = 'd_' + s.date;
+    if (!(dk in DB)) { const r = await loadMany([dk]); DB[dk] = r[dk]; }
+    const x = day(s.date), it = x.items.find(i => i.id === w.link && !i.done);
+    if (it) it.done = true; else x.items.push({ k: uid(), id: w.link, done: true });
+    mark(dk);
+  }
+  if (w && await ask(`Обновить шаблон «${w.name}» значениями из этой тренировки?`)) {
+    w.items = s.items.filter(i => !i.sets || i.sets.length).map(i => cloneItem(i, false)); mark('workouts');
+  }
+  DB.active = null; mark('active'); st.gmode = null; st.gv = 'hist'; toast('Тренировка сохранена');
+}
+function addExTo(exId) {
+  const ex = exo(exId); if (!ex) return;
+  if (st.modal.to === 'w') { wko(st.wedit).items.push(mkItem(ex)); mark('workouts'); return; }
+  const L = DB.last[exId], k = exKind(ex);
+  let it;
+  if (k === 'c') it = { exId, c: L?.c ? { ...L.c } : mkC(ex), done: false };
+  else if (k === 'tm') it = { exId, t: L?.t ? { ...L.t } : mkT(ex), done: false };
+  else it = { exId, sets: (L?.sets || mkSets(ex)).map(x => ({ w: x.w, r: x.r, done: false })) };
+  sess().items.push(it); mark('s_' + DB.active);
+}
+async function gymAct(a, D) {
+  const w = wko(st.wedit), s = sess(), i = +D.i, j = +D.j;
+  switch (a) {
+    case 'gc': st.gc = D.id || null; st.gmode = null; st.gsub = 'wk'; return true;
+    case 'gsub': st.gsub = D.v; return true;
+    case 'ghist': st.gmode = 'hist'; window.scrollTo(0, 0); return true;
+    case 'wfav': { const x = wko(D.id); x.fav = !x.fav; hap(); mark('workouts'); return true; }
+    case 'gcnew': st.modal = { t: 'gcat', id: null }; return true;
+    case 'gcedit': st.modal = { t: 'gcat', id: D.id }; return true;
+    case 'gcsave': {
+      const name = document.getElementById('gc_name').value.trim(); if (!name) { toast('Напиши название'); return false; }
+      const ex = document.getElementById('gc_ex').value, link = document.getElementById('gc_link').value;
+      if (st.modal.id) { const x = DB.gcats.find(y => y.id === st.modal.id); x.name = name; x.link = link; if (!document.getElementById('gc_ex').disabled) x.ex = ex; }
+      else { const x = { id: uid(), name, ex, link }; DB.gcats.push(x); st.gc = x.id; st.gsub = 'wk'; }
+      mark('gcats'); st.modal = null; return true;
+    }
+    case 'gcdel': {
+      if (!(await ask('Удалить категорию вместе с её тренировками и упражнениями? История останется.'))) return false;
+      const id = D.id; DB.gcats = DB.gcats.filter(x => x.id !== id);
+      DB.workouts = DB.workouts.filter(w => (w.kind || 'st') !== id);
+      const gone = new Set(DB.exercises.filter(e => gcOf(e) === id).map(e => e.id));
+      DB.exercises = DB.exercises.filter(e => !gone.has(e.id)); DB.workouts.forEach(w => w.items = w.items.filter(it => !gone.has(it.exId)));
+      mark('gcats'); mark('workouts'); mark('exercises'); st.gc = null; st.modal = null; return true;
+    }
+    case 'gsess': st.gmode = 'sess'; window.scrollTo(0, 0); return true;
+    case 'gback': st.gmode = null; return true;
+    case 'wnew': { const g = gcat(st.gc); const nw = { id: uid(), kind: g.id, name: 'Новая тренировка', link: g.link || '', items: [] }; DB.workouts.push(nw); mark('workouts'); st.gmode = 'edit'; st.wedit = nw.id; window.scrollTo(0, 0); return true; }
+    case 'wedit': st.gmode = 'edit'; st.wedit = D.id; window.scrollTo(0, 0); return true;
+    case 'wdel': if (!(await ask('Удалить этот шаблон? История останется.'))) return false; DB.workouts = DB.workouts.filter(x => x.id !== st.wedit); mark('workouts'); st.gmode = null; return true;
+    case 'wiup': if (i > 0) { [w.items[i - 1], w.items[i]] = [w.items[i], w.items[i - 1]]; mark('workouts'); } return true;
+    case 'wirm': w.items.splice(i, 1); mark('workouts'); return true;
+    case 'wsadd': { const S = w.items[i].sets, l = S[S.length - 1] || mkSets(exo(w.items[i].exId) || {})[0]; S.push({ w: l.w, r: l.r }); mark('workouts'); return true; }
+    case 'wsrm': w.items[i].sets.splice(j, 1); mark('workouts'); return true;
+    case 'wexadd': st.modal = { t: 'expick', to: 'w' }; return true;
+    case 'sexadd': st.modal = { t: 'expick', to: 's' }; return true;
+    case 'expk': addExTo(D.id); st.modal = null; return true;
+    case 'excreate': { const nm = document.getElementById('exnewname').value.trim(); if (!nm) { toast('Напиши название'); return false; } const e = blankEx(pickGc(), nm); DB.exercises.push(e); mark('exercises'); addExTo(e.id); st.modal = null; toast('Добавлено, поправь значения'); return true; }
+    case 'wstart': if (s) toast('Сначала заверши текущую тренировку'); else startWorkout(D.id); st.gmode = 'sess'; window.scrollTo(0, 0); return true;
+    case 'sdone': { const x = s.items[i].sets[j]; x.done = !x.done; hap(); mark('s_' + s.id); return true; }
+    case 'idone': { const it = s.items[i]; it.done = !it.done; hap(); mark('s_' + s.id); if (st.run && st.run.i === i && it.done) { st.run = null; wake(false); } return true; }
+    case 'ssadd': { const S = s.items[i].sets, l = S[S.length - 1] || { w: 0, r: 10 }; S.push({ w: l.w, r: l.r, done: false }); mark('s_' + s.id); return true; }
+    case 'ssrm': s.items[i].sets.splice(j, 1); mark('s_' + s.id); return true;
+    case 'sirm': if (!(await ask('Убрать упражнение из этой тренировки?'))) return false; if (st.run) { st.run = null; wake(false); } s.items.splice(i, 1); mark('s_' + s.id); return true;
+    case 'slast': { const it = s.items[i], L = DB.last[it.exId]; if (L?.sets && it.sets) it.sets = L.sets.map(x => ({ w: x.w, r: x.r, done: false })); if (L?.c && it.c) it.c = { ...L.c }; if (L?.t && it.t) it.t = { ...L.t }; mark('s_' + s.id); return true; }
+    case 'rstart': runStart(); return true;
+    case 'rpause': runPause(); return true;
+    case 'rskip': runPhaseDone(true); return false;
+    case 'rstop': st.run = null; wake(false); return true;
+    case 'sfin': { const any = s.items.some(it => it.sets ? it.sets.some(x => x.done) : it.done); if (!any && !(await ask('Ничего не отмечено. Всё равно завершить?'))) return false; await finishWorkout(); return true; }
+    case 'scancel': { if (!(await ask('Отменить тренировку? Отметки не сохранятся.'))) return false; st.run = null; wake(false); const id = DB.active; DB.active = null; mark('active'); await flush(); await delKey('s_' + id); st.gmode = null; return true; }
+    case 'exnew': { const e = blankEx(st.gc || 'st', 'Новое упражнение'); DB.exercises.push(e); mark('exercises'); st.modal = { t: 'exedit', id: e.id }; return true; }
+    case 'exedit': st.modal = { t: 'exedit', id: D.id }; return true;
+    case 'exdel': if (!(await ask('Удалить упражнение? Из шаблонов оно тоже пропадёт.'))) return false; DB.exercises = DB.exercises.filter(e => e.id !== D.id); DB.workouts.forEach(x => x.items = x.items.filter(it => it.exId !== D.id)); mark('exercises'); mark('workouts'); st.modal = null; return true;
+    case 'hview': { const k = 's_' + D.id; if (!(k in DB)) { const r = await loadMany([k]); DB[k] = r[k]; } st.modal = { t: 'hist', id: D.id }; return true; }
+    case 'hdel': if (!(await ask('Удалить запись из истории?'))) return false; DB.sess = DB.sess.filter(x => x.id !== D.id); mark('sess'); await flush(); await delKey('s_' + D.id); st.modal = null; return true;
+  }
+  return null;
+}
+function gymField(f, el) {
+  const v = el.value, D = el.dataset, i = +D.i, j = +D.j, val = D.k === 'sides' ? el.checked : Math.max(0, num(v));
+  switch (f) {
+    case 'wname': wko(st.wedit).name = v.trim() || 'Без названия'; mark('workouts'); return true;
+    case 'wlink': wko(st.wedit).link = v; mark('workouts'); return 'r';
+    case 'wset': wko(st.wedit).items[i].sets[j][D.k] = val; mark('workouts'); return true;
+    case 'wc': wko(st.wedit).items[i].c[D.k] = val; mark('workouts'); return true;
+    case 'wt': wko(st.wedit).items[i].t[D.k] = val; mark('workouts'); return 'r';
+    case 'sset': sess().items[i].sets[j][D.k] = val; mark('s_' + DB.active); return true;
+    case 'sc': sess().items[i].c[D.k] = val; mark('s_' + DB.active); return true;
+    case 'st2': sess().items[i].t[D.k] = val; mark('s_' + DB.active); return 'r';
+    case 'ex': {
+      const e = exo(D.id); if (!e) return true;
+      if (D.k === 'sides') e.sides = el.checked;
+      else if (D.k === 'gc') { e.gc = v; e.kind = gcat(v).ex; }
+      else if (['grp', 'note', 'u', 'mu', 'kind'].includes(D.k)) e[D.k] = v.trim();
+      else if (D.k === 'name') e.name = v.trim() || 'Без названия';
+      else e[D.k] = Math.max(0, num(v));
+      mark('exercises'); return (D.k === 'kind' || D.k === 'gc') ? 'r' : true;
+    }
+  }
+  return false;
+}
+function seedWorkouts() {
+  const E = DB.exercises, byName = n => E.find(e => e.name === n), lnk = k => gcat(k).link || '';
+  const T = (kind, name, list, link) => ({ id: uid(), kind, name, link, items: list.map(byName).filter(Boolean).map(mkItem) });
+  return [
+    T('st', 'Силовая А · ноги и ягодицы', ['Присед со штангой', 'Румынская тяга', 'Ягодичный мост', 'Выпады с гантелями', 'Планка'], lnk('st')),
+    T('c', 'Кардио · лестница + эллипс', ['Лестница (степпер)', 'Эллипсоид'], lnk('c')),
+    T('stretch', 'Растяжка после зала', ['Кошка-корова', 'Выпад с растяжкой передней поверхности бедра', 'Наклон к ногам сидя', 'Бабочка', 'Растяжка грудных у стены', 'Поза ребёнка'], ''),
+    T('qg', 'Цигун · короткий комплекс', ['Суставная разминка', 'Поднять руки к небу', 'Натянуть лук', 'Стояние столбом', 'Собрать и опустить ци'], lnk('qg'))
+  ];
 }
 
 /* ===== отрисовка ===== */
@@ -559,17 +1131,19 @@ let rt = null, lastModal = null;
 function soon() { clearTimeout(rt); rt = setTimeout(render, 450); }
 function render() {
   clearTimeout(rt);
+  if (scanner) stopScan();
   const sheet = document.querySelector('.sheet'), sc = sheet ? sheet.scrollTop : 0;
   const p = per();
-  const titles = { today: 'День', period: 'Период', menu: 'Меню', prog: 'Прогресс', cat: 'Каталог' };
+  const titles = { today: 'День', period: 'Период', menu: 'Питание', prog: 'Прогресс', set: 'Настройки', gym: 'Спорт' };
   let h = `<header class="hero">${LOTUS}<h1>${titles[st.tab]}</h1><div class="per">${p ? `период ${fmtS(p.start)} — ${fmtS(p.end)}` : 'период не выбран'}</div></header>`;
-  h += ({ today: vToday, period: vPeriod, menu: vMenu, prog: vProgress, cat: vCat })[st.tab]();
-  if (st.modal) h += `<div class="ov" data-a="ovclose"><div class="sheet">${modal()}</div></div>`;
+  h += ({ today: vToday, period: vPeriod, menu: vMenu, prog: vProgress, set: vSettings, gym: vGym })[st.tab]();
+  if (st.modal) h += st.modal.t === 'scan' ? modal() : `<div class="ov" data-a="ovclose"><div class="sheet ${st.modal.t === 'scanres' ? 'ios' : ''}">${modal()}</div></div>`;
   document.getElementById('app').innerHTML = h;
   const cur = st.modal ? st.modal.t : null;
   if (cur && cur === lastModal) { const s = document.querySelector('.sheet'); if (s) s.scrollTop = sc; }
   if (cur === 'prods' && st.focusLast) { st.focusLast = false; const ins = document.querySelectorAll('.prow input[data-k="name"]'); const last = ins[ins.length - 1]; if (last) { last.scrollIntoView({ block: 'center' }); last.select(); } }
   lastModal = cur;
+  if (cur === 'scan') { drawCorners(); setTimeout(startScan, 60); }
   document.querySelectorAll('nav button').forEach(b => b.classList.toggle('on', b.dataset.t === st.tab));
   if (inTG && tg.BackButton) { cur ? tg.BackButton.show() : tg.BackButton.hide(); }
 }
@@ -595,10 +1169,24 @@ document.addEventListener('change', async e => {
 });
 
 async function act(a, D) {
+  const g = await gymAct(a, D); if (g === false) return; if (g === true) { render(); return; }
   const p = per();
   const dk = 'd_' + st.date;
   switch (a) {
     case 'tab': st.tab = D.t; st.modal = null; if (D.t === 'prog') await loadAll(); window.scrollTo(0, 0); break;
+    case 'pt': st.pt = D.v; break;
+    case 'scan': st.modal = { t: 'scan', m: st.modal ? st.modal.m : null }; break;
+    case 'scanman': { const sp = document.getElementById('spanel'); sp.classList.add('manual'); const i = document.getElementById('bcode'); if (i) i.focus(); return; }
+    case 'torch': { try { const on = !st.torch; await scanner.applyVideoConstraints({ advanced: [{ torch: on }] }); st.torch = on; document.getElementById('torch').classList.toggle('on', on); } catch (e) { toast('Фонарик недоступен'); } return; }
+    case 'bcfind': { const v = document.getElementById('bcode').value; await stopScan(); await lookup(v); return; }
+    case 'srsave': {
+      const m = st.modal, name = document.getElementById('sr_name').value.trim();
+      if (!name) { toast('Напиши название'); return; }
+      const pr = { id: uid(), name, bc: m.code };
+      for (const k of ['k', 'p', 'f', 'c']) pr[k] = num(document.getElementById('sr_' + k).value);
+      DB.products.push(pr); mark('products'); addToMeal(pr.id, m.m); st.modal = null;
+      toast(m.m ? 'Добавлено, поправь граммы' : 'Сохранено в базу'); break;
+    }
     case 'pv': st.pv = D.v; if (D.v === 'all') await loadAll(); break;
     case 'factmenu': { const t = dayTot(st.date); day(st.date).fact = { k: Math.round(t.k), p: Math.round(t.p), f: Math.round(t.f), c: Math.round(t.c) }; mark(dk); break; }
     case 'close': st.modal = null; break;
@@ -609,6 +1197,12 @@ async function act(a, D) {
     case 'up': { const x = day(st.date), i = +D.i; if (i > 0) { [x.items[i - 1], x.items[i]] = [x.items[i], x.items[i - 1]]; mark(dk); } break; }
     case 'pick': st.modal = { t: 'pick' }; break;
     case 'add': { day(st.date).items.push({ k: uid(), id: D.id, done: false }); hap(); mark(dk); break; }
+    case 'rm1': {
+      const x = day(st.date), idx = [...x.items.keys()].filter(k => x.items[k].id === D.id);
+      if (!idx.length) break;
+      const k = idx.slice().reverse().find(k => !x.items[k].done) ?? idx[idx.length - 1];
+      x.items.splice(k, 1); hap(); mark(dk); break;
+    }
     case 'copyprev': {
       const pk = 'd_' + addD(st.date, -1);
       if (!(pk in DB)) { const r = await loadMany([pk]); DB[pk] = r[pk]; }
@@ -649,7 +1243,7 @@ async function act(a, D) {
     case 'mcopy': st.modal = { t: 'mcopy' }; break;
     case 'mcp': { const M = menu(); M.days[D.d] = JSON.parse(JSON.stringify(M.days[st.mdate] || {})); mark('m_' + st.pid); hap(); toast('Скопировано на ' + fmt(D.d)); break; }
     case 'shop': st.modal = { t: 'shop' }; break;
-    case 'prods': st.modal = { t: 'prods' }; break;
+    case 'prods': st.modal = { t: 'prods', m: st.modal && st.modal.t === 'padd' ? st.modal.m : null }; break;
     case 'pnew': DB.products.push({ id: uid(), name: 'Новый продукт', k: 0, p: 0, f: 0, c: 0 }); mark('products'); st.focusLast = true; break;
     case 'pdel': { if (!(await ask('Удалить продукт из базы?'))) return; DB.products = DB.products.filter(x => x.id !== D.id); mark('products'); break; }
     case 'cadd': DB.catalog.push({ id: uid(), name: 'Новый пункт', cat: D.c, kcal: 0, def: 0 }); mark('catalog'); break;
@@ -673,6 +1267,7 @@ async function act(a, D) {
 }
 
 async function field(f, el) {
+  const gf = gymField(f, el); if (gf) { if (gf === 'r') render(); else soon(); return; }
   const p = per(), v = el.value, D = el.dataset;
   switch (f) {
     case 'pstart': case 'pend': {
@@ -702,11 +1297,16 @@ async function field(f, el) {
 /* ===== запуск ===== */
 async function init() {
   try {
-    const r = await loadMany(['catalog', 'products', 'periods', 'profile']);
+    const r = await loadMany(['catalog', 'products', 'periods', 'profile', 'exercises', 'workouts', 'last', 'sess', 'active', 'gcats']);
+    DB.exercises = r.exercises || defExercises(); if (!r.exercises) mark('exercises');
+    DB.last = r.last || {}; DB.sess = r.sess || []; DB.active = r.active || null;
+    if (DB.active) { const r2 = await loadMany(['s_' + DB.active]); if (r2['s_' + DB.active]) DB['s_' + DB.active] = r2['s_' + DB.active]; else DB.active = null; }
     DB.profile = r.profile || { h: 172, age: 27, sex: 'f', act: 1.25, goalW: null }; if (!r.profile) mark('profile');
     DB.catalog = r.catalog || defCatalog(); if (!r.catalog) mark('catalog');
     DB.products = r.products || defProducts(); if (!r.products) mark('products');
     DB.periods = r.periods || []; if (!r.periods) mark('periods');
+    DB.gcats = r.gcats || seedGcats(); if (!r.gcats) mark('gcats');
+    DB.workouts = r.workouts || seedWorkouts(); if (!r.workouts) mark('workouts');
     const t = today(), P = DB.periods;
     const cur = P.find(p => p.start <= t && t <= p.end) || P[P.length - 1];
     if (cur) await openPeriod(cur.id);
